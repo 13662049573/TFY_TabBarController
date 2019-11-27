@@ -80,6 +80,8 @@
 		5604D8F2238DFFCB002B76A1 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8B6238DFFCB002B76A1 /* HomeController.m */; };
 		5604D8F3238DFFCB002B76A1 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8B9238DFFCB002B76A1 /* HomeTableViewCell.m */; };
 		5604D8F4238DFFCB002B76A1 /* WHGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8BD238DFFCB002B76A1 /* WHGradientHelper.m */; };
+		5604D8F6238E03FF002B76A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F5238E03FF002B76A1 /* UIKit.framework */; };
+		5604D8F8238E0406002B76A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F7238E0406002B76A1 /* Foundation.framework */; };
 		C92074BF4CDD0A260EDA3AF7 /* Pods_TFY_TabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 686627018EE5904B8558082F /* Pods_TFY_TabBarController.framework */; };
 /* End PBXBuildFile section */
 
@@ -247,6 +249,8 @@
 		5604D8BA238DFFCB002B76A1 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		5604D8BD238DFFCB002B76A1 /* WHGradientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHGradientHelper.m; sourceTree = "<group>"; };
 		5604D8BE238DFFCB002B76A1 /* WHGradientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHGradientHelper.h; sourceTree = "<group>"; };
+		5604D8F5238E03FF002B76A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5604D8F7238E0406002B76A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		686627018EE5904B8558082F /* Pods_TFY_TabBarController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TFY_TabBarController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8EDA42B0E335EA558BE298 /* Pods-TFY_TabBarController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFY_TabBarController.debug.xcconfig"; path = "Target Support Files/Pods-TFY_TabBarController/Pods-TFY_TabBarController.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +261,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C92074BF4CDD0A260EDA3AF7 /* Pods_TFY_TabBarController.framework in Frameworks */,
+				5604D8F8238E0406002B76A1 /* Foundation.framework in Frameworks */,
+				5604D8F6238E03FF002B76A1 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +286,8 @@
 		160E216EC8DDA9A4F5D9B0E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5604D8F7238E0406002B76A1 /* Foundation.framework */,
+				5604D8F5238E03FF002B76A1 /* UIKit.framework */,
 				686627018EE5904B8558082F /* Pods_TFY_TabBarController.framework */,
 			);
 			name = Frameworks;
