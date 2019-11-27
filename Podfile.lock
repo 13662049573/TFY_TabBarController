@@ -1,0 +1,32 @@
+PODS:
+  - ReactiveObjC (3.1.1)
+  - TFY_AutoLayout (2.4.7)
+  - TFY_Category (2.7.6)
+  - TFY_ContactManager (2.0.1)
+  - TFY_Navigation (2.1.4)
+
+DEPENDENCIES:
+  - ReactiveObjC
+  - TFY_AutoLayout
+  - TFY_Category
+  - TFY_ContactManager
+  - TFY_Navigation
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ReactiveObjC
+    - TFY_AutoLayout
+    - TFY_Category
+    - TFY_ContactManager
+    - TFY_Navigation
+
+SPEC CHECKSUMS:
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  TFY_AutoLayout: 3856cd8766f67cd8aeca980281d630e28cdbfd12
+  TFY_Category: e37a7752ef3c1f0e7aee832e825fd6b2daea6558
+  TFY_ContactManager: c0453f4313f333e7067606c73d732935d0261d43
+  TFY_Navigation: ed25b7a74f45403416026952f54db803b183cc1e
+
+PODFILE CHECKSUM: 7b5e560f578521bae8eee6e29acb8b0969d9f923
+
+COCOAPODS: 1.8.4

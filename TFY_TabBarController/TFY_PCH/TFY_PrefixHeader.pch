@@ -1,0 +1,20 @@
+//
+//  TFY_PrefixHeader.pch
+//  TFY_TabBarController
+//
+//  Created by tiandengyou on 2019/11/27.
+//  Copyright © 2019 田风有. All rights reserved.
+//
+
+#ifndef TFY_PrefixHeader_pch
+#define TFY_PrefixHeader_pch
+
+#import <ReactiveObjC.h>
+#import <TFY_AutoLayout.h>
+#import <TFY_CategoryHerder.h>
+#import <TFY_Navigation.h>
+#import <TFY_ContactHeader.h>
+
+#import "TFY_TabBarHeader.h"
+
+#endif /* TFY_PrefixHeader_pch */

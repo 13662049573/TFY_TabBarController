@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios,'10.0'
+
+use_frameworks!
+
+target 'TFY_TabBarController' do
+
+pod 'ReactiveObjC'
+pod 'TFY_Category'
+pod 'TFY_Navigation'
+pod 'TFY_AutoLayout'
+pod 'TFY_ContactManager'
+end

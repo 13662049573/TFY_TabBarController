@@ -1,0 +1,6 @@
+framework module TFY_Category {
+  umbrella header "TFY_Category-umbrella.h"
+
+  export *
+  module * { export * }
+}
