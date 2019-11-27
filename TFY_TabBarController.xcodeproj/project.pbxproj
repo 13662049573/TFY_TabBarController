@@ -392,17 +392,17 @@
 		5604D802238DFEA1002B76A1 /* TFY_CustomizeTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				5604D803238DFEA1002B76A1 /* TFY_TabBarController.m */,
 				5604D804238DFEA1002B76A1 /* TFY_TabBar.h */,
-				5604D805238DFEA1002B76A1 /* UIViewController+TFY_Tab.h */,
-				5604D806238DFEA1002B76A1 /* TFY_TabContentView.m */,
-				5604D807238DFEA1002B76A1 /* TFY_TabBarItem.h */,
-				5604D808238DFEA1002B76A1 /* TFY_TabBarControllerProtocol.h */,
-				5604D809238DFEA1002B76A1 /* UIViewController+TFY_Tab.m */,
 				5604D80A238DFEA1002B76A1 /* TFY_TabBar.m */,
-				5604D80B238DFEA1002B76A1 /* TFY_TabBarController.h */,
-				5604D80C238DFEA1002B76A1 /* TFY_TabContentView.h */,
+				5604D807238DFEA1002B76A1 /* TFY_TabBarItem.h */,
 				5604D80D238DFEA1002B76A1 /* TFY_TabBarItem.m */,
+				5604D80C238DFEA1002B76A1 /* TFY_TabContentView.h */,
+				5604D806238DFEA1002B76A1 /* TFY_TabContentView.m */,
+				5604D80B238DFEA1002B76A1 /* TFY_TabBarController.h */,
+				5604D803238DFEA1002B76A1 /* TFY_TabBarController.m */,
+				5604D805238DFEA1002B76A1 /* UIViewController+TFY_Tab.h */,
+				5604D809238DFEA1002B76A1 /* UIViewController+TFY_Tab.m */,
+				5604D808238DFEA1002B76A1 /* TFY_TabBarControllerProtocol.h */,
 			);
 			path = TFY_CustomizeTabBar;
 			sourceTree = "<group>";
