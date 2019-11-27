@@ -11,17 +11,16 @@ Pod::Spec.new do |spec|
                       底部tabbar工具/分两类一个自定义UIViewController一个系统自带的，把写好的加在系统上处理.
                       DESC
 
-  spec.homepage     = "http://EXAMPLE/TFY_TabBarKit"
+  spec.homepage     = "https://github.com/13662049573/TFY_TabBarController"
   
   spec.license      = "MIT"
 
   spec.platform     = :ios, "10.0"
   
-  spec.author             = { "tfyzxc13662049573" => "420144542@qq.com" }
+  spec.author       = { "tfyzxc13662049573" => "420144542@qq.com" }
   
-  spec.source       = { :git => "http://EXAMPLE/TFY_TabBarKit.git", :tag => spec.version }
+  spec.source       = { :git => "https://github.com/13662049573/TFY_TabBarController.git", :tag => spec.version }
 
-  
   spec.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_TabBarHeader.h"
   
   spec.subspec 'TFY_CustomizeTabBar' do |ss|
