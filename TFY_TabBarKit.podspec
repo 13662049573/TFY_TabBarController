@@ -24,13 +24,13 @@ Pod::Spec.new do |spec|
   spec.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_TabBarHeader.h"
   
   spec.subspec 'TFY_CustomizeTabBar' do |ss|
-     ss.public_header_files = "TFY_TabBarController/TFY_TabBarKit/TFY_CustomizeTabBar/TfyCU_TabBarControllerProtocol.h"
-     ss.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_CustomizeTabBar/**/*.{h,m}"
+   #   ss.public_header_files = 
+     ss.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_CustomizeTabBar/TfyCU_TabBarControllerProtocol.h","TFY_TabBarController/TFY_TabBarKit/TFY_CustomizeTabBar/**/*.{h,m}"
   end
 
   spec.subspec 'TFY_SystemTabBar' do |ss|
-     ss.public_header_files = "TFY_TabBarController/TFY_TabBarKit/TFY_SystemTabBar/TfySY_TabBarDefine.h"
-     ss.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_SystemTabBar/**/*.{h,m}"
+   #   ss.public_header_files = 
+     ss.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_SystemTabBar/TfySY_TabBarDefine.h","TFY_TabBarController/TFY_TabBarKit/TFY_SystemTabBar/**/*.{h,m}"
   end
 
   spec.frameworks    = "Foundation","UIKit"
