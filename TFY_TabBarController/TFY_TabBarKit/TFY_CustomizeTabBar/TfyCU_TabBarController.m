@@ -1,14 +1,13 @@
 //
-//  TFY_TabBarController.m
-//  TFY_AutoLayoutModelTools
+//  TfyCU_TabBarController.m
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/5/14.
-//  Copyright © 2019 恋机科技. All rights reserved.
+//  Created by tiandengyou on 2019/11/28.
+//  Copyright © 2019 田风有. All rights reserved.
 //
 
-#import "TFY_TabBarController.h"
-#import <objc/runtime.h>
-#import "TFY_TabBarItem.h"
+#import "TfyCU_TabBarController.h"
+#import "TfyCU_TabBarItem.h"
 
 #define TFY_TabBar_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? ((NSInteger)(([[UIScreen mainScreen] currentMode].size.height/[[UIScreen mainScreen] currentMode].size.width)*100) == 216) : NO)
 
@@ -22,19 +21,19 @@
 #define kTFY_TabBar_BottomBarHeight        (TFY_TabBar_iPhoneX ? 34.0 : 0)
 #define kTFY_TabBar_ContentHeight          (TFY_TabBar_Height_H - kTFY_TabBar_NavBarHeight-kTFY_TabBar_BottomBarHeight)
 
+@interface TfyCU_TabBarController ()
 
-@interface TFY_TabBarController ()
-@property(nonatomic, strong)TFY_TabContentView *tabContentView;
+@property(nonatomic, strong)TfyCU_TabBarView *tabContentView;
 @end
 
-@implementation TFY_TabBarController
+@implementation TfyCU_TabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self.view addSubview:self.tabBar];
-    [self.view addSubview:self.tabContentView];
+     self.view.backgroundColor = [UIColor whiteColor];
+       
+   [self.view addSubview:self.tabBar];
+   [self.view addSubview:self.tabContentView];
 }
 
 -(void)setStyle:(ScenestobeusedStyle)Style{
@@ -97,18 +96,18 @@
     return NO; // your own visibility code
 }
 
-- (TFY_TabBar *)tabBar {
+- (TfyCU_TabBar *)tabBar {
     return self.tabContentView.tabBar;
 }
 
-- (TFY_TabContentView *)tabContentView{
+- (TfyCU_TabBarView *)tabContentView{
     if (!_tabContentView) {
-        _tabContentView = [[TFY_TabContentView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        _tabContentView = [[TfyCU_TabBarView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         _tabContentView.delegate = self;
         _tabContentView.backgroundColor = [UIColor clearColor];
         _tabContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     return _tabContentView;
 }
-@end
 
+@end

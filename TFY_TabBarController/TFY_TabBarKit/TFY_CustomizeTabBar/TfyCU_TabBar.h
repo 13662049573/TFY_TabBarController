@@ -1,48 +1,49 @@
 //
-//  TFY_TabBar.h
-//  TFY_AutoLayoutModelTools
+//  TfyCU_TabBar.h
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/5/14.
-//  Copyright © 2019 恋机科技. All rights reserved.
+//  Created by tiandengyou on 2019/11/28.
+//  Copyright © 2019 田风有. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "TFY_TabBarItem.h"
+#import "TfyCU_TabBarItem.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, TabBarIndicatorAnimationStyle) {
     TabBarIndicatorAnimationStyleDefault = 0,
     TabBarIndicatorAnimationStyle1,
 };
 
-NS_ASSUME_NONNULL_BEGIN
 
-@class TFY_TabBar,TFY_TabBarItem;
+@class TfyCU_TabBar,TfyCU_TabBarItem;
 
-@protocol TFY_TabBarDelegate <NSObject>
+@protocol TfyCU_TabBarDelegate <NSObject>
 @optional
 /**
  *  是否能切换到指定index
  */
-- (BOOL)tfy_tabBar:(TFY_TabBar *)tabBar shouldSelectItemAtIndex:(NSUInteger)index;
+- (BOOL)tfy_tabBar:(TfyCU_TabBar *)tabBar shouldSelectItemAtIndex:(NSUInteger)index;
 
 /**
  *  将要切换到指定index
  */
-- (void)tfy_tabBar:(TFY_TabBar *)tabBar willSelectItemAtIndex:(NSUInteger)index;
+- (void)tfy_tabBar:(TfyCU_TabBar *)tabBar willSelectItemAtIndex:(NSUInteger)index;
 
 /**
  *  已经切换到指定index
  */
-- (void)tfy_tabBar:(TFY_TabBar *)tabBar didSelectedItemAtIndex:(NSUInteger)index;
+- (void)tfy_tabBar:(TfyCU_TabBar *)tabBar didSelectedItemAtIndex:(NSUInteger)index;
 
 @end
 
 
-@interface TFY_TabBar : UIView
+@interface TfyCU_TabBar : UIView
 /**
  *  TabItems，提供给YPTabBarController使用，一般不手动设置此属性
  */
-@property (nonatomic, copy) NSArray <TFY_TabBarItem *> *items;
+@property (nonatomic, copy) NSArray <TfyCU_TabBarItem *> *items;
 
 @property (nonatomic, strong) UIColor *indicatorColor;         // item指示器颜色
 @property (nonatomic, strong) UIImage *indicatorImage;         // item指示器图像
@@ -89,12 +90,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL indicatorSwitchAnimated;
 
-@property (nonatomic, weak) id<TFY_TabBarDelegate> delegate;
+@property (nonatomic, weak) id<TfyCU_TabBarDelegate> delegate;
 
 /**
  *  返回已选中的item
  */
-- (TFY_TabBarItem *)selectedItem;
+- (TfyCU_TabBarItem *)selectedItem;
 
 /**
  *  根据titles创建item
@@ -213,7 +214,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  index   将其放在此index的item后面
  *  handler 点击事件回调
  */
-- (void)setSpecialItem:(TFY_TabBarItem *)item afterItemWithIndex:(NSUInteger)index tapHandler:(void (^)(TFY_TabBarItem *item))handler;
+- (void)setSpecialItem:(TfyCU_TabBarItem *)item afterItemWithIndex:(NSUInteger)index tapHandler:(void (^)(TfyCU_TabBarItem *item))handler;
 
 /**
  *  当TFY_TabBar所属的TFY_TabBarController内容视图支持拖动切换时，

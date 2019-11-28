@@ -6,8 +6,8 @@
 //  Copyright © 2016年 YPTabBarController. All rights reserved.
 //
 
-#import "TFY_TabBarController.h"
+#import "TfyCU_TabBarController.h"
 
-@interface DynamicItemWidthTabController : TFY_TabBarController
+@interface DynamicItemWidthTabController : TfyCU_TabBarController
 
 @end

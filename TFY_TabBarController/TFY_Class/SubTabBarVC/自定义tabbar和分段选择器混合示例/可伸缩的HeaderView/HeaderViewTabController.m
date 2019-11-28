@@ -85,7 +85,7 @@
     
 }
 
-- (void)tabContentView:(TFY_TabContentView *)tabConentView didChangedContentOffsetY:(CGFloat)offsetY {
+- (void)tabContentView:(TfyCU_TabBarView *)tabConentView didChangedContentOffsetY:(CGFloat)offsetY {
     NSLog(@"offsetY-->%f", offsetY);
 }
 

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 YPTabBarController. All rights reserved.
 //
 
-#import "TFY_TabBarController.h"
+#import "TfyCU_TabBarController.h"
 
-@interface CustomIndicatorTabController : TFY_TabBarController
+@interface CustomIndicatorTabController : TfyCU_TabBarController
 
 @end

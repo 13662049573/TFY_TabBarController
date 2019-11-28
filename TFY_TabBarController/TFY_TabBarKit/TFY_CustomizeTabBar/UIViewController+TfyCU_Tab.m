@@ -1,15 +1,15 @@
 //
-//  UIViewController+TFY_Tab.m
-//  TFY_TabBarKit
+//  UIViewController+TfyCU_Tab.m
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/11/25.
+//  Created by tiandengyou on 2019/11/28.
 //  Copyright © 2019 田风有. All rights reserved.
 //
 
-#import "UIViewController+TFY_Tab.h"
+#import "UIViewController+TfyCU_Tab.h"
 #import <objc/runtime.h>
 
-@implementation UIViewController (TFY_Tab)
+@implementation UIViewController (TfyCU_Tab)
 
 - (NSString *)tfy_tabItemTitle {
     return objc_getAssociatedObject(self, _cmd);
@@ -38,8 +38,8 @@
     objc_setAssociatedObject(self, @selector(tfy_tabItemSelectedImage), tfy_tabItemSelectedImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (TFY_TabBarItem *)tfy_tabItem{
-    TFY_TabBar *tabBar = self.tfy_tabBarController.tabBar;
+- (TfyCU_TabBarItem *)tfy_tabItem{
+    TfyCU_TabBar *tabBar = self.tfy_tabBarController.tabBar;
     if (!tabBar) {
         return nil;
     }
@@ -50,9 +50,9 @@
     return tabBar.items[index];
 }
 
-- (id<TFY_TabBarControllerProtocol>)tfy_tabBarController {
-    if ([self.parentViewController conformsToProtocol:@protocol(TFY_TabBarControllerProtocol)]) {
-        return (id<TFY_TabBarControllerProtocol>)self.parentViewController;
+- (id<TfyCU_TabBarControllerProtocol>)tfy_tabBarController {
+    if ([self.parentViewController conformsToProtocol:@protocol(TfyCU_TabBarControllerProtocol)]) {
+        return (id<TfyCU_TabBarControllerProtocol>)self.parentViewController;
     }
     return nil;
 }
@@ -64,5 +64,4 @@
 - (UIScrollView *)tfy_scrollView {
     return nil;
 }
-
 @end

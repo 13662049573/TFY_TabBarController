@@ -1,13 +1,12 @@
 //
-//  TFY_TabBar.m
-//  TFY_AutoLayoutModelTools
+//  TfyCU_TabBar.m
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/5/14.
-//  Copyright © 2019 恋机科技. All rights reserved.
+//  Created by tiandengyou on 2019/11/28.
+//  Copyright © 2019 田风有. All rights reserved.
 //
 
-#import "TFY_TabBar.h"
-#import "TFY_TabBarItem.h"
+#import "TfyCU_TabBar.h"
 
 #define BADGE_BG_COLOR_DEFAULT [UIColor colorWithRed:252 / 255.0f green:15 / 255.0f blue:29 / 255.0f alpha:1.0f]
 
@@ -17,14 +16,14 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     TabBarIndicatorStyleFixedWidth,
 };
 
-@interface TFY_TabBar (){
+@interface TfyCU_TabBar (){
     CGFloat _scrollViewLastOffsetX;
 }
 // 当TabBar支持滚动时，使用此scrollView
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) TFY_TabBarItem *specialItem;
-@property (nonatomic, copy) void (^specialItemHandler)(TFY_TabBarItem *item);
+@property (nonatomic, strong) TfyCU_TabBarItem *specialItem;
+@property (nonatomic, copy) void (^specialItemHandler)(TfyCU_TabBarItem *item);
 
 // 选中背景
 @property (nonatomic, strong) UIImageView *indicatorImageView;
@@ -68,7 +67,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
 
 @end
 
-@implementation TFY_TabBar
+@implementation TfyCU_TabBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -142,7 +141,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     _items = [items copy];
     
     // 初始化每一个item
-    for (TFY_TabBarItem *item in self.items) {
+    for (TfyCU_TabBarItem *item in self.items) {
         item.titleColor = self.itemTitleColor;
         item.titleSelectedColor = self.itemTitleSelectedColor;
         item.titleFont = self.itemTitleFont;
@@ -176,7 +175,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
 - (void)setTitles:(NSArray *)titles {
     NSMutableArray *items = [NSMutableArray array];
     for (NSString *title in titles) {
-        TFY_TabBarItem *item = [[TFY_TabBarItem alloc] init];
+        TfyCU_TabBarItem *item = [[TfyCU_TabBarItem alloc] init];
         item.title = title;
         [items addObject:item];
     }
@@ -212,7 +211,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
             self.itemHeight = ceilf((self.frame.size.height - self.leadingSpace - self.trailingSpace) / self.items.count);
         }
         for (NSUInteger index = 0; index < self.items.count; index++) {
-            TFY_TabBarItem *item = self.items[index];
+            TfyCU_TabBarItem *item = self.items[index];
             item.frame = CGRectMake(0, y, self.frame.size.width, self.itemHeight);
             item.index = index;
             y += self.itemHeight;
@@ -223,7 +222,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
             // 支持滚动
             CGFloat x = self.leadingSpace;
             for (NSUInteger index = 0; index < self.items.count; index++) {
-                TFY_TabBarItem *item = self.items[index];
+                TfyCU_TabBarItem *item = self.items[index];
                 CGFloat width = 0;
                 // item的宽度为一个固定值
                 if (self.itemWidth > 0) {
@@ -254,7 +253,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
             self.itemWidth = floorf(self.itemWidth + 0.5f);
             
             for (NSUInteger index = 0; index < self.items.count; index++) {
-                TFY_TabBarItem *item = self.items[index];
+                TfyCU_TabBarItem *item = self.items[index];
                 item.frame = CGRectMake(x, 0, self.itemWidth, self.frame.size.height);
                 item.index = index;
                 
@@ -289,7 +288,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
         self.indicatorImageView.frame = CGRectZero;
         return;
     }
-    TFY_TabBarItem *item = self.items[index];
+    TfyCU_TabBarItem *item = self.items[index];
     self.indicatorImageView.frame = item.indicatorFrame;
 }
 
@@ -319,7 +318,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     }
     
     if (_selectedItemIndex != NSNotFound) {
-        TFY_TabBarItem *oldSelectedItem = self.items[_selectedItemIndex];
+        TfyCU_TabBarItem *oldSelectedItem = self.items[_selectedItemIndex];
         oldSelectedItem.selected = NO;
         if (self.itemTitleSelectedFont) {
             if (self.itemFontChangeFollowContentScroll) {
@@ -333,7 +332,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
         }
     }
     
-    TFY_TabBarItem *newSelectedItem = self.items[selectedItemIndex];
+    TfyCU_TabBarItem *newSelectedItem = self.items[selectedItemIndex];
     newSelectedItem.selected = YES;
     
     if (self.itemTitleSelectedFont) {
@@ -431,24 +430,24 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     return 1.0f;
 }
 
-- (void)tabItemClicked:(TFY_TabBarItem *)item {
+- (void)tabItemClicked:(TfyCU_TabBarItem *)item {
     self.selectedItemIndex = item.index;
 }
 
-- (void)specialItemClicked:(TFY_TabBarItem *)item {
+- (void)specialItemClicked:(TfyCU_TabBarItem *)item {
     if (self.specialItemHandler) {
         self.specialItemHandler(item);
     }
 }
 
-- (TFY_TabBarItem *)selectedItem {
+- (TfyCU_TabBarItem *)selectedItem {
     if (self.selectedItemIndex == NSNotFound) {
         return nil;
     }
     return self.items[self.selectedItemIndex];
 }
 
-- (void)setSpecialItem:(TFY_TabBarItem *)item afterItemWithIndex:(NSUInteger)index tapHandler:(void (^)(TFY_TabBarItem *item))handler {
+- (void)setSpecialItem:(TfyCU_TabBarItem *)item afterItemWithIndex:(NSUInteger)index tapHandler:(void (^)(TfyCU_TabBarItem *item))handler {
     self.specialItem = item;
     self.specialItem.index = index;
     [self.specialItem addTarget:self action:@selector(specialItemClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -507,19 +506,19 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
 }
 
 - (void)updateItemIndicatorInsets {
-    for (TFY_TabBarItem *item in self.items) {
+    for (TfyCU_TabBarItem *item in self.items) {
         if (self.indicatorStyle == TabBarIndicatorStyleFitTitle) {
             CGRect frame = item.frameWithOutTransform;
             CGFloat space = (frame.size.width - item.titleWidth - self.indicatorWidthFixTitleAdditional) / 2;
             item.indicatorInsets = UIEdgeInsetsMake(self.indicatorInsets.top, space, self.indicatorInsets.bottom, space);
         } else if (self.indicatorStyle == TabBarIndicatorStyleFixedWidth) {
-            for (TFY_TabBarItem *item in self.items) {
+            for (TfyCU_TabBarItem *item in self.items) {
                 CGRect frame = item.frameWithOutTransform;
                 CGFloat space = (frame.size.width - self.indicatorWidth) / 2;
                 item.indicatorInsets = UIEdgeInsetsMake(self.indicatorInsets.top, space, self.indicatorInsets.bottom, space);
             }
         } else if (self.indicatorStyle == TabBarIndicatorStyleFitItem) {
-            for (TFY_TabBarItem *item in self.items) {
+            for (TfyCU_TabBarItem *item in self.items) {
                 item.indicatorInsets = self.indicatorInsets;
             }
         }
@@ -547,7 +546,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
         // item字体不支持平滑切换，更新item的字体
         if (self.itemTitleSelectedFont) {
             // 设置了选中字体，则只更新未选中的item
-            for (TFY_TabBarItem *item in self.items) {
+            for (TfyCU_TabBarItem *item in self.items) {
                 if (!item.selected) {
                     item.titleFont = itemTitleFont;
                 }
@@ -579,7 +578,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     if (self.itemTitleSelectedFont && self.itemFontChangeFollowContentScroll && self.itemTitleSelectedFont.pointSize != self.itemTitleFont.pointSize) {
         UIFont *normalFont = [self.itemTitleFont fontWithSize:self.itemTitleSelectedFont.pointSize];
         
-        for (TFY_TabBarItem *item in self.items) {
+        for (TfyCU_TabBarItem *item in self.items) {
             if (item.selected) {
                 item.titleFont = self.itemTitleSelectedFont;
             } else {
@@ -603,7 +602,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
 
 - (void)setItemContentHorizontalCenterAndMarginTop:(CGFloat)marginTop spacing:(CGFloat)spacing {
     _itemContentHorizontalCenter = YES;
-    for (TFY_TabBarItem *item in self.items) {
+    for (TfyCU_TabBarItem *item in self.items) {
         [item setContentHorizontalCenterAndMarginTop:marginTop spacing:spacing];
     }
 }
@@ -636,7 +635,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     self.numberBadgeTitleHorizonalSpace = titleHorizonalSpace;
     self.numberBadgeTitleVerticalSpace = titleVerticalSpace;
     
-    for (TFY_TabBarItem *item in self.items) {
+    for (TfyCU_TabBarItem *item in self.items) {
         [item setNumberBadgeMarginTop:marginTop centerMarginRight:centerMarginRight titleHorizonalSpace:titleHorizonalSpace titleVerticalSpace:titleVerticalSpace];
     }
 }
@@ -646,7 +645,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     self.dotBadgeCenterMarginRight = centerMarginRight;
     self.dotBadgeSideLength = sideLength;
     
-    for (TFY_TabBarItem *item in self.items) {
+    for (TfyCU_TabBarItem *item in self.items) {
         [item setDotBadgeMarginTop:marginTop centerMarginRight:centerMarginRight sideLength:sideLength];
     }
 }
@@ -680,7 +679,7 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
         [self.separatorLayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
         [self.separatorLayers removeAllObjects];
         
-        [self.items enumerateObjectsUsingBlock:^(TFY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.items enumerateObjectsUsingBlock:^(TfyCU_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
             if (idx > 0) {
                 CALayer *layer = [[CALayer alloc] init];
                 layer.backgroundColor = self.itemSeparatorColor.CGColor;
@@ -715,8 +714,8 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
     NSUInteger leftIndex = offsetX / scrollViewWidth;
     NSUInteger rightIndex = leftIndex + 1;
     
-    TFY_TabBarItem *leftItem = self.items[leftIndex];
-    TFY_TabBarItem *rightItem = nil;
+    TfyCU_TabBarItem *leftItem = self.items[leftIndex];
+    TfyCU_TabBarItem *rightItem = nil;
     if (rightIndex < self.items.count) {
         rightItem = self.items[rightIndex];
     }
@@ -794,8 +793,8 @@ typedef NS_ENUM(NSInteger, TabBarIndicatorStyle) {
                 return;
             }
             
-            TFY_TabBarItem *currentItem = self.items[currentIndex];
-            TFY_TabBarItem *targetItem = self.items[targetIndex];
+            TfyCU_TabBarItem *currentItem = self.items[currentIndex];
+            TfyCU_TabBarItem *targetItem = self.items[targetIndex];
             
             CGFloat currentItemWidth = currentItem.frameWithOutTransform.size.width;
             CGFloat targetItemWidth = targetItem.frameWithOutTransform.size.width;

@@ -1,14 +1,14 @@
 //
-//  TFY_TabBarItem.m
-//  TFY_AutoLayoutModelTools
+//  TfyCU_TabBarItem.m
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/5/14.
-//  Copyright © 2019 恋机科技. All rights reserved.
+//  Created by tiandengyou on 2019/11/28.
+//  Copyright © 2019 田风有. All rights reserved.
 //
 
-#import "TFY_TabBarItem.h"
+#import "TfyCU_TabBarItem.h"
 
-@interface TFY_TabBarItem ()
+@interface TfyCU_TabBarItem ()
 @property (nonatomic, strong) UIButton *badgeButton;
 @property (nonatomic, strong) UIView *doubleTapView;
 @property (nonatomic, assign) CGFloat marginTop;
@@ -27,7 +27,7 @@
 @property (nonatomic, copy) void (^doubleTapHandler)(void);
 @end
 
-@implementation TFY_TabBarItem
+@implementation TfyCU_TabBarItem
 
 - (instancetype)init {
     self = [super init];
@@ -44,7 +44,7 @@
 }
 
 + (instancetype)buttonWithType:(UIButtonType)buttonType {
-    TFY_TabBarItem *item = [super buttonWithType:buttonType];
+    TfyCU_TabBarItem *item = [super buttonWithType:buttonType];
     [item setup];
     return item;
 }
@@ -295,5 +295,6 @@
     self.badgeButton.titleLabel.font = badgeTitleFont;
     [self updateBadge];
 }
+
 
 @end

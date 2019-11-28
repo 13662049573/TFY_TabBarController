@@ -1,12 +1,12 @@
 //
-//  TFY_TabContentView.m
-//  TFY_TabarController
+//  TfyCU_TabBarView.m
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/11/23.
-//  Copyright © 2019 恋机科技. All rights reserved.
+//  Created by tiandengyou on 2019/11/28.
+//  Copyright © 2019 田风有. All rights reserved.
 //
 
-#import "TFY_TabContentView.h"
+#import "TfyCU_TabBarView.h"
 #import <objc/runtime.h>
 
 /**
@@ -43,7 +43,7 @@ typedef void (^_ViewControllerWillAppearInjectBlock)(UIViewController *viewContr
 @end
 
 
-@implementation TFY_ContainerTableView
+@implementation TfyCU_TabBarTableView
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
@@ -100,7 +100,8 @@ typedef void (^_ViewControllerWillAppearInjectBlock)(UIViewController *viewContr
 
 @end
 
-@interface TFY_TabContentView ()<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, _TabContentScrollViewDelegate> {
+
+@interface TfyCU_TabBarView ()<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, _TabContentScrollViewDelegate> {
     
     CGFloat _lastContentScrollViewOffsetX;
     CGFloat _currentScrollViewOffsetY;
@@ -122,7 +123,7 @@ typedef void (^_ViewControllerWillAppearInjectBlock)(UIViewController *viewContr
 @property (nonatomic, strong) UIView *tabBarContainerView;
 @end
 
-@implementation TFY_TabContentView
+@implementation TfyCU_TabBarView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -144,7 +145,7 @@ typedef void (^_ViewControllerWillAppearInjectBlock)(UIViewController *viewContr
     self.backgroundColor = [UIColor whiteColor];
     self.clipsToBounds = YES;
     
-    _tabBar = [[TFY_TabBar alloc] init];
+    _tabBar = [[TfyCU_TabBar alloc] init];
     _tabBar.delegate = self;
     
     _contentScrollView = [[_TabContentScrollView alloc] initWithFrame:self.frame];
@@ -166,7 +167,7 @@ typedef void (^_ViewControllerWillAppearInjectBlock)(UIViewController *viewContr
     _isDefaultSelectedTabIndexSetuped = NO;
 }
 
-- (void)setTabBar:(TFY_TabBar *)tabBar {
+- (void)setTabBar:(TfyCU_TabBar *)tabBar {
     _tabBar = tabBar;
     _tabBar.delegate = self;
 }
@@ -201,7 +202,7 @@ typedef void (^_ViewControllerWillAppearInjectBlock)(UIViewController *viewContr
             [containerVC addChildViewController:vc];
         }
         
-        TFY_TabBarItem *item = [TFY_TabBarItem buttonWithType:UIButtonTypeCustom];
+        TfyCU_TabBarItem *item = [TfyCU_TabBarItem buttonWithType:UIButtonTypeCustom];
         item.image = vc.tfy_tabItemImage;
         item.selectedImage = vc.tfy_tabItemSelectedImage;
         item.title = vc.tfy_tabItemTitle;
@@ -306,10 +307,10 @@ typedef void (^_ViewControllerWillAppearInjectBlock)(UIViewController *viewContr
     
     UIViewController *vc = [self containerViewController];
     __weak UIViewController *weakVC = vc;
-    __weak TFY_TabContentView *weakSelf = self;
+    __weak TfyCU_TabBarView *weakSelf = self;
     vc.tfy_willAppearInjectBlock = ^(UIViewController *viewController, BOOL animated) {
         __strong UIViewController *strongVC = weakVC;
-        __strong TFY_TabContentView *strongSelf = weakSelf;
+        __strong TfyCU_TabBarView *strongSelf = weakSelf;
         strongSelf.selectedTabIndex = self.defaultSelectedTabIndex;
         strongSelf.isDefaultSelectedTabIndexSetuped = YES;
         strongVC.tfy_willAppearInjectBlock = nil;
@@ -338,7 +339,7 @@ tabBarStopOnTopHeight:(CGFloat)tabBarStopOnTopHeight
     
     [self.contentScrollView removeFromSuperview];
     
-    self.containerTableView = [[TFY_ContainerTableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
+    self.containerTableView = [[TfyCU_TabBarTableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
     self.containerTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.containerTableView.delegate = self;
     self.containerTableView.dataSource = self;
@@ -436,19 +437,19 @@ tabBarStopOnTopHeight:(CGFloat)tabBarStopOnTopHeight
     return self.tabBarContainerView;
 }
 
-#pragma mark - YPTabBarDelegate
+#pragma mark - TabBarDelegate
 
-- (BOOL)tfy_tabBar:(TFY_TabBar *)tabBar shouldSelectItemAtIndex:(NSUInteger)index {
+- (BOOL)tfy_tabBar:(TfyCU_TabBar *)tabBar shouldSelectItemAtIndex:(NSUInteger)index {
     return [self shouldSelectItemAtIndex:index];
 }
 
-- (void)tfy_tabBar:(TFY_TabBar *)tabBar willSelectItemAtIndex:(NSUInteger)index {
+- (void)tfy_tabBar:(TfyCU_TabBar *)tabBar willSelectItemAtIndex:(NSUInteger)index {
     if (self.delegate && [self.delegate respondsToSelector:@selector(tabContentView:willSelectTabAtIndex:)]) {
         [self.delegate tabContentView:self willSelectTabAtIndex:index];
     }
 }
 
-- (void)tfy_tabBar:(TFY_TabBar *)tabBar didSelectedItemAtIndex:(NSUInteger)index {
+- (void)tfy_tabBar:(TfyCU_TabBar *)tabBar didSelectedItemAtIndex:(NSUInteger)index {
     if (index == self.selectedTabIndex) {
         return;
     }
@@ -482,9 +483,9 @@ tabBarStopOnTopHeight:(CGFloat)tabBarStopOnTopHeight
     }
     
     if (self.headerView && !curController.tfy_scrollView.tfy_didScrollHandler) {
-        __weak TFY_TabContentView *weakSelf = self;
+        __weak TfyCU_TabBarView *weakSelf = self;
         curController.tfy_scrollView.tfy_didScrollHandler = ^(UIScrollView *scrollView) {
-            __strong TFY_TabContentView *strongSelf = weakSelf;
+            __strong TfyCU_TabBarView *strongSelf = weakSelf;
             [strongSelf childScrollViewDidScroll:scrollView];
         };
     }
@@ -659,7 +660,7 @@ tabBarStopOnTopHeight:(CGFloat)tabBarStopOnTopHeight
 @end
 
 
-@implementation UIScrollView (TFY_Tab)
+@implementation UIScrollView (TfyCU_TabBar)
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -689,5 +690,6 @@ tabBarStopOnTopHeight:(CGFloat)tabBarStopOnTopHeight
 - (void (^)(UIScrollView *))tfy_didScrollHandler {
     return objc_getAssociatedObject(self, _cmd);
 }
+
 
 @end

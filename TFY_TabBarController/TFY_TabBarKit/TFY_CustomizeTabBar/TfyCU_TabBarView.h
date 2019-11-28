@@ -1,62 +1,63 @@
 //
-//  TFY_TabContentView.h
-//  TFY_TabarController
+//  TfyCU_TabBarView.h
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/11/23.
-//  Copyright © 2019 恋机科技. All rights reserved.
+//  Created by tiandengyou on 2019/11/28.
+//  Copyright © 2019 田风有. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+TFY_Tab.h"
-#import "TFY_TabBar.h"
-#import "TFY_TabBarItem.h"
+#import "UIViewController+TfyCU_Tab.h"
+#import "TfyCU_TabBar.h"
+#import "TfyCU_TabBarItem.h"
 
 typedef NS_ENUM(NSInteger, TabHeaderStyle) {
     TabHeaderStyleStretch,
     TabHeaderStyleFollow
 };
 
+@class TfyCU_TabBarView;
+
 NS_ASSUME_NONNULL_BEGIN
 
-@class TFY_TabContentView;
-
-@interface TFY_ContainerTableView : UITableView
+@interface TfyCU_TabBarTableView : UITableView
 
 @end
 
-@protocol TFY_TabContentViewDelegate <NSObject>
+@protocol TfyCU_TabBarViewDelegate <NSObject>
 
 @optional
 
 /**
  *  是否能切换到指定index
  */
-- (BOOL)tabContentView:(TFY_TabContentView *)tabConentView shouldSelectTabAtIndex:(NSUInteger)index;
+- (BOOL)tabContentView:(TfyCU_TabBarView *)tabConentView shouldSelectTabAtIndex:(NSUInteger)index;
 
 /**
  *  将要切换到指定index
  */
-- (void)tabContentView:(TFY_TabContentView *)tabConentView willSelectTabAtIndex:(NSUInteger)index;
+- (void)tabContentView:(TfyCU_TabBarView *)tabConentView willSelectTabAtIndex:(NSUInteger)index;
 
 /**
  *  已经切换到指定index
  */
-- (void)tabContentView:(TFY_TabContentView *)tabConentView didSelectedTabAtIndex:(NSUInteger)index;
+- (void)tabContentView:(TfyCU_TabBarView *)tabConentView didSelectedTabAtIndex:(NSUInteger)index;
 
 /**
  *  当设置headerView时，内容视图竖向滚动时的y坐标偏移量
  */
-- (void)tabContentView:(TFY_TabContentView *)tabConentView didChangedContentOffsetY:(CGFloat)offsetY;
+- (void)tabContentView:(TfyCU_TabBarView *)tabConentView didChangedContentOffsetY:(CGFloat)offsetY;
 
 @end
 
-@interface TFY_TabContentView : UIView<TFY_TabBarDelegate>
 
-@property (nonatomic, strong, readonly) TFY_TabBar *tabBar;
+@interface TfyCU_TabBarView : UIView<TfyCU_TabBarDelegate>
+
+@property (nonatomic, strong, readonly) TfyCU_TabBar *tabBar;
 
 @property (nonatomic, copy) NSArray <UIViewController *> *viewControllers;
 
-@property (nonatomic, weak) id<TFY_TabContentViewDelegate> delegate;
+@property (nonatomic, weak) id<TfyCU_TabBarViewDelegate> delegate;
 
 @property (nonatomic, strong, readonly) UIView *headerView;
 
@@ -91,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL interceptRightSlideGuetureInFirstPage;
 @property (nonatomic, assign) BOOL interceptLeftSlideGuetureInLastPage;
 
-@property (nonatomic, strong) TFY_ContainerTableView *containerTableView;
+@property (nonatomic, strong) TfyCU_TabBarTableView *containerTableView;
 
 /**
  *  设置HeaderView
@@ -123,10 +124,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface UIScrollView (TFY_Tab)
+@interface UIScrollView (TfyCU_TabBar)
 
 @property (nonatomic, copy) void(^tfy_didScrollHandler)(UIScrollView *scrollView);
-
 @end
 
 NS_ASSUME_NONNULL_END

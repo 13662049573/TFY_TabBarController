@@ -15,11 +15,6 @@
 		5604D7ED238DFDA4002B76A1 /* TFY_TabBarControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D7EC238DFDA4002B76A1 /* TFY_TabBarControllerUITests.m */; };
 		5604D81B238DFEA1002B76A1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D7FC238DFEA1002B76A1 /* SceneDelegate.m */; };
 		5604D81C238DFEA1002B76A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D7FD238DFEA1002B76A1 /* AppDelegate.m */; };
-		5604D81D238DFEA1002B76A1 /* TFY_TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D803238DFEA1002B76A1 /* TFY_TabBarController.m */; };
-		5604D81E238DFEA1002B76A1 /* TFY_TabContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D806238DFEA1002B76A1 /* TFY_TabContentView.m */; };
-		5604D81F238DFEA1002B76A1 /* UIViewController+TFY_Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D809238DFEA1002B76A1 /* UIViewController+TFY_Tab.m */; };
-		5604D820238DFEA1002B76A1 /* TFY_TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D80A238DFEA1002B76A1 /* TFY_TabBar.m */; };
-		5604D821238DFEA1002B76A1 /* TFY_TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D80D238DFEA1002B76A1 /* TFY_TabBarItem.m */; };
 		5604D822238DFEA1002B76A1 /* TfySY_TestTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D810238DFEA1002B76A1 /* TfySY_TestTabBar.m */; };
 		5604D823238DFEA1002B76A1 /* TfySY_TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D813238DFEA1002B76A1 /* TfySY_TabBarItem.m */; };
 		5604D824238DFEA1002B76A1 /* TfySY_TabBarBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D814238DFEA1002B76A1 /* TfySY_TabBarBadge.m */; };
@@ -82,6 +77,11 @@
 		5604D8F4238DFFCB002B76A1 /* WHGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8BD238DFFCB002B76A1 /* WHGradientHelper.m */; };
 		5604D8F6238E03FF002B76A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F5238E03FF002B76A1 /* UIKit.framework */; };
 		5604D8F8238E0406002B76A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F7238E0406002B76A1 /* Foundation.framework */; };
+		56AC03E4238F4E2D00B6A995 /* TfyCU_TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AC03E3238F4E2D00B6A995 /* TfyCU_TabBarItem.m */; };
+		56AC03E7238F4EE700B6A995 /* TfyCU_TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AC03E6238F4EE700B6A995 /* TfyCU_TabBar.m */; };
+		56AC03EA238F50F200B6A995 /* UIViewController+TfyCU_Tab.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AC03E9238F50F200B6A995 /* UIViewController+TfyCU_Tab.m */; };
+		56AC03EE238F52CA00B6A995 /* TfyCU_TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AC03ED238F52CA00B6A995 /* TfyCU_TabBarView.m */; };
+		56AC03F1238F550600B6A995 /* TfyCU_TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AC03F0238F550600B6A995 /* TfyCU_TabBarController.m */; };
 		C92074BF4CDD0A260EDA3AF7 /* Pods_TFY_TabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 686627018EE5904B8558082F /* Pods_TFY_TabBarController.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,17 +121,6 @@
 		5604D7FD238DFEA1002B76A1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5604D7FE238DFEA1002B76A1 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		5604D801238DFEA1002B76A1 /* TFY_TabBarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFY_TabBarHeader.h; sourceTree = "<group>"; };
-		5604D803238DFEA1002B76A1 /* TFY_TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFY_TabBarController.m; sourceTree = "<group>"; };
-		5604D804238DFEA1002B76A1 /* TFY_TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFY_TabBar.h; sourceTree = "<group>"; };
-		5604D805238DFEA1002B76A1 /* UIViewController+TFY_Tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TFY_Tab.h"; sourceTree = "<group>"; };
-		5604D806238DFEA1002B76A1 /* TFY_TabContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFY_TabContentView.m; sourceTree = "<group>"; };
-		5604D807238DFEA1002B76A1 /* TFY_TabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFY_TabBarItem.h; sourceTree = "<group>"; };
-		5604D808238DFEA1002B76A1 /* TFY_TabBarControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFY_TabBarControllerProtocol.h; sourceTree = "<group>"; };
-		5604D809238DFEA1002B76A1 /* UIViewController+TFY_Tab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TFY_Tab.m"; sourceTree = "<group>"; };
-		5604D80A238DFEA1002B76A1 /* TFY_TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFY_TabBar.m; sourceTree = "<group>"; };
-		5604D80B238DFEA1002B76A1 /* TFY_TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFY_TabBarController.h; sourceTree = "<group>"; };
-		5604D80C238DFEA1002B76A1 /* TFY_TabContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFY_TabContentView.h; sourceTree = "<group>"; };
-		5604D80D238DFEA1002B76A1 /* TFY_TabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFY_TabBarItem.m; sourceTree = "<group>"; };
 		5604D80F238DFEA1002B76A1 /* TfySY_TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TfySY_TabBar.h; sourceTree = "<group>"; };
 		5604D810238DFEA1002B76A1 /* TfySY_TestTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TfySY_TestTabBar.m; sourceTree = "<group>"; };
 		5604D811238DFEA1002B76A1 /* TfySY_TabBarDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TfySY_TabBarDefine.h; sourceTree = "<group>"; };
@@ -251,6 +240,17 @@
 		5604D8BE238DFFCB002B76A1 /* WHGradientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHGradientHelper.h; sourceTree = "<group>"; };
 		5604D8F5238E03FF002B76A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5604D8F7238E0406002B76A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		56AC03E2238F4E2D00B6A995 /* TfyCU_TabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TfyCU_TabBarItem.h; sourceTree = "<group>"; };
+		56AC03E3238F4E2D00B6A995 /* TfyCU_TabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TfyCU_TabBarItem.m; sourceTree = "<group>"; };
+		56AC03E5238F4EE700B6A995 /* TfyCU_TabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TfyCU_TabBar.h; sourceTree = "<group>"; };
+		56AC03E6238F4EE700B6A995 /* TfyCU_TabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TfyCU_TabBar.m; sourceTree = "<group>"; };
+		56AC03E8238F50F200B6A995 /* UIViewController+TfyCU_Tab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TfyCU_Tab.h"; sourceTree = "<group>"; };
+		56AC03E9238F50F200B6A995 /* UIViewController+TfyCU_Tab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TfyCU_Tab.m"; sourceTree = "<group>"; };
+		56AC03EB238F511D00B6A995 /* TfyCU_TabBarControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TfyCU_TabBarControllerProtocol.h; sourceTree = "<group>"; };
+		56AC03EC238F52CA00B6A995 /* TfyCU_TabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TfyCU_TabBarView.h; sourceTree = "<group>"; };
+		56AC03ED238F52CA00B6A995 /* TfyCU_TabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TfyCU_TabBarView.m; sourceTree = "<group>"; };
+		56AC03EF238F550600B6A995 /* TfyCU_TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TfyCU_TabBarController.h; sourceTree = "<group>"; };
+		56AC03F0238F550600B6A995 /* TfyCU_TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TfyCU_TabBarController.m; sourceTree = "<group>"; };
 		686627018EE5904B8558082F /* Pods_TFY_TabBarController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TFY_TabBarController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8EDA42B0E335EA558BE298 /* Pods-TFY_TabBarController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFY_TabBarController.debug.xcconfig"; path = "Target Support Files/Pods-TFY_TabBarController/Pods-TFY_TabBarController.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -392,17 +392,17 @@
 		5604D802238DFEA1002B76A1 /* TFY_CustomizeTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				5604D804238DFEA1002B76A1 /* TFY_TabBar.h */,
-				5604D80A238DFEA1002B76A1 /* TFY_TabBar.m */,
-				5604D807238DFEA1002B76A1 /* TFY_TabBarItem.h */,
-				5604D80D238DFEA1002B76A1 /* TFY_TabBarItem.m */,
-				5604D80C238DFEA1002B76A1 /* TFY_TabContentView.h */,
-				5604D806238DFEA1002B76A1 /* TFY_TabContentView.m */,
-				5604D80B238DFEA1002B76A1 /* TFY_TabBarController.h */,
-				5604D803238DFEA1002B76A1 /* TFY_TabBarController.m */,
-				5604D805238DFEA1002B76A1 /* UIViewController+TFY_Tab.h */,
-				5604D809238DFEA1002B76A1 /* UIViewController+TFY_Tab.m */,
-				5604D808238DFEA1002B76A1 /* TFY_TabBarControllerProtocol.h */,
+				56AC03E2238F4E2D00B6A995 /* TfyCU_TabBarItem.h */,
+				56AC03E3238F4E2D00B6A995 /* TfyCU_TabBarItem.m */,
+				56AC03E5238F4EE700B6A995 /* TfyCU_TabBar.h */,
+				56AC03E6238F4EE700B6A995 /* TfyCU_TabBar.m */,
+				56AC03E8238F50F200B6A995 /* UIViewController+TfyCU_Tab.h */,
+				56AC03E9238F50F200B6A995 /* UIViewController+TfyCU_Tab.m */,
+				56AC03EB238F511D00B6A995 /* TfyCU_TabBarControllerProtocol.h */,
+				56AC03EC238F52CA00B6A995 /* TfyCU_TabBarView.h */,
+				56AC03ED238F52CA00B6A995 /* TfyCU_TabBarView.m */,
+				56AC03EF238F550600B6A995 /* TfyCU_TabBarController.h */,
+				56AC03F0238F550600B6A995 /* TfyCU_TabBarController.m */,
 			);
 			path = TFY_CustomizeTabBar;
 			sourceTree = "<group>";
@@ -1074,9 +1074,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56AC03EA238F50F200B6A995 /* UIViewController+TfyCU_Tab.m in Sources */,
 				5604D82A238DFF3D002B76A1 /* ViewController.m in Sources */,
 				5604D8DB238DFFCB002B76A1 /* ItemBackgroundImageTabBarVC.m in Sources */,
-				5604D821238DFEA1002B76A1 /* TFY_TabBarItem.m in Sources */,
 				5604D7D8238DFDA4002B76A1 /* main.m in Sources */,
 				5604D8DE238DFFCB002B76A1 /* ItemSizeTabBarVC.m in Sources */,
 				5604D8C2238DFFCB002B76A1 /* SaltedFishTabBarVC.m in Sources */,
@@ -1092,18 +1092,19 @@
 				5604D8E7238DFFCB002B76A1 /* TestVC.m in Sources */,
 				5604D8CA238DFFCB002B76A1 /* TableViewController.m in Sources */,
 				5604D8D5238DFFCB002B76A1 /* ItemCustomBadgeTabBarVC.m in Sources */,
+				56AC03E4238F4E2D00B6A995 /* TfyCU_TabBarItem.m in Sources */,
 				5604D8EF238DFFCB002B76A1 /* CalendarController.m in Sources */,
 				5604D8C0238DFFCB002B76A1 /* WeiBoTabBarVC.m in Sources */,
 				5604D8CD238DFFCB002B76A1 /* CustomIndicatorTabController.m in Sources */,
 				5604D822238DFEA1002B76A1 /* TfySY_TestTabBar.m in Sources */,
 				5604D8E6238DFFCB002B76A1 /* BadgeViewController.m in Sources */,
 				5604D8C3238DFFCB002B76A1 /* CustomImageSelColorTabBarVC.m in Sources */,
-				5604D81F238DFEA1002B76A1 /* UIViewController+TFY_Tab.m in Sources */,
 				5604D8F1238DFFCB002B76A1 /* MineTableViewCell.m in Sources */,
 				5604D8C4238DFFCB002B76A1 /* CustomImageTabBarVC.m in Sources */,
 				5604D81C238DFEA1002B76A1 /* AppDelegate.m in Sources */,
 				5604D8C5238DFFCB002B76A1 /* IndicatorFollowTitleTabController.m in Sources */,
 				5604D8E1238DFFCB002B76A1 /* HybridGradientHelperTabBarVC.m in Sources */,
+				56AC03EE238F52CA00B6A995 /* TfyCU_TabBarView.m in Sources */,
 				5604D8CE238DFFCB002B76A1 /* ItemSizeLayoutTabBarVC.m in Sources */,
 				5604D8D8238DFFCB002B76A1 /* BulgeCircularTabBarVC.m in Sources */,
 				5604D8D0238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC.m in Sources */,
@@ -1118,15 +1119,14 @@
 				5604D8D4238DFFCB002B76A1 /* ImageTranslucentTabBarVC.m in Sources */,
 				5604D8F0238DFFCB002B76A1 /* RecommendController.m in Sources */,
 				5604D825238DFEA1002B76A1 /* TfySY_TabBar.m in Sources */,
+				56AC03F1238F550600B6A995 /* TfyCU_TabBarController.m in Sources */,
 				5604D8CF238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC2.m in Sources */,
 				5604D826238DFEA1002B76A1 /* TfySY_TabBarController.m in Sources */,
 				5604D8C6238DFFCB002B76A1 /* MultilTabController.m in Sources */,
 				5604D8CB238DFFCB002B76A1 /* FixedItemWidthTabController.m in Sources */,
 				5604D8E8238DFFCB002B76A1 /* TestPushHiddenVC.m in Sources */,
 				5604D824238DFEA1002B76A1 /* TfySY_TabBarBadge.m in Sources */,
-				5604D820238DFEA1002B76A1 /* TFY_TabBar.m in Sources */,
 				5604D8C8238DFFCB002B76A1 /* HeaderViewTabController.m in Sources */,
-				5604D81D238DFEA1002B76A1 /* TFY_TabBarController.m in Sources */,
 				5604D8C9238DFFCB002B76A1 /* WebViewController.m in Sources */,
 				5604D8C7238DFFCB002B76A1 /* DynamicItemWidthTabController.m in Sources */,
 				5604D8BF238DFFCB002B76A1 /* PushHiddenTabBarVC.m in Sources */,
@@ -1134,9 +1134,9 @@
 				5604D8D7238DFFCB002B76A1 /* WHGradientHelperGradientItemTabBarVC.m in Sources */,
 				5604D8E3238DFFCB002B76A1 /* TestHiddenVC.m in Sources */,
 				5604D8D3238DFFCB002B76A1 /* ItemTingColorTabBarVC.m in Sources */,
-				5604D81E238DFEA1002B76A1 /* TFY_TabContentView.m in Sources */,
 				5604D8EE238DFFCB002B76A1 /* MineController.m in Sources */,
 				5604D8CC238DFFCB002B76A1 /* SegmentTabController.m in Sources */,
+				56AC03E7238F4EE700B6A995 /* TfyCU_TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

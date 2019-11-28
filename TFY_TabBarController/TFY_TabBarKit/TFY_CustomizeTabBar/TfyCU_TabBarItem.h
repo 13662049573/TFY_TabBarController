@@ -1,12 +1,14 @@
 //
-//  TFY_TabBarItem.h
-//  TFY_AutoLayoutModelTools
+//  TfyCU_TabBarItem.h
+//  TFY_TabBarController
 //
-//  Created by 田风有 on 2019/5/14.
-//  Copyright © 2019 恋机科技. All rights reserved.
+//  Created by tiandengyou on 2019/11/28.
+//  Copyright © 2019 田风有. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 /***  Badge样式*/
 typedef NS_ENUM(NSInteger, TabItemBadgeStyle) {
@@ -14,9 +16,8 @@ typedef NS_ENUM(NSInteger, TabItemBadgeStyle) {
     TabItemBadgeStyleDot = 1, // 小圆点
 };
 
-NS_ASSUME_NONNULL_BEGIN
+@interface TfyCU_TabBarItem : UIButton
 
-@interface TFY_TabBarItem : UIButton
 /**
  * item在tabBar中的index，此属性不能手动设置
  */
