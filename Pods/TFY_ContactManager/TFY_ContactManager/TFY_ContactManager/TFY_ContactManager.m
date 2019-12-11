@@ -299,8 +299,6 @@ void blockExecute(void (^completion)(BOOL authorizationA), BOOL authorizationB)
                 [[UIApplication sharedApplication] openURL:url options:@{}
                                          completionHandler:^(BOOL success) {
                                          }];
-            } else {
-                [[UIApplication sharedApplication] openURL:url];
             }
         }
     }])];
