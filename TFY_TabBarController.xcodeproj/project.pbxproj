@@ -410,17 +410,17 @@
 		5604D80E238DFEA1002B76A1 /* TFY_SystemTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				5604D80F238DFEA1002B76A1 /* TfySY_TabBar.h */,
-				5604D810238DFEA1002B76A1 /* TfySY_TestTabBar.m */,
-				5604D811238DFEA1002B76A1 /* TfySY_TabBarDefine.h */,
 				5604D812238DFEA1002B76A1 /* TfySY_TabBarController.h */,
-				5604D813238DFEA1002B76A1 /* TfySY_TabBarItem.m */,
-				5604D814238DFEA1002B76A1 /* TfySY_TabBarBadge.m */,
-				5604D815238DFEA1002B76A1 /* TfySY_TestTabBar.h */,
-				5604D816238DFEA1002B76A1 /* TfySY_TabBar.m */,
 				5604D817238DFEA1002B76A1 /* TfySY_TabBarController.m */,
-				5604D818238DFEA1002B76A1 /* TfySY_TabBarBadge.h */,
+				5604D811238DFEA1002B76A1 /* TfySY_TabBarDefine.h */,
+				5604D80F238DFEA1002B76A1 /* TfySY_TabBar.h */,
+				5604D816238DFEA1002B76A1 /* TfySY_TabBar.m */,
 				5604D819238DFEA1002B76A1 /* TfySY_TabBarItem.h */,
+				5604D813238DFEA1002B76A1 /* TfySY_TabBarItem.m */,
+				5604D815238DFEA1002B76A1 /* TfySY_TestTabBar.h */,
+				5604D810238DFEA1002B76A1 /* TfySY_TestTabBar.m */,
+				5604D818238DFEA1002B76A1 /* TfySY_TabBarBadge.h */,
+				5604D814238DFEA1002B76A1 /* TfySY_TabBarBadge.m */,
 			);
 			path = TFY_SystemTabBar;
 			sourceTree = "<group>";
@@ -479,8 +479,8 @@
 		5604D835238DFFCA002B76A1 /* 咸鱼TabBar选项卡 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D836238DFFCA002B76A1 /* SaltedFishTabBarVC.m */,
 				5604D837238DFFCA002B76A1 /* SaltedFishTabBarVC.h */,
+				5604D836238DFFCA002B76A1 /* SaltedFishTabBarVC.m */,
 			);
 			path = "咸鱼TabBar选项卡";
 			sourceTree = "<group>";
@@ -518,8 +518,8 @@
 		5604D839238DFFCA002B76A1 /* 自定义TabBar背景图+选中颜色 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D83A238DFFCA002B76A1 /* CustomImageSelColorTabBarVC.m */,
 				5604D83B238DFFCA002B76A1 /* CustomImageSelColorTabBarVC.h */,
+				5604D83A238DFFCA002B76A1 /* CustomImageSelColorTabBarVC.m */,
 			);
 			path = "自定义TabBar背景图+选中颜色";
 			sourceTree = "<group>";
@@ -527,8 +527,8 @@
 		5604D83C238DFFCA002B76A1 /* 自定义TabBar背景图片 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D83D238DFFCA002B76A1 /* CustomImageTabBarVC.m */,
 				5604D83E238DFFCA002B76A1 /* CustomImageTabBarVC.h */,
+				5604D83D238DFFCA002B76A1 /* CustomImageTabBarVC.m */,
 			);
 			path = "自定义TabBar背景图片";
 			sourceTree = "<group>";
@@ -626,8 +626,8 @@
 		5604D85C238DFFCB002B76A1 /* WHGradientHelper渐变色2 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D85D238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC2.m */,
 				5604D85E238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC2.h */,
+				5604D85D238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC2.m */,
 			);
 			path = "WHGradientHelper渐变色2";
 			sourceTree = "<group>";
@@ -635,8 +635,8 @@
 		5604D85F238DFFCB002B76A1 /* WHGradientHelper渐变色 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D860238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC.m */,
 				5604D861238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC.h */,
+				5604D860238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC.m */,
 			);
 			path = "WHGradientHelper渐变色";
 			sourceTree = "<group>";
@@ -662,8 +662,8 @@
 		5604D868238DFFCB002B76A1 /* 按钮自定义渲染图片 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D869238DFFCB002B76A1 /* ItemTingColorTabBarVC.m */,
 				5604D86A238DFFCB002B76A1 /* ItemTingColorTabBarVC.h */,
+				5604D869238DFFCB002B76A1 /* ItemTingColorTabBarVC.m */,
 			);
 			path = "按钮自定义渲染图片";
 			sourceTree = "<group>";
@@ -689,8 +689,8 @@
 		5604D871238DFFCB002B76A1 /* TabBar多重圆形凸出 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D872238DFFCB002B76A1 /* MultipleBulgeCircularTabBarVC.m */,
 				5604D873238DFFCB002B76A1 /* MultipleBulgeCircularTabBarVC.h */,
+				5604D872238DFFCB002B76A1 /* MultipleBulgeCircularTabBarVC.m */,
 			);
 			path = "TabBar多重圆形凸出";
 			sourceTree = "<group>";
@@ -707,8 +707,8 @@
 		5604D877238DFFCB002B76A1 /* TabBar中间圆形凸出 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D878238DFFCB002B76A1 /* BulgeCircularTabBarVC.m */,
 				5604D879238DFFCB002B76A1 /* BulgeCircularTabBarVC.h */,
+				5604D878238DFFCB002B76A1 /* BulgeCircularTabBarVC.m */,
 			);
 			path = "TabBar中间圆形凸出";
 			sourceTree = "<group>";
@@ -743,8 +743,8 @@
 		5604D883238DFFCB002B76A1 /* TabBar多重混合凸出 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D884238DFFCB002B76A1 /* MultipleBulgeHybridTabBarVC.m */,
 				5604D885238DFFCB002B76A1 /* MultipleBulgeHybridTabBarVC.h */,
+				5604D884238DFFCB002B76A1 /* MultipleBulgeHybridTabBarVC.m */,
 			);
 			path = "TabBar多重混合凸出";
 			sourceTree = "<group>";
@@ -752,8 +752,8 @@
 		5604D886238DFFCB002B76A1 /* TabBar矩形图片凸出 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D887238DFFCB002B76A1 /* BulgeSquareTabBarVC.m */,
 				5604D888238DFFCB002B76A1 /* BulgeSquareTabBarVC.h */,
+				5604D887238DFFCB002B76A1 /* BulgeSquareTabBarVC.m */,
 			);
 			path = "TabBar矩形图片凸出";
 			sourceTree = "<group>";
@@ -761,8 +761,8 @@
 		5604D889238DFFCB002B76A1 /* 按钮自定义大小 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D88A238DFFCB002B76A1 /* ItemSizeTabBarVC.m */,
 				5604D88B238DFFCB002B76A1 /* ItemSizeTabBarVC.h */,
+				5604D88A238DFFCB002B76A1 /* ItemSizeTabBarVC.m */,
 			);
 			path = "按钮自定义大小";
 			sourceTree = "<group>";
@@ -779,8 +779,8 @@
 		5604D88F238DFFCB002B76A1 /* 按钮自定义背景颜色 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D890238DFFCB002B76A1 /* ItemBackgroundColorTabBarVC.m */,
 				5604D891238DFFCB002B76A1 /* ItemBackgroundColorTabBarVC.h */,
+				5604D890238DFFCB002B76A1 /* ItemBackgroundColorTabBarVC.m */,
 			);
 			path = "按钮自定义背景颜色";
 			sourceTree = "<group>";
@@ -788,8 +788,8 @@
 		5604D892238DFFCB002B76A1 /* 与WHGradientHelper混合使用 */ = {
 			isa = PBXGroup;
 			children = (
-				5604D893238DFFCB002B76A1 /* HybridGradientHelperTabBarVC.m */,
 				5604D894238DFFCB002B76A1 /* HybridGradientHelperTabBarVC.h */,
+				5604D893238DFFCB002B76A1 /* HybridGradientHelperTabBarVC.m */,
 			);
 			path = "与WHGradientHelper混合使用";
 			sourceTree = "<group>";

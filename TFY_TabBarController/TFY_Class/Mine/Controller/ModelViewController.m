@@ -31,13 +31,13 @@
     self.tabBar.itemTitleFont = [UIFont systemFontOfSize:14];
     self.tabBar.itemTitleSelectedFont = [UIFont boldSystemFontOfSize:21];
     self.tabBar.leadingSpace = 20;
-//    self.tabBar.trailingSpace = 10;
+    self.tabBar.trailingSpace = 10;
     
     self.tabBar.itemFontChangeFollowContentScroll = YES;
     self.tabBar.indicatorScrollFollowContent = YES;
     self.tabBar.indicatorColor = [UIColor redColor];
     
-    [self.tabBar setIndicatorWidth:43 marginTop:41 marginBottom:0 tapSwitchAnimated:YES];
+    [self.tabBar setIndicatorWidth:43 marginTop:44-3 marginBottom:0 tapSwitchAnimated:YES];
     
     [self.tabBar setScrollEnabledAndItemFitTextWidthWithSpacing:24];
     

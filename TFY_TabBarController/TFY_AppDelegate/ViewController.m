@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"";
+    self.title = @"集合";
     self.navigationController.tfy_titleColor = [UIColor whiteColor];
     self.navigationController.tfy_barBackgroundColor = [UIColor blackColor];
     
