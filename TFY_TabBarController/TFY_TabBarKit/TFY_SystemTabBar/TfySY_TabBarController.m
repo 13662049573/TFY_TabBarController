@@ -18,6 +18,10 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    //去掉UITabBarController顶部黑线
+    UIImage *images = [UIImage tfy_createImage:[UIColor tfy_colorWithHex:@"efefef"]];
+//    [self.tabBar setBackgroundImage:images];
+    [self.tabBar setShadowImage:images];
 }
 
 -(void)setControllerArray:(NSArray<UIViewController *> *)ControllerArray{
