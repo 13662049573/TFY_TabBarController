@@ -25,7 +25,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *btn = tfy_button();
-    btn.tfy_title(@"点击将进入", @"FFFFFF", 1).tfy_font(18).tfy_backgroundColor(@"FF546E", 1).tfy_cornerRadius(30).tfy_action(self, @selector(popoverControllerClick:));
+    btn.tfy_title(@"点击将进入",UIControlStateNormal, @"FFFFFF",UIControlStateNormal, [UIFont systemFontOfSize:18]).tfy_backgroundColor(@"FF546E", 1).tfy_cornerRadius(30).tfy_action(self, @selector(popoverControllerClick:),UIControlEventTouchUpInside);
     [self.view addSubview:btn];
     btn.tfy_LeftSpace(40).tfy_CenterY(0).tfy_RightSpace(40).tfy_Height(60);
 }

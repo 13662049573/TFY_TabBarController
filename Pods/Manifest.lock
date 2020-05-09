@@ -1,9 +1,28 @@
 PODS:
   - ReactiveObjC (3.1.1)
-  - TFY_AutoLayout (2.4.7)
-  - TFY_Category (2.7.6)
-  - TFY_ContactManager (2.0.1)
-  - TFY_Navigation (2.1.4)
+  - TFY_AutoLayout (2.5.2):
+    - TFY_AutoLayout/IOS_Layout (= 2.5.2)
+    - TFY_AutoLayout/MAC_Layout (= 2.5.2)
+    - TFY_AutoLayout/Util (= 2.5.2)
+  - TFY_AutoLayout/IOS_Layout (2.5.2):
+    - TFY_AutoLayout/Util
+  - TFY_AutoLayout/MAC_Layout (2.5.2):
+    - TFY_AutoLayout/Util
+  - TFY_AutoLayout/Util (2.5.2)
+  - TFY_Category (3.2.8):
+    - TFY_Category/TFY_Foundation (= 3.2.8)
+    - TFY_Category/TFY_ITools (= 3.2.8)
+    - TFY_Category/TFY_UI (= 3.2.8)
+  - TFY_Category/TFY_Foundation (3.2.8)
+  - TFY_Category/TFY_ITools (3.2.8)
+  - TFY_Category/TFY_UI (3.2.8)
+  - TFY_ContactManager (2.0.2)
+  - TFY_Navigation (2.2.2):
+    - TFY_Navigation/TFY_NavControoler (= 2.2.2)
+    - TFY_Navigation/TFY_PopController (= 2.2.2)
+  - TFY_Navigation/TFY_NavControoler (2.2.2):
+    - TFY_Navigation/TFY_PopController
+  - TFY_Navigation/TFY_PopController (2.2.2)
 
 DEPENDENCIES:
   - ReactiveObjC
@@ -22,11 +41,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  TFY_AutoLayout: 3856cd8766f67cd8aeca980281d630e28cdbfd12
-  TFY_Category: e37a7752ef3c1f0e7aee832e825fd6b2daea6558
-  TFY_ContactManager: c0453f4313f333e7067606c73d732935d0261d43
-  TFY_Navigation: ed25b7a74f45403416026952f54db803b183cc1e
+  TFY_AutoLayout: 792116abdb3fb2758c59d29ac16322bbfe8441ab
+  TFY_Category: 75797a0b1aa72794bd7b4258608af00007467453
+  TFY_ContactManager: 8c261ca48a5fff038e9bb8805ac3eff03c04fe13
+  TFY_Navigation: 3523efe2942ef7bede46223f5bb0553e8842096e
 
 PODFILE CHECKSUM: 7b5e560f578521bae8eee6e29acb8b0969d9f923
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

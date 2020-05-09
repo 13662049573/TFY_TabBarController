@@ -11,11 +11,13 @@
 #endif
 
 #import "TFY_AutoLayout.h"
-#import "TFY_AutoLayoutHerder.h"
-#import "UIScrollView+TFY_HeaderScroll.h"
 #import "UITableView+TFY_LayoutCell.h"
 #import "UITableViewCell+TFY_AutoHeightForCell.h"
 #import "UIView+TFY_AutoLayout.h"
+#import "UIView+TFY_Frame.h"
+#import "CALayer+TFY_Frame.h"
+#import "UILayoutGuide+TFY_AutoLayout.h"
+#import "TFY_AutoLayoutHerder.h"
 
 FOUNDATION_EXPORT double TFY_AutoLayoutVersionNumber;
 FOUNDATION_EXPORT const unsigned char TFY_AutoLayoutVersionString[];

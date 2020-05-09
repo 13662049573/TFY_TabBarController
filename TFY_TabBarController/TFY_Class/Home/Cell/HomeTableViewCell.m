@@ -75,7 +75,7 @@
 -(UILabel *)name_label{
     if (!_name_label) {
         _name_label = tfy_label();
-        _name_label.tfy_textcolor(@"212121", 1).tfy_alignment(0).tfy_fontSize(15);
+        _name_label.tfy_textcolor(@"212121", 1).tfy_alignment(0).tfy_fontSize([UIFont systemFontOfSize:15]);
     }
     return _name_label;
 }
@@ -83,7 +83,7 @@
 -(UILabel *)phone_label{
     if (!_phone_label) {
         _phone_label = tfy_label();
-        _phone_label.tfy_textcolor(@"212121", 1).tfy_alignment(0).tfy_fontSize(15);
+        _phone_label.tfy_textcolor(@"212121", 1).tfy_alignment(0).tfy_fontSize([UIFont systemFontOfSize:15]);
     }
     return _phone_label;
 }
