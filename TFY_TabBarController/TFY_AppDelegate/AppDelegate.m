@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "PushHiddenTabBarVC.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    if (![ScenePackage defaultPackage].isSceneApp) {
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.window.backgroundColor = [UIColor whiteColor];
+        [self.window makeKeyAndVisible];
+    }
+    [[ScenePackage defaultPackage] addBeforeWindowEvent:^(ScenePackage * _Nonnull application) {
+        [UIApplication window].rootViewController = [PushHiddenTabBarVC new];
+    }];
     return YES;
 }
 

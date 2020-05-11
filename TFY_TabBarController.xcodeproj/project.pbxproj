@@ -364,9 +364,9 @@
 				5604D828238DFF3D002B76A1 /* ViewController.h */,
 				5604D829238DFF3D002B76A1 /* ViewController.m */,
 				5604D7FB238DFEA1002B76A1 /* AppDelegate.h */,
-				5604D7FC238DFEA1002B76A1 /* SceneDelegate.m */,
 				5604D7FD238DFEA1002B76A1 /* AppDelegate.m */,
 				5604D7FE238DFEA1002B76A1 /* SceneDelegate.h */,
+				5604D7FC238DFEA1002B76A1 /* SceneDelegate.m */,
 			);
 			path = TFY_AppDelegate;
 			sourceTree = "<group>";

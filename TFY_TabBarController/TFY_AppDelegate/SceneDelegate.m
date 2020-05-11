@@ -1,5 +1,5 @@
 #import "SceneDelegate.h"
-#import "PushHiddenTabBarVC.h"
+
 @interface SceneDelegate ()
 
 @end
@@ -8,17 +8,10 @@
 
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions  API_AVAILABLE(ios(13.0)){
-      if (@available(iOS 13.0, *)) {
-        UIWindowScene *windowScene = (UIWindowScene *)scene;
-        self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
-       } else {
-        self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-       }
-       self.window.backgroundColor = [UIColor whiteColor];
-    
-       self.window.rootViewController = [PushHiddenTabBarVC new];
-       
-       [self.window makeKeyAndVisible];
+      self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+      self.window.backgroundColor = [UIColor whiteColor];
+      [self.window makeKeyAndVisible];
+      [self.window showOnScene:scene];
 }
 
 
