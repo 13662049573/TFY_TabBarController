@@ -8,7 +8,6 @@
 
 #import "PushHiddenTabBarVC.h"
 #import "TestVC.h"
-#import "ModelViewController.h"
 #import "TestPushHiddenVC.h"
 #import "TestHiddenVC.h"
 #import "TestGetTabBarItemVC.h"
@@ -28,13 +27,12 @@
 }
 - (void)addChildViewControllers{
     // 创建选项卡的数据 想怎么写看自己，这块我就写笨点了
-    TFY_NavigationController *vc1 = [[TFY_NavigationController alloc] initWithRootViewController:[ModelViewController new]];
     TFY_NavigationController *vc2 = [[TFY_NavigationController alloc] initWithRootViewController:[TestHiddenVC new]];
     TFY_NavigationController *vc3 = [[TFY_NavigationController alloc] initWithRootViewController:[TestGetTabBarItemVC new]];
     TFY_NavigationController *vc4 = [[TFY_NavigationController alloc] initWithRootViewController:[BadgeViewController new]];
     TFY_NavigationController *vc5 = [[TFY_NavigationController alloc] initWithRootViewController:[ViewController new]];
     NSArray <NSDictionary *>*VCArray =
-    @[@{@"vc":vc1,@"itemTitle":@"推出"},
+    @[
       @{@"vc":vc2,@"itemTitle":@"隐藏"},
       @{@"vc":vc3,@"itemTitle":@"红点徽标"},
       @{@"vc":vc4,@"itemTitle":@"占位"},

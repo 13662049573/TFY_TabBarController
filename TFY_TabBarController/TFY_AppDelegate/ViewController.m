@@ -147,18 +147,7 @@
                        @{@"arr":@[@{@"VCName":@"WeiBoTabBarVC",@"title":@"微博TabBar"},
                                   @{@"VCName":@"SaltedFishTabBarVC",@"title":@"咸鱼TabBar"},
                                   @{@"VCName":@"JianShuTabBarVC",@"title":@"简书TabBar"}],
-                         @"title":@"系统tabbar模仿示例" },
-                       
-                       @{@"arr":@[@{@"VCName":@"MultilTabController",@"title":@"基础样式 + 多层嵌套"},
-                                @{@"VCName":@"DynamicItemWidthTabController",@"title":@"可滚动，tabItem宽度适配标题，指示器宽度固定"},
-                                @{@"VCName":@"FixedItemWidthTabController",@"title":@"可滚动，tabItem固定宽度，指示器宽度适配title"},
-                                @{@"VCName":@"IndicatorFollowTitleTabController",@"title":@"不可滚动，指示器宽度适配title"},
-                                @{@"VCName":@"CustomIndicatorTabController",@"title":@"指示器样式自定义"},
-                                @{@"VCName":@"SegmentTabController",@"title":@"仿系统segment"},
-                                @{@"VCName":@"HeaderViewTabController",@"title":@"可伸缩的HeaderView"}
-                                ],
-                         
-                       @"title":@"自定义tabbar和分段选择器混合示例" },
+                         @"title":@"系统tabbar模仿示例" }
                        ].copy;
     }
     return _dataArray;

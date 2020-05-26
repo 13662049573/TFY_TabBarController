@@ -6,8 +6,8 @@
 //  Copyright © 2016年 YPTabBarController. All rights reserved.
 //
 
-#import "TfyCU_TabBarController.h"
+#import "TfySY_TabBarController.h"
 
-@interface SegmentTabController : TfyCU_TabBarController
+@interface SegmentTabController : TfySY_TabBarController
 
 @end
