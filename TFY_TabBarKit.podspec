@@ -3,7 +3,7 @@
 Pod::Spec.new do |spec|
   spec.name         = "TFY_TabBarKit"
 
-  spec.version      = "1.0.6"
+  spec.version      = "1.0.8"
 
   spec.summary      = "底部tabbar工具/分两类一个自定义UIViewController一个系统自带的，把写好的加在系统上处理."
 
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   spec.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_TabBarHeader.h"
   
   spec.subspec 'TFY_SystemTabBar' do |ss|
-     ss.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_SystemTabBar/TfySY_TabBarDefine.h","TFY_TabBarController/TFY_TabBarKit/TFY_SystemTabBar/**/*.{h,m}"
+     ss.source_files  = "TFY_TabBarController/TFY_TabBarKit/TFY_SystemTabBar/**/*.{h,m}"
   end
 
   spec.frameworks    = "Foundation","UIKit"
