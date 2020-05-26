@@ -29,67 +29,67 @@ static inline UIScrollView * _Nonnull tfy_scrollViewframe(CGRect rect){
 /**
  * 锁定垂直或水平
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_directionalLockEnabled)(BOOL enabled);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_directionalLockEnabled)(BOOL);
 /**
  * 视图范围内停止
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_pagingEnabled)(BOOL enabled);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_pagingEnabled)(BOOL);
 /**
  * 默认的是的。暂时关闭所有拖动
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_scrollEnabled)(BOOL enabled);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_scrollEnabled)(BOOL);
 /**
  * 如果是，反弹是，即使内容小于界限，允许垂直拖动
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_alwaysBounceVertical)(BOOL always);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_alwaysBounceVertical)(BOOL);
 /**
  * 如果是，反弹是，即使内容小于界限，允许水平拖动
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_alwaysBounceHorizontal)(BOOL always);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_alwaysBounceHorizontal)(BOOL);
 /**
  * 默认的是的。如果是，则跳过内容的边界并返回
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_bounces)(BOOL bounces);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_bounces)(BOOL);
 /**
  * 表示位图上下文将绘制完全不透明的图形。preferredFormat将此设置为NO。
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_opaque)(BOOL opaque);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_opaque)(BOOL);
 /**
  * 默认的是的。当我们跟踪时显示指示器。跟踪后淡出
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_showsVerticalScrollIndicator)(BOOL shows);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_showsVerticalScrollIndicator)(BOOL);
 /**
  * 默认的是的。当我们跟踪时显示指示器。跟踪后淡出
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_showsHorizontalScrollIndicator)(BOOL shows);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_showsHorizontalScrollIndicator)(BOOL);
 /**
  * 默认是肯定的。如果设置，用户可以通过过去的最小/最大缩放手势和缩放将动画到最小/最大的价值在手势结束
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_bouncesZoom)(BOOL zoom);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_bouncesZoom)(BOOL);
 /**
  * 偏移量
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentOffset)(CGPoint point);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentOffset)(CGPoint);
 /**
  * 容器大小
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentSize)(CGSize size);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentSize)(CGSize);
 /**
  * 最小的偏移值
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_minimumZoomScale)(CGFloat minimum);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_minimumZoomScale)(CGFloat);
 /**
  * 偏移值
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentInset)(UIEdgeInsets insets);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentInset)(UIEdgeInsets);
 /**
  * 最大的偏移值
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_maximumZoomScale)(CGFloat maximum);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_maximumZoomScale)(CGFloat);
 /**
  * 默认是1.0
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_zoomScale)(CGFloat zoom);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_zoomScale)(CGFloat);
 /**
  * 代理方法
  */
@@ -97,27 +97,27 @@ static inline UIScrollView * _Nonnull tfy_scrollViewframe(CGRect rect){
 /**
  * 默认是UIScrollViewIndicatorStyleDefault
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_indicatorStyle)(UIScrollViewIndicatorStyle Style);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_indicatorStyle)(UIScrollViewIndicatorStyle);
 /**
  * 竖屏偏移量
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_verticalScrollIndicatorInsets)(UIEdgeInsets insets) API_AVAILABLE(ios(11.1), tvos(11.1));
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_verticalScrollIndicatorInsets)(UIEdgeInsets) API_AVAILABLE(ios(11.1), tvos(11.1));
 /**
  * 横屏偏移量
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_horizontalScrollIndicatorInsets)(UIEdgeInsets insets) API_AVAILABLE(ios(11.1), tvos(11.1));
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_horizontalScrollIndicatorInsets)(UIEdgeInsets) API_AVAILABLE(ios(11.1), tvos(11.1));
 /**
  *  滑动偏移量
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_scrollIndicatorInsets)(UIEdgeInsets insets);
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_scrollIndicatorInsets)(UIEdgeInsets);
 /**
  * 配置系统是否自动调整滚动指示器的insets。默认是肯定的。
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_automaticallyAdjustsScrollIndicatorInsets)(BOOL automa) API_AVAILABLE(ios(13.0), tvos(13.0));
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_automaticallyAdjustsScrollIndicatorInsets)(BOOL) API_AVAILABLE(ios(13.0), tvos(13.0));
 /**
  *  配置stedcontentinset的行为。默认是UIScrollViewContentInsetAdjustmentAutomatic。
  */
-@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentInsetAdjustmentBehavior)(UIScrollViewContentInsetAdjustmentBehavior behavior) API_AVAILABLE(ios(11.0),tvos(11.0));
+@property(nonatomic, copy, readonly)UIScrollView *_Nonnull(^_Nonnull tfy_contentInsetAdjustmentBehavior)(UIScrollViewContentInsetAdjustmentBehavior) API_AVAILABLE(ios(11.0),tvos(11.0));
 /**
  * 头部缩放视图图片
  */

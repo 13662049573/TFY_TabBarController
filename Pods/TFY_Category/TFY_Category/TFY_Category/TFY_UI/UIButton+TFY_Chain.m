@@ -112,7 +112,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  文本输入
  */
--(UIButton *(^)(NSString *title_str,UIControlState state))tfy_text{
+-(UIButton *(^)(NSString *,UIControlState))tfy_text{
     WSelf(myself);
     return ^(NSString *title_str,UIControlState state){
         [myself setTitle:title_str forState:state];
@@ -122,7 +122,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  文本颜色
  */
--(UIButton *(^)(id color_str,UIControlState colorstate))tfy_textcolor{
+-(UIButton *(^)(id,UIControlState))tfy_textcolor{
     WSelf(myself);
     return ^(id color_str,UIControlState colorstate){
         if ([color_str isKindOfClass:[UIColor class]]) {
@@ -137,7 +137,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  文本大小
  */
--(UIButton *(^)(UIFont *font))tfy_font{
+-(UIButton *(^)(UIFont *))tfy_font{
     WSelf(myself);
     return ^(UIFont *font){
         myself.titleLabel.font = font;
@@ -148,7 +148,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  按钮 title_str 文本文字 color_str 文字颜色  font文字大小
  */
--(UIButton *(^)(NSString *title_str,UIControlState titlestate,id color_str,UIControlState colorstate,UIFont *font))tfy_title{
+-(UIButton *(^)(NSString *,UIControlState,id,UIControlState,UIFont *))tfy_title{
     WSelf(myself);
     return ^(NSString *title_str,UIControlState titlestate,id color_str,UIControlState colorstate,UIFont *font){
         [myself setTitle:title_str forState:titlestate];
@@ -165,7 +165,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  按钮  HexString 背景颜色 alpha 背景透明度
  */
--(UIButton *(^)(id HexString,CGFloat alpha))tfy_backgroundColor{
+-(UIButton *(^)(id,CGFloat))tfy_backgroundColor{
     WSelf(myself);
     return ^(id HexString,CGFloat alpha){
         if ([HexString isKindOfClass:[NSString class]]) {
@@ -180,7 +180,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  按钮  alignment 0 左 1 中 2 右
  */
--(UIButton *(^)(NSInteger alignment))tfy_alAlignment{
+-(UIButton *(^)(NSInteger))tfy_alAlignment{
     WSelf(myself);
     return ^(NSInteger alignment){
         switch (alignment) {
@@ -200,7 +200,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  添加四边框和color 颜色  borderWidth 宽度
  */
--(UIButton *(^)(CGFloat borderWidth, id color))tfy_borders{
+-(UIButton *(^)(CGFloat, id))tfy_borders{
     WSelf(myself);
     return ^(CGFloat borderWidth,id color){
         myself.layer.borderWidth = borderWidth;
@@ -216,7 +216,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  添加四边 color_str阴影颜色  shadowRadius阴影半径
  */
--(UIButton *(^)(id color_str, CGFloat shadowRadius))tfy_bordersShadow{
+-(UIButton *(^)(id, CGFloat))tfy_bordersShadow{
     WSelf(myself);
     return ^(id color_str, CGFloat shadowRadius){
         // 阴影颜色
@@ -240,7 +240,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  按钮  cornerRadius 圆角
  */
--(UIButton *(^)(CGFloat cornerRadius))tfy_cornerRadius{
+-(UIButton *(^)(CGFloat))tfy_cornerRadius{
     WSelf(myself);
     return ^(CGFloat cornerRadius){
         myself.layer.cornerRadius = cornerRadius;
@@ -250,7 +250,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  按钮  image_str 图片字符串
  */
--(UIButton *(^)(id image_id,UIControlState state))tfy_image{
+-(UIButton *(^)(id,UIControlState))tfy_image{
     WSelf(myself);
     return ^(id image_id,UIControlState state){
         if ([image_id isKindOfClass:[UIColor class]]) {
@@ -265,7 +265,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  按钮  backimage_str 背景图片
  */
--(UIButton *(^)(id image_id,UIControlState state))tfy_backgroundImage{
+-(UIButton *(^)(id,UIControlState))tfy_backgroundImage{
     WSelf(myself);
     return ^(id image_id,UIControlState state){
         if ([image_id isKindOfClass:[UIColor class]]) {
@@ -280,7 +280,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  按钮 点击方法
  */
--(UIButton *(^)(id object, SEL action,UIControlEvents events))tfy_action{
+-(UIButton *(^)(id, SEL,UIControlEvents))tfy_action{
     WSelf(myself);
     return ^(id object, SEL action,UIControlEvents events){
         [myself addTarget:object action:action forControlEvents:events];
@@ -288,7 +288,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
     };
 }
 
-- (UIButton *(^)(BOOL adjustsWidth))tfy_adjustsWidth{
+- (UIButton *(^)(BOOL))tfy_adjustsWidth{
     WSelf(weakSelf);
     return ^(BOOL adjustsWidth){
         weakSelf.titleLabel.adjustsFontSizeToFitWidth = adjustsWidth;
@@ -296,7 +296,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
     };
 }
 
-- (UIButton *(^)(NSInteger numberOfLines))tfy_numberOfLines{
+- (UIButton *(^)(NSInteger))tfy_numberOfLines{
     WSelf(weakSelf);
     return ^(NSInteger numberOfLines){
         weakSelf.titleLabel.numberOfLines = numberOfLines;
@@ -306,7 +306,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  * 文字省略格式
  */
-- (UIButton *(^)(NSLineBreakMode mode))tfy_lineBreakMode{
+- (UIButton *(^)(NSLineBreakMode))tfy_lineBreakMode{
     WSelf(weakSelf);
     return ^(NSLineBreakMode mode){
         weakSelf.titleLabel.lineBreakMode = mode;
@@ -314,7 +314,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
     };
 }
 
-- (UIButton *(^)(NSAttributedString *attributrdString,UIControlState state))tfy_attributrdString{
+- (UIButton *(^)(NSAttributedString *,UIControlState))tfy_attributrdString{
     WSelf(weakSelf);
     return ^(NSAttributedString *attributrdString,UIControlState state){
         [weakSelf setAttributedTitle:attributrdString forState:state];
@@ -325,7 +325,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  添加指定的View
  */
--(UIButton *(^)(UIView *view))tfy_addToSuperView{
+-(UIButton *(^)(UIView *))tfy_addToSuperView{
     WSelf(myself);
     return ^(UIView *view){
         [view addSubview:myself];
@@ -336,7 +336,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  * 隐藏本类
  */
--(UIButton *(^)(BOOL hidden))tfy_hidden{
+-(UIButton *(^)(BOOL))tfy_hidden{
     WSelf(myself);
     return ^(BOOL hidden){
         myself.hidden = hidden;
@@ -346,7 +346,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  * 透明度
  */
--(UIButton *(^)(CGFloat alpha))tfy_alpha{
+-(UIButton *(^)(CGFloat))tfy_alpha{
     WSelf(myself);
     return ^(CGFloat alpha){
         myself.alpha = alpha;
@@ -356,7 +356,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  * 交互开关
  */
--(UIButton *(^)(BOOL userInteractionEnabled))tfy_userInteractionEnabled{
+-(UIButton *(^)(BOOL))tfy_userInteractionEnabled{
     WSelf(myself);
     return ^(BOOL userInteractionEnabled){
         myself.userInteractionEnabled = userInteractionEnabled;
@@ -367,7 +367,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  位置偏移量
  */
--(UIButton *(^)(UIEdgeInsets insets))tfy_contentEdgeInsets{
+-(UIButton *(^)(UIEdgeInsets))tfy_contentEdgeInsets{
     WSelf(myself);
     return ^(UIEdgeInsets insets){
         myself.contentEdgeInsets = insets;
@@ -377,7 +377,7 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  文字偏移量
  */
--(UIButton *(^)(UIEdgeInsets insets))tfy_titleEdgeInsets{
+-(UIButton *(^)(UIEdgeInsets))tfy_titleEdgeInsets{
     WSelf(myself);
     return ^(UIEdgeInsets insets){
         myself.titleEdgeInsets = insets;
@@ -387,10 +387,21 @@ static NSString *keyOfMethod_btn; //关联者的索引key-用于获取block
 /**
  *  图片偏移量
  */
--(UIButton *(^)(UIEdgeInsets insets))tfy_imageEdgeInsets{
+-(UIButton *(^)(UIEdgeInsets))tfy_imageEdgeInsets{
     WSelf(myself);
     return ^(UIEdgeInsets insets){
         myself.imageEdgeInsets = insets;
+        return myself;
+    };
+}
+
+/**
+ *  添加图片的位置和文字距离
+ */
+-(UIButton *(^)(ButtonPosition,CGFloat))tfy_layouEdgeInsetsPosition{
+    WSelf(myself);
+    return ^(ButtonPosition postion,CGFloat spacing){
+        [myself tfy_layouEdgeInsetsPosition:postion spacing:spacing];
         return myself;
     };
 }

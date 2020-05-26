@@ -11,7 +11,6 @@
 #endif
 
 #import "TFY_AutoLayout.h"
-#import "UITableView+TFY_LayoutCell.h"
 #import "UITableViewCell+TFY_AutoHeightForCell.h"
 #import "UIView+TFY_AutoLayout.h"
 #import "UIView+TFY_Frame.h"

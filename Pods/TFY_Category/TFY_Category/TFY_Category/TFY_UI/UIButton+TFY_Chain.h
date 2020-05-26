@@ -38,59 +38,59 @@ typedef void(^ButtonLimitTimesTapBlock)(NSUInteger time, BOOL *stop, UIButton *b
 /**
  *  文本输入
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_text)(NSString *title_str,UIControlState state);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_text)(NSString *_Nonnull,UIControlState);
 /**
  *  文本颜色 color_str 字符串或者 UIColor
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_textcolor)(id color_str,UIControlState state);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_textcolor)(id,UIControlState);
 /**
  *  文本大小 font_str 表示UIFont
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_font)(UIFont *font_str);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_font)(UIFont *_Nonnull);
 /**
  *  按钮 title_str 文本文字 color_str 文字颜色  font文字大小
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_title)(NSString *title_str,UIControlState titlestate,id color_str,UIControlState colorstate,UIFont *font);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_title)(NSString *_Nonnull,UIControlState,id,UIControlState,UIFont *);
 /**
  *  按钮  HexString 背景颜色 alpha 背景透明度
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_backgroundColor)(id HexString,CGFloat alpha);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_backgroundColor)(id,CGFloat);
 /**
  *  按钮  alignment 0 左 1 中 2 右
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_alAlignment)(NSInteger alignment);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_alAlignment)(NSInteger);
 /**
  *  添加四边框和color 颜色  borderWidth 宽度
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_borders)(CGFloat borderWidth, id color);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_borders)(CGFloat, id);
 /**
  *  添加四边 color_str阴影颜色  shadowRadius阴影半径
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_bordersShadow)(id color_str, CGFloat shadowRadius);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_bordersShadow)(id, CGFloat);
 /**
  *  按钮  cornerRadius 圆角
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_cornerRadius)(CGFloat cornerRadius);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_cornerRadius)(CGFloat);
 /**
  *  按钮  image_str 图片字符串  state 状态
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_image)(id image_id,UIControlState state);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_image)(id,UIControlState);
 /**
  *  按钮  backimage_str 背景图片 state 状态
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_backgroundImage)(id image_id,UIControlState state);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_backgroundImage)(id,UIControlState);
 /**
  *  按钮 点击方法
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_action)(id object, SEL action,UIControlEvents events);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_action)(id, SEL,UIControlEvents);
 /**
  *  文本可变字符串输入
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_attributrdString)(NSAttributedString *attributrdString,UIControlState state);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_attributrdString)(NSAttributedString *_Nonnull,UIControlState);
 /**
  *  文本是否开启随宽度文字超出自动缩小
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_adjustsWidth)(BOOL adjustsWidth);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_adjustsWidth)(BOOL);
 /**
  * 点击次数
  */
@@ -99,43 +99,47 @@ typedef void(^ButtonLimitTimesTapBlock)(NSUInteger time, BOOL *stop, UIButton *b
 /**
  * 时间间隔
  */
-@property (nonatomic, copy, readonly) UIButton* (^ tapSpaceTime) (NSTimeInterval spaceTime);
+@property (nonatomic, copy, readonly) UIButton* (^ tapSpaceTime) (NSTimeInterval);
 /**
  *  文本的字体是否开始换行 0 自动换行
  */
-@property(nonatomic, copy, readonly)UIButton *(^tfy_numberOfLines)(NSInteger numberOfLines);
+@property(nonatomic, copy, readonly)UIButton *(^tfy_numberOfLines)(NSInteger);
 /**
  * 文字省略格式
  */
-@property(nonatomic, copy, readonly)UIButton *(^tfy_lineBreakMode)(NSLineBreakMode mode);
+@property(nonatomic, copy, readonly)UIButton *(^tfy_lineBreakMode)(NSLineBreakMode);
 /**
  * 添加指定的View
  */
-@property(nonatomic, copy, readonly)UIButton *(^tfy_addToSuperView)(UIView *view);
+@property(nonatomic, copy, readonly)UIButton *(^tfy_addToSuperView)(UIView *_Nonnull);
 /**
  * 隐藏本类
  */
-@property(nonatomic, copy, readonly)UIButton *(^tfy_hidden)(BOOL hidden);
+@property(nonatomic, copy, readonly)UIButton *(^tfy_hidden)(BOOL);
 /**
  * 透明度
  */
-@property(nonatomic, copy, readonly)UIButton *(^tfy_alpha)(CGFloat alpha);
+@property(nonatomic, copy, readonly)UIButton *(^tfy_alpha)(CGFloat);
 /**
  * 交互开关
  */
-@property(nonatomic, copy, readonly)UIButton *(^tfy_userInteractionEnabled)(BOOL userInteractionEnabled);
+@property(nonatomic, copy, readonly)UIButton *(^tfy_userInteractionEnabled)(BOOL);
 /**
  *  位置偏移量
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_contentEdgeInsets)(UIEdgeInsets insets);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_contentEdgeInsets)(UIEdgeInsets);
 /**
  *  文字偏移量
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_titleEdgeInsets)(UIEdgeInsets insets);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_titleEdgeInsets)(UIEdgeInsets);
 /**
  *  图片偏移量
  */
-@property(nonatomic,copy,readonly)UIButton *(^tfy_imageEdgeInsets)(UIEdgeInsets insets);
+@property(nonatomic,copy,readonly)UIButton *(^tfy_imageEdgeInsets)(UIEdgeInsets);
+/**
+ *  添加图片的位置和文字距离
+ */
+@property(nonatomic,copy,readonly)UIButton *(^tfy_layouEdgeInsetsPosition)(ButtonPosition,CGFloat);
 /**
  * 取消之前de
  */

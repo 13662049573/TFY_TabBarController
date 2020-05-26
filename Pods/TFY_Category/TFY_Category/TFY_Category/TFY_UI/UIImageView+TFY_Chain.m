@@ -215,7 +215,7 @@
 @implementation UIImageView (TFY_Chain)
 
 
--(UIImageView *(^)(NSString *image_str))tfy_imge{
+-(UIImageView *(^)(NSString *))tfy_imge{
     WSelf(myself);
     return ^(NSString *str){
         myself.image = [[UIImage imageNamed:str] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -224,7 +224,7 @@
     };
 }
 
--(UIImageView *(^)(CGFloat cornerRadius))tfy_cornerRadius{
+-(UIImageView *(^)(CGFloat))tfy_cornerRadius{
     WSelf(myself);
     return ^(CGFloat cornerRadius){
         myself.layer.cornerRadius = cornerRadius;
@@ -233,7 +233,7 @@
     };
 }
 
--(UIImageView *(^)(CGFloat borderWidth, NSString *color))tfy_borders{
+-(UIImageView *(^)(CGFloat, NSString *))tfy_borders{
     WSelf(myself);
     return ^(CGFloat borderWidth, NSString *color){
         myself.layer.borderWidth = borderWidth;
@@ -244,7 +244,7 @@
 /**
  *  添加四边 color_str阴影颜色  shadowRadius阴影半径
  */
--(UIImageView *(^)(NSString *color_str, CGFloat shadowRadius))tfy_bordersShadow{
+-(UIImageView *(^)(NSString *, CGFloat))tfy_bordersShadow{
     WSelf(myself);
     return ^(NSString *color_str, CGFloat shadowRadius){
         // 阴影颜色
@@ -260,7 +260,7 @@
     };
 }
 
--(UIImageView *(^)(NSString *HexString,CGFloat alpha))tfy_backgroundColor{
+-(UIImageView *(^)(NSString *,CGFloat))tfy_backgroundColor{
     WSelf(myself);
     return ^(NSString *HexString,CGFloat alpha){
         [myself setBackgroundColor:[myself btncolorWithHexString:HexString alpha:alpha]];
@@ -272,7 +272,7 @@
 /**
  *  透明度
  */
--(UIImageView *(^)(CGFloat alpha))tfy_alpha{
+-(UIImageView *(^)(CGFloat))tfy_alpha{
     WSelf(myself);
     return ^(CGFloat alpha){
         myself.alpha = alpha;
@@ -282,7 +282,7 @@
 /**
  *  交互
  */
--(UIImageView *(^)(BOOL userInteractionEnabled))tfy_userInteractionEnabled{
+-(UIImageView *(^)(BOOL))tfy_userInteractionEnabled{
     WSelf(myself);
     return ^(BOOL userInteractionEnabled){
         myself.userInteractionEnabled = userInteractionEnabled;
@@ -290,7 +290,7 @@
     };
 }
 
--(UIImageView *(^)(id object, SEL action))tfy_action{
+-(UIImageView *(^)(id, SEL))tfy_action{
     WSelf(myself);
     return ^(id object, SEL action){
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:object action:action];

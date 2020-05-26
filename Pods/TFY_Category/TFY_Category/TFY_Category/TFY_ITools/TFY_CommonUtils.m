@@ -448,10 +448,10 @@ const char* jailbreak_tool_pathes[] = {
         //WKWebView
         snapshotFinalView = (WKWebView *)snapshotView;
         
-    }else if([snapshotView isKindOfClass:[UIWebView class]]){
+    }else if([snapshotView isKindOfClass:[WKWebView class]]){
         
-        //UIWebView
-        UIWebView *webView = (UIWebView *)snapshotView;
+        //WKWebView
+        WKWebView *webView = (WKWebView *)snapshotView;
         snapshotFinalView = webView.scrollView;
     }else if([snapshotView isKindOfClass:[UIScrollView class]] ||
              [snapshotView isKindOfClass:[UITableView class]] ||

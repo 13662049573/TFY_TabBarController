@@ -42,6 +42,7 @@
 #import "UIImageView+TFY_Chain.h"
 #import "UILabel+TFY_Label.h"
 #import "UIScrollView+TFY_Chain.h"
+#import "UITableView+TFY_LayoutCell.h"
 #import "UITableViewCell+TFY_Chain.h"
 #import "UITextField+TFY_Chain.h"
 #import "UITextView+TFY_Chain.h"

@@ -1,28 +1,30 @@
 PODS:
   - ReactiveObjC (3.1.1)
-  - TFY_AutoLayout (2.5.2):
-    - TFY_AutoLayout/IOS_Layout (= 2.5.2)
-    - TFY_AutoLayout/MAC_Layout (= 2.5.2)
-    - TFY_AutoLayout/Util (= 2.5.2)
-  - TFY_AutoLayout/IOS_Layout (2.5.2):
+  - TFY_AutoLayout (2.6.0):
+    - TFY_AutoLayout/IOS_Layout (= 2.6.0)
+    - TFY_AutoLayout/MAC_Layout (= 2.6.0)
+    - TFY_AutoLayout/Util (= 2.6.0)
+  - TFY_AutoLayout/IOS_Layout (2.6.0):
     - TFY_AutoLayout/Util
-  - TFY_AutoLayout/MAC_Layout (2.5.2):
+  - TFY_AutoLayout/MAC_Layout (2.6.0):
     - TFY_AutoLayout/Util
-  - TFY_AutoLayout/Util (2.5.2)
-  - TFY_Category (3.2.8):
-    - TFY_Category/TFY_Foundation (= 3.2.8)
-    - TFY_Category/TFY_ITools (= 3.2.8)
-    - TFY_Category/TFY_UI (= 3.2.8)
-  - TFY_Category/TFY_Foundation (3.2.8)
-  - TFY_Category/TFY_ITools (3.2.8)
-  - TFY_Category/TFY_UI (3.2.8)
+  - TFY_AutoLayout/Util (2.6.0)
+  - TFY_Category (3.3.6):
+    - TFY_Category/TFY_Foundation (= 3.3.6)
+    - TFY_Category/TFY_ITools (= 3.3.6)
+    - TFY_Category/TFY_UI (= 3.3.6)
+  - TFY_Category/TFY_Foundation (3.3.6)
+  - TFY_Category/TFY_ITools (3.3.6)
+  - TFY_Category/TFY_UI (3.3.6)
   - TFY_ContactManager (2.0.2)
-  - TFY_Navigation (2.2.2):
-    - TFY_Navigation/TFY_NavControoler (= 2.2.2)
-    - TFY_Navigation/TFY_PopController (= 2.2.2)
-  - TFY_Navigation/TFY_NavControoler (2.2.2):
+  - TFY_Navigation (2.2.6):
+    - TFY_Navigation/TFY_NavControoler (= 2.2.6)
+    - TFY_Navigation/TFY_PageController (= 2.2.6)
+    - TFY_Navigation/TFY_PopController (= 2.2.6)
+  - TFY_Navigation/TFY_NavControoler (2.2.6):
     - TFY_Navigation/TFY_PopController
-  - TFY_Navigation/TFY_PopController (2.2.2)
+  - TFY_Navigation/TFY_PageController (2.2.6)
+  - TFY_Navigation/TFY_PopController (2.2.6)
 
 DEPENDENCIES:
   - ReactiveObjC
@@ -41,11 +43,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  TFY_AutoLayout: 792116abdb3fb2758c59d29ac16322bbfe8441ab
-  TFY_Category: 75797a0b1aa72794bd7b4258608af00007467453
+  TFY_AutoLayout: ef69f4a2b3892931a80dc80421ecaa758e96a558
+  TFY_Category: 83bbb886ec09aabccb23362980aad1013a17538d
   TFY_ContactManager: 8c261ca48a5fff038e9bb8805ac3eff03c04fe13
-  TFY_Navigation: 3523efe2942ef7bede46223f5bb0553e8842096e
+  TFY_Navigation: 0e4028c23f03ebfa035f1152e705635ccd3a1922
 
-PODFILE CHECKSUM: 7b5e560f578521bae8eee6e29acb8b0969d9f923
+PODFILE CHECKSUM: 37b67a9f2d7255ad27459c9b4cc17a481991cb3c
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.2

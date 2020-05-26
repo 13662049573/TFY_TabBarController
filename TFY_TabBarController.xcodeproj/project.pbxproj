@@ -71,6 +71,9 @@
 		5604D8F4238DFFCB002B76A1 /* WHGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8BD238DFFCB002B76A1 /* WHGradientHelper.m */; };
 		5604D8F6238E03FF002B76A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F5238E03FF002B76A1 /* UIKit.framework */; };
 		5604D8F8238E0406002B76A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F7238E0406002B76A1 /* Foundation.framework */; };
+		56E2B57F247D0FAE0030DC25 /* BasicFunctionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E2B57E247D0FAE0030DC25 /* BasicFunctionListVC.m */; };
+		56E2B584247D10150030DC25 /* CommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E2B581247D10150030DC25 /* CommonTableViewController.m */; };
+		56E2B585247D10150030DC25 /* CommonPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E2B583247D10150030DC25 /* CommonPageViewController.m */; };
 		C92074BF4CDD0A260EDA3AF7 /* Pods_TFY_TabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 686627018EE5904B8558082F /* Pods_TFY_TabBarController.framework */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +220,12 @@
 		5604D8BE238DFFCB002B76A1 /* WHGradientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHGradientHelper.h; sourceTree = "<group>"; };
 		5604D8F5238E03FF002B76A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5604D8F7238E0406002B76A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		56E2B57D247D0FAE0030DC25 /* BasicFunctionListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFunctionListVC.h; sourceTree = "<group>"; };
+		56E2B57E247D0FAE0030DC25 /* BasicFunctionListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFunctionListVC.m; sourceTree = "<group>"; };
+		56E2B580247D10150030DC25 /* CommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewController.h; sourceTree = "<group>"; };
+		56E2B581247D10150030DC25 /* CommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewController.m; sourceTree = "<group>"; };
+		56E2B582247D10150030DC25 /* CommonPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonPageViewController.h; sourceTree = "<group>"; };
+		56E2B583247D10150030DC25 /* CommonPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonPageViewController.m; sourceTree = "<group>"; };
 		686627018EE5904B8558082F /* Pods_TFY_TabBarController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TFY_TabBarController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8EDA42B0E335EA558BE298 /* Pods-TFY_TabBarController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFY_TabBarController.debug.xcconfig"; path = "Target Support Files/Pods-TFY_TabBarController/Pods-TFY_TabBarController.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -375,6 +384,7 @@
 		5604D81A238DFEA1002B76A1 /* TFY_Class */ = {
 			isa = PBXGroup;
 			children = (
+				56E2B57C247D0FAE0030DC25 /* BasicFunctionExample */,
 				5604D82E238DFFCA002B76A1 /* 实战示例 */,
 				5604D82B238DFFCA002B76A1 /* 适配示例 */,
 				5604D8B4238DFFCB002B76A1 /* Home */,
@@ -806,6 +816,19 @@
 			path = WHGradientHelper;
 			sourceTree = "<group>";
 		};
+		56E2B57C247D0FAE0030DC25 /* BasicFunctionExample */ = {
+			isa = PBXGroup;
+			children = (
+				56E2B582247D10150030DC25 /* CommonPageViewController.h */,
+				56E2B583247D10150030DC25 /* CommonPageViewController.m */,
+				56E2B580247D10150030DC25 /* CommonTableViewController.h */,
+				56E2B581247D10150030DC25 /* CommonTableViewController.m */,
+				56E2B57D247D0FAE0030DC25 /* BasicFunctionListVC.h */,
+				56E2B57E247D0FAE0030DC25 /* BasicFunctionListVC.m */,
+			);
+			path = BasicFunctionExample;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1002,7 +1025,9 @@
 				5604D8E7238DFFCB002B76A1 /* TestVC.m in Sources */,
 				5604D8CA238DFFCB002B76A1 /* TableViewController.m in Sources */,
 				5604D8D5238DFFCB002B76A1 /* ItemCustomBadgeTabBarVC.m in Sources */,
+				56E2B57F247D0FAE0030DC25 /* BasicFunctionListVC.m in Sources */,
 				5604D8C0238DFFCB002B76A1 /* WeiBoTabBarVC.m in Sources */,
+				56E2B585247D10150030DC25 /* CommonPageViewController.m in Sources */,
 				5604D8CD238DFFCB002B76A1 /* CustomIndicatorTabController.m in Sources */,
 				5604D822238DFEA1002B76A1 /* TfySY_TestTabBar.m in Sources */,
 				5604D8E6238DFFCB002B76A1 /* BadgeViewController.m in Sources */,
@@ -1034,6 +1059,7 @@
 				5604D8C7238DFFCB002B76A1 /* DynamicItemWidthTabController.m in Sources */,
 				5604D8BF238DFFCB002B76A1 /* PushHiddenTabBarVC.m in Sources */,
 				5604D8D7238DFFCB002B76A1 /* WHGradientHelperGradientItemTabBarVC.m in Sources */,
+				56E2B584247D10150030DC25 /* CommonTableViewController.m in Sources */,
 				5604D8E3238DFFCB002B76A1 /* TestHiddenVC.m in Sources */,
 				5604D8D3238DFFCB002B76A1 /* ItemTingColorTabBarVC.m in Sources */,
 				5604D8CC238DFFCB002B76A1 /* SegmentTabController.m in Sources */,

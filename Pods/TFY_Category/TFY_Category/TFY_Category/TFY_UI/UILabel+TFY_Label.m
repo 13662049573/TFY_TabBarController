@@ -77,7 +77,7 @@
 
 @implementation UILabel (TFY_Label)
 
-- (UILabel *(^)(NSString *text))tfy_text{
+- (UILabel *(^)(NSString *))tfy_text{
     WSelf(weakSelf);
     return ^(NSString *text){
         weakSelf.text = text;
@@ -85,7 +85,7 @@
     };
 }
 
-- (UILabel *(^)(id HexString,CGFloat alpha))tfy_textcolor{
+- (UILabel *(^)(id,CGFloat))tfy_textcolor{
     WSelf(weakSelf);
     return ^(id HexString,CGFloat alpha){
         if ([HexString isKindOfClass:[NSString class]]) {
@@ -98,7 +98,7 @@
     };
 }
 
-- (UILabel *(^)(UIFont *fontSize))tfy_fontSize{
+- (UILabel *(^)(UIFont *))tfy_fontSize{
     WSelf(weakSelf);
     return ^(UIFont *fontSize){
         weakSelf.font = fontSize;
@@ -106,7 +106,7 @@
     };
 }
 
-- (UILabel *(^)(NSInteger alignment))tfy_alignment{
+- (UILabel *(^)(NSInteger))tfy_alignment{
     WSelf(weakSelf);
     return ^(NSInteger alignment){
         if (alignment==0) {
@@ -122,7 +122,7 @@
     };
 }
 
-- (UILabel *(^)(NSAttributedString *attributrdString))tfy_attributrdString{
+- (UILabel *(^)(NSAttributedString *))tfy_attributrdString{
     WSelf(weakSelf);
     return ^(NSAttributedString *attributrdString){
         weakSelf.attributedText = attributrdString;
@@ -130,7 +130,7 @@
     };
 }
 
-- (UILabel *(^)(NSInteger numberOfLines))tfy_numberOfLines{
+- (UILabel *(^)(NSInteger))tfy_numberOfLines{
     WSelf(weakSelf);
     return ^(NSInteger numberOfLines){
         weakSelf.numberOfLines = numberOfLines;
@@ -141,14 +141,14 @@
 /**
  * 文字省略格式
  */
-- (UILabel *(^)(NSLineBreakMode mode))tfy_lineBreakMode{
+- (UILabel *(^)(NSLineBreakMode))tfy_lineBreakMode{
     WSelf(weakSelf);
     return ^(NSLineBreakMode mode){
         weakSelf.lineBreakMode = mode;
         return weakSelf;
     };
 }
-- (UILabel *(^)(BOOL adjustsWidth))tfy_adjustsWidth{
+- (UILabel *(^)(BOOL))tfy_adjustsWidth{
     WSelf(weakSelf);
     return ^(BOOL adjustsWidth){
         weakSelf.adjustsFontSizeToFitWidth = adjustsWidth;
@@ -156,7 +156,7 @@
     };
 }
 
--(UILabel *(^)(id HexString,CGFloat alpha))tfy_backgroundColor{
+-(UILabel *(^)(id,CGFloat))tfy_backgroundColor{
     WSelf(weakSelf);
     return ^(id str,CGFloat alpha){
         if ([str isKindOfClass:[NSString class]]) {
@@ -169,7 +169,7 @@
     };
 }
 
--(UILabel *(^)(CGFloat borderWidth, id color))tfy_borders{
+-(UILabel *(^)(CGFloat, id))tfy_borders{
     WSelf(weakSelf);
     return ^(CGFloat borderWidth, id color){
         weakSelf.layer.borderWidth = borderWidth;
@@ -185,7 +185,7 @@
 /**
  *  按钮  cornerRadius 圆角
  */
--(UILabel *(^)(CGFloat cornerRadius))tfy_cornerRadius{
+-(UILabel *(^)(CGFloat))tfy_cornerRadius{
     WSelf(myself);
     return ^(CGFloat cornerRadius){
         myself.layer.cornerRadius = cornerRadius;
@@ -197,7 +197,7 @@
 /**
  *  添加指定的View
  */
--(UILabel *(^)(UIView *view))tfy_addToSuperView{
+-(UILabel *(^)(UIView *))tfy_addToSuperView{
     WSelf(myself);
     return ^(UIView *view){
         [view addSubview:myself];
@@ -208,7 +208,7 @@
 /**
  * 隐藏本类
  */
--(UILabel *(^)(BOOL hidden))tfy_hidden{
+-(UILabel *(^)(BOOL))tfy_hidden{
     WSelf(myself);
     return ^(BOOL hidden){
         myself.hidden = hidden;
@@ -218,7 +218,7 @@
 /**
  * 透明度
  */
--(UILabel *(^)(CGFloat alpha))tfy_alpha{
+-(UILabel *(^)(CGFloat))tfy_alpha{
     WSelf(myself);
     return ^(CGFloat alpha){
         myself.alpha = alpha;
@@ -228,7 +228,7 @@
 /**
  * 交互开关
  */
--(UILabel *(^)(BOOL userInteractionEnabled))tfy_userInteractionEnabled{
+-(UILabel *(^)(BOOL))tfy_userInteractionEnabled{
     WSelf(myself);
     return ^(BOOL userInteractionEnabled){
         myself.userInteractionEnabled = userInteractionEnabled;
@@ -236,7 +236,7 @@
     };
 }
 
--(UILabel *(^)(id color_str, CGFloat shadowRadius))tfy_bordersShadow{
+-(UILabel *(^)(id, CGFloat))tfy_bordersShadow{
     WSelf(weakSelf);
     return ^(id color_str, CGFloat shadowRadius){
         // 阴影颜色

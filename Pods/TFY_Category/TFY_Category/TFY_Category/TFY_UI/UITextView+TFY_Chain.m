@@ -20,7 +20,7 @@ static char *changeLocation = "location";
 /**
  *  文本输入
  */
--(UITextView *(^)(NSString *title_str))tfy_text{
+-(UITextView *(^)(NSString *))tfy_text{
     WSelf(myself);
     return ^(NSString *title_str){
         myself.text = title_str;
@@ -30,7 +30,7 @@ static char *changeLocation = "location";
 /**
  *  文本颜色
  */
--(UITextView *(^)(id color_str))tfy_textcolor{
+-(UITextView *(^)(id))tfy_textcolor{
     WSelf(myself);
     return ^(id color_str){
         if ([color_str isKindOfClass:[NSString class]]) {
@@ -46,7 +46,7 @@ static char *changeLocation = "location";
 /**
  *  文本大小
  */
--(UITextView *(^)(UIFont *font))tfy_font{
+-(UITextView *(^)(UIFont *))tfy_font{
     WSelf(myself);
     return ^(UIFont *font){
         myself.font = font;
@@ -57,7 +57,7 @@ static char *changeLocation = "location";
 /**
  *  按钮 title_str 文本文字 color_str 文字颜色  font文字大小
  */
--(UITextView *(^)(NSString *title_str,id color_str,UIFont *font))tfy_title{
+-(UITextView *(^)(NSString *,id,UIFont *))tfy_title{
     WSelf(myself);
     return ^(NSString *title_str,id color_str,UIFont *font){
         myself.text = title_str;
@@ -74,7 +74,7 @@ static char *changeLocation = "location";
 /**
  *  按钮  HexString 背景颜色 alpha 背景透明度
  */
--(UITextView *(^)(id color))tfy_backgroundColor{
+-(UITextView *(^)(id))tfy_backgroundColor{
     WSelf(myself);
     return ^(id color){
         if ([color isKindOfClass:[NSString class]]) {
@@ -89,7 +89,7 @@ static char *changeLocation = "location";
 /**
  *  按钮  alignment 0 左 1 中 2 右
  */
--(UITextView *(^)(NSInteger alignment))tfy_alAlignment{
+-(UITextView *(^)(NSInteger))tfy_alAlignment{
     WSelf(myself);
     return ^(NSInteger alignment){
         switch (alignment) {
@@ -109,7 +109,7 @@ static char *changeLocation = "location";
 /**
  *  添加四边框和color 颜色  borderWidth 宽度
  */
--(UITextView *(^)(CGFloat borderWidth, id color))tfy_borders{
+-(UITextView *(^)(CGFloat, id))tfy_borders{
     WSelf(myself);
     return ^(CGFloat borderWidth, id color){
         myself.layer.borderWidth = borderWidth;
@@ -125,7 +125,7 @@ static char *changeLocation = "location";
 /**
  *  添加四边 color_str阴影颜色  shadowRadius阴影半径
  */
--(UITextView *(^)(id color, CGFloat shadowRadius))tfy_bordersShadow{
+-(UITextView *(^)(id, CGFloat))tfy_bordersShadow{
     WSelf(myself);
     return ^(id color, CGFloat shadowRadius){
         // 阴影颜色
@@ -149,7 +149,7 @@ static char *changeLocation = "location";
 /**
  *  按钮  cornerRadius 圆角
  */
--(UITextView *(^)(CGFloat cornerRadius))tfy_cornerRadius{
+-(UITextView *(^)(CGFloat))tfy_cornerRadius{
     WSelf(myself);
     return ^(CGFloat cornerRadius){
         myself.layer.cornerRadius = cornerRadius;
@@ -159,7 +159,7 @@ static char *changeLocation = "location";
 /**
  *  按钮  image_str 图片字符串
  */
--(UITextView *(^)(bool editable))tfy_editable{
+-(UITextView *(^)(bool))tfy_editable{
     WSelf(myself);
     return ^(bool editable){
         myself.editable = editable;
@@ -169,7 +169,7 @@ static char *changeLocation = "location";
 /**
  * 编辑框中的内容密码显示
  */
--(UITextView *(^)(bool secure))tfy_secureTextEntry{
+-(UITextView *(^)(bool))tfy_secureTextEntry{
     WSelf(myself);
     return ^(bool secure){
         myself.secureTextEntry = secure;
@@ -180,7 +180,7 @@ static char *changeLocation = "location";
 /**
  *  自定义键盘  inputView 自定义输入区域
  */
--(UITextView *(^)(UIView *inputView))tfy_inputView{
+-(UITextView *(^)(UIView *))tfy_inputView{
     WSelf(myself);
     return ^(UIView *inputView){
         myself.inputView =  inputView;
@@ -190,7 +190,7 @@ static char *changeLocation = "location";
 /**
  *  自定义键盘 /键盘上加view
  */
--(UITextView *(^)(UIView *inputAccessoryView))tfy_inputAccessoryView{
+-(UITextView *(^)(UIView *))tfy_inputAccessoryView{
     WSelf(myself);
     return ^(UIView *inputAccessoryView){
         myself.inputAccessoryView = inputAccessoryView;
@@ -201,7 +201,7 @@ static char *changeLocation = "location";
 /**
  *  设置键盘类型
  */
--(UITextView *(^)(UIKeyboardType tpye))tfy_keyboardType{
+-(UITextView *(^)(UIKeyboardType))tfy_keyboardType{
     WSelf(myself);
     return ^(UIKeyboardType tpye){
         myself.keyboardType = tpye;
@@ -211,7 +211,7 @@ static char *changeLocation = "location";
 /**
  *  设置键盘上返回键的类型
  */
--(UITextView *(^)(UIReturnKeyType returnKeyType))tfy_returnKeyType{
+-(UITextView *(^)(UIReturnKeyType))tfy_returnKeyType{
     WSelf(myself);
     return ^(UIReturnKeyType returnKeyType){
         myself.returnKeyType = returnKeyType;
@@ -221,7 +221,7 @@ static char *changeLocation = "location";
 /**
  *  设置键盘的视觉样式
  */
--(UITextView *(^)(UIKeyboardAppearance keyboardAppearance))tfy_keyboardAppearance{
+-(UITextView *(^)(UIKeyboardAppearance))tfy_keyboardAppearance{
     WSelf(myself);
     return ^(UIKeyboardAppearance keyboardAppearance){
         myself.keyboardAppearance = keyboardAppearance;
@@ -231,7 +231,7 @@ static char *changeLocation = "location";
 /**
  *  设置是否启动自动提醒更新功能
  */
--(UITextView *(^)(bool autocorrection))tfy_autocorrectionType{
+-(UITextView *(^)(bool))tfy_autocorrectionType{
     WSelf(myself);
     return ^(bool autocorrection){
         myself.autocorrectionType = autocorrection;
@@ -241,7 +241,7 @@ static char *changeLocation = "location";
 /**
  *   自动适应高度
  */
--(UITextView *(^)(UIViewAutoresizing autoresizingMask))tfy_autoresizingMask{
+-(UITextView *(^)(UIViewAutoresizing))tfy_autoresizingMask{
     WSelf(myself);
     return ^(UIViewAutoresizing autoresizingMask){
         myself.autoresizingMask = autoresizingMask;
@@ -251,7 +251,7 @@ static char *changeLocation = "location";
 /**
  *   是否滑动
  */
--(UITextView *(^)(bool scroll))tfy_scrollEnabled{
+-(UITextView *(^)(bool))tfy_scrollEnabled{
     WSelf(myself);
     return ^(bool scroll){
         myself.scrollEnabled = scroll;
@@ -261,7 +261,7 @@ static char *changeLocation = "location";
 /**
  *  默认为NO,清除之前输入的文本
  */
--(UITextView *(^)(bool clears))tfy_clearsOnInsertion{
+-(UITextView *(^)(bool))tfy_clearsOnInsertion{
     WSelf(myself);
     return ^(bool clears){
         myself.clearsOnInsertion = clears;
@@ -272,7 +272,7 @@ static char *changeLocation = "location";
 /**
  *  添加自定义键盘需要开启 设置YES
  */
--(UITextView *(^)(bool automatically))tfy_enablesReturnKeyAutomatically{
+-(UITextView *(^)(bool))tfy_enablesReturnKeyAutomatically{
     WSelf(myself);
     return ^(bool automatically){
         myself.enablesReturnKeyAutomatically = automatically;
@@ -283,7 +283,7 @@ static char *changeLocation = "location";
 /**
  *  中文输入法上下跳动问题 设置NO
  */
--(UITextView *(^)(bool allows))tfy_allowsNonContiguousLayout{
+-(UITextView *(^)(bool))tfy_allowsNonContiguousLayout{
     WSelf(myself);
     return ^(bool allows){
         myself.layoutManager.allowsNonContiguousLayout = allows;
@@ -294,7 +294,7 @@ static char *changeLocation = "location";
 /**
  * 添加指定的View
  */
--(UITextView *(^)(UIView *view))tfy_addToSuperView{
+-(UITextView *(^)(UIView *))tfy_addToSuperView{
     WSelf(myself);
     return ^(UIView *view){
         [view addSubview:myself];
@@ -305,7 +305,7 @@ static char *changeLocation = "location";
 /**
  *  scrollsToTop是UIScrollView的一个属性，主要用于点击设备的状态栏时，是scrollsToTop == YES的控件滚动返回至顶部。
  */
--(UITextView *(^)(bool scrolls))tfy_scrollsToTop{
+-(UITextView *(^)(bool))tfy_scrollsToTop{
     WSelf(myself);
     return ^(bool scrolls){
         myself.scrollsToTop = scrolls;
@@ -316,7 +316,7 @@ static char *changeLocation = "location";
 /**
  *  高度自适应 解决方案
  */
--(UITextView *(^)(UIEdgeInsets textContainerInset,CGFloat lineFragmentPadding))tfy_textContainerInset{
+-(UITextView *(^)(UIEdgeInsets,CGFloat))tfy_textContainerInset{
     WSelf(myself);
     return ^(UIEdgeInsets textContainerInset,CGFloat lineFragmentPadding){
         myself.textContainerInset = textContainerInset;

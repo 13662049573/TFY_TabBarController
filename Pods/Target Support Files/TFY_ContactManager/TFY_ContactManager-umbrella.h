@@ -10,11 +10,17 @@
 #endif
 #endif
 
+#import "NSString+TFY_Extension 2.h"
 #import "NSString+TFY_Extension.h"
+#import "TFY_ContactHeader 2.h"
 #import "TFY_ContactHeader.h"
+#import "TFY_ContactManager 2.h"
 #import "TFY_ContactManager.h"
+#import "TFY_PeoplePickerDelegate 2.h"
 #import "TFY_PeoplePickerDelegate.h"
+#import "TFY_PersonModel 2.h"
 #import "TFY_PersonModel.h"
+#import "TFY_PickerDetailDelegate 2.h"
 #import "TFY_PickerDetailDelegate.h"
 
 FOUNDATION_EXPORT double TFY_ContactManagerVersionNumber;

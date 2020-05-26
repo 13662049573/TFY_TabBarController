@@ -24,6 +24,6 @@
 #import "UIAlertController+TFY_Chain.h"
 #import "UITableViewCell+TFY_Chain.h"
 #import "UIViewController+TFY_PlayerRotation.h"
-
+#import "UITableView+TFY_LayoutCell.h"
 
 #endif /* TFY_UIHeader_h */

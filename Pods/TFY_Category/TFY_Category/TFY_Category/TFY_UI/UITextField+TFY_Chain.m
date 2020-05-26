@@ -15,7 +15,7 @@
 /**
  *  占位文本文本输入
  */
--(UITextField *(^)(NSString *title_str,UIFont *font,id color))tfy_placeholder{
+-(UITextField *(^)(NSString *,UIFont *,id))tfy_placeholder{
     WSelf(myself);
     return ^(NSString *title_str,UIFont *font,id color){
         myself.placeholder = title_str;
@@ -31,7 +31,7 @@
 /**
  *  文本输入
  */
--(UITextField *(^)(NSString *title_str))tfy_text{
+-(UITextField *(^)(NSString *))tfy_text{
     WSelf(myself);
     return ^(NSString *title_str){
         myself.text = title_str;
@@ -41,7 +41,7 @@
 /**
  *  文本颜色
  */
--(UITextField *(^)(id color_str))tfy_textcolor{
+-(UITextField *(^)(id))tfy_textcolor{
     WSelf(myself);
     return ^(id color_str){
         if ([color_str isKindOfClass:[NSString class]]) {
@@ -56,7 +56,7 @@
 /**
  *  文本大小
  */
--(UITextField *(^)(UIFont *font))tfy_font{
+-(UITextField *(^)(UIFont *))tfy_font{
     WSelf(myself);
     return ^(UIFont *font){
         myself.font = font;
@@ -67,7 +67,7 @@
 /**
  *  按钮 title_str 文本文字 color_str 文字颜色  font文字大小
  */
--(UITextField *(^)(NSString *title_str,id color_str,UIFont *font))tfy_title{
+-(UITextField *(^)(NSString *,id,UIFont *))tfy_title{
     WSelf(myself);
     return ^(NSString *title_str,id color_str,UIFont *font){
         myself.text = title_str;
@@ -84,7 +84,7 @@
 /**
  *  按钮  HexString 背景颜色 alpha 背景透明度
  */
--(UITextField *(^)(id color))tfy_backgroundColor{
+-(UITextField *(^)(id))tfy_backgroundColor{
     WSelf(myself);
     return ^(id color){
         if ([color isKindOfClass:[NSString class]]) {
@@ -99,7 +99,7 @@
 /**
  *  按钮  alignment 0 左 1 中 2 右
  */
--(UITextField *(^)(NSInteger alignment))tfy_alAlignment{
+-(UITextField *(^)(NSInteger))tfy_alAlignment{
     WSelf(myself);
     return ^(NSInteger alignment){
         switch (alignment) {
@@ -119,7 +119,7 @@
 /**
  *  添加四边框和color 颜色  borderWidth 宽度
  */
--(UITextField *(^)(CGFloat borderWidth, id color))tfy_borders{
+-(UITextField *(^)(CGFloat, id))tfy_borders{
     WSelf(myself);
     return ^(CGFloat borderWidth, id color){
         myself.layer.borderWidth = borderWidth;
@@ -135,7 +135,7 @@
 /**
  *  添加四边 color_str阴影颜色  shadowRadius阴影半径
  */
--(UITextField *(^)(id color, CGFloat shadowRadius))tfy_bordersShadow{
+-(UITextField *(^)(id, CGFloat))tfy_bordersShadow{
     WSelf(myself);
     return ^(id color, CGFloat shadowRadius){
         // 阴影颜色
@@ -159,7 +159,7 @@
 /**
  *  按钮  cornerRadius 圆角
  */
--(UITextField *(^)(CGFloat cornerRadius))tfy_cornerRadius{
+-(UITextField *(^)(CGFloat))tfy_cornerRadius{
     WSelf(myself);
     return ^(CGFloat cornerRadius){
         myself.layer.cornerRadius = cornerRadius;
@@ -169,7 +169,7 @@
 /**
  *  按钮  image_str 图片字符串
  */
--(UITextField *(^)(bool enabled))tfy_enabled{
+-(UITextField *(^)(bool))tfy_enabled{
     WSelf(myself);
     return ^(bool enabled){
         [myself setEnabled:enabled];
@@ -179,7 +179,7 @@
 /**
  * 编辑框中的内容密码显示
  */
--(UITextField *(^)(bool secure))tfy_secureTextEntry{
+-(UITextField *(^)(bool))tfy_secureTextEntry{
     WSelf(myself);
     return ^(bool secure){
         myself.secureTextEntry = secure;
@@ -190,7 +190,7 @@
 /**
  *  设置边框样式（更多边框样式到补充说明中查看）默认的样式
  */
--(UITextField *(^)(UITextBorderStyle borderStyle))tfy_borderStyle{
+-(UITextField *(^)(UITextBorderStyle))tfy_borderStyle{
     WSelf(myself);
     return ^(UITextBorderStyle borderStyle){
         myself.borderStyle =  borderStyle;
@@ -200,7 +200,7 @@
 /**
  *  设置清除按钮的模式(更多清除按钮的模式到补充说明中查看)默认样式
  */
--(UITextField *(^)(UITextFieldViewMode  clearButtonMode))tfy_clearButtonMode{
+-(UITextField *(^)(UITextFieldViewMode))tfy_clearButtonMode{
     WSelf(myself);
     return ^(UITextFieldViewMode  clearButtonMode){
         myself.clearButtonMode = clearButtonMode;
@@ -211,7 +211,7 @@
 /**
  *  设置键盘类型
  */
--(UITextField *(^)(UIKeyboardType tpye))tfy_keyboardType{
+-(UITextField *(^)(UIKeyboardType))tfy_keyboardType{
     WSelf(myself);
     return ^(UIKeyboardType tpye){
         myself.keyboardType = tpye;
@@ -221,7 +221,7 @@
 /**
  *  设置键盘上返回键的类型
  */
--(UITextField *(^)(UIReturnKeyType returnKeyType))tfy_returnKeyType{
+-(UITextField *(^)(UIReturnKeyType))tfy_returnKeyType{
     WSelf(myself);
     return ^(UIReturnKeyType returnKeyType){
         myself.returnKeyType = returnKeyType;
@@ -231,7 +231,7 @@
 /**
  *  设置键盘的视觉样式
  */
--(UITextField *(^)(UIKeyboardAppearance keyboardAppearance))tfy_keyboardAppearance{
+-(UITextField *(^)(UIKeyboardAppearance))tfy_keyboardAppearance{
     WSelf(myself);
     return ^(UIKeyboardAppearance keyboardAppearance){
         myself.keyboardAppearance = keyboardAppearance;
@@ -241,7 +241,7 @@
 /**
  *  设置是否启动自动提醒更新功能
  */
--(UITextField *(^)(bool autocorrection))tfy_autocorrectionType{
+-(UITextField *(^)(bool))tfy_autocorrectionType{
     WSelf(myself);
     return ^(bool autocorrection){
         myself.autocorrectionType = autocorrection;
@@ -251,7 +251,7 @@
 /**
  *   自动适应高度
  */
--(UITextField *(^)(UIViewAutoresizing autoresizingMask))tfy_autoresizingMask{
+-(UITextField *(^)(UIViewAutoresizing))tfy_autoresizingMask{
     WSelf(myself);
     return ^(UIViewAutoresizing autoresizingMask){
         myself.autoresizingMask = autoresizingMask;
@@ -261,7 +261,7 @@
 /**
  *   输入的对其方法  0 中  1 上  2 下  3 自适
  */
--(UITextField *(^)(NSInteger contentVerticalAlignment))tfy_contentVerticalAlignment{
+-(UITextField *(^)(NSInteger))tfy_contentVerticalAlignment{
     WSelf(myself);
     return ^(NSInteger contentVerticalAlignment){
         switch (contentVerticalAlignment) {
@@ -284,7 +284,7 @@
 /**
  *  最右侧加图片 title_str 图片字符 frame 图片大小
  */
--(UITextField *(^)(NSString *title_str,CGRect frame))tfy_lefimage{
+-(UITextField *(^)(NSString *,CGRect))tfy_lefimage{
     WSelf(myself);
     return ^(NSString *title_str,CGRect frame){
         
@@ -299,7 +299,7 @@
 /**
  *  最左侧加图片 title_str 图片字符 frame 图片大小
  */
--(UITextField *(^)(NSString *title_str,CGRect frame))tfy_rightimage{
+-(UITextField *(^)(NSString *,CGRect))tfy_rightimage{
     WSelf(myself);
     return ^(NSString *title_str,CGRect frame){
         UIImageView *image = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:title_str] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -313,7 +313,7 @@
 /**
  *  文本输入监听方法
  */
--(UITextField *(^)(id object, SEL action,UIControlEvents controlEvents))tfy_action{
+-(UITextField *(^)(id, SEL,UIControlEvents))tfy_action{
     WSelf(myself);
     return ^(id object, SEL action,UIControlEvents controlEvents){
         [myself addTarget:object action:action forControlEvents:controlEvents];
@@ -323,7 +323,7 @@
 /**
  * 添加指定的View
  */
--(UITextField *(^)(UIView *view))tfy_addToSuperView{
+-(UITextField *(^)(UIView *))tfy_addToSuperView{
     WSelf(myself);
     return ^(UIView *view){
         [view addSubview:myself];

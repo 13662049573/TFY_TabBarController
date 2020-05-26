@@ -41,36 +41,36 @@ typedef void (^ImageBlock)(UIImage *__nullable image);
 /**
  *  图片赋值字符串
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_imge)(NSString *_Nonnull image_str);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_imge)(NSString *_Nonnull);
 /**
  *  图片添加圆角
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_cornerRadius)(CGFloat cornerRadius);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_cornerRadius)(CGFloat);
 /**
  *  添加四边框和color 颜色  borderWidth 宽度
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_borders)(CGFloat borderWidth,NSString *color);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_borders)(CGFloat,NSString *);
 /**
  *  添加四边 color_str阴影颜色  shadowRadius阴影半径
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_bordersShadow)(NSString *_Nonnull color_str, CGFloat shadowRadius);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_bordersShadow)(NSString *_Nonnull, CGFloat);
 /**
  *  图片HexString 背景颜色 alpha 背景透明度
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_backgroundColor)(NSString *_Nonnull HexString,CGFloat alpha);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_backgroundColor)(NSString *_Nonnull,CGFloat);
 /**
  *  透明度
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_alpha)(CGFloat alpha);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_alpha)(CGFloat);
 /**
  *  交互
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_userInteractionEnabled)(BOOL userInteractionEnabled);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_userInteractionEnabled)(BOOL);
 
 /**
  *  图片 点击方法
  */
-@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_action)(id object, SEL action);
+@property(nonatomic,copy,readonly)UIImageView *_Nonnull(^_Nonnull tfy_action)(id, SEL);
 /**
  *  下载完图像后获取/设置回调块。来自网络或磁盘的图像对象。
  */
