@@ -19,6 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"分页展示";
+    self.navigationController.tfy_barBackgroundColor = [UIColor blueColor];
+    self.navigationController.tfy_titleColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     [self buildTable];
 }
@@ -63,7 +67,10 @@
     exampleVC.title = [self cellTitles][indexPath.row];
     exampleVC.config = [self configOfIndexPath:indexPath];
     exampleVC.titles = [self vcTitlesOfIndexPath:indexPath];
+    exampleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:exampleVC animated:true];
+    
+    
 }
 
 - (NSArray *)cellTitles {
