@@ -67,15 +67,15 @@
     UIFontDescriptor *desc = [ UIFontDescriptor fontDescriptorWithName :[UIFont systemFontOfSize:14].fontName matrix:matrix];//取得系统字符并设置反射。
     UIFont *font = [UIFont fontWithDescriptor :desc size :16];
     [titleStr appendAttributedString: [self markString:[NSString stringWithFormat:@"  %@",[rowDic objectForKey:@"title"]]
-                                                 color:[UIColor grayColor]
+                                                 color:[UIColor whiteColor]
                                                   font:font]];
     cell.textLabel.attributedText = titleStr;
     
     cell.detailTextLabel.text = [rowDic objectForKey:@"VCName"];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:8];
-    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.backgroundColor = indexPath.row %2 ==0?[UIColor whiteColor]:[UIColor tfy_colorWithHex:@"613CF6"];
+    cell.backgroundColor = indexPath.row %2 ==0?[UIColor colorWithRed:0.92 green:0.20 blue:0.14 alpha:1.00]:[UIColor colorWithRed:0.30 green:0.63 blue:0.94 alpha:1.00];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section{
