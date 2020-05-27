@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     self.title = @"分页展示";
-    self.navigationController.tfy_barBackgroundColor = [UIColor blueColor];
+    self.navigationController.tfy_barBackgroundColor = [UIColor greenColor];
     self.navigationController.tfy_titleColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     [self buildTable];
@@ -57,8 +57,32 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%zd、%@",indexPath.row + 1,[self cellTitles][indexPath.row]];
+    NSMutableAttributedString *titleStr = [self markString:[NSString stringWithFormat:@"%ld.",indexPath.row + 1]
+                                                        color:[UIColor orangeColor]
+                                                         font:[UIFont fontWithName:@"Marker Felt" size:16]];
+       
+       //设置中文倾斜
+   CGAffineTransform matrix =CGAffineTransformMake(1, 0, tanf(5 * (CGFloat)M_PI / 180), 1, 0, 0);//设置反射。倾斜角度。
+   UIFontDescriptor *desc = [ UIFontDescriptor fontDescriptorWithName :[UIFont systemFontOfSize:14].fontName matrix:matrix];//取得系统字符并设置反射。
+   UIFont *font = [UIFont fontWithDescriptor :desc size :16];
+   [titleStr appendAttributedString: [self markString:[NSString stringWithFormat:@"  %@",[self cellTitles][indexPath.row]]
+                                                color:[UIColor whiteColor]
+                                                 font:font]];
+   cell.textLabel.attributedText = titleStr;
+   
+   cell.backgroundColor = indexPath.row %2 ==0?[UIColor colorWithRed:0.92 green:0.20 blue:0.14 alpha:1.00]:[UIColor colorWithRed:0.30 green:0.63 blue:0.94 alpha:1.00];
     return cell;
+}
+// 富文本
+- (NSMutableAttributedString *)markString:(NSString *)str color:(UIColor *)color font:(UIFont *)font{
+    NSMutableAttributedString *attributedString_M = [[NSMutableAttributedString alloc] initWithString:str ];
+    [attributedString_M addAttribute:NSForegroundColorAttributeName
+                               value:color
+                               range:NSMakeRange(0, str.length)];
+    [attributedString_M addAttribute:NSFontAttributeName
+                               value:font
+                               range:NSMakeRange(0, str.length)];
+    return attributedString_M;
 }
 
 
