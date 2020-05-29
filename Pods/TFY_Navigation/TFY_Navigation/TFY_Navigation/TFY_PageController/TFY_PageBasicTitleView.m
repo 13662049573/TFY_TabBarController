@@ -155,10 +155,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat collectionW = self.bounds.size.width;
-    if (self.rightButton) {
-        CGFloat btnW = self.bounds.size.height;
-        collectionW = self.bounds.size.width - btnW;
-        self.rightButton.frame = CGRectMake(self.bounds.size.width - btnW, 0, btnW, btnW);
+    if (self.rightView) {
+        CGFloat view_W = self.config.rightWidth;
+        CGFloat view_H = self.bounds.size.height;
+        collectionW = self.bounds.size.width - view_W;
+        self.rightView.frame = CGRectMake(self.bounds.size.width - view_W, 0, view_W, view_H);
     }
     self.collectionView.frame = CGRectMake(0, 0, collectionW, self.bounds.size.height);
     
@@ -224,9 +225,10 @@
     [self updateLayout];
 }
 
-- (void)setRightButton:(UIButton *)rightButton {
-    _rightButton = rightButton;
-    [self addSubview:rightButton];
+-(void)setRightView:(UIView *)rightView{
+    _rightView = rightView;
+    
+    [self addSubview:_rightView];
 }
 
 - (void)updateLayout {

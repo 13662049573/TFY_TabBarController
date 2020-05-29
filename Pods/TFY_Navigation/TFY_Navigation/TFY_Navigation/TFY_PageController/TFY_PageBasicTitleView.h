@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  右侧按钮
  */
-@property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) UIView *rightView;
 
 /**
  初始化方法

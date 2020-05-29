@@ -43,6 +43,8 @@
     config.shadowLineHidden = false;
     //默认阴影宽度 30
     config.shadowLineWidth = 30.0f;
+    //默认rightWidth
+    config.rightWidth = 40.0f;
     //默认阴影高度 3
     config.shadowLineHeight = 3.0f;
     //默认阴影颜色 黑色

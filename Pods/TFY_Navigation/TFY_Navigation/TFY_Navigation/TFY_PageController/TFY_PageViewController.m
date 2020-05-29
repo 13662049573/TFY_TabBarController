@@ -334,9 +334,9 @@ typedef void(^TFY_ContentScollBlock)(BOOL scrollEnabled);
     self.scrollView.scrollEnabled = scrollEnabled;
 }
 
-//设置右侧按钮
-- (void)setRightButton:(UIButton *)rightButton {
-    _titleView.rightButton = rightButton;
+-(void)setRightView:(UIView *)rightView{
+    _rightView = rightView;
+    self.titleView.rightView = _rightView;
 }
 
 #pragma mark -

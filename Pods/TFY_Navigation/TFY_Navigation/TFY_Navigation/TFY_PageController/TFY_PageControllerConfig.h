@@ -101,7 +101,10 @@ NS_ASSUME_NONNULL_BEGIN
  标题宽度 默认 文字长度
  */
 @property (nonatomic, assign) CGFloat titleWidth;
-
+/**
+ 右侧View宽度 默认 标题栏高度
+ */
+@property (nonatomic, assign) CGFloat rightWidth;
 /**
  标题颜色过渡开关 默认 开
  */

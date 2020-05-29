@@ -4,7 +4,7 @@
 //
 //  Created by 田风有 on 2019/4/30.
 //  Copyright © 2019 恋机科技. All rights reserved.
-//  最新版本号:3.3.6
+//  最新版本号:3.3.4
 
 #ifndef TFY_CategoryHerder_h
 #define TFY_CategoryHerder_h
@@ -40,7 +40,7 @@
 
 /**点语法*/
 
-#define TFY_WSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+#define WSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 //.h文件需求
 #define TFY_StatementAndPropSetFuncStatement(className,propertyModifier,propertyPointerType,propertyName) \
 @property(nonatomic,propertyModifier)propertyPointerType  propertyName;\
@@ -48,7 +48,7 @@
 //.m文件需求
 #define TFY_SetFuncImplementation(className,propertyPointerType, propertyName)  \
 - (className * (^) (propertyPointerType propertyName))propertyName##Set{ \
-    TFY_WSelf(myself);\
+    WSelf(myself);\
     return ^(propertyPointerType propertyName){\
         myself.propertyName = propertyName;\
         return myself;\
@@ -56,34 +56,34 @@
 }
 
 /***线程****/
-#define TFY_queueGlobalStart dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+#define LM_queueGlobalStart dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 // 当所有队列执行完成之后
-#define TFY_group_notify dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+#define LM_group_notify dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
-#define TFY_queueMainStart dispatch_async(dispatch_get_main_queue(), ^{
+#define LM_queueMainStart dispatch_async(dispatch_get_main_queue(), ^{
 
-#define TFY_QueueStartAfterTime(time) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+#define LM_QueueStartAfterTime(time) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 
-#define TFY_queueEnd  });
+#define LM_queueEnd  });
 
 
 // 创建队列组，可以使多个网络请求异步执行，执行完之后再进行操作
 //这段放在for循环外
-#define TFY_dispatch_group dispatch_group_t group = dispatch_group_create(); \
+#define LM_dispatch_group dispatch_group_t group = dispatch_group_create(); \
                           dispatch_queue_t queue = dispatch_get_global_queue(0, 0); \
                           dispatch_group_async(group, queue, ^{
 
 //这段放在for循环中
-#define TFY_Forwait   dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+#define LM_Forwait   dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
 //这段放在for循环任务执行中也是网络请求结果中使用
-#define TFY_semaphore dispatch_semaphore_signal(semaphore);
+#define LM_semaphore dispatch_semaphore_signal(semaphore);
 
 //信号量减1，如果>0，则向下执行，否则等待
-#define TFY_semaphore_wait  dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+#define LM_semaphore_wait  dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
 //这段放在for循环结束
-#define TFY_semaphoreEnd  });
+#define LM_semaphoreEnd  });
 
 
 #ifdef DEBUG
@@ -97,25 +97,25 @@
 #endif
 
 //屏幕高
-#define  TFY_Height_H [UIScreen mainScreen].bounds.size.height
+#define  Height_H [UIScreen mainScreen].bounds.size.height
 //屏幕宽
-#define  TFY_Width_W  [UIScreen mainScreen].bounds.size.width
+#define  Width_W  [UIScreen mainScreen].bounds.size.width
 /**
  * 是否是竖屏
  */
-#define TFY_isPortrait  ( [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait ||  [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown ) ?YES:NO
+#define isPortrait  ( [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait ||  [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown ) ?YES:NO
 //对应屏幕比例宽
-#define TFY_DEBI_width(width)    width *(TFY_isPortrait ?(375/TFY_Width_W):(TFY_Height_H/375))
+#define DEBI_width(width)    width *(isPortrait ?(375/Width_W):(Height_H/375))
 
-#define TFY_DEBI_height(height)  height *(TFY_isPortrait ?(667/TFY_Height_H):(TFY_Width_W/667))
+#define DEBI_height(height)  height *(isPortrait ?(667/Height_H):(Width_W/667))
 
 // iPhoneX  iPhoneXS  iPhoneXS Max  iPhoneXR 机型判断
-#define TFY_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? ((NSInteger)(([[UIScreen mainScreen] currentMode].size.height/[[UIScreen mainScreen] currentMode].size.width)*100) == 216) : NO)
+#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? ((NSInteger)(([[UIScreen mainScreen] currentMode].size.height/[[UIScreen mainScreen] currentMode].size.width)*100) == 216) : NO)
 
-#define TFY_kNavBarHeight           (TFY_iPhoneX ? 88.0 : 64.0)
-#define TFY_kBottomBarHeight        (TFY_iPhoneX ? 83.0 : 49.0)
-#define TFY_kNavTimebarHeight       (TFY_iPhoneX ? 44.0 : 20.0)
-#define TFY_kContentHeight          (TFY_Height_H - TFY_kNavBarHeight - TFY_kBottomBarHeight)
+#define kNavBarHeight           (iPhoneX ? 88.0 : 64.0)
+#define kBottomBarHeight        (iPhoneX ? 83.0 : 49.0)
+#define kNavTimebarHeight       (iPhoneX ? 44.0 : 20.0)
+#define kContentHeight          (Height_H - kNavBarHeight-kBottomBarHeight)
 
 
 #endif /* TFY_CategoryHerder_h */

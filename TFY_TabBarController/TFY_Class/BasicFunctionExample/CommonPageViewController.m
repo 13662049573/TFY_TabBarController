@@ -76,6 +76,9 @@
     self.pageViewController.view.frame = self.view.bounds;
     self.pageViewController.delegate = self;
     self.pageViewController.dataSource = self;
+    if (self.index==18) {
+        self.pageViewController.rightView = [self rightView];
+    }
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
 }
@@ -99,5 +102,9 @@
     NSLog(@"切换到了：%@",self.titles[index]);
 }
 
-
+-(UIView *)rightView{
+    UIView *views = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, TFY_kNavBarHeight)];
+    views.tfy_backgroundColor([UIColor redColor]);
+    return views;
+}
 @end

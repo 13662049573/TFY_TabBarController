@@ -91,6 +91,7 @@
     exampleVC.title = [self cellTitles][indexPath.row];
     exampleVC.config = [self configOfIndexPath:indexPath];
     exampleVC.titles = [self vcTitlesOfIndexPath:indexPath];
+    exampleVC.index = indexPath.row;
     exampleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:exampleVC animated:true];
     
@@ -117,6 +118,7 @@
              @"阴影末端形状-直角",
              @"阴影-居上",
              @"阴影-居中",
+             @"右侧加View",
              ];
 }
 
@@ -216,7 +218,14 @@
             //阴影居中
             config.shadowLineAlignment = TFY_PageShadowLineAlignmentCenter;
             break;
-
+        case 18:
+        //在navigationBar上显示标题
+        config.showTitleInNavigationBar = true;
+        //隐藏底部分割线
+        config.separatorLineHidden = true;
+        //阴影居中
+        config.rightWidth = TFY_DEBI_width(100);
+        break;
         default:
             break;
     }
@@ -225,7 +234,7 @@
 
 - (NSArray *)vcTitlesOfIndexPath:(NSIndexPath *)indexPath {
     NSArray *titleArr = @[@"关注",@"推荐",@"热点",@"问答",@"科技",@"国风",@"直播",@"新时代",@"北京",@"国际",@"数码",@"小说",@"军事"];
-    if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 ||indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7) {
+    if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 ||indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7 || indexPath.row == 18) {
         titleArr = @[@"关注",@"推荐",@"热点"];
     }
     return titleArr;

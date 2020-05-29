@@ -90,9 +90,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray <NSString *>* respondOtherGestureDelegateClassList;
 
 /**
- 标题栏右侧按钮
+ 标题栏右侧View
  */
-@property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) UIView *rightView;;
 
 /**
  初始化方法
