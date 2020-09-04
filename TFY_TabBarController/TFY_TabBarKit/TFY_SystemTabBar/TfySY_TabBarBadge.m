@@ -8,6 +8,8 @@
 
 #import "TfySY_TabBarBadge.h"
 
+NSString *const bage = @"99+";
+
 @implementation TfySY_TabBarBadge
 
 #pragma mark - 构造
@@ -58,7 +60,7 @@
     if (_badgeText.integerValue) { // 是数字 或者不为0
         self.hidden = NO; // 不管咋地先取消隐藏
         if (_badgeText.integerValue > 99) {
-            self.text = @"99+";
+            self.text = bage;
         }
     }else{ //
         if (!_badgeText.length) { // 长度为0的空串
