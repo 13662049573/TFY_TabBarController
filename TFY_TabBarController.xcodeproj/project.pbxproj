@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5604D7D0238DFDA3002B76A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5604D7CE238DFDA3002B76A1 /* Main.storyboard */; };
 		5604D7D2238DFDA4002B76A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5604D7D1238DFDA4002B76A1 /* Assets.xcassets */; };
 		5604D7D5238DFDA4002B76A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5604D7D3238DFDA4002B76A1 /* LaunchScreen.storyboard */; };
 		5604D7D8238DFDA4002B76A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D7D7238DFDA4002B76A1 /* main.m */; };
@@ -98,7 +97,6 @@
 		11F7105447BA34DF9F2C68BF /* Pods-TFY_TabBarController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFY_TabBarController.release.xcconfig"; path = "Target Support Files/Pods-TFY_TabBarController/Pods-TFY_TabBarController.release.xcconfig"; sourceTree = "<group>"; };
 		36EE10F7250A076700D24B3C /* TFY_TabBarKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFY_TabBarKit.h; sourceTree = "<group>"; };
 		5604D7C2238DFDA3002B76A1 /* TFY_TabBarController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFY_TabBarController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5604D7CF238DFDA3002B76A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5604D7D1238DFDA4002B76A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5604D7D4238DFDA4002B76A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5604D7D6238DFDA4002B76A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 				5604D81A238DFEA1002B76A1 /* TFY_Class */,
 				5604D7FF238DFEA1002B76A1 /* TFY_PCH */,
 				5604D800238DFEA1002B76A1 /* TFY_TabBarKit */,
-				5604D7CE238DFDA3002B76A1 /* Main.storyboard */,
 				5604D7D1238DFDA4002B76A1 /* Assets.xcassets */,
 				5604D7D3238DFDA4002B76A1 /* LaunchScreen.storyboard */,
 				5604D7D6238DFDA4002B76A1 /* Info.plist */,
@@ -941,7 +938,6 @@
 				5604D8E2238DFFCB002B76A1 /* BadgeViewController.xib in Resources */,
 				5604D8E4238DFFCB002B76A1 /* TestPushHiddenVC.xib in Resources */,
 				5604D8EB238DFFCB002B76A1 /* TestHiddenVC.xib in Resources */,
-				5604D7D0238DFDA3002B76A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,14 +1094,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5604D7CE238DFDA3002B76A1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5604D7CF238DFDA3002B76A1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5604D7D3238DFDA4002B76A1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1233,6 +1221,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = QH95759TSS;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TFY_TabBarController/TFY_PCH/TFY_PrefixHeader.pch;
@@ -1242,6 +1231,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lmeng.TFY-TabBarController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1254,6 +1244,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = QH95759TSS;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TFY_TabBarController/TFY_PCH/TFY_PrefixHeader.pch;
@@ -1263,6 +1254,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lmeng.TFY-TabBarController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
