@@ -15,6 +15,6 @@
 #import <TFY_Navigation.h>
 #import <TFY_ContactHeader.h>
 
-#import "TFY_TabBarHeader.h"
+#import "TFY_TabBarKit.h"
 
 #endif /* TFY_PrefixHeader_pch */

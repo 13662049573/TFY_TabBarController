@@ -96,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		11F7105447BA34DF9F2C68BF /* Pods-TFY_TabBarController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFY_TabBarController.release.xcconfig"; path = "Target Support Files/Pods-TFY_TabBarController/Pods-TFY_TabBarController.release.xcconfig"; sourceTree = "<group>"; };
+		36EE10F7250A076700D24B3C /* TFY_TabBarKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFY_TabBarKit.h; sourceTree = "<group>"; };
 		5604D7C2238DFDA3002B76A1 /* TFY_TabBarController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFY_TabBarController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5604D7CF238DFDA3002B76A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5604D7D1238DFDA4002B76A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		5604D7FC238DFEA1002B76A1 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		5604D7FD238DFEA1002B76A1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5604D7FE238DFEA1002B76A1 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		5604D801238DFEA1002B76A1 /* TFY_TabBarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFY_TabBarHeader.h; sourceTree = "<group>"; };
 		5604D80F238DFEA1002B76A1 /* TfySY_TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TfySY_TabBar.h; sourceTree = "<group>"; };
 		5604D810238DFEA1002B76A1 /* TfySY_TestTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TfySY_TestTabBar.m; sourceTree = "<group>"; };
 		5604D811238DFEA1002B76A1 /* TfySY_TabBarDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TfySY_TabBarDefine.h; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 		5604D800238DFEA1002B76A1 /* TFY_TabBarKit */ = {
 			isa = PBXGroup;
 			children = (
-				5604D801238DFEA1002B76A1 /* TFY_TabBarHeader.h */,
+				36EE10F7250A076700D24B3C /* TFY_TabBarKit.h */,
 				5604D80E238DFEA1002B76A1 /* TFY_SystemTabBar */,
 			);
 			path = TFY_TabBarKit;
@@ -1233,7 +1233,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RP2K7V42S5;
+				DEVELOPMENT_TEAM = QH95759TSS;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TFY_TabBarController/TFY_PCH/TFY_PrefixHeader.pch;
 				INFOPLIST_FILE = TFY_TabBarController/Info.plist;
@@ -1254,7 +1254,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RP2K7V42S5;
+				DEVELOPMENT_TEAM = QH95759TSS;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TFY_TabBarController/TFY_PCH/TFY_PrefixHeader.pch;
 				INFOPLIST_FILE = TFY_TabBarController/Info.plist;
