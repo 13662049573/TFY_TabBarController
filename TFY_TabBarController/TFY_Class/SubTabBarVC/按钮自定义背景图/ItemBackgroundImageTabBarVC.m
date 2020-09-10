@@ -46,7 +46,7 @@
         
         // 设置背景图
         /******************************************************************************/
-        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"item_%uu",idx + 1]];
+        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"item_%luu",idx + 1]];
         model.backgroundImageView.image = img;
         /******************************************************************************/
         

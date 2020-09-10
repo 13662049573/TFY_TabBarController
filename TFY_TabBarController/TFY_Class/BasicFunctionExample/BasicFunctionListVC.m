@@ -57,7 +57,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    NSMutableAttributedString *titleStr = [self markString:[NSString stringWithFormat:@"%dd.",indexPath.row + 1]
+    NSMutableAttributedString *titleStr = [self markString:[NSString stringWithFormat:@"%ld.",indexPath.row + 1]
                                                         color:[UIColor orangeColor]
                                                          font:[UIFont fontWithName:@"Marker Felt" size:16]];
        
