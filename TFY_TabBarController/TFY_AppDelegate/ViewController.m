@@ -58,7 +58,7 @@
     NSDictionary *rowDic = arr[indexPath.row];
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"axc"];
     
-    NSMutableAttributedString *titleStr = [self markString:[NSString stringWithFormat:@"%ld.",indexPath.row + 1]
+    NSMutableAttributedString *titleStr = [self markString:[NSString stringWithFormat:@"%d.",indexPath.row + 1]
                                                      color:[UIColor orangeColor]
                                                       font:[UIFont fontWithName:@"Marker Felt" size:16]];
     
