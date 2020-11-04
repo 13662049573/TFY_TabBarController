@@ -39,6 +39,14 @@
     self.segmentedControl = [[UISegmentedControl alloc] init];
     [self.segmentedControl addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
     self.segmentedControl.tintColor = config.segmentedTintColor;
+    self.segmentedControl.backgroundColor = config.segmentBackColor;
+    self.segmentedControl.apportionsSegmentWidthsByContent = config.segmentWidthsByContent;
+    self.segmentedControl.layer.masksToBounds = YES; //默认为no，不设置则下面一句无效
+    self.segmentedControl.layer.cornerRadius = config.segmentCornerRadius; //设置圆角大小，同UIView
+    self.segmentedControl.layer.borderWidth = config.segmentBorderWidth; //边框宽度，重新画边框，若不重新画，可能会出现圆角处无边框的情况
+    self.segmentedControl.layer.borderColor = config.segmentBorderColor.CGColor; //边框颜色
+    [self.segmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:config.segmentNormalColor,NSFontAttributeName:config.segmentNormalFont} forState:UIControlStateSelected];
+    [self.segmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:config.segmentSelectedColor,NSFontAttributeName:config.segmentSelectedFont} forState:UIControlStateNormal];
     [self addSubview:self.segmentedControl];
     
     self.separatorLine = [[UIView alloc] init];

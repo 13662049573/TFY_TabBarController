@@ -9,7 +9,7 @@
 #import "UIFont+TFY_Chain.h"
 #import "UIDevice+Orientation.h"
 
-#define FontScale ([[UIDevice currentDevice] isPad]? 1 : [UIFont screenWidth] / 375.0)
+#define FontScale ([[UIDevice currentDevice] tfy_isPad]? 1 : [UIFont screenWidth] / 375.0)
 
 @implementation UIFont (TFY_Chain)
 + (CGFloat)screenWidth{
@@ -40,7 +40,7 @@
     }
 }
 
-+ (UIFont*)fontType:(fontType)type size:(CGFloat)size{
++ (UIFont*)tfy_fontType:(fontType)type size:(CGFloat)size{
     static NSDictionary *fontNames = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -61,44 +61,44 @@
     return [self tfy_fontWithName:fontNames[@(type)] fontSize:size];
 }
 
-+ (UIFont*)fontScaleType:(fontType)type size:(CGFloat)size{
-    return [self fontType:type size:size * FontScale];
++ (UIFont*)tfy_fontScaleType:(fontType)type size:(CGFloat)size{
+    return [self tfy_fontType:type size:size * FontScale];
 }
 
-+ (UIFont*)PingFangSCRegularAndSize:(CGFloat)size{
-    return [self fontType:PingFangReguler size:size];
++ (UIFont*)tfy_PingFangSCRegularAndSize:(CGFloat)size{
+    return [self tfy_fontType:PingFangReguler size:size];
 }
 
-+ (UIFont*)PingFangSCLightAndSize:(CGFloat)size{
-    return [self fontType:PingFangLight size:size];
++ (UIFont*)tfy_PingFangSCLightAndSize:(CGFloat)size{
+    return [self tfy_fontType:PingFangLight size:size];
 }
 
-+ (UIFont*)PingFangSCMediumAndSize:(CGFloat)size{
-    return [self fontType:PingFangMedium size:size];
++ (UIFont*)tfy_PingFangSCMediumAndSize:(CGFloat)size{
+    return [self tfy_fontType:PingFangMedium size:size];
 }
 
-+ (UIFont *)PingFangSCScaleMediumAndSize:(CGFloat)size{
-    return [self fontScaleType:PingFangMedium size:size];
++ (UIFont *)tfy_PingFangSCScaleMediumAndSize:(CGFloat)size{
+    return [self tfy_fontScaleType:PingFangMedium size:size];
 }
 
 
-+ (UIFont *)PingFangSCSemiboldAndSize:(CGFloat)size{
-    return [self fontType:PingFangSemibold size:size];
++ (UIFont *)tfy_PingFangSCSemiboldAndSize:(CGFloat)size{
+    return [self tfy_fontType:PingFangSemibold size:size];
 }
 
-+ (UIFont *)DINAlternateBoldAndSize:(CGFloat)size{
-    return [self fontType:DinaAlternateBold size:size];
++ (UIFont *)tfy_DINAlternateBoldAndSize:(CGFloat)size{
+    return [self tfy_fontType:DinaAlternateBold size:size];
 }
 
-+ (UIFont *)STHeitiSCLightAndSize:(CGFloat)size{
-    return [self fontType:STHeitiSCLight size:size];
++ (UIFont *)tfy_STHeitiSCLightAndSize:(CGFloat)size{
+    return [self tfy_fontType:STHeitiSCLight size:size];
 }
 
-+ (UIFont *)STHeitiSCMedium:(CGFloat)size{
-    return [self fontType:STHeitiSCMedium size:size];
++ (UIFont *)tfy_STHeitiSCMedium:(CGFloat)size{
+    return [self tfy_fontType:STHeitiSCMedium size:size];
 }
 
-+ (UIFont *)LatoBoldAndSize:(CGFloat)size{
-    return [self fontType:SystemFont size:size];
++ (UIFont *)tfy_LatoBoldAndSize:(CGFloat)size{
+    return [self tfy_fontType:SystemFont size:size];
 }
 @end

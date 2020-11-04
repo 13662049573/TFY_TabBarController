@@ -16,10 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 +(nullable NSDictionary *)tfy_NSDictionpathForResource:(nullable NSString *)name ofType:(nullable NSString *)ext;
 /**
- *  模型转为字典
- */
-+(NSDictionary *)tfy_entityToDictionary:(id)entity;
-/**
  *  将json格式的字典转化成字典
  */
 +(NSDictionary *)tfy_dictionaryWithJsonString:(NSString *)jsonString;
