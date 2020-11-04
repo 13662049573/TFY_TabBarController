@@ -66,6 +66,14 @@
     self.textLabel.font = selected ? self.config.titleSelectedFont : self.config.titleNormalFont;
     TFY_PageTitleLabel *label = (TFY_PageTitleLabel *)self.textLabel;
     label.textVerticalAlignment = self.config.textVerticalAlignment;
+    
+    if (self.config.celltextAnimationType == TFY_PageTitleCellAnimationTypeZoom) {
+        if (selected) {
+            self.transform = CGAffineTransformMakeScale(1.25, 1.25);
+        }else {
+            self.transform = CGAffineTransformIdentity;
+        }
+    }
 }
 
 - (void)showAnimationOfProgress:(CGFloat)progress type:(TFY_PageTitleCellAnimationType)type {
@@ -73,6 +81,17 @@
         self.textLabel.textColor = [TFY_PageControllerUtil colorTransformFrom:self.config.titleSelectedColor to:self.config.titleNormalColor progress:progress];
     }else if (type == TFY_PageTitleCellAnimationTypeWillSelected){
         self.textLabel.textColor = [TFY_PageControllerUtil colorTransformFrom:self.config.titleNormalColor to:self.config.titleSelectedColor progress:progress];
+    }
+    
+    if (self.config.celltextAnimationType == TFY_PageTitleCellAnimationTypeZoom) {
+        //动画包括颜色渐变 缩放
+        if (type == TFY_PageTitleCellAnimationTypeSelected) {
+            CGFloat scale = (1 - progress)*(1.25 - 1);
+            self.transform = CGAffineTransformMakeScale(1 + scale, 1 + scale);
+        }else if (type == TFY_PageTitleCellAnimationTypeWillSelected){
+            CGFloat scale = progress*(1.25 - 1);
+            self.transform = CGAffineTransformMakeScale(1 + scale, 1 + scale);
+        }
     }
 }
 @end

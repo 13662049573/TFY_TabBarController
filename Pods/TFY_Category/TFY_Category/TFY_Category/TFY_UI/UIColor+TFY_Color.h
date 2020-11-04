@@ -37,12 +37,6 @@ typedef NS_ENUM(NSInteger, GradientChangeDirection) {
  *  默认alpha为1
  */
 + (UIColor *)tfy_colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
-
-/**
- *   从十六进制字符串获取颜色,默认alpha为1
- */
-+ (UIColor *)tfy_colorWithHexString:(NSString *)color;
-
 /**
  *  从十六进制字符串获取颜色，alpha需要自己传递 color:支持@“#123456”、 @“0X123456”、 @“123456”三种格式
  */
@@ -106,11 +100,6 @@ typedef NS_ENUM(NSInteger, GradientChangeDirection) {
  * 位置 0 是红色，1 绿，2 蓝色，3 阿尔法。
  */
 +(UIColor *)tfy_colorWithConfig:(NSArray *)config;
-
-/**
- *  颜色转换：iOS中（以#开头）十六进制的颜色转换为UIColor(RGB)
- */
-+ (UIColor *)tfy_ColorWithHexString:(NSString *)color;
 /**
  *  颜色转换：iOS中 十六进制的颜色转换为UIColor(RGB)
  */
@@ -126,7 +115,7 @@ typedef NS_ENUM(NSInteger, GradientChangeDirection) {
 /**
  *   ios 13 添加颜色的判断 提供了的新方法，可以在 block 中判断 traitCollection.userInterfaceStyle，根据系统模式设置返回的颜色。
  */
-+(UIColor *)generateDynamicColor:(UIColor *)lightColor darkColor:(UIColor *)darkColor;
++(UIColor *)tfy_generateDynamicColor:(UIColor *)lightColor darkColor:(UIColor *)darkColor;
 /**将颜色对象转换为canvas用字符串格式*/
 -(NSString *)tfy_canvasColorString;
 /***将颜色对象转换为Web用字符串格式*/
@@ -138,7 +127,7 @@ typedef NS_ENUM(NSInteger, GradientChangeDirection) {
 /**将两个颜色对象混合*/
 -(UIColor *)tfy_mix:(UIColor *)c;
 /**适合各种颜色值*/
-+(UIColor *)colorWithHexString:(NSString *)hexString;
++(UIColor *)tfy_colorWithHexString:(NSString *)hexString;
 /***颜色转字符串*/
-+(NSString*)stringWithColor:(UIColor *)color;
++(NSString*)tfy_stringWithColor:(UIColor *)color;
 @end

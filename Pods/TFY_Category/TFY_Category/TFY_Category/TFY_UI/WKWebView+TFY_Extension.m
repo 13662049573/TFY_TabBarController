@@ -131,12 +131,12 @@
     return [UIColor colorWithRed:(float)(red/ 255.0f) green:(float)(green/ 255.0f) blue:(float)(blue/ 255.0f) alpha: 1.0f];
 }
 
-- (void )screenSnapshot:(void(^)(UIImage *snapShotImage))finishBlock{
+- (void )tfy_screenSnapshot:(void(^)(UIImage *snapShotImage))finishBlock{
     if (!finishBlock)return;
     
     //获取父view
     UIView *superview;
-    UIViewController *currentViewController = [UIViewController currentViewController];
+    UIViewController *currentViewController = [UIViewController tfy_currentViewController];
     if (currentViewController){
         superview = currentViewController.view;
     }else{

@@ -129,15 +129,15 @@ static inline UIScrollView * _Nonnull tfy_scrollViewframe(CGRect rect){
 /**
  * 生成图片
  */
-- (void)screenSnapshot:(void(^)(UIImage *snapShotImage))finishBlock;
+- (void)tfy_screenSnapshot:(void(^)(UIImage *snapShotImage))finishBlock;
 /**
  * 生成图片
  */
-+(UIImage *_Nonnull)screenSnapshotWithSnapshotView:(UIView *_Nonnull)snapshotView;
++(UIImage *_Nonnull)tfy_screenSnapshotWithSnapshotView:(UIView *_Nonnull)snapshotView;
 /**
  * 生成图片
  */
-+(UIImage *_Nonnull)screenSnapshotWithSnapshotView:(UIView *_Nonnull)snapshotView snapshotSize:(CGSize)snapshotSize;
++(UIImage *_Nonnull)tfy_screenSnapshotWithSnapshotView:(UIView *_Nonnull)snapshotView snapshotSize:(CGSize)snapshotSize;
 @end
 
 NS_ASSUME_NONNULL_END

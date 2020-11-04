@@ -10,9 +10,50 @@
 #import <objc/runtime.h>
 
 @implementation UIViewController (TFY_PlayerRotation)
-/**
- * 默认所有都不支持转屏,如需个别页面支持除竖屏外的其他方向，请在viewController重新下边这三个方法
- */
+
++ (void)load {
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+
+        Class class = [self class];
+        SEL originalSelector = @selector(viewWillAppear:);
+        SEL swizzledSelector= @selector(tfy_viewWillAppear:);
+
+        Method originalMethod = class_getInstanceMethod(class,originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class,swizzledSelector);
+        method_exchangeImplementations(originalMethod,swizzledMethod);
+
+    });
+}
+
+- (void)tfy_viewWillAppear:(BOOL)animated {
+
+    [self tfy_viewWillAppear:animated];
+    UIScrollView *scrollView = nil;
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[UITableView class]] || [view isKindOfClass:[UICollectionView class]]) {
+            scrollView = (UIScrollView *)view;
+            break;
+        }
+    }
+    if (!self.automaticallyAdjustsScrollViewInsets) {
+        if (@available(iOS 11.0, *)) {
+            scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+    }
+    else {
+        if (@available(iOS 11.0, *)) {
+            scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+        }
+    }
+}
+
+- (void)tfy_setAutomaticallyAdjustsScrollViewInsets:(BOOL)automaticallyAdjustsScrollViewInsets {
+
+    [self tfy_setAutomaticallyAdjustsScrollViewInsets:automaticallyAdjustsScrollViewInsets];
+
+}
 
 // 是否支持自动转屏
 - (BOOL)shouldAutorotate {
@@ -37,7 +78,7 @@
     return YES; // your own visibility code
 }
 
-+ (UIViewController *)currentViewController {
++ (UIViewController *)tfy_currentViewController {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     UIViewController *vc = keyWindow.rootViewController;
     while (vc.presentedViewController) {

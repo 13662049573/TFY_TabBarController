@@ -1,30 +1,39 @@
 PODS:
   - ReactiveObjC (3.1.1)
-  - TFY_AutoLayout (2.6.0):
-    - TFY_AutoLayout/IOS_Layout (= 2.6.0)
-    - TFY_AutoLayout/MAC_Layout (= 2.6.0)
-    - TFY_AutoLayout/Util (= 2.6.0)
-  - TFY_AutoLayout/IOS_Layout (2.6.0):
+  - TFY_AutoLayout (2.6.2):
+    - TFY_AutoLayout/IOS_Layout (= 2.6.2)
+    - TFY_AutoLayout/MAC_Layout (= 2.6.2)
+    - TFY_AutoLayout/Util (= 2.6.2)
+  - TFY_AutoLayout/IOS_Layout (2.6.2):
     - TFY_AutoLayout/Util
-  - TFY_AutoLayout/MAC_Layout (2.6.0):
+  - TFY_AutoLayout/MAC_Layout (2.6.2):
     - TFY_AutoLayout/Util
-  - TFY_AutoLayout/Util (2.6.0)
-  - TFY_Category (3.3.8):
-    - TFY_Category/TFY_Foundation (= 3.3.8)
-    - TFY_Category/TFY_ITools (= 3.3.8)
-    - TFY_Category/TFY_UI (= 3.3.8)
-  - TFY_Category/TFY_Foundation (3.3.8)
-  - TFY_Category/TFY_ITools (3.3.8)
-  - TFY_Category/TFY_UI (3.3.8)
-  - TFY_ContactManager (2.0.2)
-  - TFY_Navigation (2.3.0):
-    - TFY_Navigation/TFY_NavControoler (= 2.3.0)
-    - TFY_Navigation/TFY_PageController (= 2.3.0)
-    - TFY_Navigation/TFY_PopController (= 2.3.0)
-  - TFY_Navigation/TFY_NavControoler (2.3.0):
-    - TFY_Navigation/TFY_PopController
-  - TFY_Navigation/TFY_PageController (2.3.0)
-  - TFY_Navigation/TFY_PopController (2.3.0)
+  - TFY_AutoLayout/Util (2.6.2)
+  - TFY_Category (3.6.2):
+    - TFY_Category/TFY_Foundation (= 3.6.2)
+    - TFY_Category/TFY_ITools (= 3.6.2)
+    - TFY_Category/TFY_UI (= 3.6.2)
+  - TFY_Category/TFY_Foundation (3.6.2)
+  - TFY_Category/TFY_ITools (3.6.2)
+  - TFY_Category/TFY_UI (3.6.2)
+  - TFY_ContactManager (2.0.6)
+  - TFY_Navigation (2.6.4):
+    - TFY_Navigation/TFY_NavControoler (= 2.6.4)
+    - TFY_Navigation/TFY_PageController (= 2.6.4)
+  - TFY_Navigation/TFY_NavControoler (2.6.4):
+    - TFY_Navigation/TFY_NavControoler/TFY_Category (= 2.6.4)
+    - TFY_Navigation/TFY_NavControoler/TFY_Configure (= 2.6.4)
+    - TFY_Navigation/TFY_NavControoler/TFY_NavBasVcKit (= 2.6.4)
+    - TFY_Navigation/TFY_NavControoler/TFY_NavigationKit (= 2.6.4)
+  - TFY_Navigation/TFY_NavControoler/TFY_Category (2.6.4):
+    - TFY_Navigation/TFY_NavControoler/TFY_Configure
+  - TFY_Navigation/TFY_NavControoler/TFY_Configure (2.6.4)
+  - TFY_Navigation/TFY_NavControoler/TFY_NavBasVcKit (2.6.4):
+    - TFY_Navigation/TFY_NavControoler/TFY_Category
+    - TFY_Navigation/TFY_NavControoler/TFY_Configure
+  - TFY_Navigation/TFY_NavControoler/TFY_NavigationKit (2.6.4):
+    - TFY_Navigation/TFY_NavControoler/TFY_Configure
+  - TFY_Navigation/TFY_PageController (2.6.4)
 
 DEPENDENCIES:
   - ReactiveObjC
@@ -43,11 +52,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  TFY_AutoLayout: ef69f4a2b3892931a80dc80421ecaa758e96a558
-  TFY_Category: 8c96fc8386b2f4fbde12d88e28f25bcef460d447
-  TFY_ContactManager: 8c261ca48a5fff038e9bb8805ac3eff03c04fe13
-  TFY_Navigation: d73536289deaf2ddc8181289618b9362881c197c
+  TFY_AutoLayout: 03085c3744020215142df50ee24e9629eb967779
+  TFY_Category: 6c1e9f519eb2ce1049789168986eba8ee751fe20
+  TFY_ContactManager: 315f8bcd6a3e5668c0e1599faba5e99e2b4ca1e3
+  TFY_Navigation: 9d9bf5a9ced9d7be01a8b99d63066b12731351cb
 
-PODFILE CHECKSUM: 37b67a9f2d7255ad27459c9b4cc17a481991cb3c
+PODFILE CHECKSUM: 261ac9a3bac7c28c42f7bc0de3183af858250495
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.10.0

@@ -24,31 +24,31 @@ typedef NS_ENUM(NSUInteger, TFY_AvatarImageType) {
 @interface TFY_UserAvatarOptional : NSObject
 
 ///要生成的图片的size,默认60*60
-@property (nonatomic, assign) CGSize avatarSize;
+@property (nonatomic, assign) CGSize tfy_avatarSize;
 
 ///要生成的图片的圆角半径,默认图片宽/2
-@property (nonatomic, assign) CGFloat avatarRadius;
+@property (nonatomic, assign) CGFloat tfy_avatarRadius;
 
 ///要生成的图片的背景色,默认17c295
-@property (nonatomic, strong) UIColor *avatarBackgroundColor;
+@property (nonatomic, strong) UIColor *tfy_avatarBackgroundColor;
 
 ///要生成的图片的哈希背景色数组,默认[@"17c295",@"b38979",@"f2725e",@"f7b55e",@"4da9eb",@"5f70a7",@"568aad"]
-@property (nonatomic, strong) NSArray <UIColor *>*hashBackgroundColorAry;
+@property (nonatomic, strong) NSArray <UIColor *>* tfy_hashBackgroundColorAry;
 
 ///要生成的图片的背景色是否采用哈希背景色数组,默认YES
-@property (nonatomic, assign) BOOL adoptHash;
+@property (nonatomic, assign) BOOL tfy_adoptHash;
 
 ///要生成的图片的文字颜色,默认白色
-@property (nonatomic, strong) UIColor *avatarTitleColor;
+@property (nonatomic, strong) UIColor *tfy_avatarTitleColor;
 
 ///要生成的图片的文字字号,默认系统15号字体
-@property (nonatomic, strong) UIFont *avatarTitleFont;
+@property (nonatomic, strong) UIFont *tfy_avatarTitleFont;
 
 ///是否需要过滤特殊符号,如中划线、下划线等,默认YES
-@property (nonatomic, assign) BOOL filterSpecial;
+@property (nonatomic, assign) BOOL tfy_filterSpecial;
 
 ///要生成的图片的文字显示配置,默认显示全部
-@property (nonatomic, assign) TFY_AvatarImageType avatarImageType;
+@property (nonatomic, assign) TFY_AvatarImageType tfy_avatarImageType;
 
 @end
 

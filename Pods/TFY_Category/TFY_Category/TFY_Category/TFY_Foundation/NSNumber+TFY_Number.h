@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 字符串转换为 NSNumber，转换失败返回nil
  */
-+ (nullable NSNumber *)numberWithString:(NSString *)string;
++ (nullable NSNumber *)tfy_numberWithString:(NSString *)string;
 @end
 
 NS_ASSUME_NONNULL_END

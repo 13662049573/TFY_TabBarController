@@ -18,7 +18,7 @@
 
 @interface NSAttributedString (TFY_Chain)
 /**lable点击颜色设置*/
-+(NSAttributedString *_Nonnull)getAttributeId:(id _Nonnull )sender string:(NSString *_Nonnull)string orginFont:(CGFloat)orginFont orginColor:(UIColor *_Nonnull)orginColor attributeFont:(CGFloat)attributeFont attributeColor:(UIColor *_Nonnull)attributeColor;
++(NSAttributedString *_Nonnull)tfy_getAttributeId:(id _Nonnull )sender string:(NSString *_Nonnull)string orginFont:(CGFloat)orginFont orginColor:(UIColor *_Nonnull)orginColor attributeFont:(CGFloat)attributeFont attributeColor:(UIColor *_Nonnull)attributeColor;
 
 @end
 
@@ -34,16 +34,27 @@ static inline UILabel * _Nonnull tfy_labelframe(CGRect rect){
 /**
  *  是否打开点击效果，默认是打开
  */
-@property (nonatomic, assign) BOOL enabledTapEffect;
+@property (nonatomic, assign) BOOL tfy_enabledTapEffect;
 
 /**
  *  点击高亮色 默认是[UIColor lightGrayColor] 需打开enabledTapEffect才有效
  */
-@property (nonatomic, strong) UIColor * _Nonnull tapHighlightedColor;
+@property (nonatomic, strong) UIColor * _Nonnull tfy_tapHighlightedColor;
 /**
  *  是否扩大点击范围，默认是打开
  */
-@property (nonatomic, assign) BOOL enlargeTapArea;
+@property (nonatomic, assign) BOOL tfy_enlargeTapArea;
+/**
+和UITextView相似，内边距属性
+控制字体与控件边界的间隙
+*/
+@property (nonatomic, assign) UIEdgeInsets tfy_contentInsets;
+/**行间距 必须在文本输入之前赋值*/
+@property (nonatomic , assign)CGFloat tfy_lineSpace;
+/**字体间距 必须在文本输入之前赋值*/
+@property (nonatomic , assign)CGFloat tfy_textSpace;
+/**首行缩进 必须在文本输入之前赋值*/
+@property (nonatomic , assign)CGFloat tfy_firstLineHeadIndent;
 /**
  *  给文本添加点击事件Block回调  strings  需要添加的字符串数组  tapClick 点击事件回调
  */

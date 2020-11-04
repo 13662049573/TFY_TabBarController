@@ -15,9 +15,9 @@
 
 @interface TFY_RichTextModel : NSObject
 
-@property (nonatomic, copy) NSString *str;
+@property (nonatomic, copy) NSString *tfy_str;
 
-@property (nonatomic) NSRange range;
+@property (nonatomic) NSRange tfy_range;
 
 @end
 
@@ -27,7 +27,8 @@
 
 @implementation NSAttributedString (TFY_Chain)
 
-+(NSAttributedString *)getAttributeId:(id)sender string:(NSString *)string orginFont:(CGFloat)orginFont orginColor:(UIColor *)orginColor attributeFont:(CGFloat)attributeFont attributeColor:(UIColor *)attributeColor
+
++(NSAttributedString *)tfy_getAttributeId:(id)sender string:(NSString *)string orginFont:(CGFloat)orginFont orginColor:(UIColor *)orginColor attributeFont:(CGFloat)attributeFont attributeColor:(UIColor *)attributeColor
 {
     __block  NSMutableAttributedString *totalStr = [[NSMutableAttributedString alloc] initWithString:string];
     [totalStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:orginFont] range:NSMakeRange(0, string.length)];
@@ -74,8 +75,63 @@
 
 @end
 
+/// 获取UIEdgeInsets在水平方向上的值
+CG_INLINE CGFloat
+UIEdgeInsetsGetHorizontalValue(UIEdgeInsets insets) {
+    return insets.left + insets.right;
+}
+
+/// 获取UIEdgeInsets在垂直方向上的值
+CG_INLINE CGFloat
+UIEdgeInsetsGetVerticalValue(UIEdgeInsets insets) {
+    return insets.top + insets.bottom;
+}
+
+CG_INLINE void
+ReplaceMethod(Class _class, SEL _originSelector, SEL _newSelector) {
+    Method oriMethod = class_getInstanceMethod(_class, _originSelector);
+    Method newMethod = class_getInstanceMethod(_class, _newSelector);
+    BOOL isAddedMethod = class_addMethod(_class, _originSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+    if (isAddedMethod) {
+        class_replaceMethod(_class, _newSelector, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));
+    } else {
+        method_exchangeImplementations(oriMethod, newMethod);
+    }
+}
+
 
 @implementation UILabel (TFY_Label)
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        ReplaceMethod([self class], @selector(drawTextInRect:), @selector(tfy_drawTextInRect:));
+        ReplaceMethod([self class], @selector(sizeThatFits:), @selector(tfy_sizeThatFits:));
+    });
+}
+
+- (void)tfy_drawTextInRect:(CGRect)rect {
+    UIEdgeInsets insets = self.tfy_contentInsets;
+    [self tfy_drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
+}
+
+- (CGSize)tfy_sizeThatFits:(CGSize)size {
+    UIEdgeInsets insets = self.tfy_contentInsets;
+    size = [self tfy_sizeThatFits:CGSizeMake(size.width - UIEdgeInsetsGetHorizontalValue(insets), size.height-UIEdgeInsetsGetVerticalValue(insets))];
+    size.width += UIEdgeInsetsGetHorizontalValue(insets);
+    size.height += UIEdgeInsetsGetVerticalValue(insets);
+    return size;
+}
+
+const void *kAssociatedTfy_contentInsets;
+- (void)setTfy_contentInsets:(UIEdgeInsets)tfy_contentInsets {
+    objc_setAssociatedObject(self, &kAssociatedTfy_contentInsets, [NSValue valueWithUIEdgeInsets:tfy_contentInsets] , OBJC_ASSOCIATION_RETAIN);
+}
+
+- (UIEdgeInsets)tfy_contentInsets {
+    return [objc_getAssociatedObject(self, &kAssociatedTfy_contentInsets) UIEdgeInsetsValue];
+}
+
 
 - (UILabel *(^)(NSString *))tfy_text{
     WSelf(weakSelf);
@@ -257,9 +313,6 @@
     };
 }
 
-
-
-
 -(UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha
 {
     //删除字符串中的空格
@@ -308,8 +361,7 @@
 
 #pragma mark - AssociatedObjects
 
-- (NSMutableArray *)attributeStrings
-{
+- (NSMutableArray *)attributeStrings {
     return objc_getAssociatedObject(self, _cmd);
 }
 
@@ -358,18 +410,18 @@
     objc_setAssociatedObject(self, @selector(delegate), delegate, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (BOOL)enabledTapEffect
+- (BOOL)tfy_enabledTapEffect
 {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-- (void)setEnabledTapEffect:(BOOL)enabledTapEffect
+- (void)setTfy_enabledTapEffect:(BOOL)tfy_enabledTapEffect
 {
-    objc_setAssociatedObject(self, @selector(enabledTapEffect), @(enabledTapEffect), OBJC_ASSOCIATION_ASSIGN);
-    self.isTapEffect = enabledTapEffect;
+    objc_setAssociatedObject(self, @selector(tfy_enabledTapEffect), @(tfy_enabledTapEffect), OBJC_ASSOCIATION_ASSIGN);
+    self.isTapEffect = tfy_enabledTapEffect;
 }
 
-- (BOOL)enlargeTapArea
+- (BOOL)tfy_enlargeTapArea
 {
     NSNumber * number = objc_getAssociatedObject(self, _cmd);
     if (!number) {
@@ -379,12 +431,12 @@
     return [number boolValue];
 }
 
-- (void)setEnlargeTapArea:(BOOL)enlargeTapArea
+- (void)setTfy_enlargeTapArea:(BOOL)tfy_enlargeTapArea
 {
-    objc_setAssociatedObject(self, @selector(enlargeTapArea), @(enlargeTapArea), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(tfy_enlargeTapArea), @(tfy_enlargeTapArea), OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (UIColor *)tapHighlightedColor
+- (UIColor *)tfy_tapHighlightedColor
 {
     UIColor * color = objc_getAssociatedObject(self, _cmd);
     if (!color) {
@@ -394,9 +446,9 @@
     return color;
 }
 
-- (void)setTapHighlightedColor:(UIColor *)tapHighlightedColor
+- (void)setTfy_tapHighlightedColor:(UIColor *)tfy_tapHighlightedColor
 {
-    objc_setAssociatedObject(self, @selector(tapHighlightedColor), tapHighlightedColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(tfy_tapHighlightedColor), tfy_tapHighlightedColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)isTapEffect
@@ -407,6 +459,39 @@
 - (void)setIsTapEffect:(BOOL)isTapEffect
 {
     objc_setAssociatedObject(self, @selector(isTapEffect), @(isTapEffect), OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (CGFloat)tfy_lineSpace {
+    NSNumber *number = objc_getAssociatedObject(self, @selector(tfy_lineSpace));
+    return number.floatValue;
+}
+
+- (void)setTfy_lineSpace:(CGFloat)tfy_lineSpace {
+     NSNumber *number = [NSNumber numberWithDouble:tfy_lineSpace];
+     objc_setAssociatedObject(self, @selector(tfy_lineSpace), number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+     [self editSettings];
+}
+
+- (CGFloat)tfy_textSpace {
+    NSNumber *number = objc_getAssociatedObject(self, @selector(tfy_textSpace));
+    return number.floatValue;
+}
+
+- (void)setTfy_textSpace:(CGFloat)tfy_textSpace {
+    NSNumber *number = [NSNumber numberWithDouble:tfy_textSpace];
+    objc_setAssociatedObject(self, @selector(tfy_textSpace), number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self editSettings];
+}
+
+- (CGFloat)tfy_firstLineHeadIndent {
+    NSNumber *number = objc_getAssociatedObject(self, @selector(tfy_firstLineHeadIndent));
+    return number.floatValue;
+}
+
+- (void)setTfy_firstLineHeadIndent:(CGFloat)tfy_firstLineHeadIndent {
+    NSNumber *number = [NSNumber numberWithDouble:tfy_firstLineHeadIndent];
+    objc_setAssociatedObject(self, @selector(tfy_firstLineHeadIndent), number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self editSettings];
 }
 
 #pragma mark - mainFunction
@@ -471,8 +556,8 @@
         return;
     }
     
-    if (objc_getAssociatedObject(self, @selector(enabledTapEffect))) {
-        self.isTapEffect = self.enabledTapEffect;
+    if (objc_getAssociatedObject(self, @selector(tfy_enabledTapEffect))) {
+        self.isTapEffect = self.tfy_enabledTapEffect;
     }
     
     UITouch *touch = [touches anyObject];
@@ -598,7 +683,7 @@
         
         rect.origin.y = lineOutSpace + [self tfy_getLineOrign:line];
         
-        if (self.enlargeTapArea) {
+        if (self.tfy_enlargeTapArea) {
             rect.origin.y -= 5;
             rect.size.height += 10;
         }
@@ -623,10 +708,10 @@
                 
                 TFY_RichTextModel *model = self.attributeStrings[j];
                 
-                NSRange link_range = model.range;
+                NSRange link_range = model.tfy_range;
                 if (NSLocationInRange(index, link_range)) {
                     if (resultBlock) {
-                        resultBlock (model.str , model.range , (NSInteger)j);
+                        resultBlock (model.tfy_str , model.tfy_range , (NSInteger)j);
                     }
                     CFRelease(frame);
                     CFRelease(framesetter);
@@ -700,7 +785,7 @@
         NSRange range = NSRangeFromString([[self.effectDic allKeys] firstObject]);
         
         if (status) {
-            [subAtt addAttribute:NSBackgroundColorAttributeName value:self.tapHighlightedColor range:NSMakeRange(0, subAtt.string.length)];
+            [subAtt addAttribute:NSBackgroundColorAttributeName value:self.tfy_tapHighlightedColor range:NSMakeRange(0, subAtt.string.length)];
             
             [attStr replaceCharactersInRange:range withAttributedString:subAtt];
         }else {
@@ -742,8 +827,8 @@
             totalStr = [totalStr stringByReplacingCharactersInRange:range withString:[weakSelf tfy_getStringWithRange:range]];
             
             TFY_RichTextModel *model = [TFY_RichTextModel new];
-            model.range = range;
-            model.str = obj;
+            model.tfy_range = range;
+            model.tfy_str = obj;
             [weakSelf.attributeStrings addObject:model];
             
         }
@@ -770,8 +855,8 @@
         NSString * string = [totalStr substringWithRange:range];
         
         TFY_RichTextModel *model = [TFY_RichTextModel new];
-        model.range = range;
-        model.str = string;
+        model.tfy_range = range;
+        model.tfy_str = string;
         [weakSelf.attributeStrings addObject:model];
     }];
 }
@@ -818,5 +903,30 @@
     }
 }
 
+- (void)editSettings {
+    CGFloat textspace = self.tfy_textSpace>0?self.tfy_textSpace:0;
+    CGFloat lineSpacing = self.tfy_lineSpace>0?self.tfy_lineSpace:0;
+    CGFloat firstLineHeadIndent = self.tfy_firstLineHeadIndent>0?self.tfy_firstLineHeadIndent:0;
+    
+    NSString *text_str = self.text;
+    
+    NSMutableAttributedString *attributes = [[NSMutableAttributedString alloc] initWithString:text_str];
+    //调整字间距(字符串)
+    [attributes addAttribute:(__bridge NSString *)kCTKernAttributeName value:@(textspace) range:NSMakeRange(0, [attributes length])];
+    
+    [attributes addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, text_str.length)];//字体调整
+
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    
+    paragraphStyle.lineSpacing = lineSpacing;  // 行间距
+    //首行文本缩进
+    paragraphStyle.firstLineHeadIndent = firstLineHeadIndent;//首行缩进
+    
+    [attributes addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, text_str.length)];
+     
+    if (textspace>0 || lineSpacing>0 || firstLineHeadIndent>0) {
+        self.attributedText = attributes;
+    }
+}
 
 @end

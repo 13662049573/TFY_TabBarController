@@ -14,42 +14,42 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 将属性列表数据转换为 NSArray 返回.
  */
-+ (nullable NSArray *)arrayWithPlistData:(NSData *)plist;
++ (nullable NSArray *)tfy_arrayWithPlistData:(NSData *)plist;
 
 /**
  * 将xml格式的属性列表字符串转换为 NSArray 返回.
  */
-+ (nullable NSArray *)arrayWithPlistString:(NSString *)plist;
++ (nullable NSArray *)tfy_arrayWithPlistString:(NSString *)plist;
 
 /**
  * 将数组转换为二进制的属性列表数据.
  */
-- (nullable NSData *)plistData;
+- (nullable NSData *)tfy_plistData;
 
 /**
  * 将数组转换为xml格式的属性列表字符串。
  */
-- (nullable NSString *)plistString;
+- (nullable NSString *)tfy_plistString;
 
 /**
  * 随机返回数组里的一个元素。
  */
-- (nullable id)randomObject;
+- (nullable id)tfy_randomObject;
 
 /**
  * 返回 index 位置的元素，越界时候返回 nil。
  */
-- (nullable id)objectOrNilAtIndex:(NSUInteger)index;
+- (nullable id)tfy_objectOrNilAtIndex:(NSUInteger)index;
 
 /**
  * 将属性列表数据转换为 NSArray 返回.
  */
-- (nullable NSString *)jsonStringEncoded;
+- (nullable NSString *)tfy_jsonStringEncoded;
 
 /**
  * 数组转为格式化后的 json 字符串，错误返回 nil，这样可读性高，不格式化则输出的 json 字符串就是一整行。
  */
-- (nullable NSString *)jsonPrettyStringEncoded;
+- (nullable NSString *)tfy_jsonPrettyStringEncoded;
 
 @end
 

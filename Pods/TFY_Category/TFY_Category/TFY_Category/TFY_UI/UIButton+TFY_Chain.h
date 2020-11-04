@@ -94,12 +94,12 @@ typedef void(^ButtonLimitTimesTapBlock)(NSUInteger time, BOOL *stop, UIButton *b
 /**
  * 点击次数
  */
-@property (nonatomic, copy, readonly) UIButton * (^ buttonTapTime) (ButtonLimitTimesTapBlock block);
+@property (nonatomic, copy, readonly) UIButton * (^tfy_buttonTapTime) (ButtonLimitTimesTapBlock block);
 
 /**
  * 时间间隔
  */
-@property (nonatomic, copy, readonly) UIButton* (^ tapSpaceTime) (NSTimeInterval);
+@property (nonatomic, copy, readonly) UIButton* (^tfy_tapSpaceTime) (NSTimeInterval);
 /**
  *  文本的字体是否开始换行 0 自动换行
  */
@@ -143,7 +143,7 @@ typedef void(^ButtonLimitTimesTapBlock)(NSUInteger time, BOOL *stop, UIButton *b
 /**
  * 取消之前de
  */
-- (void)cancelRecordTime;
+- (void)tfy_cancelRecordTime;
 /**
  *  button的大小要大于 图片大小+文字大小+spacing   spacing 图片和文字的间隔
  */
@@ -151,19 +151,19 @@ typedef void(^ButtonLimitTimesTapBlock)(NSUInteger time, BOOL *stop, UIButton *b
 /**
  *  🐶计时时间    👇
  */
-@property(nonatomic,assign,readwrite)NSInteger time;
+@property(nonatomic,assign,readwrite)NSInteger tfy_time;
 /**
  *  🐶format   👇
  */
-@property(nonatomic,copy)NSString *  format;
+@property(nonatomic,copy)NSString *tfy_format;
 /**
  * 开启计时器
  */
-- (void)startTimer;
+- (void)tfy_startTimer;
 /**
  * 干掉计时器
  */
-- (void)endTimer;
+- (void)tfy_endTimer;
 /**
  * 倒计时完成后的回调
  */
@@ -171,39 +171,39 @@ typedef void(^ButtonLimitTimesTapBlock)(NSUInteger time, BOOL *stop, UIButton *b
 /**
  *  动画启动
  */
-- (void)show;
+- (void)tfy_show;
 /**
  *  动画结束
  */
-- (void)hide;
+- (void)tfy_hide;
 
 /**
  *  绑定button
  **/
--(void)BindingBtnactionBlock:(ActionBlock _Nonnull)actionBlock;
+-(void)tfy_BindingBtnactionBlock:(ActionBlock _Nonnull)actionBlock;
 /**
  *  加载完毕停止旋转
  *  title:停止后button的文字
  *  textColor :字体色 如果颜色不变就为nil
  *  backgroundColor :背景色 如果颜色不变就为nil
  **/
--(void)stopLoading:(NSString*_Nullable)title textColor:(UIColor*_Nullable)textColor backgroundColor:(UIColor*_Nullable)backColor;
+-(void)tfy_stopLoading:(NSString*_Nullable)title textColor:(UIColor*_Nullable)textColor backgroundColor:(UIColor*_Nullable)backColor;
 /**
  *  设置加载圆圈的宽度 默认是5
  **/
-@property(nonatomic,assign)NSInteger lineWidths;
+@property(nonatomic,assign)NSInteger tfy_lineWidths;
 /**
  *  设置加载圆圈距离上下边距的宽度 默认是5
  **/
-@property(nonatomic,assign)NSInteger topHeight;
+@property(nonatomic,assign)NSInteger tfy_topHeight;
 /**
  *  设置开始加载时候的圆圈颜色渐变值 1
  **/
-@property(nonatomic,strong)UIColor * _Nullable startColorOne;
+@property(nonatomic,strong)UIColor * _Nullable tfy_startColorOne;
 /**
  *  设置开始加载时候的圆圈颜色渐变值 2
  **/
-@property(nonatomic,strong)UIColor * _Nullable startColorTwo;
+@property(nonatomic,strong)UIColor * _Nullable tfy_startColorTwo;
 @end
 
 NS_ASSUME_NONNULL_END

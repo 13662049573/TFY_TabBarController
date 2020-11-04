@@ -54,6 +54,18 @@ NSString const *BlockKey = @"BlockKey";
 
 @end
 
+CG_INLINE void
+ReplaceMethod(Class _class, SEL _originSelector, SEL _newSelector) {
+    Method oriMethod = class_getInstanceMethod(_class, _originSelector);
+    Method newMethod = class_getInstanceMethod(_class, _newSelector);
+    BOOL isAddedMethod = class_addMethod(_class, _originSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
+    if (isAddedMethod) {
+        class_replaceMethod(_class, _newSelector, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));
+    } else {
+        method_exchangeImplementations(oriMethod, newMethod);
+    }
+}
+
 @interface UIView (BorderDirection)<BorderDirection>
 @end
 
@@ -63,29 +75,9 @@ NSString const *BlockKey = @"BlockKey";
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
         // 变化方法实现
-        [self tfy_swizzleMethod:[self class] orgSel:@selector(layoutSubviews) swizzSel:@selector(tfy_layoutSubviews)];
+        ReplaceMethod([self class], @selector(layoutSubviews), @selector(tfy_layoutSubviews));
     });
-}
-+ (void)tfy_swizzleMethod:(Class)class orgSel:(SEL)originalSelector swizzSel:(SEL)swizzledSelector {
-    
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
-    
-    IMP swizzledImp = method_getImplementation(swizzledMethod);
-    char *swizzledTypes = (char *)method_getTypeEncoding(swizzledMethod);
-    
-    IMP originalImp = method_getImplementation(originalMethod);
-    char *originalTypes = (char *)method_getTypeEncoding(originalMethod);
-    
-    BOOL success = class_addMethod(class, originalSelector, swizzledImp, swizzledTypes);
-    if (success) {
-        class_replaceMethod(class, swizzledSelector, originalImp, originalTypes);
-    }else {
-        // 添加失败，表明已经有这个方法，直接交换
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
 }
 
 - (UIView *(^)(UIColor *))tfy_backgroundColor {
@@ -359,7 +351,7 @@ NSString const *BlockKey = @"BlockKey";
 }
 
 
-- (UIViewController *_Nonnull)viewController
+- (UIViewController *_Nonnull)tfy_viewController
 {
     UIResponder *next = self.nextResponder;
     do {
@@ -372,20 +364,7 @@ NSString const *BlockKey = @"BlockKey";
     
 }
 
-- (UINavigationController *_Nonnull)navigationController
-{
-    UIResponder *next = self.nextResponder;
-    do {
-        if ([next isKindOfClass:[UINavigationController class]]) {
-            return (UINavigationController *)next;
-            
-        }
-        next = next.nextResponder;
-    } while (next);
-    return nil;
-    
-}
-- (UITabBarController *_Nonnull)tabBarController
+- (UITabBarController *_Nonnull)tfy_tabBarController
 {
     UIResponder *next = self.nextResponder;
     do {
@@ -407,7 +386,7 @@ NSString const *BlockKey = @"BlockKey";
 /**
  *  添加点击事件
  */
-- (void)addActionWithblock:(TouchCallBackBlock)block
+- (void)tfy_addActionWithblock:(TouchCallBackBlock)block
 {
     self.touchCallBackBlock = block;
 
@@ -446,7 +425,7 @@ NSString const *BlockKey = @"BlockKey";
     return objc_getAssociatedObject(self, &BlockKey);
 }
 
-- (void)addTarget:(id)target action:(SEL)action
+- (void)tfy_addTarget:(id)target action:(SEL)action
 {
     self.userInteractionEnabled = YES;
     
@@ -583,7 +562,7 @@ NSString const *BlockKey = @"BlockKey";
 /**
  * 便捷添加圆角  clipType 圆角类型  radius 圆角角度
  */
-- (void)clipWithType:(CornerClipType)clipType radius:(CGFloat)radius
+- (void)tfy_clipWithType:(CornerClipType)clipType radius:(CGFloat)radius
 {
     self.tfy_clipType = clipType;
     self.tfy_clipRadius = radius;
@@ -591,7 +570,7 @@ NSString const *BlockKey = @"BlockKey";
 /**
  * 便捷给添加border color 边框的颜色 borderWidth 边框的宽度
  */
-- (void)addBorderWithColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
+- (void)tfy_addBorderWithColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
 {
     self.tfy_borderColor = color;
     self.tfy_borderWidth = borderWidth;
@@ -705,20 +684,20 @@ NSString const *BlockKey = @"BlockKey";
 }
 #pragma -------------------------------------加边框方法---------------------------------
 
-- (void)addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *)borderColor direction:(BorderDirection)directions{
-    [self addBorderWithInset:inset Color:borderColor BorderWidth:self.layer.borderWidth direction:directions];
+- (void)tfy_addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *)borderColor direction:(BorderDirection)directions{
+    [self tfy_addBorderWithInset:inset Color:borderColor BorderWidth:self.layer.borderWidth direction:directions];
 }
 
 
-- (void)addBorderWithInset:(UIEdgeInsets)inset BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions{
-    [self addBorderWithInset:inset Color:[UIColor colorWithCGColor:self.layer.borderColor] BorderWidth:borderWidth direction:directions];
+- (void)tfy_addBorderWithInset:(UIEdgeInsets)inset BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions{
+    [self tfy_addBorderWithInset:inset Color:[UIColor colorWithCGColor:self.layer.borderColor] BorderWidth:borderWidth direction:directions];
 }
 
-- (void)addBorderWithColor:(UIColor *)borderColor BodrerWidth:(CGFloat)borderWidth direction:(BorderDirection)directions{
-    [self addBorderWithInset:UIEdgeInsetsZero Color:borderColor BorderWidth:borderWidth direction:directions];
+- (void)tfy_addBorderWithColor:(UIColor *)borderColor BodrerWidth:(CGFloat)borderWidth direction:(BorderDirection)directions{
+    [self tfy_addBorderWithInset:UIEdgeInsetsZero Color:borderColor BorderWidth:borderWidth direction:directions];
 }
 
-- (void)addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *)borderColor BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions
+- (void)tfy_addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *)borderColor BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions
 {
     if (directions & BorderDirectionLeft) {
         
@@ -759,7 +738,7 @@ NSString const *BlockKey = @"BlockKey";
     [self setNeedsLayout];
 }
 
-- (void)removeBorders:(BorderDirection)directions{
+- (void)tfy_removeBorders:(BorderDirection)directions{
     if (directions & BorderDirectionLeft) {
         [self removeBorderLayer:self.leftLayer];
     }
@@ -774,7 +753,7 @@ NSString const *BlockKey = @"BlockKey";
     }
 }
 
-- (void)removeAllBorders{
+- (void)tfy_removeAllBorders{
     [self removeBorderLayer:self.leftLayer];
     [self removeBorderLayer:self.topLayer];
     [self removeBorderLayer:self.rightLayer];
@@ -844,43 +823,43 @@ NSString const *BlockKey = @"BlockKey";
 
 #pragma -------------------------------------手势点击添加方法---------------------------------
 
-- (id)addGestureTarget:(id)target action:(SEL)action gestureClass:(Class)class {
+- (id)tfy_addGestureTarget:(id)target action:(SEL)action gestureClass:(Class)class {
     UIGestureRecognizer *gesture = [[class alloc] initWithTarget:target action:action];
     [self addGestureRecognizer:gesture];
     return gesture;
 }
 
-- (UITapGestureRecognizer *)addGestureTapTarget:(id)target action:(SEL)action {
-    return [self addGestureTarget:target action:action gestureClass:[UITapGestureRecognizer class]];
+- (UITapGestureRecognizer *)tfy_addGestureTapTarget:(id)target action:(SEL)action {
+    return [self tfy_addGestureTarget:target action:action gestureClass:[UITapGestureRecognizer class]];
 }
 
-- (UIPanGestureRecognizer *)addGesturePanTarget:(id)target action:(SEL)action {
-    return [self addGestureTarget:target action:action gestureClass:[UIPanGestureRecognizer class]];
+- (UIPanGestureRecognizer *)tfy_addGesturePanTarget:(id)target action:(SEL)action {
+    return [self tfy_addGestureTarget:target action:action gestureClass:[UIPanGestureRecognizer class]];
 }
 
-- (UIPinchGestureRecognizer *)addGesturePinchTarget:(id)target action:(SEL)action {
-    return [self addGestureTarget:target action:action gestureClass:[UIPinchGestureRecognizer class]];
+- (UIPinchGestureRecognizer *)tfy_addGesturePinchTarget:(id)target action:(SEL)action {
+    return [self tfy_addGestureTarget:target action:action gestureClass:[UIPinchGestureRecognizer class]];
 }
 
-- (UILongPressGestureRecognizer *)addGestureLongPressTarget:(id)target action:(SEL)action {
-    return [self addGestureTarget:target action:action gestureClass:[UILongPressGestureRecognizer class]];
+- (UILongPressGestureRecognizer *)tfy_addGestureLongPressTarget:(id)target action:(SEL)action {
+    return [self tfy_addGestureTarget:target action:action gestureClass:[UILongPressGestureRecognizer class]];
 }
 
-- (UISwipeGestureRecognizer *)addGestureSwipeTarget:(id)target action:(SEL)action {
-    return [self addGestureTarget:target action:action gestureClass:[UISwipeGestureRecognizer class]];
+- (UISwipeGestureRecognizer *)tfy_addGestureSwipeTarget:(id)target action:(SEL)action {
+    return [self tfy_addGestureTarget:target action:action gestureClass:[UISwipeGestureRecognizer class]];
 }
 
-- (UIRotationGestureRecognizer *)addGestureRotationTarget:(id)target action:(SEL)action {
-    return [self addGestureTarget:target action:action gestureClass:[UIRotationGestureRecognizer class]];
+- (UIRotationGestureRecognizer *)tfy_addGestureRotationTarget:(id)target action:(SEL)action {
+    return [self tfy_addGestureTarget:target action:action gestureClass:[UIRotationGestureRecognizer class]];
 }
 
-- (UIScreenEdgePanGestureRecognizer *)addGestureScreenEdgePanTarget:(id)target action:(SEL)action {
-    return [self addGestureTarget:target action:action gestureClass:[UIScreenEdgePanGestureRecognizer class]];
+- (UIScreenEdgePanGestureRecognizer *)tfy_addGestureScreenEdgePanTarget:(id)target action:(SEL)action {
+    return [self tfy_addGestureTarget:target action:action gestureClass:[UIScreenEdgePanGestureRecognizer class]];
 }
 
 #pragma mark - Category Block Events
 
-- (id)addGestureEventHandle:(void (^)(id, id))event gestureClass:(Class)class {
+- (id)tfy_addGestureEventHandle:(void (^)(id, id))event gestureClass:(Class)class {
     UIGestureRecognizer *gesture = [[class alloc] initWithTarget:self action:@selector(handleGestureRecognizer:)];
     [self addGestureRecognizer:gesture];
     if (event) {
@@ -889,32 +868,32 @@ NSString const *BlockKey = @"BlockKey";
     return gesture;
 }
 
-- (UITapGestureRecognizer *)addGestureTapEventHandle:(void (^)(id sender, UITapGestureRecognizer *recognizer))event {
-    return [self addGestureEventHandle:event gestureClass:[UITapGestureRecognizer class]];
+- (UITapGestureRecognizer *)tfy_addGestureTapEventHandle:(void (^)(id sender, UITapGestureRecognizer *recognizer))event {
+    return [self tfy_addGestureEventHandle:event gestureClass:[UITapGestureRecognizer class]];
 }
 
-- (UIPanGestureRecognizer *)addGesturePanEventHandle:(void (^)(id sender, UIPanGestureRecognizer *recognizer))event {
-    return [self addGestureEventHandle:event gestureClass:[UIPanGestureRecognizer class]];
+- (UIPanGestureRecognizer *)tfy_addGesturePanEventHandle:(void (^)(id sender, UIPanGestureRecognizer *recognizer))event {
+    return [self tfy_addGestureEventHandle:event gestureClass:[UIPanGestureRecognizer class]];
 }
 
-- (UIPinchGestureRecognizer *)addGesturePinchEventHandle:(void (^)(id sender, UIPinchGestureRecognizer *recognizer))event {
-    return [self addGestureEventHandle:event gestureClass:[UIPinchGestureRecognizer class]];
+- (UIPinchGestureRecognizer *)tfy_addGesturePinchEventHandle:(void (^)(id sender, UIPinchGestureRecognizer *recognizer))event {
+    return [self tfy_addGestureEventHandle:event gestureClass:[UIPinchGestureRecognizer class]];
 }
 
-- (UILongPressGestureRecognizer *)addGestureLongPressEventHandle:(void (^)(id sender, UILongPressGestureRecognizer *recognizer))event {
-    return [self addGestureEventHandle:event gestureClass:[UILongPressGestureRecognizer class]];
+- (UILongPressGestureRecognizer *)tfy_addGestureLongPressEventHandle:(void (^)(id sender, UILongPressGestureRecognizer *recognizer))event {
+    return [self tfy_addGestureEventHandle:event gestureClass:[UILongPressGestureRecognizer class]];
 }
 
-- (UISwipeGestureRecognizer *)addGestureSwipeEventHandle:(void (^)(id sender, UISwipeGestureRecognizer *recognizer))event {
-    return [self addGestureEventHandle:event gestureClass:[UISwipeGestureRecognizer class]];
+- (UISwipeGestureRecognizer *)tfy_addGestureSwipeEventHandle:(void (^)(id sender, UISwipeGestureRecognizer *recognizer))event {
+    return [self tfy_addGestureEventHandle:event gestureClass:[UISwipeGestureRecognizer class]];
 }
 
-- (UIRotationGestureRecognizer *)addGestureRotationEventHandle:(void (^)(id sender, UIRotationGestureRecognizer *recognizer))event {
-    return [self addGestureEventHandle:event gestureClass:[UIRotationGestureRecognizer class]];
+- (UIRotationGestureRecognizer *)tfy_addGestureRotationEventHandle:(void (^)(id sender, UIRotationGestureRecognizer *recognizer))event {
+    return [self tfy_addGestureEventHandle:event gestureClass:[UIRotationGestureRecognizer class]];
 }
 
-- (UIScreenEdgePanGestureRecognizer *)addGestureScreenEdgePanEventHandle:(void (^)(id sender, UIScreenEdgePanGestureRecognizer *recognizer))event {
-    return [self addGestureEventHandle:event gestureClass:[UIScreenEdgePanGestureRecognizer class]];
+- (UIScreenEdgePanGestureRecognizer *)tfy_addGestureScreenEdgePanEventHandle:(void (^)(id sender, UIScreenEdgePanGestureRecognizer *recognizer))event {
+    return [self tfy_addGestureEventHandle:event gestureClass:[UIScreenEdgePanGestureRecognizer class]];
 }
 
 #pragma mark -

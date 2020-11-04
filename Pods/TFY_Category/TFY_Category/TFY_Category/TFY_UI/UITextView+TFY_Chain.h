@@ -118,26 +118,13 @@ static inline UITextView * _Nonnull tfy_textViewframe(CGRect rect){
  * 添加指定的View
  */
 @property(nonatomic, copy, readonly)UITextView *_Nonnull(^_Nonnull tfy_addToSuperView)(UIView *_Nonnull);
-/**
- *   placeholdLabel
- */
-@property(nonatomic,readonly)  UILabel * _Nonnull placeholdLabel;
-/**
- * placeholder
- */
-@property(nonatomic,copy) NSString * _Nonnull placeholder;
-/**
- * placeholder颜色
- */
-@property(nonatomic,copy) UIColor * _Nonnull placeholderColor;
-/**
- * 富文本
- */
-@property(nonatomic,strong) NSAttributedString *_Nonnull attributePlaceholder;
-/**
- * 位置
- */
-@property(nonatomic,assign) CGPoint location;
+
+/**限制文字长度 默认 0 不显示*/
+@property (nonatomic , assign)NSInteger tfy_limitNum;
+/**占位文字*/
+@property (nonatomic , copy) NSString * _Nonnull tfy_placeholder;
+/**默认文字 这里可以按照需求更改颜色，字体，添加 富文本*/
+@property (nonatomic , strong , readonly)UILabel *tfy_placeholderLabel;
 
 @end
 

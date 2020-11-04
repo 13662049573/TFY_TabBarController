@@ -14,10 +14,10 @@
     
     if(self == [super init]) {
         
-        _avatarSize = CGSizeMake(60, 60);
-        _avatarRadius = _avatarSize.width/2;
-        _avatarBackgroundColor = [self tfy_colorWithHexString:@"17c295" alpha:1.0f];
-        _hashBackgroundColorAry = @[
+        _tfy_avatarSize = CGSizeMake(60, 60);
+        _tfy_avatarRadius = _tfy_avatarSize.width/2;
+        _tfy_avatarBackgroundColor = [self tfy_colorWithHexString:@"17c295" alpha:1.0f];
+        _tfy_hashBackgroundColorAry = @[
                                     [self tfy_colorWithHexString:@"17c295" alpha:1.0f],
                                     [self tfy_colorWithHexString:@"b38979" alpha:1.0f],
                                     [self tfy_colorWithHexString:@"f2725e" alpha:1.0f],
@@ -25,11 +25,11 @@
                                     [self tfy_colorWithHexString:@"4da9eb" alpha:1.0f],
                                     [self tfy_colorWithHexString:@"5f70a7" alpha:1.0f],
                                     [self tfy_colorWithHexString:@"568aad" alpha:1.0f]];
-        _adoptHash = YES;
-        _avatarTitleColor = [UIColor whiteColor];
-        _avatarTitleFont = [UIFont systemFontOfSize:15];
-        _filterSpecial = YES;
-        _avatarImageType = TFY_AvatarImageTypeShowAll;
+        _tfy_adoptHash = YES;
+        _tfy_avatarTitleColor = [UIColor whiteColor];
+        _tfy_avatarTitleFont = [UIFont systemFontOfSize:15];
+        _tfy_filterSpecial = YES;
+        _tfy_avatarImageType = TFY_AvatarImageTypeShowAll;
     }
     return self;
 }
@@ -64,16 +64,16 @@
     character = [self tfy_characterInterception:character optional:optional];
     
     UIImage *image = nil;
-    if(optional.adoptHash == YES) {
+    if(optional.tfy_adoptHash == YES) {
         
-        image = [UIImage tfy_imageWithColor:optional.hashBackgroundColorAry[ABS(character.hash % optional.hashBackgroundColorAry.count)] size:optional.avatarSize cornerRadius:optional.avatarRadius];
+        image = [UIImage tfy_imageWithColor:optional.tfy_hashBackgroundColorAry[ABS(character.hash % optional.tfy_hashBackgroundColorAry.count)] size:optional.tfy_avatarSize cornerRadius:optional.tfy_avatarRadius];
         
     }else {
         
-        image = [UIImage tfy_imageWithColor:optional.avatarBackgroundColor size:optional.avatarSize cornerRadius:optional.avatarRadius];
+        image = [UIImage tfy_imageWithColor:optional.tfy_avatarBackgroundColor size:optional.tfy_avatarSize cornerRadius:optional.tfy_avatarRadius];
     }
     
-    UIGraphicsBeginImageContextWithOptions (optional.avatarSize, NO , 0.0 );
+    UIGraphicsBeginImageContextWithOptions (optional.tfy_avatarSize, NO , 0.0 );
     
     [image drawAtPoint: CGPointMake(0 , 0)];
     
@@ -83,8 +83,8 @@
     CGContextDrawPath (context, kCGPathStroke);
     
     // 画名字
-    CGSize nameSize = [character sizeWithAttributes:@{NSFontAttributeName : optional.avatarTitleFont}];
-    [character drawAtPoint :CGPointMake ((optional.avatarSize.width  - nameSize.width) / 2 , (optional.avatarSize.height  - nameSize.height) / 2) withAttributes : @{NSFontAttributeName :optional.avatarTitleFont, NSForegroundColorAttributeName :optional.avatarTitleColor}];
+    CGSize nameSize = [character sizeWithAttributes:@{NSFontAttributeName : optional.tfy_avatarTitleFont}];
+    [character drawAtPoint :CGPointMake ((optional.tfy_avatarSize.width  - nameSize.width) / 2 , (optional.tfy_avatarSize.height  - nameSize.height) / 2) withAttributes : @{NSFontAttributeName :optional.tfy_avatarTitleFont, NSForegroundColorAttributeName :optional.tfy_avatarTitleColor}];
     
     // 返回绘制的新图形
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext ();
@@ -100,7 +100,7 @@
     NSString *showName = @"";
     NSString *tempName = character;
     
-    if(optional.filterSpecial == YES) {
+    if(optional.tfy_filterSpecial == YES) {
         
         ///筛除部分特殊符号
         NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"[ _`~!@#$%^&*()+-=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t"];
@@ -109,7 +109,7 @@
     
     if(tempName.length > 0) {
         
-        switch (optional.avatarImageType) {
+        switch (optional.tfy_avatarImageType) {
                 
             case TFY_AvatarImageTypeFirstCharacter:
                 showName = [tempName substringToIndex:1];

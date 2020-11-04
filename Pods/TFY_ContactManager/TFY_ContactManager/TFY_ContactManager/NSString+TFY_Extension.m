@@ -11,7 +11,11 @@
 @implementation NSString (TFY_Extension)
 + (NSString *)tfy_filterSpecialString:(NSString *)string
 {
-    if (string == nil) {return @"";}
+    if (string == nil)
+    {
+        return @"";
+    }
+    
     string = [string stringByReplacingOccurrencesOfString:@"+86" withString:@""];
     string = [string stringByReplacingOccurrencesOfString:@"-" withString:@""];
     string = [string stringByReplacingOccurrencesOfString:@"(" withString:@""];
@@ -23,7 +27,10 @@
 
 + (NSString *)tfy_pinyinForString:(NSString *)string
 {
-    if (string.length == 0){return @"";}
+    if (string.length == 0)
+    {
+        return nil;
+    }
     
     NSMutableString *mutableString = [NSMutableString stringWithString:string];
     CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, false);

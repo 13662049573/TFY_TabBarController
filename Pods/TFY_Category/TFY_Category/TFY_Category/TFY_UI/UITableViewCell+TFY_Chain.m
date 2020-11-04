@@ -10,30 +10,30 @@
 
 @implementation UITableViewCell (TFY_Chain)
 
-+ (instancetype)cellHeaderFromXib
++ (instancetype)tfy_cellHeaderFromXib
 {
     NSString *className = NSStringFromClass(self);
     return [[[NSBundle mainBundle] loadNibNamed:className owner:nil options:nil] lastObject];
 }
-+ (instancetype)cellFromXibWithTableView:(UITableView *)tableView
++ (instancetype)tfy_cellFromXibWithTableView:(UITableView *)tableView
 {
     NSString *className = NSStringFromClass(self);
-    return [self cellFromXibTableView:tableView xibName:className identifer:className];
+    return [self tfy_cellFromXibTableView:tableView xibName:className identifer:className];
 }
 
-+ (instancetype)cellFromXibWithTableView:(UITableView *)tableView identifer:(NSString *)identifier
++ (instancetype)tfy_cellFromXibWithTableView:(UITableView *)tableView identifer:(NSString *)identifier
 {
     NSString *className = NSStringFromClass(self);
-    return [self cellFromXibTableView:tableView xibName:className identifer:identifier];
+    return [self tfy_cellFromXibTableView:tableView xibName:className identifer:identifier];
 }
 
-+ (instancetype)cellFromXibTableView:(UITableView *)tableView xibName:(NSString *)xibName identifer:(NSString *)identifier
++ (instancetype)tfy_cellFromXibTableView:(UITableView *)tableView xibName:(NSString *)xibName identifer:(NSString *)identifier
 {
     id cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if(cell == nil){
         NSString *xibPath =  [[NSBundle mainBundle] pathForResource:xibName ofType:@"nib"];
         if(xibPath == nil){
-            cell = [self cellFromCodeWithTableView:tableView identifier:identifier];
+            cell = [self tfy_cellFromCodeWithTableView:tableView identifier:identifier];
         }else{
             cell = [[[NSBundle mainBundle] loadNibNamed:xibName owner:nil options:nil] lastObject];
         }
@@ -43,7 +43,7 @@
     return cell;
 }
 
-+ (instancetype)cellFromCodeWithTableView:(UITableView *)tableView
++ (instancetype)tfy_cellFromCodeWithTableView:(UITableView *)tableView
 {
     NSString *className = NSStringFromClass(self);
     id cell = [tableView dequeueReusableCellWithIdentifier:className];
@@ -52,7 +52,7 @@
     }
     return cell;
 }
-+ (instancetype)cellFromCodeWithTableView:(UITableView *)tableView identifier:(NSString *)identifier
++ (instancetype)tfy_cellFromCodeWithTableView:(UITableView *)tableView identifier:(NSString *)identifier
 {
     NSString *className = NSStringFromClass(self);
     id cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -63,7 +63,7 @@
 }
 #pragma mark - 代码实例化一个cell
 
-- (UITableView *)parentTableView
+- (UITableView *)tfy_parentTableView
 {
     UIView * view = self.superview;
     while(view != nil) {
@@ -79,7 +79,7 @@
 
 @implementation UICollectionViewCell (TFY_Chain)
 
-- (UICollectionView *)parentCollectionView
+- (UICollectionView *)tfy_parentCollectionView
 {
     UIView * view = self.superview;
     while(view != nil) {

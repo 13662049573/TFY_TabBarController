@@ -17,7 +17,7 @@
 
 @implementation UIDevice (Orientation)
 
-+ (double)systemVersion{
++ (double)tfy_systemVersion{
     static double version;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -26,7 +26,7 @@
     return version;
 }
 
-+ (NSString *)localVersion{
++ (NSString *)tfy_localVersion{
     static NSString *version = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -35,7 +35,7 @@
     return version;
 }
 
-+ (NSString *)localBuild{
++ (NSString *)tfy_localBuild{
     static NSString *build = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -44,12 +44,12 @@
     return build;
 }
 
-+ (NSString *)storeUrlWithAppId:(NSString *)appId{
++ (NSString *)tfy_storeUrlWithAppId:(NSString *)appId{
     return [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@?mt=8",appId];
 }
 
-- (BOOL)isJailbroken{
-    if ([self isSimulator]) return NO;
+- (BOOL)tfy_isJailbroken{
+    if ([self tfy_isSimulator]) return NO;
     
     NSArray *paths = @[@"/Applications/Cydia.app",
                        @"/private/var/lib/apt/",
@@ -64,7 +64,7 @@
         fclose(bash);
         return YES;
     }
-    NSString *path = [NSString stringWithFormat:@"/private/%@", [self stringWithUUID]];
+    NSString *path = [NSString stringWithFormat:@"/private/%@", [self tfy_stringWithUUID]];
     if ([@"test" writeToFile : path atomically : YES encoding : NSUTF8StringEncoding error : NULL]) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         return YES;
@@ -73,14 +73,14 @@
     return NO;
 }
 
-- (NSString *)stringWithUUID {
+- (NSString *)tfy_stringWithUUID {
     CFUUIDRef uuid = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, uuid);
     CFRelease(uuid);
     return (__bridge_transfer NSString *)string;
 }
 
-- (BOOL)isPad{
+- (BOOL)tfy_isPad{
     static dispatch_once_t one;
     static BOOL pad;
     dispatch_once(&one, ^{
@@ -89,7 +89,7 @@
     return pad;
 }
 
-- (BOOL)isSimulator{
+- (BOOL)tfy_isSimulator{
     static dispatch_once_t one;
     static BOOL simu;
     dispatch_once(&one, ^{
@@ -99,7 +99,7 @@
 }
 
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
-- (BOOL)canMakePhoneCalls {
+- (BOOL)tfy_canMakePhoneCalls {
     __block BOOL can;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -109,7 +109,7 @@
 }
 #endif
 
-- (NSString *)ipAddressWithIfaName:(NSString *)name {
+- (NSString *)tfy_ipAddressWithIfaName:(NSString *)name {
     if (name.length == 0) return nil;
     NSString *address = nil;
     struct ifaddrs *addrs = NULL;
@@ -146,12 +146,12 @@
     return address;
 }
 
-- (NSString *)ipAddressWIFI {
-    return [self ipAddressWithIfaName:@"en0"];
+- (NSString *)tfy_ipAddressWIFI {
+    return [self tfy_ipAddressWithIfaName:@"en0"];
 }
 
-- (NSString *)ipAddressCell {
-    return [self ipAddressWithIfaName:@"p_ip0"];
+- (NSString *)tfy_ipAddressCell {
+    return [self tfy_ipAddressWithIfaName:@"p_ip0"];
 }
 
 typedef struct {
@@ -235,12 +235,12 @@ static net_interface_counter get_net_interface_counter() {
     return counter;
 }
 
-- (uint64_t)getNetworkTrafficBytes:(NetworkTrafficType)types {
+- (uint64_t)tfy_getNetworkTrafficBytes:(NetworkTrafficType)types {
     net_interface_counter counter = get_net_interface_counter();
     return _net_counter_get_by_type(&counter, types);
 }
 
-- (NSString *)machineModel {
+- (NSString *)tfy_machineModel {
     static dispatch_once_t one;
     static NSString *model;
     dispatch_once(&one, ^{
@@ -254,11 +254,11 @@ static net_interface_counter get_net_interface_counter() {
     return model;
 }
 
-- (NSString *)machineModelName{
+- (NSString *)tfy_machineModelName{
     static dispatch_once_t one;
     static NSString *name;
     dispatch_once(&one, ^{
-        NSString *model = [self machineModel];
+        NSString *model = [self tfy_machineModel];
         if (!model) return;
         NSDictionary *dic = @{
                               @"Watch1,1" : @"Apple Watch 38mm",
@@ -357,12 +357,12 @@ static net_interface_counter get_net_interface_counter() {
     return name;
 }
 
-- (NSDate *)systemUptime {
+- (NSDate *)tfy_systemUptime {
     NSTimeInterval time = [[NSProcessInfo processInfo] systemUptime];
     return [[NSDate alloc] initWithTimeIntervalSinceNow:(0 - time)];
 }
 
-- (int64_t)diskSpace {
+- (int64_t)tfy_diskSpace {
     NSError *error = nil;
     NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
     if (error) return -1;
@@ -371,7 +371,7 @@ static net_interface_counter get_net_interface_counter() {
     return space;
 }
 
-- (int64_t)diskSpaceFree {
+- (int64_t)tfy_diskSpaceFree {
     NSError *error = nil;
     NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
     if (error) return -1;
@@ -380,22 +380,22 @@ static net_interface_counter get_net_interface_counter() {
     return space;
 }
 
-- (int64_t)diskSpaceUsed {
-    int64_t total = self.diskSpace;
-    int64_t free = self.diskSpaceFree;
+- (int64_t)tfy_diskSpaceUsed {
+    int64_t total = self.tfy_diskSpace;
+    int64_t free = self.tfy_diskSpaceFree;
     if (total < 0 || free < 0) return -1;
     int64_t used = total - free;
     if (used < 0) used = -1;
     return used;
 }
 
-- (int64_t)memoryTotal {
+- (int64_t)tfy_memoryTotal {
     int64_t mem = [[NSProcessInfo processInfo] physicalMemory];
     if (mem < -1) mem = -1;
     return mem;
 }
 
-- (int64_t)memoryUsed {
+- (int64_t)tfy_memoryUsed {
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t page_size;
@@ -409,7 +409,7 @@ static net_interface_counter get_net_interface_counter() {
     return page_size * (vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count);
 }
 
-- (int64_t)memoryFree {
+- (int64_t)tfy_memoryFree {
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t page_size;
@@ -423,7 +423,7 @@ static net_interface_counter get_net_interface_counter() {
     return vm_stat.free_count * page_size;
 }
 
-- (int64_t)memoryActive {
+- (int64_t)tfy_memoryActive {
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t page_size;
@@ -437,7 +437,7 @@ static net_interface_counter get_net_interface_counter() {
     return vm_stat.active_count * page_size;
 }
 
-- (int64_t)memoryInactive {
+- (int64_t)tfy_memoryInactive {
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t page_size;
@@ -451,7 +451,7 @@ static net_interface_counter get_net_interface_counter() {
     return vm_stat.inactive_count * page_size;
 }
 
-- (int64_t)memoryWired {
+- (int64_t)tfy_memoryWired {
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t page_size;
@@ -465,7 +465,7 @@ static net_interface_counter get_net_interface_counter() {
     return vm_stat.wire_count * page_size;
 }
 
-- (int64_t)memoryPurgable {
+- (int64_t)tfy_memoryPurgable {
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t page_size;
@@ -479,13 +479,13 @@ static net_interface_counter get_net_interface_counter() {
     return vm_stat.purgeable_count * page_size;
 }
 
-- (NSUInteger)cpuCount {
+- (NSUInteger)tfy_cpuCount {
     return [NSProcessInfo processInfo].activeProcessorCount;
 }
 
-- (float)cpuUsage {
+- (float)tfy_cpuUsage {
     float cpu = 0;
-    NSArray *cpus = [self cpuUsagePerProcessor];
+    NSArray *cpus = [self tfy_cpuUsagePerProcessor];
     if (cpus.count == 0) return -1;
     for (NSNumber *n in cpus) {
         cpu += n.floatValue;
@@ -493,7 +493,7 @@ static net_interface_counter get_net_interface_counter() {
     return cpu;
 }
 
-- (NSArray *)cpuUsagePerProcessor {
+- (NSArray *)tfy_cpuUsagePerProcessor {
     processor_info_array_t _cpuInfo, _prevCPUInfo = nil;
     mach_msg_type_number_t _numCPUInfo, _numPrevCPUInfo = 0;
     unsigned _numCPUs;

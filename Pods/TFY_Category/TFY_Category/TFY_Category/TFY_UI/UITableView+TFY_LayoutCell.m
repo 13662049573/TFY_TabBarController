@@ -14,8 +14,8 @@
 typedef NSMutableArray<NSMutableArray<NSNumber *> *> IndexPathHeightsBySection;
 
 @interface IndexPathHeightCache ()
-@property (nonatomic, strong) IndexPathHeightsBySection *heightsBySectionForPortrait;
-@property (nonatomic, strong) IndexPathHeightsBySection *heightsBySectionForLandscape;
+@property (nonatomic, strong) IndexPathHeightsBySection *tfy_heightsBySectionForPortrait;
+@property (nonatomic, strong) IndexPathHeightsBySection *tfy_heightsBySectionForLandscape;
 @end
 
 @implementation IndexPathHeightCache
@@ -23,36 +23,36 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> IndexPathHeightsBySection;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _heightsBySectionForPortrait = [NSMutableArray array];
-        _heightsBySectionForLandscape = [NSMutableArray array];
+        _tfy_heightsBySectionForPortrait = [NSMutableArray array];
+        _tfy_heightsBySectionForLandscape = [NSMutableArray array];
     }
     return self;
 }
 
-- (IndexPathHeightsBySection *)heightsBySectionForCurrentOrientation {
-    return UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? self.heightsBySectionForPortrait: self.heightsBySectionForLandscape;
+- (IndexPathHeightsBySection *)tfy_heightsBySectionForCurrentOrientation {
+    return UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? self.tfy_heightsBySectionForPortrait: self.tfy_heightsBySectionForLandscape;
 }
 
-- (void)enumerateAllOrientationsUsingBlock:(void (^)(IndexPathHeightsBySection *heightsBySection))block {
-    block(self.heightsBySectionForPortrait);
-    block(self.heightsBySectionForLandscape);
+- (void)tfy_enumerateAllOrientationsUsingBlock:(void (^)(IndexPathHeightsBySection *heightsBySection))block {
+    block(self.tfy_heightsBySectionForPortrait);
+    block(self.tfy_heightsBySectionForLandscape);
 }
 
-- (BOOL)existsHeightAtIndexPath:(NSIndexPath *)indexPath {
-    [self buildCachesAtIndexPathsIfNeeded:@[indexPath]];
-    NSNumber *number = self.heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row];
+- (BOOL)tfy_existsHeightAtIndexPath:(NSIndexPath *)indexPath {
+    [self tfy_buildCachesAtIndexPathsIfNeeded:@[indexPath]];
+    NSNumber *number = self.tfy_heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row];
     return ![number isEqualToNumber:@-1];
 }
 
-- (void)cacheHeight:(CGFloat)height byIndexPath:(NSIndexPath *)indexPath {
-    self.automaticallyInvalidateEnabled = YES;
-    [self buildCachesAtIndexPathsIfNeeded:@[indexPath]];
-    self.heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row] = @(height);
+- (void)tfy_cacheHeight:(CGFloat)height byIndexPath:(NSIndexPath *)indexPath {
+    self.tfy_automaticallyInvalidateEnabled = YES;
+    [self tfy_buildCachesAtIndexPathsIfNeeded:@[indexPath]];
+    self.tfy_heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row] = @(height);
 }
 
-- (CGFloat)heightForIndexPath:(NSIndexPath *)indexPath {
-    [self buildCachesAtIndexPathsIfNeeded:@[indexPath]];
-    NSNumber *number = self.heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row];
+- (CGFloat)tfy_heightForIndexPath:(NSIndexPath *)indexPath {
+    [self tfy_buildCachesAtIndexPathsIfNeeded:@[indexPath]];
+    NSNumber *number = self.tfy_heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row];
 #if CGFLOAT_IS_DOUBLE
     return number.doubleValue;
 #else
@@ -60,29 +60,29 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> IndexPathHeightsBySection;
 #endif
 }
 
-- (void)invalidateHeightAtIndexPath:(NSIndexPath *)indexPath {
-    [self buildCachesAtIndexPathsIfNeeded:@[indexPath]];
-    [self enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+- (void)tfy_invalidateHeightAtIndexPath:(NSIndexPath *)indexPath {
+    [self tfy_buildCachesAtIndexPathsIfNeeded:@[indexPath]];
+    [self tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
         heightsBySection[indexPath.section][indexPath.row] = @-1;
     }];
 }
 
-- (void)invalidateAllHeightCache {
-    [self enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+- (void)tfy_invalidateAllHeightCache {
+    [self tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
         [heightsBySection removeAllObjects];
     }];
 }
 
-- (void)buildCachesAtIndexPathsIfNeeded:(NSArray *)indexPaths {
+- (void)tfy_buildCachesAtIndexPathsIfNeeded:(NSArray *)indexPaths {
     
     [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
-        [self buildSectionsIfNeeded:indexPath.section];
-        [self buildRowsIfNeeded:indexPath.row inExistSection:indexPath.section];
+        [self tfy_buildSectionsIfNeeded:indexPath.section];
+        [self tfy_buildRowsIfNeeded:indexPath.row inExistSection:indexPath.section];
     }];
 }
 
-- (void)buildSectionsIfNeeded:(NSInteger)targetSection {
-    [self enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+- (void)tfy_buildSectionsIfNeeded:(NSInteger)targetSection {
+    [self tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
         for (NSInteger section = 0; section <= targetSection; ++section) {
             if (section >= heightsBySection.count) {
                 heightsBySection[section] = [NSMutableArray array];
@@ -91,8 +91,8 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> IndexPathHeightsBySection;
     }];
 }
 
-- (void)buildRowsIfNeeded:(NSInteger)targetRow inExistSection:(NSInteger)section {
-    [self enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+- (void)tfy_buildRowsIfNeeded:(NSInteger)targetRow inExistSection:(NSInteger)section {
+    [self tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
         NSMutableArray<NSNumber *> *heightsByRow = heightsBySection[section];
         for (NSInteger row = 0; row <= targetRow; ++row) {
             if (row >= heightsByRow.count) {
@@ -152,8 +152,8 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_reloadData {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
-        [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
+        [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
             [heightsBySection removeAllObjects];
         }];
     }
@@ -161,10 +161,10 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
         [sections enumerateIndexesUsingBlock:^(NSUInteger section, BOOL *stop) {
-            [self.tfy_indexPathHeightCache buildSectionsIfNeeded:section];
-            [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+            [self.tfy_indexPathHeightCache tfy_buildSectionsIfNeeded:section];
+            [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
                 [heightsBySection insertObject:[NSMutableArray array] atIndex:section];
             }];
         }];
@@ -173,10 +173,10 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
         [sections enumerateIndexesUsingBlock:^(NSUInteger section, BOOL *stop) {
-            [self.tfy_indexPathHeightCache buildSectionsIfNeeded:section];
-            [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+            [self.tfy_indexPathHeightCache tfy_buildSectionsIfNeeded:section];
+            [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
                 [heightsBySection removeObjectAtIndex:section];
             }];
         }];
@@ -185,10 +185,10 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
         [sections enumerateIndexesUsingBlock: ^(NSUInteger section, BOOL *stop) {
-            [self.tfy_indexPathHeightCache buildSectionsIfNeeded:section];
-            [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+            [self.tfy_indexPathHeightCache tfy_buildSectionsIfNeeded:section];
+            [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
                 [heightsBySection[section] removeAllObjects];
             }];
             
@@ -198,10 +198,10 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_moveSection:(NSInteger)section toSection:(NSInteger)newSection {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
-        [self.tfy_indexPathHeightCache buildSectionsIfNeeded:section];
-        [self.tfy_indexPathHeightCache buildSectionsIfNeeded:newSection];
-        [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
+        [self.tfy_indexPathHeightCache tfy_buildSectionsIfNeeded:section];
+        [self.tfy_indexPathHeightCache tfy_buildSectionsIfNeeded:newSection];
+        [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
             [heightsBySection exchangeObjectAtIndex:section withObjectAtIndex:newSection];
         }];
     }
@@ -209,10 +209,10 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_insertRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
-        [self.tfy_indexPathHeightCache buildCachesAtIndexPathsIfNeeded:indexPaths];
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
+        [self.tfy_indexPathHeightCache tfy_buildCachesAtIndexPathsIfNeeded:indexPaths];
         [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
-            [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+            [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
                 [heightsBySection[indexPath.section] insertObject:@-1 atIndex:indexPath.row];
             }];
         }];
@@ -221,8 +221,8 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
-        [self.tfy_indexPathHeightCache buildCachesAtIndexPathsIfNeeded:indexPaths];
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
+        [self.tfy_indexPathHeightCache tfy_buildCachesAtIndexPathsIfNeeded:indexPaths];
         
         NSMutableDictionary<NSNumber *, NSMutableIndexSet *> *mutableIndexSetsToRemove = [NSMutableDictionary dictionary];
         [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
@@ -235,7 +235,7 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
         }];
         
         [mutableIndexSetsToRemove enumerateKeysAndObjectsUsingBlock:^(NSNumber *key, NSIndexSet *indexSet, BOOL *stop) {
-            [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+            [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
                 [heightsBySection[key.integerValue] removeObjectsAtIndexes:indexSet];
             }];
         }];
@@ -244,10 +244,10 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
-        [self.tfy_indexPathHeightCache buildCachesAtIndexPathsIfNeeded:indexPaths];
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
+        [self.tfy_indexPathHeightCache tfy_buildCachesAtIndexPathsIfNeeded:indexPaths];
         [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
-            [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+            [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
                 heightsBySection[indexPath.section][indexPath.row] = @-1;
             }];
         }];
@@ -256,9 +256,9 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 }
 
 - (void)tfy_moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    if (self.tfy_indexPathHeightCache.automaticallyInvalidateEnabled) {
-        [self.tfy_indexPathHeightCache buildCachesAtIndexPathsIfNeeded:@[sourceIndexPath, destinationIndexPath]];
-        [self.tfy_indexPathHeightCache enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
+    if (self.tfy_indexPathHeightCache.tfy_automaticallyInvalidateEnabled) {
+        [self.tfy_indexPathHeightCache tfy_buildCachesAtIndexPathsIfNeeded:@[sourceIndexPath, destinationIndexPath]];
+        [self.tfy_indexPathHeightCache tfy_enumerateAllOrientationsUsingBlock:^(IndexPathHeightsBySection *heightsBySection) {
             NSMutableArray<NSNumber *> *sourceRows = heightsBySection[sourceIndexPath.section];
             NSMutableArray<NSNumber *> *destinationRows = heightsBySection[destinationIndexPath.section];
             NSNumber *sourceValue = sourceRows[sourceIndexPath.row];
@@ -293,16 +293,16 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
     return UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? self.mutableHeightsByKeyForPortrait: self.mutableHeightsByKeyForLandscape;
 }
 
-- (BOOL)existsHeightForKey:(id<NSCopying>)key {
+- (BOOL)tfy_existsHeightForKey:(id<NSCopying>)key {
     NSNumber *number = self.mutableHeightsByKeyForCurrentOrientation[key];
     return number && ![number isEqualToNumber:@-1];
 }
 
-- (void)cacheHeight:(CGFloat)height byKey:(id<NSCopying>)key {
+- (void)tfy_cacheHeight:(CGFloat)height byKey:(id<NSCopying>)key {
     self.mutableHeightsByKeyForCurrentOrientation[key] = @(height);
 }
 
-- (CGFloat)heightForKey:(id<NSCopying>)key {
+- (CGFloat)tfy_heightForKey:(id<NSCopying>)key {
 #if CGFLOAT_IS_DOUBLE
     return [self.mutableHeightsByKeyForCurrentOrientation[key] doubleValue];
 #else
@@ -310,12 +310,12 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
 #endif
 }
 
-- (void)invalidateHeightForKey:(id<NSCopying>)key {
+- (void)tfy_invalidateHeightForKey:(id<NSCopying>)key {
     [self.mutableHeightsByKeyForPortrait removeObjectForKey:key];
     [self.mutableHeightsByKeyForLandscape removeObjectForKey:key];
 }
 
-- (void)invalidateAllHeightCache {
+- (void)tfy_invalidateAllHeightCache {
     [self.mutableHeightsByKeyForPortrait removeAllObjects];
     [self.mutableHeightsByKeyForLandscape removeAllObjects];
 }
@@ -478,13 +478,13 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
         return 0;
     }
 
-    if ([self.tfy_indexPathHeightCache existsHeightAtIndexPath:indexPath]) {
-        [self tfy_debugLog:[NSString stringWithFormat:@"hit cache by index path[%@:%@] - %@", @(indexPath.section), @(indexPath.row), @([self.tfy_indexPathHeightCache heightForIndexPath:indexPath])]];
-        return [self.tfy_indexPathHeightCache heightForIndexPath:indexPath];
+    if ([self.tfy_indexPathHeightCache tfy_existsHeightAtIndexPath:indexPath]) {
+        [self tfy_debugLog:[NSString stringWithFormat:@"hit cache by index path[%@:%@] - %@", @(indexPath.section), @(indexPath.row), @([self.tfy_indexPathHeightCache tfy_heightForIndexPath:indexPath])]];
+        return [self.tfy_indexPathHeightCache tfy_heightForIndexPath:indexPath];
     }
     
     CGFloat height = [self tfy_heightForCellWithIdentifier:identifier configuration:configuration];
-    [self.tfy_indexPathHeightCache cacheHeight:height byIndexPath:indexPath];
+    [self.tfy_indexPathHeightCache tfy_cacheHeight:height byIndexPath:indexPath];
     [self tfy_debugLog:[NSString stringWithFormat: @"cached by index path[%@:%@] - %@", @(indexPath.section), @(indexPath.row), @(height)]];
     
     return height;
@@ -494,14 +494,14 @@ static void __TFY_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void 
     if (!identifier || !key) {
         return 0;
     }
-    if ([self.tfy_keyedHeightCache existsHeightForKey:key]) {
-        CGFloat cachedHeight = [self.tfy_keyedHeightCache heightForKey:key];
+    if ([self.tfy_keyedHeightCache tfy_existsHeightForKey:key]) {
+        CGFloat cachedHeight = [self.tfy_keyedHeightCache tfy_heightForKey:key];
         [self tfy_debugLog:[NSString stringWithFormat:@"hit cache by key[%@] - %@", key, @(cachedHeight)]];
         return cachedHeight;
     }
     
     CGFloat height = [self tfy_heightForCellWithIdentifier:identifier configuration:configuration];
-    [self.tfy_keyedHeightCache cacheHeight:height byKey:key];
+    [self.tfy_keyedHeightCache tfy_cacheHeight:height byKey:key];
     [self tfy_debugLog:[NSString stringWithFormat:@"cached by key[%@] - %@", key, @(height)]];
     
     return height;

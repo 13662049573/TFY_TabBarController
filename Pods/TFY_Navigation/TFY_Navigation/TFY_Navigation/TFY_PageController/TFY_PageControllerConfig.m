@@ -51,7 +51,8 @@
     config.shadowLineColor = [UIColor blackColor];
     //默认阴影动画 平移
     config.shadowLineAnimationType = TFY_PageShadowLineAnimationTypePan;
-    
+    //cell文字动画，默认 无
+    config.celltextAnimationType = TFY_PageTitleCellAnimationTypeNone;
     //底部分割线-----------------------------------
     //默认显示分割线
     config.separatorLineHidden = false;
@@ -63,7 +64,25 @@
     //分段式标题颜色------------------------------
     //默认分段式选择器颜色 黑色
     config.segmentedTintColor = [UIColor blackColor];
-    
+    //默认分段选择器颜色 lightTextColor
+    config.segmentBackColor = UIColor.lightTextColor;
+    //默认不随宽度
+    config.segmentWidthsByContent = NO;
+    //分段选择器默认选择 颜色 黑色
+    config.segmentNormalColor = UIColor.blackColor;
+    //分段选择器默认选中 颜色 浅色
+    config.segmentSelectedColor = UIColor.lightTextColor;
+    //分段选择器 默认 标准字体15
+    config.segmentNormalFont = [UIFont systemFontOfSize:15 weight:UIFontWeightRegular];
+    //分段选择器 选中字体 默认 标准粗体15
+    config.segmentSelectedFont = [UIFont systemFontOfSize:15 weight:UIFontWeightRegular];
+    //分段选择器 圆角 默认 5
+    config.segmentCornerRadius = 5;
+    //分段选择器 边框宽度 默认 1
+    config.segmentBorderWidth = 1;
+    //分段选择器  边框颜色 默认 黑色
+    config.segmentBorderColor = UIColor.clearColor;
     return config;
 }
+
 @end

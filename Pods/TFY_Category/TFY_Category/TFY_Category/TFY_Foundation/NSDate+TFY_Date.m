@@ -9,31 +9,31 @@
 #import "NSDate+TFY_Date.h"
 
 @implementation NSDate (TFY_Date)
-- (NSUInteger)day {
-    return [NSDate day:self];
+- (NSUInteger)tfy_day {
+    return [NSDate tfy_day:self];
 }
 
-- (NSUInteger)month {
-    return [NSDate month:self];
+- (NSUInteger)tfy_month {
+    return [NSDate tfy_month:self];
 }
 
-- (NSUInteger)year {
-    return [NSDate year:self];
+- (NSUInteger)tfy_year {
+    return [NSDate tfy_year:self];
 }
 
-- (NSUInteger)hour {
-    return [NSDate hour:self];
+- (NSUInteger)tfy_hour {
+    return [NSDate tfy_hour:self];
 }
 
-- (NSUInteger)minute {
-    return [NSDate minute:self];
+- (NSUInteger)tfy_minute {
+    return [NSDate tfy_minute:self];
 }
 
-- (NSUInteger)second {
-    return [NSDate second:self];
+- (NSUInteger)tfy_second {
+    return [NSDate tfy_second:self];
 }
 
-+ (NSUInteger)day:(NSDate *)date {
++ (NSUInteger)tfy_day:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -46,7 +46,7 @@
     return [dayComponents day];
 }
 
-+ (NSUInteger)month:(NSDate *)date {
++ (NSUInteger)tfy_month:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -59,7 +59,7 @@
     return [dayComponents month];
 }
 
-+ (NSUInteger)year:(NSDate *)date {
++ (NSUInteger)tfy_year:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -72,7 +72,7 @@
     return [dayComponents year];
 }
 
-+ (NSUInteger)hour:(NSDate *)date {
++ (NSUInteger)tfy_hour:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -85,7 +85,7 @@
     return [dayComponents hour];
 }
 
-+ (NSUInteger)minute:(NSDate *)date {
++ (NSUInteger)tfy_minute:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -98,7 +98,7 @@
     return [dayComponents minute];
 }
 
-+ (NSUInteger)second:(NSDate *)date {
++ (NSUInteger)tfy_second:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -111,64 +111,64 @@
     return [dayComponents second];
 }
 
-- (NSUInteger)daysInYear {
-    return [NSDate daysInYear:self];
+- (NSUInteger)tfy_daysInYear {
+    return [NSDate tfy_daysInYear:self];
 }
 
-+ (NSUInteger)daysInYear:(NSDate *)date {
-    return [self isLeapYear:date] ? 366 : 365;
++ (NSUInteger)tfy_daysInYear:(NSDate *)date {
+    return [self tfy_isLeapYear:date] ? 366 : 365;
 }
 
-- (BOOL)isLeapYear {
-    return [NSDate isLeapYear:self];
+- (BOOL)tfy_isLeapYear {
+    return [NSDate tfy_isLeapYear:self];
 }
 
-+ (BOOL)isLeapYear:(NSDate *)date {
-    NSUInteger year = [date year];
++ (BOOL)tfy_isLeapYear:(NSDate *)date {
+    NSUInteger year = [date tfy_year];
     if ((year % 4  == 0 && year % 100 != 0) || year % 400 == 0) {
         return YES;
     }
     return NO;
 }
 
-- (NSString *)formatYMD {
-    return [NSDate formatYMD:self];
+- (NSString *)tfy_formatYMD {
+    return [NSDate tfy_formatYMD:self];
 }
 
-+ (NSString *)formatYMD:(NSDate *)date {
-    return [NSString stringWithFormat:@"%lu-%02lu-%02lu",(unsigned long)[date year],(unsigned long)[date month], (unsigned long)[date day]];
++ (NSString *)tfy_formatYMD:(NSDate *)date {
+    return [NSString stringWithFormat:@"%lu-%02lu-%02lu",(unsigned long)[date tfy_year],(unsigned long)[date tfy_month], (unsigned long)[date tfy_day]];
 }
 
-- (NSUInteger)weeksOfMonth {
-    return [NSDate weeksOfMonth:self];
+- (NSUInteger)tfy_weeksOfMonth {
+    return [NSDate tfy_weeksOfMonth:self];
 }
 
-+ (NSUInteger)weeksOfMonth:(NSDate *)date {
-    return [[date lastdayOfMonth] weekOfYear] - [[date begindayOfMonth] weekOfYear] + 1;
++ (NSUInteger)tfy_weeksOfMonth:(NSDate *)date {
+    return [[date tfy_lastdayOfMonth] tfy_weekOfYear] - [[date tfy_begindayOfMonth] tfy_weekOfYear] + 1;
 }
 
-- (NSUInteger)weekOfYear {
-    return [NSDate weekOfYear:self];
+- (NSUInteger)tfy_weekOfYear {
+    return [NSDate tfy_weekOfYear:self];
 }
 
-+ (NSUInteger)weekOfYear:(NSDate *)date {
++ (NSUInteger)tfy_weekOfYear:(NSDate *)date {
     NSUInteger i;
-    NSUInteger year = [date year];
+    NSUInteger year = [date tfy_year];
     
-    NSDate *lastdate = [date lastdayOfMonth];
+    NSDate *lastdate = [date tfy_lastdayOfMonth];
     
-    for (i = 1;[[lastdate dateAfterDay:-7 * i] year] == year; i++) {
+    for (i = 1;[[lastdate tfy_dateAfterDay:-7 * i] tfy_year] == year; i++) {
         
     }
     
     return i;
 }
 
-- (NSDate *)dateAfterDay:(NSUInteger)day {
-    return [NSDate dateAfterDate:self day:day];
+- (NSDate *)tfy_dateAfterDay:(NSUInteger)day {
+    return [NSDate tfy_dateAfterDate:self day:day];
 }
 
-+ (NSDate *)dateAfterDate:(NSDate *)date day:(NSInteger)day {
++ (NSDate *)tfy_dateAfterDate:(NSDate *)date day:(NSInteger)day {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
     [componentsToAdd setDay:day];
@@ -178,11 +178,11 @@
     return dateAfterDay;
 }
 
-- (NSDate *)dateAfterMonth:(NSUInteger)month {
-    return [NSDate dateAfterDate:self month:month];
+- (NSDate *)tfy_dateAfterMonth:(NSUInteger)month {
+    return [NSDate tfy_dateAfterDate:self month:month];
 }
 
-+ (NSDate *)dateAfterDate:(NSDate *)date month:(NSInteger)month {
++ (NSDate *)tfy_dateAfterDate:(NSDate *)date month:(NSInteger)month {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
     [componentsToAdd setMonth:month];
@@ -191,28 +191,28 @@
     return dateAfterMonth;
 }
 
-- (NSDate *)begindayOfMonth {
-    return [NSDate begindayOfMonth:self];
+- (NSDate *)tfy_begindayOfMonth {
+    return [NSDate tfy_begindayOfMonth:self];
 }
 
-+ (NSDate *)begindayOfMonth:(NSDate *)date {
-    return [self dateAfterDate:date day:-[date day] + 1];
++ (NSDate *)tfy_begindayOfMonth:(NSDate *)date {
+    return [self tfy_dateAfterDate:date day:-[date tfy_day] + 1];
 }
 
-- (NSDate *)lastdayOfMonth {
-    return [NSDate lastdayOfMonth:self];
+- (NSDate *)tfy_lastdayOfMonth {
+    return [NSDate tfy_lastdayOfMonth:self];
 }
 
-+ (NSDate *)lastdayOfMonth:(NSDate *)date {
-    NSDate *lastDate = [self begindayOfMonth:date];
-    return [[lastDate dateAfterMonth:1] dateAfterDay:-1];
++ (NSDate *)tfy_lastdayOfMonth:(NSDate *)date {
+    NSDate *lastDate = [self tfy_begindayOfMonth:date];
+    return [[lastDate tfy_dateAfterMonth:1] tfy_dateAfterDay:-1];
 }
 
-- (NSUInteger)daysAgo {
-    return [NSDate daysAgo:self];
+- (NSUInteger)tfy_daysAgo {
+    return [NSDate tfy_daysAgo:self];
 }
 
-+ (NSUInteger)daysAgo:(NSDate *)date {
++ (NSUInteger)tfy_daysAgo:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
@@ -230,11 +230,11 @@
     return [components day];
 }
 
-- (NSInteger)weekday {
-    return [NSDate weekday:self];
+- (NSInteger)tfy_weekday {
+    return [NSDate tfy_weekday:self];
 }
 
-+ (NSInteger)weekday:(NSDate *)date {
++ (NSInteger)tfy_weekday:(NSDate *)date {
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday) fromDate:date];
@@ -243,12 +243,12 @@
     return weekday;
 }
 
-- (NSString *)dayFromWeekday {
-    return [NSDate dayFromWeekday:self];
+- (NSString *)tfy_dayFromWeekday {
+    return [NSDate tfy_dayFromWeekday:self];
 }
 
-+ (NSString *)dayFromWeekday:(NSDate *)date {
-    switch([date weekday]) {
++ (NSString *)tfy_dayFromWeekday:(NSDate *)date {
+    switch([date tfy_weekday]) {
         case 1:
             return @"星期天";
             break;
@@ -276,7 +276,7 @@
     return @"";
 }
 
-- (BOOL)isSameDay:(NSDate *)anotherDate {
+- (BOOL)tfy_isSameDay:(NSDate *)anotherDate {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components1 = [calendar components:(NSCalendarUnitYear
                                                           | NSCalendarUnitMonth
@@ -291,15 +291,15 @@
             && [components1 day] == [components2 day]);
 }
 
-- (BOOL)isToday {
-    return [self isSameDay:[NSDate date]];
+- (BOOL)tfy_isToday {
+    return [self tfy_isSameDay:[NSDate date]];
 }
 
-+ (NSString *)stringWithDate:(NSDate *)date format:(NSString *)format {
-    return [date stringWithFormat:format];
++ (NSString *)tfy_stringWithDate:(NSDate *)date format:(NSString *)format {
+    return [date tfy_stringWithFormat:format];
 }
 
-- (NSString *)stringWithFormat:(NSString *)format {
+- (NSString *)tfy_stringWithFormat:(NSString *)format {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:format];
     
@@ -310,45 +310,45 @@
 
 
 
-- (NSUInteger)daysInMonth:(NSUInteger)month {
-    return [NSDate daysInMonth:self month:month];
+- (NSUInteger)tfy_daysInMonth:(NSUInteger)month {
+    return [NSDate tfy_daysInMonth:self month:month];
 }
 
-+ (NSUInteger)daysInMonth:(NSDate *)date month:(NSUInteger)month {
++ (NSUInteger)tfy_daysInMonth:(NSDate *)date month:(NSUInteger)month {
     switch (month) {
         case 1: case 3: case 5: case 7: case 8: case 10: case 12:
             return 31;
         case 2:
-            return [date isLeapYear] ? 29 : 28;
+            return [date tfy_isLeapYear] ? 29 : 28;
     }
     return 30;
 }
 
-- (NSUInteger)daysInMonth {
-    return [NSDate daysInMonth:self];
+- (NSUInteger)tfy_daysInMonth {
+    return [NSDate tfy_daysInMonth:self];
 }
 
-+ (NSUInteger)daysInMonth:(NSDate *)date {
-    return [self daysInMonth:date month:[date month]];
++ (NSUInteger)tfy_daysInMonth:(NSDate *)date {
+    return [self tfy_daysInMonth:date month:[date tfy_month]];
 }
 
-- (NSString *)timeInfo {
-    return [NSDate timeInfoWithDate:self];
+- (NSString *)tfy_timeInfo {
+    return [NSDate tfy_timeInfoWithDate:self];
 }
 
-+ (NSString *)timeInfoWithDate:(NSDate *)date {
-    return [self timeInfoWithDateString:[self stringWithDate:date format:[self ymdHmsFormat]]];
++ (NSString *)tfy_timeInfoWithDate:(NSDate *)date {
+    return [self tfy_timeInfoWithDateString:[self tfy_stringWithDate:date format:[self tfy_ymdHmsFormat]]];
 }
 
-+ (NSString *)timeInfoWithDateString:(NSString *)dateString {
-    NSDate *date = [self dateWithString:dateString format:[self ymdHmsFormat]];
++ (NSString *)tfy_timeInfoWithDateString:(NSString *)dateString {
+    NSDate *date = [self tfy_dateWithString:dateString format:[self tfy_ymdHmsFormat]];
     
     NSDate *curDate = [NSDate date];
     NSTimeInterval time = -[date timeIntervalSinceDate:curDate];
     
-    int month = (int)([curDate month] - [date month]);
-    int year = (int)([curDate year] - [date year]);
-    int day = (int)([curDate day] - [date day]);
+    int month = (int)([curDate tfy_month] - [date tfy_month]);
+    int year = (int)([curDate tfy_year] - [date tfy_year]);
+    int day = (int)([curDate tfy_day] - [date tfy_day]);
     
     NSTimeInterval retTime = 1.0;
     if (time < 3600) { // 小于一小时
@@ -365,7 +365,7 @@
     // 第一个条件是同年，且相隔时间在一个月内
     // 第二个条件是隔年，对于隔年，只能是去年12月与今年1月这种情况
     else if ((abs(year) == 0 && abs(month) <= 1)
-             || (abs(year) == 1 && [curDate month] == 1 && [date month] == 12)) {
+             || (abs(year) == 1 && [curDate tfy_month] == 1 && [date tfy_month] == 12)) {
         int retDay = 0;
         if (year == 0) { // 同年
             if (month == 0) { // 同月
@@ -375,10 +375,10 @@
         
         if (retDay <= 0) {
             // 获取发布日期中，该月有多少天
-            int totalDays = (int)[self daysInMonth:date month:[date month]];
+            int totalDays = (int)[self tfy_daysInMonth:date month:[date tfy_month]];
             
             // 当前天数 + （发布日期月中的总天数-发布日期月中发布日，即等于距离今天的天数）
-            retDay = (int)[curDate day] + (totalDays - (int)[date day]);
+            retDay = (int)[curDate tfy_day] + (totalDays - (int)[date tfy_day]);
         }
         
         return [NSString stringWithFormat:@"%d天前", (abs)(retDay)];
@@ -389,8 +389,8 @@
             }
             
             // 隔年
-            int month = (int)[curDate month];
-            int preMonth = (int)[date month];
+            int month = (int)[curDate tfy_month];
+            int preMonth = (int)[date tfy_month];
             if (month == 12 && preMonth == 12) {// 隔年，但同月，就作为满一年来计算
                 return @"1年前";
             }
@@ -402,7 +402,7 @@
     
     return @"1小时前";
 }
-+ (NSDate *)dateWithString:(NSString *)string format:(NSString *)format {
++ (NSDate *)tfy_dateWithString:(NSString *)string format:(NSString *)format {
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
     [inputFormatter setDateFormat:format];
     
@@ -412,35 +412,35 @@
 }
 
 
-- (NSString *)ymdFormat {
-    return [NSDate ymdFormat];
+- (NSString *)tfy_ymdFormat {
+    return [NSDate tfy_ymdFormat];
 }
 
-- (NSString *)hmsFormat {
-    return [NSDate hmsFormat];
+- (NSString *)tfy_hmsFormat {
+    return [NSDate tfy_hmsFormat];
 }
 
-- (NSString *)ymdHmsFormat {
-    return [NSDate ymdHmsFormat];
+- (NSString *)tfy_ymdHmsFormat {
+    return [NSDate tfy_ymdHmsFormat];
 }
 
-+ (NSString *)ymdFormat {
++ (NSString *)tfy_ymdFormat {
     return @"yyyy-MM-dd";
 }
 
-+ (NSString *)hmsFormat {
++ (NSString *)tfy_hmsFormat {
     return @"HH:mm:ss";
 }
 
-+ (NSString *)ymdHmsFormat {
-    return [NSString stringWithFormat:@"%@ %@", [self ymdFormat], [self hmsFormat]];
++ (NSString *)tfy_ymdHmsFormat {
+    return [NSString stringWithFormat:@"%@ %@", [self tfy_ymdFormat], [self tfy_hmsFormat]];
 }
 
-- (NSDate *)offsetYears:(int)numYears {
-    return [NSDate offsetYears:numYears fromDate:self];
+- (NSDate *)tfy_offsetYears:(int)numYears {
+    return [NSDate tfy_offsetYears:numYears fromDate:self];
 }
 
-+ (NSDate *)offsetYears:(int)numYears fromDate:(NSDate *)fromDate {
++ (NSDate *)tfy_offsetYears:(int)numYears fromDate:(NSDate *)fromDate {
     if (fromDate == nil) {
         return nil;
     }
@@ -463,11 +463,11 @@
                                      options:0];
 }
 
-- (NSDate *)offsetMonths:(int)numMonths {
-    return [NSDate offsetMonths:numMonths fromDate:self];
+- (NSDate *)tfy_offsetMonths:(int)numMonths {
+    return [NSDate tfy_offsetMonths:numMonths fromDate:self];
 }
 
-+ (NSDate *)offsetMonths:(int)numMonths fromDate:(NSDate *)fromDate {
++ (NSDate *)tfy_offsetMonths:(int)numMonths fromDate:(NSDate *)fromDate {
     if (fromDate == nil) {
         return nil;
     }
@@ -490,11 +490,11 @@
                                      options:0];
 }
 
-- (NSDate *)offsetDays:(int)numDays {
-    return [NSDate offsetDays:numDays fromDate:self];
+- (NSDate *)tfy_offsetDays:(int)numDays {
+    return [NSDate tfy_offsetDays:numDays fromDate:self];
 }
 
-+ (NSDate *)offsetDays:(int)numDays fromDate:(NSDate *)fromDate {
++ (NSDate *)tfy_offsetDays:(int)numDays fromDate:(NSDate *)fromDate {
     if (fromDate == nil) {
         return nil;
     }
@@ -517,11 +517,11 @@
                                      options:0];
 }
 
-- (NSDate *)offsetHours:(int)hours {
-    return [NSDate offsetHours:hours fromDate:self];
+- (NSDate *)tfy_offsetHours:(int)hours {
+    return [NSDate tfy_offsetHours:hours fromDate:self];
 }
 
-+ (NSDate *)offsetHours:(int)numHours fromDate:(NSDate *)fromDate {
++ (NSDate *)tfy_offsetHours:(int)numHours fromDate:(NSDate *)fromDate {
     if (fromDate == nil) {
         return nil;
     }
@@ -544,101 +544,98 @@
                                      options:0];
 }
 
-- (NSDate *)dateByAddingYears:(NSInteger)years
+- (NSDate *)tfy_dateByAddingYears:(NSInteger)years
 {
     NSCalendar *calendar =  [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setYear:years];
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
-- (NSDate *)dateByMinusYears:(NSInteger)years
+- (NSDate *)tfy_dateByMinusYears:(NSInteger)years
 {
     NSCalendar *calendar =  [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setYear:-years];
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
-- (NSDate *)dateByAddingMonths:(NSInteger)months
+- (NSDate *)tfy_dateByAddingMonths:(NSInteger)months
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setMonth:months];
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
-- (NSDate *)dateByMinusMonths:(NSInteger)months
+- (NSDate *)tfy_dateByMinusMonths:(NSInteger)months
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setMonth:-months];
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
-- (NSDate *)dateByAddingWeeks:(NSInteger)weeks
+- (NSDate *)tfy_dateByAddingWeeks:(NSInteger)weeks
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setWeekOfYear:weeks];
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
-- (NSDate *)dateByMinusWeeks:(NSInteger)weeks
+- (NSDate *)tfy_dateByMinusWeeks:(NSInteger)weeks
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setWeekOfYear:-weeks];
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
-- (NSDate *)dateByAddingDays:(NSInteger)days
+- (NSDate *)tfy_dateByAddingDays:(NSInteger)days
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + 86400 * days;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
-- (NSDate *)dateByMinusDays:(NSInteger)days
+- (NSDate *)tfy_dateByMinusDays:(NSInteger)days
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] - 86400 * days;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
-- (NSDate *)dateByAddingHours:(NSInteger)hours
+- (NSDate *)tfy_dateByAddingHours:(NSInteger)hours
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + 3600 * hours;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
-- (NSDate *)dateByMinusHours:(NSInteger)hours
+- (NSDate *)tfy_dateByMinusHours:(NSInteger)hours
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] - 3600 * hours;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
-- (NSDate *)dateByAddingMinutes:(NSInteger)minutes
+- (NSDate *)tfy_dateByAddingMinutes:(NSInteger)minutes
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + 60 * minutes;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
-- (NSDate *)dateByMinusMinutes:(NSInteger)minutes
+- (NSDate *)tfy_dateByMinusMinutes:(NSInteger)minutes
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] - 60 * minutes;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
-- (NSDate *)dateByAddingSeconds:(NSInteger)seconds
+- (NSDate *)tfy_dateByAddingSeconds:(NSInteger)seconds
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + seconds;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
-- (NSDate *)dateByMinusSeconds:(NSInteger)seconds
+- (NSDate *)tfy_dateByMinusSeconds:(NSInteger)seconds
 {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] - seconds;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
 
-
-
-
-+ (NSInteger)yearsBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
++ (NSInteger)tfy_yearsBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
     NSDate *fromDate;
     NSDate *toDate;
@@ -655,7 +652,7 @@
     return [difference year];
 }
 
-+ (NSInteger)monthsBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
++ (NSInteger)tfy_monthsBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
     NSDate *fromDate;
     NSDate *toDate;
@@ -671,7 +668,7 @@
                                                fromDate:fromDate toDate:toDate options:0];
     return [difference month];
 }
-+ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
++ (NSInteger)tfy_daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
     NSDate *fromDate;
     NSDate *toDate;
@@ -689,7 +686,7 @@
     
     return [difference day];
 }
-+ (NSInteger)minutesBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
++ (NSInteger)tfy_minutesBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
     NSDate *fromDate;
     NSDate *toDate;
@@ -713,7 +710,7 @@
     return [difference minute];
 }
 
-+ (NSInteger)secondsBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
++ (NSInteger)tfy_secondsBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
     NSDate *fromDate;
     NSDate *toDate;
@@ -738,12 +735,12 @@
 }
 
 
-- (NSInteger)dayNumOfCurrentMonth
+- (NSInteger)tfy_dayNumOfCurrentMonth
 {
     return [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self].length;
 }
 
-- (NSDate *)dateWithMonthBegainDate
+- (NSDate *)tfy_dateWithMonthBegainDate
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *firstDay;
@@ -751,7 +748,7 @@
     return firstDay;
 }
 
-- (NSDate *)dateWithWeekBegainDate
+- (NSDate *)tfy_dateWithWeekBegainDate
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *dateComponents = [calendar components:NSCalendarUnitWeekday | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitMonth fromDate:self];
@@ -773,7 +770,7 @@
     return firstDay;
 }
 
-- (BOOL)isSameDayToDate:(NSDate *)date
+- (BOOL)tfy_isSameDayToDate:(NSDate *)date
 {
     if (!date) return NO;
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -783,7 +780,7 @@
     return (([comp1 day] == [comp2 day]) && ([comp1 month] == [comp2 month]) && ([comp1 year] == [comp2 year]));
 }
 /// 获取年
-+ (NSInteger)year_str:(NSString *)dateStr {
++ (NSInteger)tfy_year_str:(NSString *)dateStr {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
@@ -792,7 +789,7 @@
     return components.year;
 }
 //计算一个月的总天数
-+ (NSInteger)daysInthisMonth:(NSDate *)date
++ (NSInteger)tfy_daysInthisMonth:(NSDate *)date
 {
     NSRange totaldaysInMonth = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
     
@@ -800,7 +797,7 @@
 }
 
 /// 获取月
-+ (NSInteger)month_str:(NSString *)dateStr {
++ (NSInteger)tfy_month_str:(NSString *)dateStr {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
@@ -811,7 +808,7 @@
 
 
 /// 获取星期
-+ (NSInteger)week:(NSString *)dateStr {
++ (NSInteger)tfy_week:(NSString *)dateStr {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
@@ -821,7 +818,7 @@
 }
 
 /// 获取星期 中文
-+ (NSString *)getWeekFromDate:(NSDate *)date {
++ (NSString *)tfy_getWeekFromDate:(NSDate *)date {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:date];
     NSInteger week = components.weekday - 1;
     NSDictionary *weekDic = @{@"0":@"日",@"1":@"一",@"2":@"二",@"3":@"三",@"4":@"四",@"5":@"五",@"6":@"六"};
@@ -830,15 +827,15 @@
 }
 
 /// 获取星期中文
-+ (NSString *)getChineseWeekFrom:(NSString *)dateStr {
++ (NSString *)tfy_getChineseWeekFrom:(NSString *)dateStr {
     NSDictionary *weekDic = @{@"0":@"周日",@"1":@"周一",@"2":@"周二",@"3":@"周三",@"4":@"周四",@"5":@"周五",@"6":@"周六"};
-    NSInteger week = [NSDate week:dateStr];
+    NSInteger week = [NSDate tfy_week:dateStr];
     NSString *weekKey = [NSString stringWithFormat:@"%ld",(long)week];
     return weekDic[weekKey];
 }
 
 /// 获取日
-+ (NSInteger)day_str:(NSString *)dateStr {
++ (NSInteger)tfy_day_str:(NSString *)dateStr {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
@@ -848,14 +845,14 @@
 }
 
 /// 获取月共有多少天
-+ (NSInteger)daysInMonth_str:(NSString *)dateStr {
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[NSDate timeIntervalFromDateString:dateStr] / 1000];
++ (NSInteger)tfy_daysInMonth_str:(NSString *)dateStr {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[NSDate tfy_timeIntervalFromDateString:dateStr] / 1000];
     NSRange daysInLastMonth = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
     return daysInLastMonth.length;
 }
 
 //获取当前日期
-+ (NSString *)currentDay {
++ (NSString *)tfy_currentDay {
     NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
     NSDate *date = [NSDate date];
     [formater setDateFormat:@"yyyy-MM-dd"];
@@ -864,7 +861,7 @@
 }
 
 //获取当前小时
-+ (NSString *)currentHour {
++ (NSString *)tfy_currentHour {
     NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
     NSDate *curDate = [NSDate date];
     [formater setDateFormat:@"H:mm"];
@@ -873,7 +870,7 @@
 }
 
 //找到两个月后的第一天~ 然后通过减一天来找到下个月的最后一天，所以，下月最后一天
-+ (NSString *)nextMonthLastDay {
++ (NSString *)tfy_nextMonthLastDay {
     NSCalendar* calendar = [NSCalendar currentCalendar];
     NSDateComponents *dateComponents = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:[NSDate date]];
     //设置日为1号
@@ -891,9 +888,9 @@
 }
 
 ///判断是否是今天
-+ (BOOL)isToday:(NSString *)dateStr {
++ (BOOL)tfy_isToday:(NSString *)dateStr {
     BOOL isDay = NO;
-    NSString *day = [NSDate timeStringWithInterval:[NSDate date].timeIntervalSince1970];
+    NSString *day = [NSDate tfy_timeStringWithInterval:[NSDate date].timeIntervalSince1970];
     if ([dateStr isEqualToString:day]) {
         isDay = YES;
     }
@@ -901,10 +898,10 @@
 }
 
 ///判断是否是明天
-+ (BOOL)isTomorrow:(NSString *)dateStr {
++ (BOOL)tfy_isTomorrow:(NSString *)dateStr {
     BOOL isDay = NO;
     NSTimeInterval time = [NSDate date].timeIntervalSince1970 + 24 * 3600;
-    NSString *day = [NSDate timeStringWithInterval:time];
+    NSString *day = [NSDate tfy_timeStringWithInterval:time];
     if ([dateStr isEqualToString:day]) {
         isDay = YES;
     }
@@ -912,10 +909,10 @@
 }
 
 ///判断是否是后天
-+ (BOOL)isAfterTomorrow:(NSString *)dateStr {
++ (BOOL)tfy_isAfterTomorrow:(NSString *)dateStr {
     BOOL isDay = NO;
     NSTimeInterval time = [NSDate date].timeIntervalSince1970 + 48 * 3600;
-    NSString *day = [NSDate timeStringWithInterval:time];
+    NSString *day = [NSDate tfy_timeStringWithInterval:time];
     if ([dateStr isEqualToString:day]) {
         isDay = YES;
     }
@@ -923,10 +920,10 @@
 }
 
 /// 判断是否是过去的时间
-+ (BOOL)isHistoryTime:(NSString *)dateStr {
++ (BOOL)tfy_isHistoryTime:(NSString *)dateStr {
     BOOL activity = NO;
-    NSTimeInterval timeInterval = [NSDate timeIntervalFromDateString: dateStr];
-    NSTimeInterval currentInterval = [NSDate timeIntervalFromDateString:[NSDate currentDay]];
+    NSTimeInterval timeInterval = [NSDate tfy_timeIntervalFromDateString: dateStr];
+    NSTimeInterval currentInterval = [NSDate tfy_timeIntervalFromDateString:[NSDate tfy_currentDay]];
     if (timeInterval < currentInterval) {
         activity = YES;
     }
@@ -934,7 +931,7 @@
 }
 
 /// 从时间戳获取具体时间 格式:6:00
-+ (NSString *)hourStringWithInterval:(NSTimeInterval)timeInterval {
++ (NSString *)tfy_hourStringWithInterval:(NSTimeInterval)timeInterval {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"H:mm"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
@@ -945,7 +942,7 @@
 }
 
 /// 从时间戳获取具体小时 格式:6
-+ (NSString *)hourTagWithInterval:(NSTimeInterval)timeInterval {
++ (NSString *)tfy_hourTagWithInterval:(NSTimeInterval)timeInterval {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"H"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
@@ -955,14 +952,14 @@
 }
 
 /// 从毫秒级时间戳获取具体小时 格式:600
-+ (NSString *)hourNumberWithInterval:(NSTimeInterval)timeInterval {
-    NSString *hourStr = [self hourStringWithInterval:timeInterval / 1000];
++ (NSString *)tfy_hourNumberWithInterval:(NSTimeInterval)timeInterval {
+    NSString *hourStr = [self tfy_hourStringWithInterval:timeInterval / 1000];
     NSString *hourNumber = [hourStr stringByReplacingOccurrencesOfString:@":" withString:@""];
     return hourNumber;
 }
 
 /// 从时间戳获取具体日期 格式:2018-03-05
-+ (NSString *)timeStringWithInterval:(NSTimeInterval)timeInterval {
++ (NSString *)tfy_timeStringWithInterval:(NSTimeInterval)timeInterval {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     [dateFormatter setLocale:[NSLocale currentLocale]];
@@ -972,7 +969,7 @@
 }
 
 /// 根据具体日期获取时间戳(毫秒)
-+ (NSTimeInterval)timeIntervalFromDateString:(NSString *)dateStr {
++ (NSTimeInterval)tfy_timeIntervalFromDateString:(NSString *)dateStr {
     //要精确到毫秒2018-01-01 与 2018-01-01 00:00 都要转换成2018-01-01 00:00:00
     if (dateStr.length == 10) {
         dateStr = [dateStr stringByAppendingString:@" 00:00:00"];
@@ -988,7 +985,7 @@
 }
 
 /// 获取当前天的后几天的星期
-+ (NSString *)getWeekAfterDay:(NSInteger)day {
++ (NSString *)tfy_getWeekAfterDay:(NSInteger)day {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:[NSDate date]];
     NSInteger currentWeek = components.weekday - 1;
     NSDictionary *weekDic = @{@"0":@"日",@"1":@"一",@"2":@"二",@"3":@"三",@"4":@"四",@"5":@"五",@"6":@"六"};
@@ -1002,16 +999,16 @@
 
 
 /// 获取当前天的后几天的日
-+ (NSString *)getDayAfterDay:(NSInteger)day {
++ (NSString *)tfy_getDayAfterDay:(NSInteger)day {
     NSTimeInterval time = [NSDate date].timeIntervalSince1970 + 24 * 3600 * day;
-    NSString *date = [NSDate timeStringWithInterval:time];
-    NSInteger dayNum = [self day_str:date];
+    NSString *date = [NSDate tfy_timeStringWithInterval:time];
+    NSInteger dayNum = [self tfy_day_str:date];
     NSString *dayStr = [NSString stringWithFormat:@"%ld",(long)dayNum];
     return dayStr;
 }
 
 /// 获取当前月的后几月
-+ (NSString *)getMonthAfterMonth:(NSInteger)Month {
++ (NSString *)tfy_getMonthAfterMonth:(NSInteger)Month {
     NSDate *currentDate = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM"];

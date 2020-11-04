@@ -12,7 +12,8 @@
 #define kSDMaxCacheFileAmount 100
 
 @implementation NSData (TFY_Data)
-- (NSString *)md2String {
+
+- (NSString *)tfy_md2String {
     unsigned char result[CC_MD2_DIGEST_LENGTH];
     CC_MD2(self.bytes, (CC_LONG)self.length, result);
     return [NSString stringWithFormat:
@@ -24,13 +25,13 @@
             ];
 }
 
-- (NSData *)md2Data {
+- (NSData *)tfy_md2Data {
     unsigned char result[CC_MD2_DIGEST_LENGTH];
     CC_MD2(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_MD2_DIGEST_LENGTH];
 }
 
-- (NSString *)md4String {
+- (NSString *)tfy_md4String {
     unsigned char result[CC_MD4_DIGEST_LENGTH];
     CC_MD4(self.bytes, (CC_LONG)self.length, result);
     return [NSString stringWithFormat:
@@ -42,13 +43,13 @@
             ];
 }
 
-- (NSData *)md4Data {
+- (NSData *)tfy_md4Data {
     unsigned char result[CC_MD4_DIGEST_LENGTH];
     CC_MD4(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_MD4_DIGEST_LENGTH];
 }
 
-- (NSString *)md5String {
+- (NSString *)tfy_md5String {
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(self.bytes, (CC_LONG)self.length, result);
     return [NSString stringWithFormat:
@@ -60,13 +61,13 @@
             ];
 }
 
-- (NSData *)md5Data {
+- (NSData *)tfy_md5Data {
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_MD5_DIGEST_LENGTH];
 }
 
-- (NSString *)sha1String {
+- (NSString *)tfy_sha1String {
     unsigned char result[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1(self.bytes, (CC_LONG)self.length, result);
     NSMutableString *hash = [NSMutableString
@@ -77,13 +78,13 @@
     return hash;
 }
 
-- (NSData *)sha1Data {
+- (NSData *)tfy_sha1Data {
     unsigned char result[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA1_DIGEST_LENGTH];
 }
 
-- (NSString *)sha224String {
+- (NSString *)tfy_sha224String {
     unsigned char result[CC_SHA224_DIGEST_LENGTH];
     CC_SHA224(self.bytes, (CC_LONG)self.length, result);
     NSMutableString *hash = [NSMutableString
@@ -94,13 +95,13 @@
     return hash;
 }
 
-- (NSData *)sha224Data {
+- (NSData *)tfy_sha224Data {
     unsigned char result[CC_SHA224_DIGEST_LENGTH];
     CC_SHA224(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA224_DIGEST_LENGTH];
 }
 
-- (NSString *)sha256String {
+- (NSString *)tfy_sha256String {
     unsigned char result[CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(self.bytes, (CC_LONG)self.length, result);
     NSMutableString *hash = [NSMutableString
@@ -111,13 +112,13 @@
     return hash;
 }
 
-- (NSData *)sha256Data {
+- (NSData *)tfy_sha256Data {
     unsigned char result[CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA256_DIGEST_LENGTH];
 }
 
-- (NSString *)sha384String {
+- (NSString *)tfy_sha384String {
     unsigned char result[CC_SHA384_DIGEST_LENGTH];
     CC_SHA384(self.bytes, (CC_LONG)self.length, result);
     NSMutableString *hash = [NSMutableString
@@ -128,13 +129,13 @@
     return hash;
 }
 
-- (NSData *)sha384Data {
+- (NSData *)tfy_sha384Data {
     unsigned char result[CC_SHA384_DIGEST_LENGTH];
     CC_SHA384(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA384_DIGEST_LENGTH];
 }
 
-- (NSString *)sha512String {
+- (NSString *)tfy_sha512String {
     unsigned char result[CC_SHA512_DIGEST_LENGTH];
     CC_SHA512(self.bytes, (CC_LONG)self.length, result);
     NSMutableString *hash = [NSMutableString
@@ -145,13 +146,13 @@
     return hash;
 }
 
-- (NSData *)sha512Data {
+- (NSData *)tfy_sha512Data {
     unsigned char result[CC_SHA512_DIGEST_LENGTH];
     CC_SHA512(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA512_DIGEST_LENGTH];
 }
 
-- (NSString *)hmacStringUsingAlg:(CCHmacAlgorithm)alg withKey:(NSString *)key {
+- (NSString *)tfy_hmacStringUsingAlg:(CCHmacAlgorithm)alg withKey:(NSString *)key {
     size_t size;
     switch (alg) {
         case kCCHmacAlgMD5: size = CC_MD5_DIGEST_LENGTH; break;
@@ -172,7 +173,7 @@
     return hash;
 }
 
-- (NSData *)hmacDataUsingAlg:(CCHmacAlgorithm)alg withKey:(NSData *)key {
+- (NSData *)tfy_hmacDataUsingAlg:(CCHmacAlgorithm)alg withKey:(NSData *)key {
     size_t size;
     switch (alg) {
         case kCCHmacAlgMD5: size = CC_MD5_DIGEST_LENGTH; break;
@@ -188,56 +189,56 @@
     return [NSData dataWithBytes:result length:size];
 }
 
-- (NSString *)hmacMD5StringWithKey:(NSString *)key {
-    return [self hmacStringUsingAlg:kCCHmacAlgMD5 withKey:key];
+- (NSString *)tfy_hmacMD5StringWithKey:(NSString *)key {
+    return [self tfy_hmacStringUsingAlg:kCCHmacAlgMD5 withKey:key];
 }
 
-- (NSData *)hmacMD5DataWithKey:(NSData *)key {
-    return [self hmacDataUsingAlg:kCCHmacAlgMD5 withKey:key];
+- (NSData *)tfy_hmacMD5DataWithKey:(NSData *)key {
+    return [self tfy_hmacDataUsingAlg:kCCHmacAlgMD5 withKey:key];
 }
 
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key {
-    return [self hmacStringUsingAlg:kCCHmacAlgSHA1 withKey:key];
+- (NSString *)tfy_hmacSHA1StringWithKey:(NSString *)key {
+    return [self tfy_hmacStringUsingAlg:kCCHmacAlgSHA1 withKey:key];
 }
 
-- (NSData *)hmacSHA1DataWithKey:(NSData *)key {
-    return [self hmacDataUsingAlg:kCCHmacAlgSHA1 withKey:key];
+- (NSData *)tfy_hmacSHA1DataWithKey:(NSData *)key {
+    return [self tfy_hmacDataUsingAlg:kCCHmacAlgSHA1 withKey:key];
 }
 
-- (NSString *)hmacSHA224StringWithKey:(NSString *)key {
-    return [self hmacStringUsingAlg:kCCHmacAlgSHA224 withKey:key];
+- (NSString *)tfy_hmacSHA224StringWithKey:(NSString *)key {
+    return [self tfy_hmacStringUsingAlg:kCCHmacAlgSHA224 withKey:key];
 }
 
-- (NSData *)hmacSHA224DataWithKey:(NSData *)key {
-    return [self hmacDataUsingAlg:kCCHmacAlgSHA224 withKey:key];
+- (NSData *)tfy_hmacSHA224DataWithKey:(NSData *)key {
+    return [self tfy_hmacDataUsingAlg:kCCHmacAlgSHA224 withKey:key];
 }
 
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key {
-    return [self hmacStringUsingAlg:kCCHmacAlgSHA256 withKey:key];
+- (NSString *)tfy_hmacSHA256StringWithKey:(NSString *)key {
+    return [self tfy_hmacStringUsingAlg:kCCHmacAlgSHA256 withKey:key];
 }
 
-- (NSData *)hmacSHA256DataWithKey:(NSData *)key {
-    return [self hmacDataUsingAlg:kCCHmacAlgSHA256 withKey:key];
+- (NSData *)tfy_hmacSHA256DataWithKey:(NSData *)key {
+    return [self tfy_hmacDataUsingAlg:kCCHmacAlgSHA256 withKey:key];
 }
 
-- (NSString *)hmacSHA384StringWithKey:(NSString *)key {
-    return [self hmacStringUsingAlg:kCCHmacAlgSHA384 withKey:key];
+- (NSString *)tfy_hmacSHA384StringWithKey:(NSString *)key {
+    return [self tfy_hmacStringUsingAlg:kCCHmacAlgSHA384 withKey:key];
 }
 
-- (NSData *)hmacSHA384DataWithKey:(NSData *)key {
-    return [self hmacDataUsingAlg:kCCHmacAlgSHA384 withKey:key];
+- (NSData *)tfy_hmacSHA384DataWithKey:(NSData *)key {
+    return [self tfy_hmacDataUsingAlg:kCCHmacAlgSHA384 withKey:key];
 }
 
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key {
-    return [self hmacStringUsingAlg:kCCHmacAlgSHA512 withKey:key];
+- (NSString *)tfy_hmacSHA512StringWithKey:(NSString *)key {
+    return [self tfy_hmacStringUsingAlg:kCCHmacAlgSHA512 withKey:key];
 }
 
-- (NSData *)hmacSHA512DataWithKey:(NSData *)key {
-    return [self hmacDataUsingAlg:kCCHmacAlgSHA512 withKey:key];
+- (NSData *)tfy_hmacSHA512DataWithKey:(NSData *)key {
+    return [self tfy_hmacDataUsingAlg:kCCHmacAlgSHA512 withKey:key];
 }
 
 
-- (NSData *)aes256EncryptWithKey:(NSData *)key iv:(NSData *)iv {
+- (NSData *)tfy_aes256EncryptWithKey:(NSData *)key iv:(NSData *)iv {
     if (key.length != 16 && key.length != 24 && key.length != 32) {
         return nil;
     }
@@ -271,7 +272,7 @@
     }
 }
 
-- (NSData *)aes256DecryptWithkey:(NSData *)key iv:(NSData *)iv {
+- (NSData *)tfy_aes256DecryptWithkey:(NSData *)key iv:(NSData *)iv {
     if (key.length != 16 && key.length != 24 && key.length != 32) {
         return nil;
     }
@@ -305,14 +306,14 @@
     }
 }
 
-- (NSString *)utf8String {
+- (NSString *)tfy_utf8String {
     if (self.length > 0) {
         return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
     }
     return @"";
 }
 
-- (NSString *)hexString {
+- (NSString *)tfy_hexString {
     NSUInteger length = self.length;
     NSMutableString *result = [NSMutableString stringWithCapacity:length * 2];
     const unsigned char *byte = self.bytes;
@@ -322,7 +323,7 @@
     return result;
 }
 
-+ (NSData *)dataWithHexString:(NSString *)hexStr {
++ (NSData *)tfy_dataWithHexString:(NSString *)hexStr {
     hexStr = [hexStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     hexStr = [hexStr lowercaseString];
     NSUInteger len = hexStr.length;
@@ -366,7 +367,7 @@ static const short base64DecodingTable[256] = {
     -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,  -2,  -2, -2, -2
 };
 
-- (NSString *)base64EncodedString {
+- (NSString *)tfy_base64EncodedString {
     NSUInteger length = self.length;
     if (length == 0)
         return @"";
@@ -404,7 +405,7 @@ static const short base64DecodingTable[256] = {
     return base64;
 }
 
-+ (NSData *)dataWithBase64EncodedString:(NSString *)base64EncodedString {
++ (NSData *)tfy_dataWithBase64EncodedString:(NSString *)base64EncodedString {
     NSInteger length = base64EncodedString.length;
     const char *string = [base64EncodedString cStringUsingEncoding:NSASCIIStringEncoding];
     if (string  == NULL)
@@ -444,7 +445,7 @@ static const short base64DecodingTable[256] = {
     return data;
 }
 
-- (id)jsonValueDecoded {
+- (id)tfy_jsonValueDecoded {
     NSError *error = nil;
     id value = [NSJSONSerialization JSONObjectWithData:self options:kNilOptions error:&error];
     if (error) {
@@ -453,7 +454,7 @@ static const short base64DecodingTable[256] = {
     return value;
 }
 
-+ (NSString *)cachePath
++ (NSString *)tfy_cachePath
 {
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
     path = [path stringByAppendingPathComponent:@"Caches"];
@@ -464,7 +465,7 @@ static const short base64DecodingTable[256] = {
     return path;
 }
 
-+ (NSString *)creatMD5StringWithString:(NSString *)string
++ (NSString *)tfy_creatMD5StringWithString:(NSString *)string
 {
     const char *original_str = [string UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
@@ -476,13 +477,13 @@ static const short base64DecodingTable[256] = {
     return hash;
 }
 
-+ (NSString *)creatDataPathWithString:(NSString *)string
++ (NSString *)tfy_creatDataPathWithString:(NSString *)string
 {
-    NSString *path = [NSData cachePath];
-    path = [path stringByAppendingPathComponent:[self creatMD5StringWithString:string]];
+    NSString *path = [NSData tfy_cachePath];
+    path = [path stringByAppendingPathComponent:[self tfy_creatMD5StringWithString:string]];
     return path;
 }
-- (NSData *)gzipInflate {
+- (NSData *)tfy_gzipInflate {
     if ([self length] == 0) return self;
     
     unsigned full_length = (unsigned)[self length];
@@ -522,7 +523,7 @@ static const short base64DecodingTable[256] = {
     } else return nil;
 }
 
-- (NSData *)gzipDeflate {
+- (NSData *)tfy_gzipDeflate {
     if ([self length] == 0) return self;
     
     z_stream strm;
@@ -564,7 +565,7 @@ static const short base64DecodingTable[256] = {
     return [NSData dataWithData:compressed];
 }
 
-- (NSData *)zlibInflate {
+- (NSData *)tfy_zlibInflate {
     if ([self length] == 0) return self;
     
     NSUInteger full_length = [self length];
@@ -605,7 +606,7 @@ static const short base64DecodingTable[256] = {
     } else return nil;
 }
 
-- (NSData *)zlibDeflate {
+- (NSData *)tfy_zlibDeflate {
     if ([self length] == 0) return self;
     
     z_stream strm;
@@ -645,28 +646,28 @@ static const short base64DecodingTable[256] = {
     return [NSData dataWithData:compressed];
 }
 
-- (void)saveDataCacheWithIdentifier:(NSString *)identifier
+- (void)tfy_saveDataCacheWithIdentifier:(NSString *)identifier
 {
-    NSString *path = [NSData creatDataPathWithString:identifier];
+    NSString *path = [NSData tfy_creatDataPathWithString:identifier];
     [self writeToFile:path atomically:YES];
 }
 
-+ (NSData *)getDataCacheWithIdentifier:(NSString *)identifier
++ (NSData *)tfy_getDataCacheWithIdentifier:(NSString *)identifier
 {
     static BOOL isCheckedCacheDisk = NO;
     if (!isCheckedCacheDisk) {
         NSFileManager *manager = [NSFileManager defaultManager];
-        NSArray *contents = [manager contentsOfDirectoryAtPath:[self cachePath] error:nil];
+        NSArray *contents = [manager contentsOfDirectoryAtPath:[self tfy_cachePath] error:nil];
         if (contents.count >= kSDMaxCacheFileAmount) {
-            [manager removeItemAtPath:[self cachePath] error:nil];
+            [manager removeItemAtPath:[self tfy_cachePath] error:nil];
         }
         isCheckedCacheDisk = YES;
     }
-    NSString *path = [self creatDataPathWithString:identifier];
+    NSString *path = [self tfy_creatDataPathWithString:identifier];
     NSData *data = [NSData dataWithContentsOfFile:path];
     return data;
 }
-+ (NSData *)dataNamed:(NSString *)name {
++ (NSData *)tfy_dataNamed:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
     if (!path) return nil;
     NSData *data = [NSData dataWithContentsOfFile:path];

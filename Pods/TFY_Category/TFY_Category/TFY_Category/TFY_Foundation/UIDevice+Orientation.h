@@ -12,39 +12,39 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIDevice (Orientation)
 
-+ (double)systemVersion;
++ (double)tfy_systemVersion;
 
-+ (NSString *)localVersion;
++ (NSString *)tfy_localVersion;
 
-+ (NSString *)localBuild;
++ (NSString *)tfy_localBuild;
 
-+ (NSString *)storeUrlWithAppId:(NSString *)appId;
++ (NSString *)tfy_storeUrlWithAppId:(NSString *)appId;
 
-@property (nonatomic, readonly) BOOL isJailbroken;
+@property (nonatomic, readonly) BOOL tfy_isJailbroken;
 
-@property (nonatomic, readonly) BOOL isPad;
+@property (nonatomic, readonly) BOOL tfy_isPad;
 
-@property (nonatomic, readonly) BOOL isSimulator;
+@property (nonatomic, readonly) BOOL tfy_isSimulator;
 
-@property (nullable, nonatomic, readonly) NSString *machineModel;
+@property (nullable, nonatomic, readonly) NSString *tfy_machineModel;
 
-@property (nullable, nonatomic, readonly) NSString *machineModelName;
+@property (nullable, nonatomic, readonly) NSString *tfy_machineModelName;
 
 /**
  系统启动时间
  */
-@property (nonatomic, readonly) NSDate *systemUptime;
+@property (nonatomic, readonly) NSDate *tfy_systemUptime;
 
-@property (nonatomic, readonly) BOOL canMakePhoneCalls NS_EXTENSION_UNAVAILABLE_IOS("");
+@property (nonatomic, readonly) BOOL tfy_canMakePhoneCalls NS_EXTENSION_UNAVAILABLE_IOS("");
 /**
  wifi IP
  */
-@property (nullable, nonatomic, readonly) NSString *ipAddressWIFI;
+@property (nullable, nonatomic, readonly) NSString *tfy_ipAddressWIFI;
 
 /**
  cell IP
  */
-@property (nullable, nonatomic, readonly) NSString *ipAddressCell;
+@property (nullable, nonatomic, readonly) NSString *tfy_ipAddressCell;
 
 typedef NS_OPTIONS(NSUInteger, NetworkTrafficType) {
     NetworkTrafficTypeWWANSent     = 1 << 0,
@@ -63,39 +63,39 @@ typedef NS_OPTIONS(NSUInteger, NetworkTrafficType) {
     NetworkTrafficTypeAWDL,
 };
 
-- (uint64_t)getNetworkTrafficBytes:(NetworkTrafficType)types;
+- (uint64_t)tfy_getNetworkTrafficBytes:(NetworkTrafficType)types;
 
 
 #pragma mark - Disk Space
 
 
-@property (nonatomic, readonly) int64_t diskSpace;
+@property (nonatomic, readonly) int64_t tfy_diskSpace;
 
-@property (nonatomic, readonly) int64_t diskSpaceFree;
+@property (nonatomic, readonly) int64_t tfy_diskSpaceFree;
 
-@property (nonatomic, readonly) int64_t diskSpaceUsed;
+@property (nonatomic, readonly) int64_t tfy_diskSpaceUsed;
 
 #pragma mark - Memory Information
 
-@property (nonatomic, readonly) int64_t memoryTotal;
+@property (nonatomic, readonly) int64_t tfy_memoryTotal;
 
-@property (nonatomic, readonly) int64_t memoryUsed;
+@property (nonatomic, readonly) int64_t tfy_memoryUsed;
 
-@property (nonatomic, readonly) int64_t memoryFree;
+@property (nonatomic, readonly) int64_t tfy_memoryFree;
 
-@property (nonatomic, readonly) int64_t memoryActive;
+@property (nonatomic, readonly) int64_t tfy_memoryActive;
 
-@property (nonatomic, readonly) int64_t memoryInactive;
+@property (nonatomic, readonly) int64_t tfy_memoryInactive;
 
-@property (nonatomic, readonly) int64_t memoryWired;
+@property (nonatomic, readonly) int64_t tfy_memoryWired;
 
-@property (nonatomic, readonly) int64_t memoryPurgable;
+@property (nonatomic, readonly) int64_t tfy_memoryPurgable;
 
-@property (nonatomic, readonly) NSUInteger cpuCount;
+@property (nonatomic, readonly) NSUInteger tfy_cpuCount;
 
-@property (nonatomic, readonly) float cpuUsage;
+@property (nonatomic, readonly) float tfy_cpuUsage;
 
-@property (nullable, nonatomic, readonly) NSArray<NSNumber *> *cpuUsagePerProcessor;
+@property (nullable, nonatomic, readonly) NSArray<NSNumber *> *tfy_cpuUsagePerProcessor;
 
 @end
 

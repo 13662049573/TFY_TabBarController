@@ -10,41 +10,41 @@
 #import "NSData+TFY_Data.h"
 
 @implementation NSArray (TFY_Arr)
-+ (NSArray *)arrayWithPlistData:(NSData *)plist {
++ (NSArray *)tfy_arrayWithPlistData:(NSData *)plist {
     if (!plist) return nil;
     NSArray *array = [NSPropertyListSerialization propertyListWithData:plist options:NSPropertyListImmutable format:NULL error:NULL];
     if ([array isKindOfClass:[NSArray class]]) return array;
     return nil;
 }
 
-+ (NSArray *)arrayWithPlistString:(NSString *)plist {
++ (NSArray *)tfy_arrayWithPlistString:(NSString *)plist {
     if (!plist) return nil;
     NSData *data = [plist dataUsingEncoding:NSUTF8StringEncoding];
-    return [self arrayWithPlistData:data];
+    return [self tfy_arrayWithPlistData:data];
 }
 
-- (NSData *)plistData {
+- (NSData *)tfy_plistData {
     return [NSPropertyListSerialization dataWithPropertyList:self format:NSPropertyListBinaryFormat_v1_0 options:kNilOptions error:NULL];
 }
 
-- (NSString *)plistString {
+- (NSString *)tfy_plistString {
     NSData *xmlData = [NSPropertyListSerialization dataWithPropertyList:self format:NSPropertyListXMLFormat_v1_0 options:kNilOptions error:NULL];
-    if (xmlData) return xmlData.utf8String;
+    if (xmlData) return xmlData.tfy_utf8String;
     return nil;
 }
 
-- (id)randomObject {
+- (id)tfy_randomObject {
     if (self.count) {
         return self[arc4random_uniform((u_int32_t)self.count)];
     }
     return nil;
 }
 
-- (id)objectOrNilAtIndex:(NSUInteger)index {
+- (id)tfy_objectOrNilAtIndex:(NSUInteger)index {
     return index < self.count ? self[index] : nil;
 }
 
-- (NSString *)jsonStringEncoded {
+- (NSString *)tfy_jsonStringEncoded {
     if ([NSJSONSerialization isValidJSONObject:self]) {
         NSError *error = nil;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
@@ -54,7 +54,7 @@
     return nil;
 }
 
-- (NSString *)jsonPrettyStringEncoded {
+- (NSString *)tfy_jsonPrettyStringEncoded {
     if ([NSJSONSerialization isValidJSONObject:self]) {
         NSError *error = nil;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:&error];
@@ -63,7 +63,7 @@
     }
     return nil;
 }
-- (NSString *)descriptionWithLocale:(id)locale {
+- (NSString *)tfy_descriptionWithLocale:(id)locale {
     NSMutableString * string = [NSMutableString string];
     [string appendString:@"[\n"];
     NSUInteger count = self.count;

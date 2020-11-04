@@ -12,78 +12,78 @@
 @implementation NSString (TFY_String)
 
 
-- (NSString *)md2String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] md2String];
+- (NSString *)tfy_md2String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_md2String];
 }
 
-- (NSString *)md4String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] md4String];
+- (NSString *)tfy_md4String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_md4String];
 }
 
-- (NSString *)md5String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] md5String];
+- (NSString *)tfy_md5String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_md5String];
 }
 
-- (NSString *)sha1String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] sha1String];
+- (NSString *)tfy_sha1String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_sha1String];
 }
 
-- (NSString *)sha224String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] sha224String];
+- (NSString *)tfy_sha224String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_sha224String];
 }
 
-- (NSString *)sha256String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] sha256String];
+- (NSString *)tfy_sha256String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_sha256String];
 }
 
-- (NSString *)sha384String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] sha384String];
+- (NSString *)tfy_sha384String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_sha384String];
 }
 
-- (NSString *)sha512String {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] sha512String];
+- (NSString *)tfy_sha512String {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_sha512String];
 }
 
-- (NSString *)hmacMD5StringWithKey:(NSString *)key {
+- (NSString *)tfy_hmacMD5StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacMD5StringWithKey:key];
+            tfy_hmacMD5StringWithKey:key];
 }
 
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key {
+- (NSString *)tfy_hmacSHA1StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA1StringWithKey:key];
+            tfy_hmacSHA1StringWithKey:key];
 }
 
-- (NSString *)hmacSHA224StringWithKey:(NSString *)key {
+- (NSString *)tfy_hmacSHA224StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA224StringWithKey:key];
+            tfy_hmacSHA224StringWithKey:key];
 }
 
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key {
+- (NSString *)tfy_hmacSHA256StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA256StringWithKey:key];
+            tfy_hmacSHA256StringWithKey:key];
 }
 
-- (NSString *)hmacSHA384StringWithKey:(NSString *)key {
+- (NSString *)tfy_hmacSHA384StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA384StringWithKey:key];
+            tfy_hmacSHA384StringWithKey:key];
 }
 
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key {
+- (NSString *)tfy_hmacSHA512StringWithKey:(NSString *)key {
     return [[self dataUsingEncoding:NSUTF8StringEncoding]
-            hmacSHA512StringWithKey:key];
+            tfy_hmacSHA512StringWithKey:key];
 }
 
-- (NSString *)base64EncodedString {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
+- (NSString *)tfy_base64EncodedString {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] tfy_base64EncodedString];
 }
 
-+ (NSString *)stringWithBase64EncodedString:(NSString *)base64EncodedString {
-    NSData *data = [NSData dataWithBase64EncodedString:base64EncodedString];
++ (NSString *)tfy_stringWithBase64EncodedString:(NSString *)base64EncodedString {
+    NSData *data = [NSData tfy_dataWithBase64EncodedString:base64EncodedString];
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)stringByURLEncode {
+- (NSString *)tfy_stringByURLEncode {
     if ([self respondsToSelector:@selector(stringByAddingPercentEncodingWithAllowedCharacters:)]) {
         /**
          AFNetworking/AFURLRequestSerialization.m
@@ -136,7 +136,7 @@
     }
 }
 
-- (NSString *)stringByURLDecode {
+- (NSString *)tfy_stringByURLDecode {
     if ([self respondsToSelector:@selector(stringByRemovingPercentEncoding)]) {
         return [self stringByRemovingPercentEncoding];
     } else {
@@ -156,7 +156,7 @@
     }
 }
 
-- (NSString *)stringByEscapingHTML {
+- (NSString *)tfy_stringByEscapingHTML {
     NSUInteger len = self.length;
     if (!len) return self;
     
@@ -186,7 +186,7 @@
     return result;
 }
 
-- (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode {
+- (CGSize)tfy_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode {
     CGSize result;
     if (!font) font = [UIFont systemFontOfSize:12];
     if ([self respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
@@ -210,23 +210,23 @@
     return result;
 }
 
-- (CGFloat)widthForFont:(UIFont *)font {
-    CGSize size = [self sizeForFont:font size:CGSizeMake(HUGE, HUGE) mode:NSLineBreakByWordWrapping];
+- (CGFloat)tfy_widthForFont:(UIFont *)font {
+    CGSize size = [self tfy_sizeForFont:font size:CGSizeMake(HUGE, HUGE) mode:NSLineBreakByWordWrapping];
     return size.width;
 }
 
-- (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width {
-    CGSize size = [self sizeForFont:font size:CGSizeMake(width, HUGE) mode:NSLineBreakByWordWrapping];
+- (CGFloat)tfy_heightForFont:(UIFont *)font width:(CGFloat)width {
+    CGSize size = [self tfy_sizeForFont:font size:CGSizeMake(width, HUGE) mode:NSLineBreakByWordWrapping];
     return size.height;
 }
 
-- (BOOL)matchesRegex:(NSString *)regex options:(NSRegularExpressionOptions)options {
+- (BOOL)tfy_matchesRegex:(NSString *)regex options:(NSRegularExpressionOptions)options {
     NSRegularExpression *pattern = [NSRegularExpression regularExpressionWithPattern:regex options:options error:NULL];
     if (!pattern) return NO;
     return ([pattern numberOfMatchesInString:self options:0 range:NSMakeRange(0, self.length)] > 0);
 }
 
-- (void)enumerateRegexMatches:(NSString *)regex
+- (void)tfy_enumerateRegexMatches:(NSString *)regex
                       options:(NSRegularExpressionOptions)options
                    usingBlock:(void (^)(NSString *match, NSRange matchRange, BOOL *stop))block {
     if (regex.length == 0 || !block) return;
@@ -237,7 +237,7 @@
     }];
 }
 
-- (NSString *)stringByReplacingRegex:(NSString *)regex
+- (NSString *)tfy_stringByReplacingRegex:(NSString *)regex
                              options:(NSRegularExpressionOptions)options
                           withString:(NSString *)replacement; {
     NSRegularExpression *pattern = [NSRegularExpression regularExpressionWithPattern:regex options:options error:nil];
@@ -245,62 +245,62 @@
     return [pattern stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, [self length]) withTemplate:replacement];
 }
 
-- (char)charValue {
-    return self.numberValue.charValue;
+- (char)tfy_charValue {
+    return self.tfy_numberValue.charValue;
 }
 
-- (unsigned char) unsignedCharValue {
-    return self.numberValue.unsignedCharValue;
+- (unsigned char)tfy_unsignedCharValue {
+    return self.tfy_numberValue.unsignedCharValue;
 }
 
-- (short) shortValue {
-    return self.numberValue.shortValue;
+- (short)tfy_shortValue {
+    return self.tfy_numberValue.shortValue;
 }
 
-- (unsigned short) unsignedShortValue {
-    return self.numberValue.unsignedShortValue;
+- (unsigned short)tfy_unsignedShortValue {
+    return self.tfy_numberValue.unsignedShortValue;
 }
 
-- (unsigned int) unsignedIntValue {
-    return self.numberValue.unsignedIntValue;
+- (unsigned int)tfy_unsignedIntValue {
+    return self.tfy_numberValue.unsignedIntValue;
 }
 
-- (long) longValue {
-    return self.numberValue.longValue;
+- (long)tfy_longValue {
+    return self.tfy_numberValue.longValue;
 }
 
-- (unsigned long) unsignedLongValue {
-    return self.numberValue.unsignedLongValue;
+- (unsigned long)tfy_unsignedLongValue {
+    return self.tfy_numberValue.unsignedLongValue;
 }
 
-- (unsigned long long) unsignedLongLongValue {
-    return self.numberValue.unsignedLongLongValue;
+- (unsigned long long)tfy_unsignedLongLongValue {
+    return self.tfy_numberValue.unsignedLongLongValue;
 }
 
-- (NSUInteger) unsignedIntegerValue {
-    return self.numberValue.unsignedIntegerValue;
+- (NSUInteger)tfy_unsignedIntegerValue {
+    return self.tfy_numberValue.unsignedIntegerValue;
 }
 
 
-+ (NSString *)stringWithUUID {
++ (NSString *)tfy_stringWithUUID {
     CFUUIDRef uuid = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, uuid);
     CFRelease(uuid);
     return (__bridge_transfer NSString *)string;
 }
 
-+ (NSString *)stringWithUTF32Char:(UTF32Char)char32 {
++ (NSString *)tfy_stringWithUTF32Char:(UTF32Char)char32 {
     char32 = NSSwapHostIntToLittle(char32);
     return [[NSString alloc] initWithBytes:&char32 length:4 encoding:NSUTF32LittleEndianStringEncoding];
 }
 
-+ (NSString *)stringWithUTF32Chars:(const UTF32Char *)char32 length:(NSUInteger)length {
++ (NSString *)tfy_stringWithUTF32Chars:(const UTF32Char *)char32 length:(NSUInteger)length {
     return [[NSString alloc] initWithBytes:(const void *)char32
                                     length:length * 4
                                   encoding:NSUTF32LittleEndianStringEncoding];
 }
 
-- (void)enumerateUTF32CharInRange:(NSRange)range usingBlock:(void (^)(UTF32Char char32, NSRange range, BOOL *stop))block {
+- (void)tfy_enumerateUTF32CharInRange:(NSRange)range usingBlock:(void (^)(UTF32Char char32, NSRange range, BOOL *stop))block {
     NSString *str = self;
     if (range.location != 0 || range.length != self.length) {
         str = [self substringWithRange:range];
@@ -323,17 +323,17 @@
     }
 }
 
-- (NSString *)stringByTrim {
+- (NSString *)tfy_stringByTrim {
     NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     return [self stringByTrimmingCharactersInSet:set];
 }
 
-- (NSString *)stringByAppendingNameScale:(CGFloat)scale {
+- (NSString *)tfy_stringByAppendingNameScale:(CGFloat)scale {
     if (fabs(scale - 1) <= __FLT_EPSILON__ || self.length == 0 || [self hasSuffix:@"/"]) return self.copy;
     return [self stringByAppendingFormat:@"@%@x", @(scale)];
 }
 
-- (NSString *)stringByAppendingPathScale:(CGFloat)scale {
+- (NSString *)tfy_stringByAppendingPathScale:(CGFloat)scale {
     if (fabs(scale - 1) <= __FLT_EPSILON__ || self.length == 0 || [self hasSuffix:@"/"]) return self.copy;
     NSString *ext = self.pathExtension;
     NSRange extRange = NSMakeRange(self.length - ext.length, 0);
@@ -342,17 +342,17 @@
     return [self stringByReplacingCharactersInRange:extRange withString:scaleStr];
 }
 
-- (CGFloat)pathScale {
+- (CGFloat)tfy_pathScale {
     if (self.length == 0 || [self hasSuffix:@"/"]) return 1;
     NSString *name = self.stringByDeletingPathExtension;
     __block CGFloat scale = 1;
-    [name enumerateRegexMatches:@"@[0-9]+\\.?[0-9]*x$" options:NSRegularExpressionAnchorsMatchLines usingBlock: ^(NSString *match, NSRange matchRange, BOOL *stop) {
+    [name tfy_enumerateRegexMatches:@"@[0-9]+\\.?[0-9]*x$" options:NSRegularExpressionAnchorsMatchLines usingBlock: ^(NSString *match, NSRange matchRange, BOOL *stop) {
         scale = [match substringWithRange:NSMakeRange(1, match.length - 2)].doubleValue;
     }];
     return scale;
 }
 
-- (BOOL)isNotBlank {
+- (BOOL)tfy_isNotBlank {
     NSCharacterSet *blank = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     for (NSInteger i = 0; i < self.length; ++i) {
         unichar c = [self characterAtIndex:i];
@@ -363,33 +363,33 @@
     return NO;
 }
 
-- (BOOL)containsString:(NSString *)string {
+- (BOOL)tfy_containsString:(NSString *)string {
     if (string == nil) return NO;
     return [self rangeOfString:string].location != NSNotFound;
 }
 
-- (BOOL)containsCharacterSet:(NSCharacterSet *)set {
+- (BOOL)tfy_containsCharacterSet:(NSCharacterSet *)set {
     if (set == nil) return NO;
     return [self rangeOfCharacterFromSet:set].location != NSNotFound;
 }
 
-- (NSNumber *)numberValue {
-    return [NSNumber numberWithString:self];
+- (NSNumber *)tfy_numberValue {
+    return [NSNumber tfy_numberWithString:self];
 }
 
-- (NSData *)dataValue {
+- (NSData *)tfy_dataValue {
     return [self dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (NSRange)rangeOfAll {
+- (NSRange)tfy_rangeOfAll {
     return NSMakeRange(0, self.length);
 }
 
-- (id)jsonValueDecoded {
-    return [[self dataValue] jsonValueDecoded];
+- (id)tfy_jsonValueDecoded {
+    return [[self tfy_dataValue] tfy_jsonValueDecoded];
 }
 
-+ (NSString *)stringNamed:(NSString *)name {
++ (NSString *)tfy_stringNamed:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
     NSString *str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     if (!str) {
@@ -401,7 +401,7 @@
 /**
  * 根据字体、行数、行间距和指定的宽度constrainedWidth计算文本占据的size lineSpacing 行间距 constrainedWidth 文本指定的宽度
  */
-- (CGSize)textSizeWithFont:(UIFont*)font numberOfLines:(NSInteger)numberOfLines lineSpacing:(CGFloat)lineSpacing constrainedWidth:(CGFloat)constrainedWidth{
+- (CGSize)tfy_textSizeWithFont:(UIFont*)font numberOfLines:(NSInteger)numberOfLines lineSpacing:(CGFloat)lineSpacing constrainedWidth:(CGFloat)constrainedWidth{
     if (self.length == 0) {
         return CGSizeZero;
     }
@@ -429,7 +429,7 @@
 /**
  *  根据字体、行数、行间距和指定的宽度constrainedWidth计算文本占据的size
  */
-- (CGSize)textSizeWithFont:(UIFont *)font numberOfLines:(NSInteger)numberOfLines constrainedWidth:(CGFloat)constrainedWidth{
+- (CGSize)tfy_textSizeWithFont:(UIFont *)font numberOfLines:(NSInteger)numberOfLines constrainedWidth:(CGFloat)constrainedWidth{
     if (self.length == 0) {
         return CGSizeZero;
     }
@@ -457,7 +457,7 @@
 /**
  *  计算字符串长度（一行时候）
  */
-- (CGSize)textSizeWithFont:(UIFont*)font limitWidth:(CGFloat)maxWidth{
+- (CGSize)tfy_textSizeWithFont:(UIFont*)font limitWidth:(CGFloat)maxWidth{
     CGSize size = [self boundingRectWithSize:CGSizeMake(MAXFLOAT, 36)options:(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)  attributes:@{ NSFontAttributeName : font} context:nil].size;
     size.width = size.width > maxWidth ? maxWidth : size.width;
     size.width = ceil(size.width);
@@ -466,7 +466,7 @@
 }
 
    //获取当前的时间
-+(NSString*)getCurrentTimes{
++(NSString*)tfy_getCurrentTimes{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
     [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
@@ -478,7 +478,7 @@
     return currentTimeString;
 }
 //获取当前时间戳有两种方法(以秒为单位)
-+(NSString *)getNowTimeTimestamp{
++(NSString *)tfy_getNowTimeTimestamp{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
@@ -491,7 +491,7 @@
     return timeSp;
 }
  
-+(NSString *)getNowTimeTimestamp2{
++(NSString *)tfy_getNowTimeTimestamp2{
  
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval a=[dat timeIntervalSince1970];
@@ -499,7 +499,7 @@
     return timeString;
 }
  //获取当前时间戳  （以毫秒为单位）
-+(NSString *)getNowTimeTimestamp3{
++(NSString *)tfy_getNowTimeTimestamp3{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
@@ -514,7 +514,7 @@
 /**
  *   给的是毫秒 返回 YYYY-MM-dd
  */
-+ (NSString *)stringToDate:(NSString *)string{
++ (NSString *)tfy_stringToDate:(NSString *)string{
     //给的是毫秒
     //    NSTimeInterval time = [string doubleValue]/1000.0 + 28800;//因为时差问题要加8小时 == 28800 sec
     //    NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:time];
@@ -537,7 +537,7 @@
 /**
  *   给的是毫秒 返回  HH:mm
  */
-+ (NSString *)stringHHMMToDate:(NSString *)string{
++ (NSString *)tfy_stringHHMMToDate:(NSString *)string{
     //给的是毫秒
     //    NSTimeInterval time = [string doubleValue]/1000.0 + 28800;//因为时差问题要加8小时 == 28800 sec
     //    NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:time];
@@ -560,7 +560,7 @@
 /**
  *   给的是毫秒 返回  MM-dd HH:mm
  */
-+(NSString *)stringToDateNoYear:(NSString *)date{
++(NSString *)tfy_stringToDateNoYear:(NSString *)date{
     long long time=[date longLongValue];
     
     NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time/1000.0];
@@ -576,7 +576,7 @@
 /**
 *   给的是毫秒  返回  yyyy/MM/dd
 */
-+(NSString *)stringToDateOnlyYear:(NSString *)dateStr{
++(NSString *)tfy_stringToDateOnlyYear:(NSString *)dateStr{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"yyyy/MM/dd";
     NSDate *date = [format dateFromString:dateStr];
@@ -586,7 +586,7 @@
     return [NSString stringWithFormat:@"%lld",totalMilliseconds];
 }
 
-+(NSString *)birthdayTime:(NSString *)str{
++(NSString *)tfy_birthdayTime:(NSString *)str{
     long long time=[str longLongValue];
     
     NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time];
@@ -601,7 +601,7 @@
 /**
 *   给的是毫秒  返回 yyyy年M月d日
 */
-+ (NSString *)dateToString:(NSString *)dateString{
++ (NSString *)tfy_dateToString:(NSString *)dateString{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"yyyy年M月d日";
     NSDate *date = [format dateFromString:dateString];
@@ -613,7 +613,7 @@
 /**
  *   给的是毫秒 yyyy-MM-dd HH:mm
  */
-+(NSString *)togetherToTime:(NSString *)dateStr{
++(NSString *)tfy_togetherToTime:(NSString *)dateStr{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"yyyy-MM-dd HH:mm";
     NSDate *date = [format dateFromString:dateStr];
@@ -625,7 +625,7 @@
 /**
 *   给的是毫秒  yyyy-MM-dd HH:mm:ss
 */
-+(NSString *)chooseDateToTime:(NSString *)dateStr{
++(NSString *)tfy_chooseDateToTime:(NSString *)dateStr{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSDate *date = [format dateFromString:dateStr];
@@ -638,7 +638,7 @@
 /**
 *   给的是分  返回 yyyy-MM-dd HH:mm
 */
-+(NSString *)timeWithStr:(NSString *)str{
++(NSString *)tfy_timeWithStr:(NSString *)str{
     long long time=[str longLongValue];
     
     NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time/1000.0];
@@ -653,7 +653,7 @@
 /**
 *   给的是分  返回 HH:mm
 */
-+(NSString *)logTimeWithStr:(NSString *)str{
++(NSString *)tfy_logTimeWithStr:(NSString *)str{
     long long time=[str longLongValue];
     
     NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time/1000];
@@ -668,7 +668,7 @@
 /**
 *   给的是毫秒  返回 MM.dd
 */
-+ (NSString *)secondsStringToDate:(NSString *)string{
++ (NSString *)tfy_secondsStringToDate:(NSString *)string{
     //给的是秒
     //NSTimeInterval time = [string doubleValue] + 28800;//因为时差问题要加8小时 == 28800 sec
     NSTimeInterval time = [string doubleValue]/1000;
@@ -681,7 +681,7 @@
 /**
  移除结尾的子字符串, 可以输入多个
  */
-- (NSString *)removeLastSubStrings:(NSString *)string, ... NS_REQUIRES_NIL_TERMINATION
+- (NSString *)tfy_removeLastSubStrings:(NSString *)string, ... NS_REQUIRES_NIL_TERMINATION
 {
     NSMutableArray *tempArr = @[].mutableCopy;
     if (string) {
@@ -701,24 +701,24 @@
         va_end(args);
     }
     
-    return [self removeLastSubStringsArray:tempArr];
+    return [self tfy_removeLastSubStringsArray:tempArr];
 }
 
 /**
  移除结尾的子字符串, 使用数组传递多个
  */
-- (NSString *)removeLastSubStringsArray:(NSArray<NSString *> *)strings {
+- (NSString *)tfy_removeLastSubStringsArray:(NSArray<NSString *> *)strings {
     NSString *result = self;
     BOOL isHaveSubString = NO;
     for (int i = 0; i < strings.count; i++) {
         NSString *subString = strings[i];
         if ([result hasSuffix:subString]) {
-            result = [result removeLastSubString:subString];
+            result = [result tfy_removeLastSubString:subString];
             isHaveSubString = YES;
         }
     }
     if (isHaveSubString) {
-        result = [result removeLastSubStringsArray:strings];
+        result = [result tfy_removeLastSubStringsArray:strings];
     }
     return result;
 }
@@ -726,19 +726,19 @@
 /**
  移除结尾的子字符串
  */
-- (NSString *)removeLastSubString:(NSString *)string
+- (NSString *)tfy_removeLastSubString:(NSString *)string
 {
     NSString *result = self;
     if ([result hasSuffix:string]) {
         result = [result substringToIndex:self.length - string.length];
-        result = [result removeLastSubString:string];
+        result = [result tfy_removeLastSubString:string];
     }
     return result;
 }
 /**
  * 判断当前的字符串是不是url
  */
-- (BOOL)isUrl{
+- (BOOL)tfy_isUrl{
     if(self == nil) {
         return NO;
     }
@@ -755,7 +755,7 @@
 
 #pragma mark ----两个数相加-----------
 
-+(NSString *)calculateByadding:(NSString *)number1 secondNumber:(NSString *)number2
++(NSString *)tfy_calculateByadding:(NSString *)number1 secondNumber:(NSString *)number2
 {
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:number1];
     NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:number2];
@@ -764,7 +764,7 @@
 }
 
 #pragma mark ----两个数相减------------ number1 - number2
-+(NSString *)calculateBySubtractingMinuend:(NSString *)number1 subtractorNumber:(NSString *)number2
++(NSString *)tfy_calculateBySubtractingMinuend:(NSString *)number1 subtractorNumber:(NSString *)number2
 {
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:number1];
     NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:number2];
@@ -774,7 +774,7 @@
 }
 
 #pragma mark ----两个数相乘------------
-+(NSString *)calculateByMultiplying:(NSString *)number1 secondNumber:(NSString *)number2
++(NSString *)tfy_calculateByMultiplying:(NSString *)number1 secondNumber:(NSString *)number2
 {
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:number1];
     NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:number2];
@@ -784,7 +784,7 @@
 }
 
 #pragma mark ----两个数相除------------
-+ (NSString *)calculateByDividingNumber:(NSString *)number1 secondNumber:(NSString *)number2
++ (NSString *)tfy_calculateByDividingNumber:(NSString *)number1 secondNumber:(NSString *)number2
 {
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:number1];
     NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:number2];
@@ -794,7 +794,7 @@
 }
 
 #pragma mark ----四舍五入------------
-+ (NSString *)calculateTargetNumber:(NSString *)targetNumber ByRounding:(NSUInteger)scale
++ (NSString *)tfy_calculateTargetNumber:(NSString *)targetNumber ByRounding:(NSUInteger)scale
 {
     NSDecimalNumberHandler * handler = [[NSDecimalNumberHandler alloc] initWithRoundingMode:NSRoundPlain scale:scale raiseOnExactness:NO raiseOnOverflow:YES raiseOnUnderflow:YES raiseOnDivideByZero:YES];
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:targetNumber];
@@ -804,7 +804,7 @@
 
 
 #pragma mark ----是否相等------------
-+ (BOOL)calculateIsEqualNumber:(NSString *)number1 secondNumber:(NSString *)number2
++ (BOOL)tfy_calculateIsEqualNumber:(NSString *)number1 secondNumber:(NSString *)number2
 {
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:number1];
     NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:number2];
@@ -816,7 +816,7 @@
 }
 
 #pragma mark ----是否大于------------
-+ (BOOL)calculateNumber: (NSString *)number1 IsGreaterThan:(NSString *)number2
++ (BOOL)tfy_calculateNumber: (NSString *)number1 IsGreaterThan:(NSString *)number2
 {
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:number1];
     NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:number2];
@@ -829,7 +829,7 @@
 }
 
 #pragma mark ----是否小于------------
-+ (BOOL)calculateNumber:(NSString *)number1  IsLessThan:(NSString *)number2
++ (BOOL)tfy_calculateNumber:(NSString *)number1  IsLessThan:(NSString *)number2
 {
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:number1];
     NSDecimalNumber *num2 = [NSDecimalNumber decimalNumberWithString:number2];
@@ -841,7 +841,7 @@
     
 }
 #pragma mark --10指数运算--------
-+(NSString *)calculateTargetNumber:(NSString *)number1 ByRonding:(short)power
++(NSString *)tfy_calculateTargetNumber:(NSString *)number1 ByRonding:(short)power
 {
     NSDecimalNumber * balanceNumber = [[NSDecimalNumber alloc]initWithString:number1];
     
@@ -852,7 +852,7 @@
 
 
 #pragma mark ---------单纯保留小数位数----------
-+(NSString *)calculateRetainedDecimalNumber:(NSString *)targetNumber ByRonding:(short)power
++(NSString *)tfy_calculateRetainedDecimalNumber:(NSString *)targetNumber ByRonding:(short)power
 {
     NSDecimalNumber * balanceNumber = [[NSDecimalNumber alloc]initWithString:targetNumber];
     NSDecimalNumberHandler * hander = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:4 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
@@ -861,4 +861,127 @@
     return [changeNumber stringValue];
     
 }
+
+#pragma mark - NSAttributedString
+- (NSAttributedString *)tfy_attributedStringWithLineSpace:(CGFloat)lineSpace {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = lineSpace;
+    NSRange range = NSMakeRange(0, self.length);
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:range];
+    return attributedString;
+}
+
+///拼音 ->pinyin
+- (NSString*)tfy_transformToPinyin{
+    NSMutableString *mutableString=[NSMutableString stringWithString:self];
+    CFStringTransform((CFMutableStringRef)mutableString,NULL,kCFStringTransformToLatin,false);
+    mutableString = (NSMutableString*)[mutableString stringByFoldingWithOptions:NSDiacriticInsensitiveSearch locale:[NSLocale currentLocale]];
+    mutableString = [[mutableString stringByReplacingOccurrencesOfString:@" " withString:@""] mutableCopy];
+    return mutableString.lowercaseString;
+}
+
+///拼音首字母 -> py
+- (NSString *)tfy_transformToPinyinFirstLetter{
+    NSMutableString *stringM = [NSMutableString string];
+    NSString *temp  =  nil;
+    for(int i =0; i < [self length]; i++){
+        temp = [self substringWithRange:NSMakeRange(i, 1)];
+        NSMutableString *mutableString=[NSMutableString stringWithString:temp];
+        CFStringTransform((CFMutableStringRef)mutableString,NULL,kCFStringTransformToLatin,false);
+        mutableString = (NSMutableString*)[mutableString stringByFoldingWithOptions:NSDiacriticInsensitiveSearch locale:[NSLocale currentLocale]];
+        mutableString =  [[mutableString substringToIndex:1] mutableCopy];
+        [stringM appendString:(NSString *)mutableString];
+    }
+    return stringM.lowercaseString;
+}
++ (NSString *)tfy_covert:(NSUInteger)num{
+    NSString *numStr = [NSString stringWithFormat:@"%lu",(unsigned long)num];
+    NSString *resultStr = @"";
+    for (int i=0; i<[numStr length]; ++i) {
+        NSString *tempStr = [numStr substringWithRange:NSMakeRange(i, 1)];
+        resultStr  = [resultStr stringByAppendingString:[self tfy_numberTransformWord:[tempStr integerValue]]];
+    }
+    
+    if (num/10 == 1) {
+        if ([[resultStr substringToIndex:1] isEqualToString:@"一"] ) {
+            if ([[resultStr substringToIndex:2] isEqualToString:@"一零"]) {
+                resultStr = @"十";
+            } else {
+                resultStr = [NSString stringWithFormat:@"十%@", [resultStr substringFromIndex:1]];
+            }
+        }
+    }
+    
+    NSMutableString *resultString = [[NSMutableString alloc] initWithString:resultStr];
+    
+    if (num/10 > 1) {
+        [resultString insertString:@"十" atIndex:1];
+    }else if (num/100 != 0) {
+        resultString = [NSMutableString stringWithString:resultStr];
+        [resultString insertString:@"百" atIndex:1];
+        [resultString insertString:@"十" atIndex:3];
+    }else if (num/1000 != 0) {
+        resultString = [NSMutableString stringWithString:resultStr];
+        [resultString insertString:@"千" atIndex:1];
+        [resultString insertString:@"百" atIndex:3];
+        [resultString insertString:@"十" atIndex:5];
+    }
+    
+    return resultString;
+}
++ (NSString *)tfy_numberTransformWord:(NSUInteger) num
+{
+    switch (num) {
+        case 0:
+            return @"零";
+            break;
+            
+        case 1:
+            return @"一";
+            break;
+            
+        case 2:
+            return @"二";
+            break;
+            
+        case 3:
+            return @"三";
+            break;
+            
+        case 4:
+            return @"四";
+            break;
+            
+        case 5:
+            return @"五";
+            break;
+            
+        case 6:
+            return @"六";
+            break;
+            
+        case 7:
+            return @"七";
+            break;
+            
+        case 8:
+            return @"八";
+            break;
+            
+        case 9:
+            return @"九";
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
+- (NSData *)tfy_utf8Data{
+    NSString *string = self;
+    return [string dataUsingEncoding:NSUTF8StringEncoding];
+}
+
 @end

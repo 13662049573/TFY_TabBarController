@@ -9,7 +9,7 @@
 #import "NSNumber+TFY_Number.h"
 
 @implementation NSNumber (TFY_Number)
-+ (NSNumber *)numberWithString:(NSString *)string {
++ (NSNumber *)tfy_numberWithString:(NSString *)string {
     NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSString *str = [[string stringByTrimmingCharactersInSet:set] lowercaseString];
     if (!str || !str.length) {

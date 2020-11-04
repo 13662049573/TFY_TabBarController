@@ -15,303 +15,314 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  md2 hash, 返回小写字符串.
  */
-- (nullable NSString *)md2String;
+- (nullable NSString *)tfy_md2String;
 
 /**
  *  md4 hash, 返回小写字符串.
  */
-- (nullable NSString *)md4String;
+- (nullable NSString *)tfy_md4String;
 
 /**
  *  md5 hash, 返回小写字符串.
  */
-- (nullable NSString *)md5String;
+- (nullable NSString *)tfy_md5String;
 
 /**
  *  sha1 hash, 返回小写字符串.
  */
-- (nullable NSString *)sha1String;
+- (nullable NSString *)tfy_sha1String;
 
 /**
  *  sha224 hash, 返回小写字符串.
  */
-- (nullable NSString *)sha224String;
+- (nullable NSString *)tfy_sha224String;
 
 /**
  *  sha256 hash, 返回小写字符串.
  */
-- (nullable NSString *)sha256String;
+- (nullable NSString *)tfy_sha256String;
 /**
  *  sha384 hash, 返回小写字符串.
  */
-- (nullable NSString *)sha384String;
+- (nullable NSString *)tfy_sha384String;
 /**
  *  sha512 hash, 返回小写字符串.
  */
-- (nullable NSString *)sha512String;
+- (nullable NSString *)tfy_sha512String;
 /**
  * HMAC MD5 hash, 返回一个小写字符串。此 HMAC 进程将密钥与消息数据混合，使用哈希函数对混合结果进行哈希计算，将所得哈希值与该密钥混合，然后再次应用哈希函数。
  */
-- (nullable NSString *)hmacMD5StringWithKey:(NSString *)key;
+- (nullable NSString *)tfy_hmacMD5StringWithKey:(NSString *)key;
 
 /**
  * HMAC SHA1 hash, 返回一个小写字符串。此 HMAC 进程将密钥与消息数据混合，使用哈希函数对混合结果进行哈希计算，将所得哈希值与该密钥混合，然后再次应用哈希函数。
  */
-- (nullable NSString *)hmacSHA1StringWithKey:(NSString *)key;
+- (nullable NSString *)tfy_hmacSHA1StringWithKey:(NSString *)key;
 
 /**
  * HMAC SHA224 hash, 返回一个小写字符串。此 HMAC 进程将密钥与消息数据混合，使用哈希函数对混合结果进行哈希计算，将所得哈希值与该密钥混合，然后再次应用哈希函数。
  */
-- (nullable NSString *)hmacSHA224StringWithKey:(NSString *)key;
+- (nullable NSString *)tfy_hmacSHA224StringWithKey:(NSString *)key;
 
 /**
  * HMAC SHA256 hash, 返回一个小写字符串。此 HMAC 进程将密钥与消息数据混合，使用哈希函数对混合结果进行哈希计算，将所得哈希值与该密钥混合，然后再次应用哈希函数。
  */
-- (nullable NSString *)hmacSHA256StringWithKey:(NSString *)key;
+- (nullable NSString *)tfy_hmacSHA256StringWithKey:(NSString *)key;
 
 /**
  * HMAC SHA384 hash, 返回一个小写字符串。此 HMAC 进程将密钥与消息数据混合，使用哈希函数对混合结果进行哈希计算，将所得哈希值与该密钥混合，然后再次应用哈希函数。
  */
-- (nullable NSString *)hmacSHA384StringWithKey:(NSString *)key;
+- (nullable NSString *)tfy_hmacSHA384StringWithKey:(NSString *)key;
 
 /**
  * HMAC SHA512 hash, 返回一个小写字符串。此 HMAC 进程将密钥与消息数据混合，使用哈希函数对混合结果进行哈希计算，将所得哈希值与该密钥混合，然后再次应用哈希函数。
  */
-- (nullable NSString *)hmacSHA512StringWithKey:(NSString *)key;
+- (nullable NSString *)tfy_hmacSHA512StringWithKey:(NSString *)key;
 /**
  * 采用 base64 对 字符串 进行编码。为了使二进制数据可以通过非纯 8-bit 的传输层传输.
  */
-- (nullable NSString *)base64EncodedString;
+- (nullable NSString *)tfy_base64EncodedString;
 /**
  * 对 base64 编码字符串进行解码
  */
-+ (nullable NSString *)stringWithBase64EncodedString:(NSString *)base64EncodedString;
++ (nullable NSString *)tfy_stringWithBase64EncodedString:(NSString *)base64EncodedString;
 /**
  * URL 编码，使用 string 符合 URL 的规范，因为在标准的 URL 规范中中文和很多的字符是不允许出现在 URL 中的。
  */
-- (NSString *)stringByURLEncode;
+- (NSString *)tfy_stringByURLEncode;
 /**
  * URL 解码，返回 URL 编码前的字符串.
  */
-- (NSString *)stringByURLDecode;
+- (NSString *)tfy_stringByURLDecode;
 /**
  * 使字符串避开 HTML 语句，例如："a < b" 转成 "a&lt;b"。
  */
-- (NSString *)stringByEscapingHTML;
+- (NSString *)tfy_stringByEscapingHTML;
 /**
  * 给出最大宽高，计算字符串的 size.
  */
-- (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
+- (CGSize)tfy_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
 /**
  * 返回字符串的宽度
  */
-- (CGFloat)widthForFont:(UIFont *)font;
+- (CGFloat)tfy_widthForFont:(UIFont *)font;
 /**
  * 给出最大宽度，返回字符串的高度
  */
-- (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width;
+- (CGFloat)tfy_heightForFont:(UIFont *)font width:(CGFloat)width;
 
 // 兼容 NSNumber 的部分属性，用这些属性时可以将 NSString 当做 NSNumber 来使用.
-@property (readonly) char charValue;
-@property (readonly) unsigned char unsignedCharValue;
-@property (readonly) short shortValue;
-@property (readonly) unsigned short unsignedShortValue;
-@property (readonly) unsigned int unsignedIntValue;
-@property (readonly) long longValue;
-@property (readonly) unsigned long unsignedLongValue;
-@property (readonly) unsigned long long unsignedLongLongValue;
-@property (readonly) NSUInteger unsignedIntegerValue;
+@property (readonly) char tfy_charValue;
+@property (readonly) unsigned char tfy_unsignedCharValue;
+@property (readonly) short tfy_shortValue;
+@property (readonly) unsigned short tfy_unsignedShortValue;
+@property (readonly) unsigned int tfy_unsignedIntValue;
+@property (readonly) long tfy_longValue;
+@property (readonly) unsigned long tfy_unsignedLongValue;
+@property (readonly) unsigned long long tfy_unsignedLongLongValue;
+@property (readonly) NSUInteger tfy_unsignedIntegerValue;
 /**
  * 生成一个 UUID（通用唯一识别码）
  */
-+ (NSString *)stringWithUUID;
++ (NSString *)tfy_stringWithUUID;
 
 /**
  * 将 UTF32 Char 字符串转换为NSString
  */
-+ (nullable NSString *)stringWithUTF32Char:(UTF32Char)char32;
++ (nullable NSString *)tfy_stringWithUTF32Char:(UTF32Char)char32;
 
 /**
  * 将长度为 length 的 UTF32 Char 字符串数组转换为 NSString
  */
-+ (nullable NSString *)stringWithUTF32Chars:(const UTF32Char *)char32 length:(NSUInteger)length;
++ (nullable NSString *)tfy_stringWithUTF32Chars:(const UTF32Char *)char32 length:(NSUInteger)length;
 /**
  * 将range位置的字符转为 UTF32 Char 字符串数组再枚举数组元素执行 block ，直到设置 *stop 为 YES
  */
-- (void)enumerateUTF32CharInRange:(NSRange)range usingBlock:(void (^)(UTF32Char char32, NSRange range, BOOL *stop))block;
+- (void)tfy_enumerateUTF32CharInRange:(NSRange)range usingBlock:(void (^)(UTF32Char char32, NSRange range, BOOL *stop))block;
 /**
  * 去掉在头部和尾部的空白字符（空格和换行）
  */
-- (NSString *)stringByTrim;
+- (NSString *)tfy_stringByTrim;
 /**
  * 添加scale到文件名末尾，例如 /p/name.png 变成 /p/name.png@2x.
  */
-- (NSString *)stringByAppendingNameScale:(CGFloat)scale;
+- (NSString *)tfy_stringByAppendingNameScale:(CGFloat)scale;
 /**
  * 添加scale到文件路径末尾，例如 /p/name.png 变成 /p/name@2x.png.
  */
-- (NSString *)stringByAppendingPathScale:(CGFloat)scale;
+- (NSString *)tfy_stringByAppendingPathScale:(CGFloat)scale;
 /**
  * 返回文件的 Scalee. e.g：
  */
-- (CGFloat)pathScale;
+- (CGFloat)tfy_pathScale;
 /**
  * 判断字符串是否不为空， nil, @"", @"  ", @"\n" 都是空. 如果为空返回：NO 非空返回：YES
  */
-- (BOOL)isNotBlank;
+- (BOOL)tfy_isNotBlank;
 /**
  * 判断字符串是否包含 string
  */
-- (BOOL)containsString:(NSString *)string;
+- (BOOL)tfy_containsString:(NSString *)string;
 /**
  * 判断当前的字符串是不是url
  */
-- (BOOL)isUrl;
+- (BOOL)tfy_isUrl;
 /**
  * 判断字符串是否包含 set 。NSCharacterSet为一组Unicode字符。
  */
-- (BOOL)containsCharacterSet:(NSCharacterSet *)set;
+- (BOOL)tfy_containsCharacterSet:(NSCharacterSet *)set;
 /**
  * 字符串转换为 NSNumber，转换失败返回nil
  */
-- (nullable NSNumber *)numberValue;
+- (nullable NSNumber *)tfy_numberValue;
 /**
  * 字符串转换为 UTF-8 编码的数据
  */
-- (nullable NSData *)dataValue;
+- (nullable NSData *)tfy_dataValue;
 /**
  * 返回一个起点为 0，宽度为字符串字符长度的 NSRange数据
  */
-- (NSRange)rangeOfAll;
+- (NSRange)tfy_rangeOfAll;
 /**
  * 将json字符串进行解码，返回一个字典或者字符串。例如 NSString: @"{"name":"a","count":2}"  => NSDictionary: @[@"name":@"a",@"count”:@2]。
  */
-- (nullable id)jsonValueDecoded;
+- (nullable id)tfy_jsonValueDecoded;
 /**
  * 获取 UTF8 编码 name 文件里的内容。类似[UIImage imageNamed:]
  */
-+ (nullable NSString *)stringNamed:(NSString *)name;
++ (nullable NSString *)tfy_stringNamed:(NSString *)name;
 /**
  * 根据字体、行数、行间距和指定的宽度constrainedWidth计算文本占据的size lineSpacing 行间距 constrainedWidth 文本指定的宽度
  */
-- (CGSize)textSizeWithFont:(UIFont *)font numberOfLines:(NSInteger)numberOfLines lineSpacing:(CGFloat)lineSpacing constrainedWidth:(CGFloat)constrainedWidth;
+- (CGSize)tfy_textSizeWithFont:(UIFont *)font numberOfLines:(NSInteger)numberOfLines lineSpacing:(CGFloat)lineSpacing constrainedWidth:(CGFloat)constrainedWidth;
 /**
  *  根据字体、行数、行间距和指定的宽度constrainedWidth计算文本占据的size
  */
-- (CGSize)textSizeWithFont:(UIFont *)font numberOfLines:(NSInteger)numberOfLines constrainedWidth:(CGFloat)constrainedWidth;
+- (CGSize)tfy_textSizeWithFont:(UIFont *)font numberOfLines:(NSInteger)numberOfLines constrainedWidth:(CGFloat)constrainedWidth;
 /**
  *  计算字符串长度（一行时候）
  */
-- (CGSize)textSizeWithFont:(UIFont*)font limitWidth:(CGFloat)maxWidth;
+- (CGSize)tfy_textSizeWithFont:(UIFont*)font limitWidth:(CGFloat)maxWidth;
 /**
  * /获取当前的时间
  */
-+(NSString*)getCurrentTimes;
++(NSString*)tfy_getCurrentTimes;
 /**
  * 获取当前时间戳有两种方法(以秒为单位)
  */
-+(NSString *)getNowTimeTimestamp;
-+(NSString *)getNowTimeTimestamp2;
++(NSString *)tfy_getNowTimeTimestamp;
++(NSString *)tfy_getNowTimeTimestamp2;
  /**
   * 获取当前时间戳  （以毫秒为单位）
   */
-+(NSString *)getNowTimeTimestamp3;
++(NSString *)tfy_getNowTimeTimestamp3;
 /**
  *   给的是毫秒 返回 YYYY-MM-dd
  */
-+ (NSString *)stringToDate:(NSString *)string;
++ (NSString *)tfy_stringToDate:(NSString *)string;
 
 /**
  *   给的是毫秒 返回  HH:mm
  */
-+ (NSString *)stringHHMMToDate:(NSString *)string;
++ (NSString *)tfy_stringHHMMToDate:(NSString *)string;
 /**
  *   给的是毫秒 返回  MM-dd HH:mm
  */
-+(NSString *)stringToDateNoYear:(NSString *)date;
++(NSString *)tfy_stringToDateNoYear:(NSString *)date;
 /**
  *   给的是毫秒  返回  yyyy/MM/dd
  */
-+(NSString *)stringToDateOnlyYear:(NSString *)dateStrv;
++(NSString *)tfy_stringToDateOnlyYear:(NSString *)dateStrv;
 
-+(NSString *)birthdayTime:(NSString *)str;
++(NSString *)tfy_birthdayTime:(NSString *)str;
 /**
 *   给的是毫秒  返回 yyyy年M月d日
 */
-+ (NSString *)dateToString:(NSString *)dateString;
++ (NSString *)tfy_dateToString:(NSString *)dateString;
 /**
  *   给的是毫秒 yyyy-MM-dd HH:mm
  */
-+(NSString *)togetherToTime:(NSString *)dateStr;
++(NSString *)tfy_togetherToTime:(NSString *)dateStr;
 /**
 *   给的是毫秒  yyyy-MM-dd HH:mm:ss
 */
-+(NSString *)chooseDateToTime:(NSString *)dateStr;
++(NSString *)tfy_chooseDateToTime:(NSString *)dateStr;
 /**
 *   给的是分  返回 yyyy-MM-dd HH:mm
 */
-+(NSString *)timeWithStr:(NSString *)str;
++(NSString *)tfy_timeWithStr:(NSString *)str;
 /**
 *   给的是分  返回 HH:mm
 */
-+(NSString *)logTimeWithStr:(NSString *)str;
++(NSString *)tfy_logTimeWithStr:(NSString *)str;
 /**
 *   给的是毫秒  返回 MM.dd
 */
-+ (NSString *)secondsStringToDate:(NSString *)string;
++ (NSString *)tfy_secondsStringToDate:(NSString *)string;
 /**
  移除结尾的子字符串
  */
-- (NSString *)removeLastSubString:(NSString *)string;
+- (NSString *)tfy_removeLastSubString:(NSString *)string;
 /**
  移除结尾的子字符串, 使用数组传递多个
  */
-- (NSString *)removeLastSubStringsArray:(NSArray<NSString *> *)strings;
+- (NSString *)tfy_removeLastSubStringsArray:(NSArray<NSString *> *)strings;
 /**
  移除结尾的子字符串, 可以输入多个
  */
-- (NSString *)removeLastSubStrings:(NSString *)string, ... NS_REQUIRES_NIL_TERMINATION;
+- (NSString *)tfy_removeLastSubStrings:(NSString *)string, ... NS_REQUIRES_NIL_TERMINATION;
 /**
  * ----两个数相加-----------
  */
-+(NSString *)calculateByadding:(NSString *)number1 secondNumber:(NSString *)number2;
++(NSString *)tfy_calculateByadding:(NSString *)number1 secondNumber:(NSString *)number2;
 /**
  * ----两个数相减------------ number1 - number2
  */
-+(NSString *)calculateBySubtractingMinuend:(NSString *)number1 subtractorNumber:(NSString *)number2;
++(NSString *)tfy_calculateBySubtractingMinuend:(NSString *)number1 subtractorNumber:(NSString *)number2;
 /**
  * ----两个数相乘------------
  */
-+(NSString *)calculateByMultiplying:(NSString *)number1 secondNumber:(NSString *)number2;
++(NSString *)tfy_calculateByMultiplying:(NSString *)number1 secondNumber:(NSString *)number2;
 /**
  * ----两个数相除------------
  */
-+ (NSString *)calculateByDividingNumber:(NSString *)number1 secondNumber:(NSString *)number2;
++ (NSString *)tfy_calculateByDividingNumber:(NSString *)number1 secondNumber:(NSString *)number2;
 /**
  * ----四舍五入------------
  */
-+ (NSString *)calculateTargetNumber:(NSString *)targetNumber ByRounding:(NSUInteger)scale;
++ (NSString *)tfy_calculateTargetNumber:(NSString *)targetNumber ByRounding:(NSUInteger)scale;
 /**
  * ----是否相等------------
  */
-+ (BOOL)calculateIsEqualNumber:(NSString *)number1 secondNumber:(NSString *)number2;
++ (BOOL)tfy_calculateIsEqualNumber:(NSString *)number1 secondNumber:(NSString *)number2;
 /**
  * ----是否大于------------
  */
-+ (BOOL)calculateNumber: (NSString *)number1 IsGreaterThan:(NSString *)number2;
++ (BOOL)tfy_calculateNumber: (NSString *)number1 IsGreaterThan:(NSString *)number2;
 /**
  * ----是否小于------------
  */
-+ (BOOL)calculateNumber:(NSString *)number1  IsLessThan:(NSString *)number2;
++ (BOOL)tfy_calculateNumber:(NSString *)number1  IsLessThan:(NSString *)number2;
 /**
  * --10指数运算--------
  */
-+(NSString *)calculateTargetNumber:(NSString *)number1 ByRonding:(short)power;
++(NSString *)tfy_calculateTargetNumber:(NSString *)number1 ByRonding:(short)power;
 /**
  * ---------单纯保留小数位数----------
  */
-+(NSString *)calculateRetainedDecimalNumber:(NSString *)targetNumber ByRonding:(short)power;
++(NSString *)tfy_calculateRetainedDecimalNumber:(NSString *)targetNumber ByRonding:(short)power;
+/**
+  * 文字间距
+ */
+- (NSAttributedString *)tfy_attributedStringWithLineSpace:(CGFloat)lineSpace;
+///拼音 ->pinyin
+- (NSString*)tfy_transformToPinyin;
 
+///拼音首字母 -> py
+- (NSString *)tfy_transformToPinyinFirstLetter;
+
+
+- (NSData *)tfy_utf8Data;
 @end
 
 NS_ASSUME_NONNULL_END

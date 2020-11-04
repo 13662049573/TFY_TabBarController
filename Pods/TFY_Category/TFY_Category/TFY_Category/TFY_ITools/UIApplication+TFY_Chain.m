@@ -7,7 +7,7 @@
 //
 
 #import "UIApplication+TFY_Chain.h"
-#import "ScenePackage.h"
+#import "TFY_Scene.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #import <pthread.h>
@@ -39,7 +39,7 @@ return objc_getAssociatedObject(self, @selector(_setter_:)); \
 @implementation UIApplication (TFY_Chain)
 
 + (id)currentScene{
-    return [ScenePackage defaultPackage].currentScene;
+    return [TFY_Scene defaultPackage].currentScene;
 }
 
 + (id)currentSceneDelegate{
@@ -50,16 +50,16 @@ return objc_getAssociatedObject(self, @selector(_setter_:)); \
 }
 
 + (BOOL)isSceneApp{
-    return [ScenePackage defaultPackage].isSceneApp;
+    return [TFY_Scene defaultPackage].isSceneApp;
 }
 
 + (CGRect)statusBarFrame{
-    return [ScenePackage defaultPackage].statusBarFrame;
+    return [TFY_Scene defaultPackage].statusBarFrame;
 }
 
 + (UIWindow *)currentWindow{
     id wi = nil;
-    for (UIWindow *window in [ScenePackage defaultPackage].windows) {
+    for (UIWindow *window in [TFY_Scene defaultPackage].windows) {
         if (window.hidden == NO) {
             wi = window;
             break;
@@ -69,11 +69,11 @@ return objc_getAssociatedObject(self, @selector(_setter_:)); \
 }
 
 + (UIWindow *)window{
-    return [ScenePackage defaultPackage].window;
+    return [TFY_Scene defaultPackage].window;
 }
 
 + (UIWindow *)currentKeyWindow{
-    return [ScenePackage defaultPackage].keyWindow;
+    return [TFY_Scene defaultPackage].keyWindow;
 }
 
 + (id)delegate{
@@ -119,7 +119,7 @@ return objc_getAssociatedObject(self, @selector(_setter_:)); \
 }
 
 + (UIWindow *)keyWindow{
-    return [ScenePackage defaultPackage].keyWindow;
+    return [TFY_Scene defaultPackage].keyWindow;
 }
 
 @end

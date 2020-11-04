@@ -13,15 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  如果您正在使用索引路径驱动的高度缓存，则自动启用
  */
-@property (nonatomic, assign) BOOL automaticallyInvalidateEnabled;
+@property (nonatomic, assign) BOOL tfy_automaticallyInvalidateEnabled;
 /**
  *  高度缓存
  */
-- (BOOL)existsHeightAtIndexPath:(NSIndexPath *)indexPath;
-- (void)cacheHeight:(CGFloat)height byIndexPath:(NSIndexPath *)indexPath;
-- (CGFloat)heightForIndexPath:(NSIndexPath *)indexPath;
-- (void)invalidateHeightAtIndexPath:(NSIndexPath *)indexPath;
-- (void)invalidateAllHeightCache;
+- (BOOL)tfy_existsHeightAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tfy_cacheHeight:(CGFloat)height byIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)tfy_heightForIndexPath:(NSIndexPath *)indexPath;
+- (void)tfy_invalidateHeightAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tfy_invalidateAllHeightCache;
 
 @end
 
@@ -41,14 +41,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KeyedHeightCache : NSObject
 
-- (BOOL)existsHeightForKey:(id<NSCopying>)key;
-- (void)cacheHeight:(CGFloat)height byKey:(id<NSCopying>)key;
-- (CGFloat)heightForKey:(id<NSCopying>)key;
+- (BOOL)tfy_existsHeightForKey:(id<NSCopying>)key;
+- (void)tfy_cacheHeight:(CGFloat)height byKey:(id<NSCopying>)key;
+- (CGFloat)tfy_heightForKey:(id<NSCopying>)key;
 /**
  *  失效
  */
-- (void)invalidateHeightForKey:(id<NSCopying>)key;
-- (void)invalidateAllHeightCache;
+- (void)tfy_invalidateHeightForKey:(id<NSCopying>)key;
+- (void)tfy_invalidateAllHeightCache;
 @end
 
 @interface UITableView (KeyedHeightCache)

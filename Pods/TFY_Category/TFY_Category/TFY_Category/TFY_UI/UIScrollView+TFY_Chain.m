@@ -281,7 +281,7 @@ static CGFloat const oriImageH = 200;
     [self tfy_swizzleInstanceSelector:@selector(setTableHeaderView:) swizzleSelector:@selector(setTfy_TableHeaderView:)];
 }
 
-- (void )screenSnapshot:(void(^)(UIImage *snapShotImage))finishBlock{
+- (void)tfy_screenSnapshot:(void(^)(UIImage *snapShotImage))finishBlock{
     if (!finishBlock)return;
     
     __block UIImage* snapshotImage = nil;
@@ -327,16 +327,16 @@ static CGFloat const oriImageH = 200;
 /*
  *  snapshotView:需要截取的view
  */
-+(UIImage *)screenSnapshotWithSnapshotView:(UIView *)snapshotView
++(UIImage *)tfy_screenSnapshotWithSnapshotView:(UIView *)snapshotView
 {
-    return [self screenSnapshotWithSnapshotView:snapshotView snapshotSize:CGSizeZero];
+    return [self tfy_screenSnapshotWithSnapshotView:snapshotView snapshotSize:CGSizeZero];
 }
 
 /*
  *  snapshotView:需要截取的view
  *  snapshotSize:需要截取的size
  */
-+(UIImage *)screenSnapshotWithSnapshotView:(UIView *)snapshotView snapshotSize:(CGSize )snapshotSize
++(UIImage *)tfy_screenSnapshotWithSnapshotView:(UIView *)snapshotView snapshotSize:(CGSize )snapshotSize
 {
     UIImage *snapshotImg;
 
@@ -344,7 +344,6 @@ static CGFloat const oriImageH = 200;
         if (snapshotSize.height == 0|| snapshotSize.width == 0) {//宽高为0的时候没有意义
             snapshotSize = snapshotView.bounds.size;
         }
-        
         //创建
         UIGraphicsBeginImageContextWithOptions(snapshotSize,NO,[UIScreen mainScreen].scale);
         

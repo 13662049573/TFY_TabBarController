@@ -18,14 +18,14 @@
     objc_setAssociatedObject(self, @"chance_UIControl_Events_actions", actions, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)addControlEvents:(UIControlEvents)controlEvents withAction:(void(^)(id sender))action {
-    [self addControlEvents:controlEvents withAction:action forKey:nil];
+- (void)tfy_addControlEvents:(UIControlEvents)controlEvents withAction:(void(^)(id sender))action {
+    [self tfy_addControlEvents:controlEvents withAction:action forKey:nil];
 }
-- (void)removeControlEvents:(UIControlEvents)controlEvents {
+- (void)tfy_removeControlEvents:(UIControlEvents)controlEvents {
     [self.actions removeObjectForKey:@(controlEvents)];
 }
 
-- (void)addControlEvents:(UIControlEvents)controlEvents withAction:(void(^)(id sender))action forKey:(NSString *__nullable)key {
+- (void)tfy_addControlEvents:(UIControlEvents)controlEvents withAction:(void(^)(id sender))action forKey:(NSString *__nullable)key {
     if (!self.actions) {
         self.actions = [NSMutableDictionary dictionary];
     }
@@ -40,21 +40,21 @@
     SEL selector = [self functionName:controlEvents];
     [self addTarget:self action:selector forControlEvents:controlEvents];
 }
-- (void)removeControlEvents:(UIControlEvents)controlEvents forKey:(NSString *)key {
+- (void)tfy_removeControlEvents:(UIControlEvents)controlEvents forKey:(NSString *)key {
     NSMutableDictionary *dict = [self.actions objectForKey:@(controlEvents)];
     if (key && ![key isEqualToString:@""]) {
         [dict removeObjectForKey:key];
     }
 }
 
-- (void)addAction:(void (^)(id sender))action {
-    [self addControlEvents:UIControlEventTouchUpInside withAction:action forKey:@"__addAction:"];
+- (void)tfy_addAction:(void (^)(id sender))action {
+    [self tfy_addControlEvents:UIControlEventTouchUpInside withAction:action forKey:@"__addAction:"];
 }
-- (void)removeAction {
-    [self removeControlEvents:UIControlEventTouchUpInside forKey:@"__addAction:"];
+- (void)tfy_removeAction {
+    [self tfy_removeControlEvents:UIControlEventTouchUpInside forKey:@"__addAction:"];
 }
 
-- (void)removeAllActions {
+- (void)tfy_removeAllActions {
     [self.actions removeAllObjects];
 }
 

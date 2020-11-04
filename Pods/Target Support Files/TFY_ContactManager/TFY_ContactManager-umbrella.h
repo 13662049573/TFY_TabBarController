@@ -11,8 +11,8 @@
 #endif
 
 #import "NSString+TFY_Extension.h"
-#import "TFY_ContactHeader.h"
 #import "TFY_ContactManager.h"
+#import "TFY_ContactManagerKit.h"
 #import "TFY_PeoplePickerDelegate.h"
 #import "TFY_PersonModel.h"
 #import "TFY_PickerDetailDelegate.h"

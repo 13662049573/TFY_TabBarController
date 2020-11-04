@@ -31,27 +31,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIFont *)tfy_fontWithName:(NSString *)fontName fontSize:(CGFloat)fontSize;
 
-+ (UIFont *)fontType:(fontType)type size:(CGFloat)size;
++ (UIFont *)tfy_fontType:(fontType)type size:(CGFloat)size;
 
-+ (UIFont *)fontScaleType:(fontType)type size:(CGFloat)size;
++ (UIFont *)tfy_fontScaleType:(fontType)type size:(CGFloat)size;
 
-+ (UIFont *)PingFangSCLightAndSize:(CGFloat)size;
++ (UIFont *)tfy_PingFangSCLightAndSize:(CGFloat)size;
 
-+ (UIFont *)PingFangSCRegularAndSize:(CGFloat)size;
++ (UIFont *)tfy_PingFangSCRegularAndSize:(CGFloat)size;
 
-+ (UIFont *)PingFangSCMediumAndSize:(CGFloat)size;
++ (UIFont *)tfy_PingFangSCMediumAndSize:(CGFloat)size;
 
-+ (UIFont *)PingFangSCScaleMediumAndSize:(CGFloat)size;
++ (UIFont *)tfy_PingFangSCScaleMediumAndSize:(CGFloat)size;
 
-+ (UIFont *)PingFangSCSemiboldAndSize:(CGFloat)size;
++ (UIFont *)tfy_PingFangSCSemiboldAndSize:(CGFloat)size;
 
-+ (UIFont *)DINAlternateBoldAndSize:(CGFloat)size;
++ (UIFont *)tfy_DINAlternateBoldAndSize:(CGFloat)size;
 
-+ (UIFont *)STHeitiSCLightAndSize:(CGFloat)size;
++ (UIFont *)tfy_STHeitiSCLightAndSize:(CGFloat)size;
 
-+ (UIFont *)STHeitiSCMedium:(CGFloat)size;
++ (UIFont *)tfy_STHeitiSCMedium:(CGFloat)size;
 
-+ (UIFont *)LatoBoldAndSize:(CGFloat)size;
++ (UIFont *)tfy_LatoBoldAndSize:(CGFloat)size;
 
 
 @end

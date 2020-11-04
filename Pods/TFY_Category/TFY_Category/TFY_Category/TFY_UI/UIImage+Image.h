@@ -124,11 +124,6 @@ typedef NS_ENUM(NSUInteger, TFY_GradientType) {
 + (UIImage *)tfy_compressImage:(UIImage *)image toByte:(NSInteger)maxLength;
 
 /**
- *  根据给定的url计算网络图片的大小
- */
-+ (CGSize)tfy_downloadImageSizeWithURL:(id)imageURL;
-
-/**
  *  根据视频url获取第一帧图片
  */
 + (UIImage *)tfy_videoPreViewImage:(NSURL *)path;
@@ -215,5 +210,5 @@ typedef NS_ENUM(NSUInteger, TFY_GradientType) {
 /**
  *  拼接快照 imagesArr 快照的数组
  */
-+ (UIImage *)getImageFromImagesArray:(NSArray *)imagesArr;
++ (UIImage *)tfy_getImageFromImagesArray:(NSArray *)imagesArr;
 @end

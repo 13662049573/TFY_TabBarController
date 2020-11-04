@@ -9,20 +9,20 @@
 #import "NSMutableArray+TFY_Array.h"
 
 @implementation NSMutableArray (TFY_Array)
-+ (NSMutableArray *)arrayWithPlistData:(NSData *)plist {
++ (NSMutableArray *)tfy_arrayWithPlistData:(NSData *)plist {
     if (!plist) return nil;
     NSMutableArray *array = [NSPropertyListSerialization propertyListWithData:plist options:NSPropertyListMutableContainersAndLeaves format:NULL error:NULL];
     if ([array isKindOfClass:[NSMutableArray class]]) return array;
     return nil;
 }
 
-+ (NSMutableArray *)arrayWithPlistString:(NSString *)plist {
++ (NSMutableArray *)tfy_arrayWithPlistString:(NSString *)plist {
     if (!plist) return nil;
     NSData *data = [plist dataUsingEncoding:NSUTF8StringEncoding];
-    return [self arrayWithPlistData:data];
+    return [self tfy_arrayWithPlistData:data];
 }
 
-- (void)removeFirstObject {
+- (void)tfy_removeFirstObject {
     if (self.count) {
         [self removeObjectAtIndex:0];
     }
@@ -30,7 +30,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-- (void)removeLastObject {
+- (void)tfy_removeLastObject {
     if (self.count) {
         [self removeObjectAtIndex:self.count - 1];
     }
@@ -39,16 +39,16 @@
 #pragma clang diagnostic pop
 
 
-- (id)popFirstObject {
+- (id)tfy_popFirstObject {
     id obj = nil;
     if (self.count) {
         obj = self.firstObject;
-        [self removeFirstObject];
+        [self tfy_removeFirstObject];
     }
     return obj;
 }
 
-- (id)popLastObject {
+- (id)tfy_popLastObject {
     id obj = nil;
     if (self.count) {
         obj = self.lastObject;
@@ -57,20 +57,20 @@
     return obj;
 }
 
-- (void)appendObject:(id)anObject {
+- (void)tfy_appendObject:(id)anObject {
     [self addObject:anObject];
 }
 
-- (void)prependObject:(id)anObject {
+- (void)tfy_prependObject:(id)anObject {
     [self insertObject:anObject atIndex:0];
 }
 
-- (void)appendObjects:(NSArray *)objects {
+- (void)tfy_appendObjects:(NSArray *)objects {
     if (!objects) return;
     [self addObjectsFromArray:objects];
 }
 
-- (void)prependObjects:(NSArray *)objects {
+- (void)tfy_prependObjects:(NSArray *)objects {
     if (!objects) return;
     NSUInteger i = 0;
     for (id obj in objects) {
@@ -78,14 +78,14 @@
     }
 }
 
-- (void)insertObjects:(NSArray *)objects atIndex:(NSUInteger)index {
+- (void)tfy_insertObjects:(NSArray *)objects atIndex:(NSUInteger)index {
     NSUInteger i = index;
     for (id obj in objects) {
         [self insertObject:obj atIndex:i++];
     }
 }
 
-- (void)reverse {
+- (void)tfy_reverse {
     NSUInteger count = self.count;
     int mid = floor(count / 2.0);
     for (NSUInteger i = 0; i < mid; i++) {
@@ -93,7 +93,7 @@
     }
 }
 
-- (void)shuffle {
+- (void)tfy_shuffle {
     for (NSUInteger i = self.count; i > 1; i--) {
         [self exchangeObjectAtIndex:(i - 1)
                   withObjectAtIndex:arc4random_uniform((u_int32_t)i)];

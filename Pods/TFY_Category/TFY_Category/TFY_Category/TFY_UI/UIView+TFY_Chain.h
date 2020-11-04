@@ -119,15 +119,11 @@ typedef void(^TouchCallBackBlock)(void);
 /**
  *  获取当前控制器
  */
-- (UIViewController *_Nonnull)viewController;
-/**
- *  获取当前navigationController
- */
-- (UINavigationController *_Nonnull)navigationController;
+- (UIViewController *_Nonnull)tfy_viewController;
 /**
  *  获取当前tabBarController
  */
-- (UITabBarController *_Nonnull)tabBarController;
+- (UITabBarController *_Nonnull)tfy_tabBarController;
 /**
  *  添加四边阴影 shadowColor 颜色  shadowRadius 半径 shadowOpacity 透明度  setShadow 大小
  */
@@ -140,9 +136,9 @@ typedef void(^TouchCallBackBlock)(void);
  */
 @property (nonatomic, copy) TouchCallBackBlock touchCallBackBlock;
 
-- (void)addActionWithblock:(TouchCallBackBlock)block;
+- (void)tfy_addActionWithblock:(TouchCallBackBlock)block;
 
-- (void)addTarget:(id)target action:(SEL)action;
+- (void)tfy_addTarget:(id)target action:(SEL)action;
 
 #pragma -------------------------------------添加圆角方法---------------------------------
 
@@ -157,107 +153,107 @@ typedef void(^TouchCallBackBlock)(void);
 /**
  * 便捷添加圆角 clipType 圆角类型  radius 圆角角度
  */
-- (void)clipWithType:(CornerClipType)clipType radius:(CGFloat)radius;
+- (void)tfy_clipWithType:(CornerClipType)clipType radius:(CGFloat)radius;
 
 /**
  * 便捷给添加border  color 边框的颜色  borderWidth 边框的宽度
  */
-- (void)addBorderWithColor:(UIColor *_Nonnull)color borderWidth:(CGFloat)borderWidth;
+- (void)tfy_addBorderWithColor:(UIColor *_Nonnull)color borderWidth:(CGFloat)borderWidth;
 
 #pragma -------------------------------------加边框方法---------------------------------
 
 /** 使用layer的borderWidth统一设置*/
-- (void)addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *_Nonnull)borderColor direction:(BorderDirection)directions;
+- (void)tfy_addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *_Nonnull)borderColor direction:(BorderDirection)directions;
 
 /**使用layer的borderColor统一设置*/
-- (void)addBorderWithInset:(UIEdgeInsets)inset BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions;
+- (void)tfy_addBorderWithInset:(UIEdgeInsets)inset BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions;
 
 
 /**各项的间距为UIEdgeInsetsZero*/
-- (void)addBorderWithColor:(UIColor *_Nonnull)borderColor BodrerWidth:(CGFloat)borderWidth direction:(BorderDirection)directions;
+- (void)tfy_addBorderWithColor:(UIColor *_Nonnull)borderColor BodrerWidth:(CGFloat)borderWidth direction:(BorderDirection)directions;
 
 /**自定义的layer设置*/
-- (void)addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *_Nonnull)borderColor BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions;
+- (void)tfy_addBorderWithInset:(UIEdgeInsets)inset Color:(UIColor *_Nonnull)borderColor BorderWidth:(CGFloat)borderWidth direction:(BorderDirection)directions;
 
 /** 移除当前边框*/
-- (void)removeBorders:(BorderDirection)directions;
+- (void)tfy_removeBorders:(BorderDirection)directions;
 
 /**移除所有追加的边框*/
-- (void)removeAllBorders;
+- (void)tfy_removeAllBorders;
 
 #pragma -------------------------------------手势点击添加方法---------------------------------
 
 /**
  *  添加Tap手势事件  target 事件目标  vaction 事件  返回添加的手势
  */
-- (UITapGestureRecognizer *)addGestureTapTarget:(id)target action:(SEL)action;
+- (UITapGestureRecognizer *)tfy_addGestureTapTarget:(id)target action:(SEL)action;
 
 /**
  *  添加Pan手势事件  target 事件目标  action 事件  返回添加的手势
  */
-- (UIPanGestureRecognizer *)addGesturePanTarget:(id)target action:(SEL)action;
+- (UIPanGestureRecognizer *)tfy_addGesturePanTarget:(id)target action:(SEL)action;
 
 /**
  *  添加Pinch手势事件   target 事件目标  action 事件  返回添加的手势
  */
-- (UIPinchGestureRecognizer *)addGesturePinchTarget:(id)target action:(SEL)action;
+- (UIPinchGestureRecognizer *)tfy_addGesturePinchTarget:(id)target action:(SEL)action;
 
 /**
  *  添加LongPress手势事件  target 事件目标  action 事件  返回添加的手势
  */
-- (UILongPressGestureRecognizer *)addGestureLongPressTarget:(id)target action:(SEL)action;
+- (UILongPressGestureRecognizer *)tfy_addGestureLongPressTarget:(id)target action:(SEL)action;
 
 /**
  *  添加Swipe手势事件  target 事件目标  action 事件  返回添加的手势
  */
-- (UISwipeGestureRecognizer *)addGestureSwipeTarget:(id)target action:(SEL)action;
+- (UISwipeGestureRecognizer *)tfy_addGestureSwipeTarget:(id)target action:(SEL)action;
 
 /**
  *  添加Rotation手势事件  target 事件目标  action 事件  返回添加的手势
  */
-- (UIRotationGestureRecognizer *)addGestureRotationTarget:(id)target action:(SEL)action;
+- (UIRotationGestureRecognizer *)tfy_addGestureRotationTarget:(id)target action:(SEL)action;
 
 /**
  *  添加ScreenEdgePan手势事件  target 事件目标  action 事件  返回添加的手势
  */
-- (UIScreenEdgePanGestureRecognizer *)addGestureScreenEdgePanTarget:(id)target action:(SEL)action;
+- (UIScreenEdgePanGestureRecognizer *)tfy_addGestureScreenEdgePanTarget:(id)target action:(SEL)action;
 
 #pragma  ---------------------手势回调------------------------------
 
 /**
  *  添加Tap手势block事件  event block事件  返回添加的手势
  */
-- (UITapGestureRecognizer *)addGestureTapEventHandle:(void (^)(id sender, UITapGestureRecognizer *gestureRecognizer))event;
+- (UITapGestureRecognizer *)tfy_addGestureTapEventHandle:(void (^)(id sender, UITapGestureRecognizer *gestureRecognizer))event;
 
 /**
  *  添加Pan手势block事件  event block事件   返回添加的手势
  */
-- (UIPanGestureRecognizer *)addGesturePanEventHandle:(void (^)(id sender, UIPanGestureRecognizer *gestureRecognizer))event;
+- (UIPanGestureRecognizer *)tfy_addGesturePanEventHandle:(void (^)(id sender, UIPanGestureRecognizer *gestureRecognizer))event;
 
 /**
  *  添加Pinch手势block事件  event block事件  返回添加的手势
  */
-- (UIPinchGestureRecognizer *)addGesturePinchEventHandle:(void (^)(id sender, UIPinchGestureRecognizer *gestureRecognizer))event;
+- (UIPinchGestureRecognizer *)tfy_addGesturePinchEventHandle:(void (^)(id sender, UIPinchGestureRecognizer *gestureRecognizer))event;
 
 /**
  *  添加LongPress手势block事件  event block事件  返回添加的手势
  */
-- (UILongPressGestureRecognizer *)addGestureLongPressEventHandle:(void (^)(id sender, UILongPressGestureRecognizer *gestureRecognizer))event;
+- (UILongPressGestureRecognizer *)tfy_addGestureLongPressEventHandle:(void (^)(id sender, UILongPressGestureRecognizer *gestureRecognizer))event;
 
 /**
  *  添加Swipe手势block事件  event block事件  返回添加的手势
  */
-- (UISwipeGestureRecognizer *)addGestureSwipeEventHandle:(void (^)(id sender, UISwipeGestureRecognizer *gestureRecognizer))event;
+- (UISwipeGestureRecognizer *)tfy_addGestureSwipeEventHandle:(void (^)(id sender, UISwipeGestureRecognizer *gestureRecognizer))event;
 
 /**
  *  添加Rotation手势block事件  event block事件  返回添加的手势
  */
-- (UIRotationGestureRecognizer *)addGestureRotationEventHandle:(void (^)(id sender, UIRotationGestureRecognizer *gestureRecognizer))event;
+- (UIRotationGestureRecognizer *)tfy_addGestureRotationEventHandle:(void (^)(id sender, UIRotationGestureRecognizer *gestureRecognizer))event;
 
 /**
  *  添加ScreenEdgePan手势block事件  event block事件  返回添加的手势
  */
-- (UIScreenEdgePanGestureRecognizer *)addGestureScreenEdgePanEventHandle:(void (^)(id sender, UIScreenEdgePanGestureRecognizer *gestureRecognizer))event;
+- (UIScreenEdgePanGestureRecognizer *)tfy_addGestureScreenEdgePanEventHandle:(void (^)(id sender, UIScreenEdgePanGestureRecognizer *gestureRecognizer))event;
 
 
 @end

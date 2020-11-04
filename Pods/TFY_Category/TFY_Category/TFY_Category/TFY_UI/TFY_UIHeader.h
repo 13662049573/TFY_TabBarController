@@ -25,5 +25,9 @@
 #import "UITableViewCell+TFY_Chain.h"
 #import "UIViewController+TFY_PlayerRotation.h"
 #import "UITableView+TFY_LayoutCell.h"
+#import "UIView+iOS13DarkMode.h"
+#import "CALayer+iOS13DarkMode.h"
+#import "UIColor+iOS13DarkMode.h"
+#import "UIImage+iOS13DarkMode.h"
 
 #endif /* TFY_UIHeader_h */

@@ -36,7 +36,7 @@ static TFY_HandlerVideo *instance = nil;
 #pragma mark - Method
 
 // 图片合成视频
-- (void)composesVideoFullPath:(NSString *)videoFullPath
+- (void)tfy_composesVideoFullPath:(NSString *)videoFullPath
                     frameImgs:(NSArray<UIImage *> *)frameImgs
                           fps:(int32_t)fps
            progressImageBlock:(CompProgressBlcok)progressImageBlock
@@ -57,11 +57,18 @@ static TFY_HandlerVideo *instance = nil;
     UIImage *img = frameImgs.firstObject;
     CGSize size = CGSizeMake(CGImageGetWidth(img.CGImage), CGImageGetHeight(img.CGImage));
     //    NSLog(@"Size: %@", NSStringFromCGSize(size));
-    
-    NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecH264, AVVideoCodecKey,
-                                   [NSNumber numberWithInt:size.width], AVVideoWidthKey,
-                                   [NSNumber numberWithInt:size.height], AVVideoHeightKey, nil];
-    AVAssetWriterInput *writerInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
+    AVAssetWriterInput *writerInput;
+    if (@available(iOS 11.0, *)) {
+        NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecTypeH264, AVVideoCodecKey,
+                                       [NSNumber numberWithInt:size.width], AVVideoWidthKey,
+                                       [NSNumber numberWithInt:size.height], AVVideoHeightKey, nil];
+       writerInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
+    } else {
+        NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecH264, AVVideoCodecKey,
+                                       [NSNumber numberWithInt:size.width], AVVideoWidthKey,
+                                       [NSNumber numberWithInt:size.height], AVVideoHeightKey, nil];
+       writerInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
+    }
     
     NSDictionary *sourcePixelBufferAttributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kCVPixelFormatType_32ARGB], kCVPixelBufferPixelFormatTypeKey, nil];
     
@@ -100,7 +107,7 @@ static TFY_HandlerVideo *instance = nil;
             
             CVPixelBufferRef buffer = NULL;
             UIImage *currentFrameImg = frameImgs[frame];
-            buffer = (CVPixelBufferRef)[self pixelBufferFromCGImage:[currentFrameImg CGImage] size:size];
+            buffer = (CVPixelBufferRef)[self tfy_pixelBufferFromCGImage:[currentFrameImg CGImage] size:size];
             if (progressImageBlock) {
                 CGFloat progress = frame * 1.0 / count;
                 progressImageBlock(progress);
@@ -119,7 +126,7 @@ static TFY_HandlerVideo *instance = nil;
     }];
 }
 
-- (void)composesVideoFullPath:(NSString *)videoFullPath
+- (void)tfy_composesVideoFullPath:(NSString *)videoFullPath
                frameImgPathes:(NSArray<UIImage *> *)frameImgPathes
                           fps:(int32_t)fps
            progressImageBlock:(CompProgressBlcok)progressImageBlock
@@ -140,10 +147,18 @@ static TFY_HandlerVideo *instance = nil;
     CGSize size = CGSizeMake(CGImageGetWidth(img.CGImage), CGImageGetHeight(img.CGImage));
     //    NSLog(@"Size: %@", NSStringFromCGSize(size));
     
-    NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecH264, AVVideoCodecKey,
-                                   [NSNumber numberWithInt:size.width], AVVideoWidthKey,
-                                   [NSNumber numberWithInt:size.height], AVVideoHeightKey, nil];
-    AVAssetWriterInput *writerInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
+    AVAssetWriterInput *writerInput;
+    if (@available(iOS 11.0, *)) {
+        NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecTypeH264, AVVideoCodecKey,
+                                       [NSNumber numberWithInt:size.width], AVVideoWidthKey,
+                                       [NSNumber numberWithInt:size.height], AVVideoHeightKey, nil];
+       writerInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
+    } else {
+        NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecH264, AVVideoCodecKey,
+                                       [NSNumber numberWithInt:size.width], AVVideoWidthKey,
+                                       [NSNumber numberWithInt:size.height], AVVideoHeightKey, nil];
+       writerInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
+    }
     
     NSDictionary *sourcePixelBufferAttributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kCVPixelFormatType_32ARGB], kCVPixelBufferPixelFormatTypeKey, nil];
     
@@ -183,7 +198,7 @@ static TFY_HandlerVideo *instance = nil;
             
             CVPixelBufferRef buffer = NULL;
             UIImage *currentFrameImg = frameImgPathes[frame];
-            buffer = (CVPixelBufferRef)[self pixelBufferFromCGImage:[currentFrameImg CGImage] size:size];
+            buffer = (CVPixelBufferRef)[self tfy_pixelBufferFromCGImage:[currentFrameImg CGImage] size:size];
             currentFrameImg = nil;
             if (progressImageBlock) {
                 CGFloat progress = frame * 1.0 / count;
@@ -204,7 +219,7 @@ static TFY_HandlerVideo *instance = nil;
     }];
 }
 
-- (CVPixelBufferRef )pixelBufferFromCGImage:(CGImageRef)image size:(CGSize)size {
+- (CVPixelBufferRef )tfy_pixelBufferFromCGImage:(CGImageRef)image size:(CGSize)size {
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithBool:YES], kCVPixelBufferCGImageCompatibilityKey,
                              [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey,
@@ -237,7 +252,7 @@ static TFY_HandlerVideo *instance = nil;
 }
 
 // 视频合成
-- (void)combinationVideosWithVideoPath:(NSArray<NSString *> *)subsectionPaths
+- (void)tfy_combinationVideosWithVideoPath:(NSArray<NSString *> *)subsectionPaths
                          videoFullPath:(NSString *)videoFullPath
                            isHavaAudio:(BOOL)isHaveAudio
                          progressBlock:(CompProgressBlcok)progressBlock
@@ -377,11 +392,11 @@ static TFY_HandlerVideo *instance = nil;
     }];
     // 监听导出进度
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self monitorExportProgress:exportor progressImageBlock:progressBlock completedBlock:completedBlock];
+        [self tfy_monitorExportProgress:exportor progressImageBlock:progressBlock completedBlock:completedBlock];
     });
 }
 
-- (void)monitorExportProgress:(AVAssetExportSession *)exportSession progressImageBlock:(CompProgressBlcok)progressImageBlock completedBlock:(CompFinalCompletedBlock)completedBlock{  // 取巧的办法: 由于是两个并行任务，
+- (void)tfy_monitorExportProgress:(AVAssetExportSession *)exportSession progressImageBlock:(CompProgressBlcok)progressImageBlock completedBlock:(CompFinalCompletedBlock)completedBlock{  // 取巧的办法: 由于是两个并行任务，
     double delayInSeconds = 0.1;
     int64_t delta = (int64_t)delayInSeconds * NSEC_PER_SEC;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delta);
@@ -393,13 +408,13 @@ static TFY_HandlerVideo *instance = nil;
             if (progressImageBlock) {
                 progressImageBlock(exportSession.progress);
             }
-            [WS monitorExportProgress:exportSession progressImageBlock:progressImageBlock completedBlock:completedBlock];
+            [WS tfy_monitorExportProgress:exportSession progressImageBlock:progressImageBlock completedBlock:completedBlock];
         }
     });
 }
 
 // 视频分解 MP4
-- (void)splitVideo:(NSURL *)fileUrl fps:(float)fps progressImageBlock:(CompProgressBlcok)progressImageBlock  splitCompleteBlock:(SplitCompleteBlock)splitCompleteBlock {
+- (void)tfy_splitVideo:(NSURL *)fileUrl fps:(float)fps progressImageBlock:(CompProgressBlcok)progressImageBlock  splitCompleteBlock:(SplitCompleteBlock)splitCompleteBlock {
     if (!fileUrl) {
         return;
     }
@@ -456,7 +471,7 @@ static TFY_HandlerVideo *instance = nil;
 }
 
 // 添加水印
-- (void)addWatermaskVideoWithWatermaskImg:(UIImage *)watermaskImg inputVideoPath:(NSString *)inputVideoPath outputVideoFullPath:(NSString *)videoFullPath completedBlock:(CompFinalCompletedBlock)completedBlock {
+- (void)tfy_addWatermaskVideoWithWatermaskImg:(UIImage *)watermaskImg inputVideoPath:(NSString *)inputVideoPath outputVideoFullPath:(NSString *)videoFullPath completedBlock:(CompFinalCompletedBlock)completedBlock {
     NSDictionary *optDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
     AVAsset *videoAsset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:inputVideoPath] options:optDict];
     
@@ -478,7 +493,7 @@ static TFY_HandlerVideo *instance = nil;
     // 添加水印
     CGSize sizeOfVideo = [assetVideoTrack naturalSize];
     AVMutableVideoComposition *composition = [AVMutableVideoComposition videoComposition];
-    CALayer *watermaskLayer = [self buildLayerLayerSize:sizeOfVideo waterImg:watermaskImg];
+    CALayer *watermaskLayer = [self tfy_buildLayerLayerSize:sizeOfVideo waterImg:watermaskImg];
     if (watermaskLayer) {
         CALayer *animationLayer = [CALayer layer];
         animationLayer.frame = CGRectMake(0, 0, sizeOfVideo.width, sizeOfVideo.height);
@@ -542,19 +557,19 @@ static TFY_HandlerVideo *instance = nil;
     }];
 }
 
-- (CALayer *)buildLayerLayerSize:(CGSize)layerSize waterImg:(UIImage *)waterImg{
+- (CALayer *)tfy_buildLayerLayerSize:(CGSize)layerSize waterImg:(UIImage *)waterImg{
     CALayer *parentLayer = [CALayer layer];
     parentLayer.frame = CGRectMake(0, 0, layerSize.width, layerSize.height);
     //    parentLayer.opacity = 0.0f;
-    CALayer *imageLayer = [self makeImageLayerWithLayerSize:layerSize waterImg:waterImg];
+    CALayer *imageLayer = [self tfy_makeImageLayerWithLayerSize:layerSize waterImg:waterImg];
     [parentLayer addSublayer:imageLayer];
     return parentLayer;
 }
 
 // 图片Layer
-- (CALayer *)makeImageLayerWithLayerSize:(CGSize)layerSize waterImg:(UIImage *)waterImg{
+- (CALayer *)tfy_makeImageLayerWithLayerSize:(CGSize)layerSize waterImg:(UIImage *)waterImg{
     CGFloat scale = layerSize.width / 375;
-    CGRect bounds = [self getWaterImgSizeWithImg:waterImg size:layerSize textWaterH:10 + 20 * scale];
+    CGRect bounds = [self tfy_getWaterImgSizeWithImg:waterImg size:layerSize textWaterH:10 + 20 * scale];
     CALayer *layer = [CALayer layer];
     layer.contents = (id) waterImg.CGImage;
     layer.frame = bounds;
@@ -562,7 +577,7 @@ static TFY_HandlerVideo *instance = nil;
     return layer;
 }
 
-- (CGRect)getWaterImgSizeWithImg:(UIImage *)waterImg size:(CGSize)size textWaterH:(CGFloat)textWaterH {
+- (CGRect)tfy_getWaterImgSizeWithImg:(UIImage *)waterImg size:(CGSize)size textWaterH:(CGFloat)textWaterH {
     // 水印图片尺寸设置了比例，距离间距，为了方便测试用，实际看开发需要
     CGFloat scale = 0.3;
     scale = size.width / 375 * scale;
@@ -576,7 +591,7 @@ static TFY_HandlerVideo *instance = nil;
 }
 
 // 设置视频速率
-- (void)setVideoSpeed:(VideoSpeedType)speedType inputVideoPath:(NSString *)inputVideoPath outputVideoFullPath:(NSString *)videoFullPath completedBlock:(CompFinalCompletedBlock)completedBlock {
+- (void)tfy_setVideoSpeed:(VideoSpeedType)speedType inputVideoPath:(NSString *)inputVideoPath outputVideoFullPath:(NSString *)videoFullPath completedBlock:(CompFinalCompletedBlock)completedBlock {
     NSDictionary *optDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
     AVAsset *videoAsset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:inputVideoPath] options:optDict];
     

@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIWindow (TFY_Chain)
+
 - (void)showOnCurrentScene;
 
 - (void)showOnScene:(id)scene;

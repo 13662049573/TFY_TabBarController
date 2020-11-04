@@ -86,12 +86,6 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
     return [UIColor colorWithRed:((float)r / 255.0f) green:((float)g / 255.0f) blue:((float)b / 255.0f) alpha:alpha];
 }
-
-//默认alpha值为1
-+ (UIColor *)tfy_colorWithHexString:(NSString *)color
-{
-    return [self tfy_colorWithHexString:color alpha:1.0f];
-}
 /**
  *  根据图片获取图片的主色调
  */
@@ -287,40 +281,6 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
                            alpha:((NSNumber *)[config objectAtIndex:3]).floatValue];
 }
 
-+ (UIColor *)tfy_ColorWithHexString:(NSString *)color
-{
-    NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    
-    // String should be 6 or 8 characters
-    if ([cString length] < 6) {
-        return [UIColor clearColor];
-    }
-    // 判断前缀
-    if ([cString hasPrefix:@"0X"])
-        cString = [cString substringFromIndex:2];
-    if ([cString hasPrefix:@"#"])
-        cString = [cString substringFromIndex:1];
-    if ([cString length] != 6)
-        return [UIColor clearColor];
-    // 从六位数值中找到RGB对应的位数并转换
-    NSRange range;
-    range.location = 0;
-    range.length = 2;
-    //R、G、B
-    NSString *rString = [cString substringWithRange:range];
-    range.location = 2;
-    NSString *gString = [cString substringWithRange:range];
-    range.location = 4;
-    NSString *bString = [cString substringWithRange:range];
-    // Scan values
-    unsigned int r, g, b;
-    [[NSScanner scannerWithString:rString] scanHexInt:&r];
-    [[NSScanner scannerWithString:gString] scanHexInt:&g];
-    [[NSScanner scannerWithString:bString] scanHexInt:&b];
-    
-    return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
-}
-
 + (UIColor *)tfy_colorFromHexRGB:(NSString *)inColorString
 {
     UIColor *result = nil;
@@ -467,7 +427,7 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
 /**
  *   ios 13 添加颜色的判断 提供了的新方法，可以在 block 中判断 traitCollection.userInterfaceStyle，根据系统模式设置返回的颜色。
  */
-+(UIColor *)generateDynamicColor:(UIColor *)lightColor darkColor:(UIColor *)darkColor{
++(UIColor *)tfy_generateDynamicColor:(UIColor *)lightColor darkColor:(UIColor *)darkColor{
     if (@available(iOS 13.0, *)) {
         UIColor *dyColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
             if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleLight) {
@@ -566,7 +526,7 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
     
     CGColorRef cgColor = [uiColor CGColor];
     
-    int numComponents = CGColorGetNumberOfComponents(cgColor);
+    NSUInteger numComponents = CGColorGetNumberOfComponents(cgColor);
  
     if (numComponents == 4){
         static CGFloat * components = Nil;
@@ -591,7 +551,7 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
     }
 }
 
-+(UIColor *)colorWithHexString:(NSString *)hexString{
++(UIColor *)tfy_colorWithHexString:(NSString *)hexString{
     
     NSString *colorString = [[hexString stringByReplacingOccurrencesOfString:@"#" withString: @""] uppercaseString];
     CGFloat alpha, red, blue, green;
@@ -627,7 +587,7 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
     return [UIColor colorWithRed: red green: green blue: blue alpha: alpha];
 }
 
-+(NSString*)stringWithColor:(UIColor *)color
++(NSString*)tfy_stringWithColor:(UIColor *)color
 {
     if (color==nil) {
         return @"";

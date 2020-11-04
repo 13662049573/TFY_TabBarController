@@ -24,6 +24,6 @@
 #import "NSDictionary+TFY_DictExtension.h"
 #import "NSMutableAttributedString+TFY_Chain.h"
 #import "NSMutableParagraphStyle+TFY_Chain.h"
-
+#import "NSFileManager+TFY_Tools.h"
 
 #endif /* TFY_FoundationHeader_h */

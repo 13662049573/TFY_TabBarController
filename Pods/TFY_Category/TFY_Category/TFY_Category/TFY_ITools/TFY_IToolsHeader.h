@@ -9,9 +9,9 @@
 #ifndef TFY_IToolsHeader_h
 #define TFY_IToolsHeader_h
 
-#import "ScenePackage.h"
+#import "TFY_Scene.h"
 #import "TFY_HandlerVideo.h"
-#import "TFY_CommonUtils.h"
+#import "TFY_Utils.h"
 #import "UIApplication+TFY_Chain.h"
 #import "UIWindow+TFY_Chain.h"
 
