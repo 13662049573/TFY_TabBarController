@@ -11,9 +11,9 @@
 
 #import <ReactiveObjC.h>
 #import <TFY_AutoLayout.h>
-#import <TFY_CategoryHerder.h>
+#import <TFY_LayoutCategoryKit.h>
 #import <TFY_Navigation.h>
-#import <TFY_ContactHeader.h>
+#import <TFY_ContactManagerKit.h>
 
 #import "TFY_TabBarKit.h"
 

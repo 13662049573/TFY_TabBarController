@@ -16,13 +16,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    if (![ScenePackage defaultPackage].isSceneApp) {
+    if (!TFY_ScenePackage.isSceneApp) {
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         self.window.backgroundColor = [UIColor whiteColor];
         [self.window makeKeyAndVisible];
     }
-    [[ScenePackage defaultPackage] addBeforeWindowEvent:^(ScenePackage * _Nonnull application) {
-        [UIApplication window].rootViewController = [PushHiddenTabBarVC new];
+    [TFY_ScenePackage addBeforeWindowEvent:^(TFY_Scene * _Nonnull application) {
+        [UIApplication tfy_window].rootViewController = [PushHiddenTabBarVC new];
     }];
     return YES;
 }

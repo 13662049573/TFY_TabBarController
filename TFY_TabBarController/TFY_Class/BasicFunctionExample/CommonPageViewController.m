@@ -103,8 +103,8 @@
 }
 
 -(UIView *)rightView{
-    UIView *views = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, TFY_kNavBarHeight)];
-    views.tfy_backgroundColor([UIColor redColor]);
+    UIView *views = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, TFY_kNavBarHeight())];
+    views.backgroundColor = UIColor.redColor;
     return views;
 }
 @end

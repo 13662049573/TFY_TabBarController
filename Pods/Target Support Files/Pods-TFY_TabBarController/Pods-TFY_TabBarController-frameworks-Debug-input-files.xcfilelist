@@ -1,6 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-TFY_TabBarController/Pods-TFY_TabBarController-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework
 ${BUILT_PRODUCTS_DIR}/TFY_AutoLayout/TFY_AutoLayout.framework
-${BUILT_PRODUCTS_DIR}/TFY_Category/TFY_Category.framework
 ${BUILT_PRODUCTS_DIR}/TFY_ContactManager/TFY_ContactManager.framework
+${BUILT_PRODUCTS_DIR}/TFY_LayoutCategoryKit/TFY_LayoutCategoryKit.framework
 ${BUILT_PRODUCTS_DIR}/TFY_Navigation/TFY_Navigation.framework

@@ -177,15 +177,15 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TFY_AutoLayout/TFY_AutoLayout.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TFY_Category/TFY_Category.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TFY_ContactManager/TFY_ContactManager.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TFY_LayoutCategoryKit/TFY_LayoutCategoryKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TFY_Navigation/TFY_Navigation.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TFY_AutoLayout/TFY_AutoLayout.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TFY_Category/TFY_Category.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TFY_ContactManager/TFY_ContactManager.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TFY_LayoutCategoryKit/TFY_LayoutCategoryKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TFY_Navigation/TFY_Navigation.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

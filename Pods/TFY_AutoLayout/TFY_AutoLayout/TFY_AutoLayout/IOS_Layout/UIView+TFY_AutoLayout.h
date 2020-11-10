@@ -4,7 +4,7 @@
 //
 //  Created by 田风有 on 2019/4/30.
 //  Copyright © 2019 恋机科技. All rights reserved.
-//  https://github.com/13662049573/TFY_AutoLayoutModelTools
+//
 
 #import "TFY_AutoLayoutHerder.h"
 
@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  布局方向
  */
 typedef NS_OPTIONS(NSUInteger, TFY_LayoutOrientationOptions) {
-    /// 垂直布局
+    // 垂直布局
     Vertical = 1 << 0,
-    /// 横向布局
+    // 横向布局
     Horizontal = 1 << 1,
-    /// 垂直布局和横向布局
+    // 垂直布局和横向布局
     All = 1 << 2
 };
 

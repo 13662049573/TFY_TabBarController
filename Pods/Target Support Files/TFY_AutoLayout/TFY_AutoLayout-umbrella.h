@@ -11,11 +11,17 @@
 #endif
 
 #import "TFY_AutoLayout.h"
+#import "UITableViewCell+TFY_AutoHeightForCell 2.h"
 #import "UITableViewCell+TFY_AutoHeightForCell.h"
+#import "UIView+TFY_AutoLayout 2.h"
 #import "UIView+TFY_AutoLayout.h"
+#import "UIView+TFY_Frame 2.h"
 #import "UIView+TFY_Frame.h"
+#import "CALayer+TFY_Frame 2.h"
 #import "CALayer+TFY_Frame.h"
+#import "UILayoutGuide+TFY_AutoLayout 2.h"
 #import "UILayoutGuide+TFY_AutoLayout.h"
+#import "TFY_AutoLayoutHerder 2.h"
 #import "TFY_AutoLayoutHerder.h"
 
 FOUNDATION_EXPORT double TFY_AutoLayoutVersionNumber;

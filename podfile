@@ -7,7 +7,7 @@ use_frameworks!
 target 'TFY_TabBarController' do
 
   pod 'ReactiveObjC'
-  pod 'TFY_Category'
+  pod 'TFY_LayoutCategoryKit'
   pod 'TFY_Navigation'
   pod 'TFY_AutoLayout'
   pod 'TFY_ContactManager'

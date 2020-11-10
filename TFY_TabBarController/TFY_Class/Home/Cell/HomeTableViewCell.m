@@ -44,46 +44,54 @@
 -(void)setModel:(TFY_PersonModel *)model{
     _model = model;
     
-    self.name_label.tfy_text(_model.fullName);
+    self.name_label.makeChain.text(_model.fullName);
     
     TFY_Phone *phone = _model.phones.firstObject;
     
-    self.phone_label.tfy_text(phone.phone);
+    self.phone_label.makeChain.text(phone.phone);
 }
 
 -(UIView *)back_View{
     if (!_back_View) {
-        _back_View = [UIView new];
-        _back_View.backgroundColor = [UIColor greenColor];
-        _back_View.layer.shadowOffset = CGSizeMake(0, 0);
-        _back_View.layer.shadowRadius = 5;
-        _back_View.layer.shadowOpacity = 0.3;
-        _back_View.layer.shadowColor = [UIColor blackColor].CGColor;
-        _back_View.layer.cornerRadius = 15;
+        _back_View = UIViewSet();
+        _back_View.makeChain
+        .backgroundColor(UIColor.greenColor)
+        .shadowOffset(CGSizeMake(0, 0))
+        .shadowRadius(5)
+        .shadowOpacity(0.3)
+        .shadowColor([UIColor blackColor].CGColor)
+        .cornerRadius(15);
     }
     return _back_View;
 }
 
 -(UIImageView *)icon_imageView{
     if (!_icon_imageView) {
-        _icon_imageView = tfy_imageView();
-        _icon_imageView.tfy_imge(@"my_head_portrait");
+        _icon_imageView = UIImageViewSet();
+        _icon_imageView.makeChain
+        .image([UIImage imageNamed:@"my_head_portrait"]);
     }
     return _icon_imageView;
 }
 
 -(UILabel *)name_label{
     if (!_name_label) {
-        _name_label = tfy_label();
-        _name_label.tfy_textcolor(@"212121", 1).tfy_alignment(0).tfy_fontSize([UIFont systemFontOfSize:15]);
+        _name_label = UILabelSet();
+        _name_label.makeChain
+        .textColor([UIColor tfy_colorWithHex:@"212121"])
+        .textAlignment(NSTextAlignmentCenter)
+        .font([UIFont systemFontOfSize:15]);
     }
     return _name_label;
 }
 
 -(UILabel *)phone_label{
     if (!_phone_label) {
-        _phone_label = tfy_label();
-        _phone_label.tfy_textcolor(@"212121", 1).tfy_alignment(0).tfy_fontSize([UIFont systemFontOfSize:15]);
+        _phone_label = UILabelSet();
+        _phone_label.makeChain
+        .textColor([UIColor tfy_colorWithHex:@"212121"])
+        .textAlignment(NSTextAlignmentCenter)
+        .font([UIFont systemFontOfSize:15]);
     }
     return _phone_label;
 }
