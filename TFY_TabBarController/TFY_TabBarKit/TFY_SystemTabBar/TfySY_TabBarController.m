@@ -37,7 +37,6 @@
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     self.tfySY_TabBar.frame = self.tabBar.bounds;
-    [self.tfySY_TabBar viewDidLayoutItems];
     if ([self.vc_delegate respondsToSelector:@selector(tfySY_LayoutSubviews)]) {
         [self.vc_delegate tfySY_LayoutSubviews];
     }
