@@ -19,7 +19,30 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
 
+//    // 修改tabbar背景
+//    if (@available(iOS 15.0, *)) {
+//            
+//        UITabBarAppearance *appearance = [UITabBarAppearance new];
+//        //tabBar背景颜色
+//        appearance.backgroundColor = [UIColor orangeColor];
+//       // 去掉半透明效果
+//        appearance.backgroundEffect = nil;
+//        // tabBaritem title选中状态颜色
+//        appearance.stackedLayoutAppearance.selected.titleTextAttributes = @{
+//            NSForegroundColorAttributeName:UIColor.blackColor,
+//            NSFontAttributeName:[UIFont systemFontOfSize:12],
+//        };
+//        //tabBaritem title未选中状态颜色
+//        appearance.stackedLayoutAppearance.normal.titleTextAttributes =  @{
+//            NSForegroundColorAttributeName:UIColor.lightTextColor,
+//            NSFontAttributeName:[UIFont systemFontOfSize:12],
+//        };
+//        self.tabBar.scrollEdgeAppearance = appearance;
+//        self.tabBar.standardAppearance = appearance;
+//    }
+    
     [self.tabBar setShadowImage:[UIImage new]];
+    
 }
 
 -(void)setControllerArray:(NSArray<UIViewController *> *)ControllerArray{
