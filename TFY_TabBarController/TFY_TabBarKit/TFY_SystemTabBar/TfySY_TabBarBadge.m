@@ -46,6 +46,7 @@ NSString *const bage = @"99+";
     self.textColor = [UIColor whiteColor];
     self.font = [UIFont boldSystemFontOfSize:10];
     self.textAlignment = NSTextAlignmentCenter;
+    self.adjustsFontSizeToFitWidth = YES;
     self.clipsToBounds = YES;
     self.automaticHidden = NO;
     self.badgeHeight = 15;

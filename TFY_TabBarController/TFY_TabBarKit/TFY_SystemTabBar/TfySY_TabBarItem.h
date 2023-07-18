@@ -75,8 +75,10 @@ typedef void(^CustomInteractionEffectBlock) (TfySY_TabBarItem * _Nonnull item);
 #pragma mark - 图片控制类
 /**选中后的图片名称*/
 @property(nonatomic, copy)NSString * _Nonnull selectImageName;
+@property(nonatomic, strong)UIImage * _Nonnull selectImage;
 /**正常的图片名称*/
 @property(nonatomic, copy)NSString * _Nonnull normalImageName;
+@property(nonatomic, strong)UIImage * _Nonnull normalImage;
 /**默认的 图片tintColor*/
 @property(nonatomic, strong)UIColor * _Nonnull normalTintColor;
 /**选中的 图片tintColor*/
