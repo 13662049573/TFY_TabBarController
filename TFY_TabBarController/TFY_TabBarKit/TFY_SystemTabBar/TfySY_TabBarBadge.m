@@ -61,7 +61,7 @@
         if (self.badgeWidth) {
             widths = self.badgeWidth;
         }
-        if (_badgeText.integerValue) { // 是数字 或者不为0
+        if (_badgeText.integerValue) { // 是数字 
             self.hidden = NO;
         } else{ //
             if (!_badgeText.length) { // 长度为0的空串
