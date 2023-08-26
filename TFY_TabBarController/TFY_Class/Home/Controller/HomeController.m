@@ -7,7 +7,6 @@
 //
 
 #import "HomeController.h"
-#import "HomeTableViewCell.h"
 
 @interface HomeController ()
 @property (nonatomic, copy) NSArray *dataSource;
@@ -19,10 +18,6 @@
     [super viewDidLoad];
     
     self.title = @"首页展示";
-    
-    self.navigationController.tfy_barBackgroundColor = [UIColor orangeColor];
-    
-
 }
 
 

@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**使/获取 当前选中下标*/
 @property (nonatomic, assign) NSInteger selectIndex;
 /**是否触发设置的动画效果*/
-- (void)setSelectIndex:(NSInteger)selectIndex WithAnimation:(BOOL )animation;
+- (void)setSelectIndex:(NSInteger)selectIndex WithAnimation:(BOOL)animation;
 
 /**TabbarItems集合*/
 @property (nonatomic, readonly, strong) NSArray <TfySY_TabBarItem *> *tabBarItems;

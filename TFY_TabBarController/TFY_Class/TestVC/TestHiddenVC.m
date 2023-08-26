@@ -18,8 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"隐藏显示tabbar";
-    self.navigationController.tfy_titleColor = [UIColor whiteColor];
-    self.navigationController.tfy_barBackgroundColor = [UIColor blueColor];
+   
 }
 
 - (IBAction)click_Test:(id)sender {

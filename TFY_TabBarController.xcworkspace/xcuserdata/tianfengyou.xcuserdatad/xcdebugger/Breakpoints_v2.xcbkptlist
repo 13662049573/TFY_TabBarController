@@ -3,4 +3,22 @@
    uuid = "959CFD86-6CA5-404B-8148-C39E9C9DE4F9"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E53CA9A1-D31E-4C47-8CAD-4BB3CE925B93"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/TFY_LayoutCategoryKit/TFY_LayoutCategoryUtil/TFY_LayoutCategoryKit/TFY_Categories/TFY_Rotating/TFYExtensionRotation.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-initDefaultValues"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

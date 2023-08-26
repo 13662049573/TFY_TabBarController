@@ -21,12 +21,13 @@
         self.window.backgroundColor = [UIColor whiteColor];
         [self.window makeKeyAndVisible];
     }
+    
+    TFYRotateDefault.shared.defaultSupportedInterfaceOrientations = UIInterfaceOrientationMaskAll;
+    
     [TFY_ScenePackage addBeforeWindowEvent:^(TFY_Scene * _Nonnull application) {
         [UIApplication tfy_window].rootViewController = [PushHiddenTabBarVC new];
     }];
     return YES;
 }
-
-
 
 @end

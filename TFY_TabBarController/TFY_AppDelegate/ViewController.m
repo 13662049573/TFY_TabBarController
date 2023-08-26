@@ -21,19 +21,19 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"集合";
-    self.navigationController.tfy_titleColor = [UIColor whiteColor];
-    self.navigationController.tfy_barBackgroundColor = [UIColor blackColor];
-    
-    [self.tableView tfy_AutoSize:0 top:0 right:0 bottom:0];
-    
 }
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    self.tableView.frame = self.view.bounds;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.tabBarController.tabBar.hidden = YES;
     NSDictionary *dic_ = self.dataArray[indexPath.section];

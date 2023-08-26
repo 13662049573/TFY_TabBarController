@@ -85,6 +85,7 @@ static TfySY_TabBarItem *lastItem;
 }
 // 切换页面/状态
 - (void)switch_tabBarItemIndex:(NSInteger )index WithAnimation:(BOOL )animation{
+    self.selectIndex = index;
     // 1.切换tabbar的状态
     [self.items enumerateObjectsUsingBlock:^(TfySY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         item.isSelect = index == idx; // 当前点击的调整选中，其他否定
@@ -242,10 +243,7 @@ static TfySY_TabBarItem *lastItem;
 - (TfySY_TabBarItem *)currentSelectItem{
     return [self.tabBarItems objectAtIndex:self.selectIndex];
 }
-- (void)setSelectIndex:(NSInteger)selectIndex{
-    _selectIndex = selectIndex; // 设置执行Set后实时切换页面
-    [self switch_tabBarItemIndex:_selectIndex WithAnimation:NO];
-}
+
 - (void)setSelectIndex:(NSInteger)selectIndex WithAnimation:(BOOL )animation{
     [self switch_tabBarItemIndex:_selectIndex WithAnimation:animation];
 }

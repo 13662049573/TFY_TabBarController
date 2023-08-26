@@ -20,20 +20,13 @@
     [super viewDidLoad];
     
     self.title = @"添加微标";
-    self.navigationController.tfy_titleColor = [UIColor whiteColor];
-    self.navigationController.tfy_barBackgroundColor = [UIColor purpleColor];
+   
 }
 - (IBAction)click:(id)sender {
     TfySY_TabBarController *tabBarVC = (TfySY_TabBarController *)self.tabBarController;
     TfySY_TabBarItem *item = tabBarVC.tfySY_TabBar.currentSelectItem; // 因为已经到这个页面，说明就是当前的选项卡item
-    // 或者可以这么获取
-//    TfySY_TabBarItem *item = tabBarVC.tfySY_TabBar.tabBarItems[2]; // 这个下标是固定的，代表这个页面下的item
-    
-    self.badge ++;
+    self.badge +=10;
     item.badge = [NSString stringWithFormat:@"%ld",(long)self.badge];
-    // 为0是否自动隐藏
-//    item.badgeLabel.automaticHidden = YES;
-    
 }
 
 

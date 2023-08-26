@@ -18,8 +18,7 @@
     [super viewDidLoad];
     
     self.title = @"进入界面隐藏tabbar";
-    self.navigationController.tfy_titleColor = [UIColor redColor];
-    self.navigationController.tfy_barBackgroundColor = [UIColor yellowColor];
+   
 }
 - (IBAction)click_Test:(id)sender {
     TestVC *vc = [TestVC new];

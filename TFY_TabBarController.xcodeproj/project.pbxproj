@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,7 +66,6 @@
 		5604D8EA238DFFCB002B76A1 /* TestGetTabBarItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8A3238DFFCB002B76A1 /* TestGetTabBarItemVC.m */; };
 		5604D8EB238DFFCB002B76A1 /* TestHiddenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5604D8A4238DFFCB002B76A1 /* TestHiddenVC.xib */; };
 		5604D8F2238DFFCB002B76A1 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8B6238DFFCB002B76A1 /* HomeController.m */; };
-		5604D8F3238DFFCB002B76A1 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8B9238DFFCB002B76A1 /* HomeTableViewCell.m */; };
 		5604D8F4238DFFCB002B76A1 /* WHGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604D8BD238DFFCB002B76A1 /* WHGradientHelper.m */; };
 		5604D8F6238E03FF002B76A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F5238E03FF002B76A1 /* UIKit.framework */; };
 		5604D8F8238E0406002B76A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5604D8F7238E0406002B76A1 /* Foundation.framework */; };
@@ -212,8 +211,6 @@
 		5604D8A4238DFFCB002B76A1 /* TestHiddenVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestHiddenVC.xib; sourceTree = "<group>"; };
 		5604D8B6238DFFCB002B76A1 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		5604D8B7238DFFCB002B76A1 /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
-		5604D8B9238DFFCB002B76A1 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
-		5604D8BA238DFFCB002B76A1 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		5604D8BD238DFFCB002B76A1 /* WHGradientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHGradientHelper.m; sourceTree = "<group>"; };
 		5604D8BE238DFFCB002B76A1 /* WHGradientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHGradientHelper.h; sourceTree = "<group>"; };
 		5604D8F5238E03FF002B76A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -790,8 +787,6 @@
 		5604D8B8238DFFCB002B76A1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5604D8B9238DFFCB002B76A1 /* HomeTableViewCell.m */,
-				5604D8BA238DFFCB002B76A1 /* HomeTableViewCell.h */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -890,7 +885,8 @@
 		5604D7BA238DFDA3002B76A1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "田风有";
 				TargetAttributes = {
 					5604D7C1238DFDA3002B76A1 = {
@@ -1014,7 +1010,6 @@
 				5604D8F2238DFFCB002B76A1 /* HomeController.m in Sources */,
 				5604D8F4238DFFCB002B76A1 /* WHGradientHelper.m in Sources */,
 				5604D81B238DFEA1002B76A1 /* SceneDelegate.m in Sources */,
-				5604D8F3238DFFCB002B76A1 /* HomeTableViewCell.m in Sources */,
 				5604D8D2238DFFCB002B76A1 /* WHGradientHelperGradientTabBarVC3.m in Sources */,
 				5604D8DD238DFFCB002B76A1 /* BulgeSquareTabBarVC.m in Sources */,
 				5604D8E0238DFFCB002B76A1 /* ItemBackgroundColorTabBarVC.m in Sources */,
@@ -1109,6 +1104,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1142,6 +1138,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1156,7 +1153,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1168,6 +1165,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1201,6 +1199,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1209,7 +1208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1225,6 +1224,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = QH95759TSS;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TFY_TabBarController/TFY_PCH/TFY_PrefixHeader.pch;
 				INFOPLIST_FILE = TFY_TabBarController/Info.plist;
@@ -1248,6 +1248,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = QH95759TSS;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TFY_TabBarController/TFY_PCH/TFY_PrefixHeader.pch;
 				INFOPLIST_FILE = TFY_TabBarController/Info.plist;

@@ -29,13 +29,12 @@
 }
 - (void)addChildViewControllers{
     // 创建选项卡的数据 想怎么写看自己，这块我就写笨点了
-    TFY_NavigationController *vc1 = [[TFY_NavigationController alloc] initWithRootViewController:[BasicFunctionListVC new]];
-    TFY_NavigationController *vc2 = [[TFY_NavigationController alloc] initWithRootViewController:[TestHiddenVC new]];
-    TFY_NavigationController *vc3 = [[TFY_NavigationController alloc] initWithRootViewController:[TestGetTabBarItemVC new]];
-    TFY_NavigationController *vc4 = [[TFY_NavigationController alloc] initWithRootViewController:[BadgeViewController new]];
-    TFY_NavigationController *vc5 = [[TFY_NavigationController alloc] initWithRootViewController:[ViewController new]];
+    TestHiddenVC *vc2 = TestHiddenVC.new;
+    TestGetTabBarItemVC *vc3 = TestGetTabBarItemVC.new;
+    BadgeViewController *vc4 = BadgeViewController.new;
+    ViewController *vc5 = ViewController.new;
     NSArray <NSDictionary *>*VCArray =
-    @[@{@"vc":vc1,@"itemTitle":@"推出"},
+    @[
       @{@"vc":vc2,@"itemTitle":@"隐藏"},
       @{@"vc":vc3,@"itemTitle":@"红点徽标"},
       @{@"vc":vc4,@"itemTitle":@"占位"},
@@ -61,8 +60,9 @@
         model.interactionEffectStyle = TfySY_TabBarInteractionEffectStyleShake;
         // 示例中为了方便就在这写了
         UIViewController *vc = [obj objectForKey:@"vc"];
+        TFY_NavigationController *nav = [[TFY_NavigationController alloc] initWithRootViewController:vc];
         // 5.将VC添加到系统控制组
-        [tabBarVCs addObject:vc];
+        [tabBarVCs addObject:nav];
         // 5.1添加构造Model到集合
         [tabBarConfs addObject:model];
     }];

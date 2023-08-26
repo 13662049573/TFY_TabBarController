@@ -16,13 +16,10 @@
 
 @implementation CommonTableViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self buildTable];
 }
-
 
 - (void)buildTable {
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
