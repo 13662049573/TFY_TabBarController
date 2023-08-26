@@ -175,13 +175,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *titleLabel;
 /**角标Label*/
 @property(nonatomic, strong)TfySY_TabBarBadge *badgeLabel;
-
+/**自定义角标位置*/
+@property(nonatomic , assign)CGPoint badgePoint;
 /**模型构造器*/
 @property(nonatomic, strong)TfySY_TabBarConfigModel *itemModel;
 /**重新开始布局*/
 - (void)itemDidLayoutControl;
 /**开始执行设置的动画*/
 - (void)startStrringConfigAnimation;
+
 @end
 
 NS_ASSUME_NONNULL_END

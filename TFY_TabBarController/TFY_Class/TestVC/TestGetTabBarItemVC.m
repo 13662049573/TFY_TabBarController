@@ -26,6 +26,7 @@
     TfySY_TabBarController *tabBarVC = (TfySY_TabBarController *)self.tabBarController;
     TfySY_TabBarItem *item = tabBarVC.tfySY_TabBar.currentSelectItem; // 因为已经到这个页面，说明就是当前的选项卡item
     self.badge +=10;
+    item.badgePoint = CGPointMake(80, 10);
     item.badge = [NSString stringWithFormat:@"%ld",(long)self.badge];
 }
 
