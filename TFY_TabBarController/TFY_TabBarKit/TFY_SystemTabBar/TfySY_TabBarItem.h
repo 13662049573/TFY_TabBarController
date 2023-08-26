@@ -129,8 +129,6 @@ typedef void(^CustomInteractionEffectBlock) (TfySY_TabBarItem * _Nonnull item);
 #pragma mark - item交互控制类
 /**点击触发后的交互效果*/
 @property(nonatomic, assign)TfySY_TabBarInteractionEffectStyle interactionEffectStyle;
-/**是否允许重复点击触发动画 默认NO*/
-@property(nonatomic, assign)BOOL isRepeatClick;
 /**当交互效果选选择自定义时，会回调以下Block*/
 @property(nonatomic, copy)CustomInteractionEffectBlock _Nonnull customInteractionEffectBlock;
 /**多个自定义时候使用区分的Tag*/

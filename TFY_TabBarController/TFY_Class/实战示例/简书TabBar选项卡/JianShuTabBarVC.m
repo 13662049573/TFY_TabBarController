@@ -8,7 +8,7 @@
 
 #import "JianShuTabBarVC.h"
 
-@interface JianShuTabBarVC ()<TfySY_TabBarDelegate>
+@interface JianShuTabBarVC ()<TfySY_ControllerDelegate>
 
 @end
 
@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 添加子VC
+    
+    self.vc_delegate = self;
+    
     [self addChildViewControllers];
 }
 - (void)addChildViewControllers{
@@ -69,36 +72,13 @@
         // 5.1添加构造Model到集合
         [tabBarConfs addObject:model];
     }];
-    // 5.2 设置VCs -----
-    // 一定要先设置这一步，然后再进行后边的顺序，因为系统只有在setViewControllers函数后才不会再次创建UIBarButtonItem，以免造成遮挡
-    // 大意就是一定要让自定义TabBar遮挡住系统的TabBar
-    self.ControllerArray = tabBarVCs;
-    //////////////////////////////////////////////////////////////////////////
-    // 注：这里方便阅读就将AE_TabBar放在这里实例化了 使用懒加载也行
-    // 6.将自定义的覆盖到原来的tabBar上面
-    // 这里有两种实例化方案：
-    // 6.1 使用重载构造函数方式：
-    //    self.tfySY_TabBar = [[TfySY_TabBar alloc] initWithTabBarConfig:tabBarConfs];
-    // 6.2 使用Set方式：
-    self.tfySY_TabBar = [TfySY_TabBar new] ;
-    self.tfySY_TabBar.tabBarConfig = tabBarConfs;
-    // 7.设置委托
-    self.tfySY_TabBar.delegate = self;
-    // 8.添加覆盖到上边
-    [self.tabBar addSubview:self.tfySY_TabBar];
-    
+    [self controllerArr:tabBarVCs TabBarConfigModelArr:tabBarConfs];
+    // 9.实现代理，如下：
+   
 }
-// 9.实现代理，如下：
-static NSInteger lastIdx = 0;
-- (void)TfySY_TabBar:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index{
-    if (index != 2) { // 不是中间的就切换
-        // 通知 切换视图控制器
-        [self setSelectedIndex:index];
-        lastIdx = index;
-    }else{ // 点击了中间的
-        [self.tfySY_TabBar setSelectIndex:lastIdx WithAnimation:NO]; // 换回上一个选中状态
-        // 或者
-        //        self.tfySY_TabBar.selectIndex = lastIdx; // 不去切换TabBar的选中状态
+
+- (void)TfySY_TabBar:(TfySY_TabBar *)tabbar newsVc:(UIViewController *)vc selectIndex:(NSInteger)index {
+    if (index == 2) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"点击了中间的,不切换视图"
                                                                           preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -107,6 +87,5 @@ static NSInteger lastIdx = 0;
         [self presentViewController:alertController animated:YES completion:nil];
     }
 }
-
 
 @end

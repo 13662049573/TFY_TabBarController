@@ -8,7 +8,7 @@
 
 #import "TfySY_TabBarController.h"
 
-@interface TfySY_TabBarController ()
+@interface TfySY_TabBarController ()<TfySY_TabBarDelegate>
 
 @end
 
@@ -18,43 +18,21 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-
-//    // 修改tabbar背景
-//    if (@available(iOS 15.0, *)) {
-//            
-//        UITabBarAppearance *appearance = [UITabBarAppearance new];
-//        //tabBar背景颜色
-//        appearance.backgroundColor = [UIColor orangeColor];
-//       // 去掉半透明效果
-//        appearance.backgroundEffect = nil;
-//        // tabBaritem title选中状态颜色
-//        appearance.stackedLayoutAppearance.selected.titleTextAttributes = @{
-//            NSForegroundColorAttributeName:UIColor.blackColor,
-//            NSFontAttributeName:[UIFont systemFontOfSize:12],
-//        };
-//        //tabBaritem title未选中状态颜色
-//        appearance.stackedLayoutAppearance.normal.titleTextAttributes =  @{
-//            NSForegroundColorAttributeName:UIColor.lightTextColor,
-//            NSFontAttributeName:[UIFont systemFontOfSize:12],
-//        };
-//        self.tabBar.scrollEdgeAppearance = appearance;
-//        self.tabBar.standardAppearance = appearance;
-//    }
+    
+    TfySY_TestTabBar *testTabBar = [TfySY_TestTabBar new];
+    [self setValue:testTabBar forKey:@"tabBar"];
     
     [self.tabBar setShadowImage:[UIImage new]];
+}
+
+- (void)controllerArr:(NSArray<UIViewController*>*)vcArr TabBarConfigModelArr:(NSArray<TfySY_TabBarConfigModel *>*)tabBarConfigArr {
+    self.viewControllers = vcArr;
+
+    self.tfySY_TabBar = [[TfySY_TabBar alloc] initWithTabBarConfig:tabBarConfigArr];
     
-}
-
--(void)setControllerArray:(NSArray<UIViewController *> *)ControllerArray{
-    _ControllerArray = ControllerArray;
-    self.viewControllers = _ControllerArray;
-}
-
-- (void)setSelectedIndex:(NSUInteger)selectedIndex{
-    [super setSelectedIndex:selectedIndex];
-    if(self.tfySY_TabBar){
-        self.tfySY_TabBar.selectIndex = selectedIndex;
-    }
+    self.tfySY_TabBar.delegate = self;
+    // 8.添加覆盖到上边
+    [self.tabBar addSubview:self.tfySY_TabBar];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -62,6 +40,23 @@
     self.tfySY_TabBar.frame = self.tabBar.bounds;
     if ([self.vc_delegate respondsToSelector:@selector(tfySY_LayoutSubviews)]) {
         [self.vc_delegate tfySY_LayoutSubviews];
+    }
+}
+
+// 点击事件
+- (void)TfySY_TabBar:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index {
+    [self setSelectedIndex:index];
+    if (self.vc_delegate && [self.vc_delegate respondsToSelector:@selector(TfySY_TabBar:newsVc:selectIndex:)]) {
+        UIViewController *vc = self.viewControllers[index];
+        [self.vc_delegate TfySY_TabBar:tabbar newsVc:vc selectIndex:index];
+    }
+}
+
+//双击事件
+- (void)TfySY_TabBarDoubleClick:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index {
+    if (self.vc_delegate && [self.vc_delegate respondsToSelector:@selector(TfySY_TabBarDoubleClick:newsVc:selectIndex:)]) {
+        UIViewController *vc = self.viewControllers[index];
+        [self.vc_delegate TfySY_TabBarDoubleClick:tabbar newsVc:vc selectIndex:index];
     }
 }
 

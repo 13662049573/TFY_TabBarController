@@ -16,8 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @class TfySY_TabBarConfigModel;
 
 @protocol TfySY_TabBarDelegate <NSObject >
-
+@optional
+// 点击事件
 - (void)TfySY_TabBar:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index;
+
+//双击事件
+- (void)TfySY_TabBarDoubleClick:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index;
 
 @end
 

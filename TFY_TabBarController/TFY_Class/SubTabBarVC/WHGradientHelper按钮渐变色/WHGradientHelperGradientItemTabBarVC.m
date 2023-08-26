@@ -58,41 +58,13 @@
         // 5.1添加构造Model到集合
         [tabBarConfs addObject:model];
     }];
-    // 5.2 设置VCs -----
-    // 一定要先设置这一步，然后再进行后边的顺序，因为系统只有在setViewControllers函数后才不会再次创建UIBarButtonItem，以免造成遮挡
-    // 大意就是一定要让自定义TabBar遮挡住系统的TabBar
-    self.ControllerArray = tabBarVCs;
-    //////////////////////////////////////////////////////////////////////////
-    // 注：这里方便阅读就将AE_TabBar放在这里实例化了 使用懒加载也行
-    // 6.将自定义的覆盖到原来的tabBar上面
-    // 这里有两种实例化方案：
-    // 6.1 使用重载构造函数方式：
-    //    self.tfySY_TabBar = [[TfySY_TabBar alloc] initWithTabBarConfig:tabBarConfs];
-    // 6.2 使用Set方式：
-    self.tfySY_TabBar = [TfySY_TabBar new] ;
-    self.tfySY_TabBar.tabBarConfig = tabBarConfs;
-    
-    // DEMO 混合使用渐变色工具
-    /******************************************************************************/
+    [self controllerArr:tabBarVCs TabBarConfigModelArr:tabBarConfs];
     self.tfySY_TabBar.backgroundImageView.image = [WHGradientHelper getLinearGradientImage:[UIColor orangeColor]
                                                                                     and:[UIColor whiteColor]
                                                                           directionType:WHLinearGradientDirectionVertical];
-    /******************************************************************************/
-    
-    // 7.设置委托
-    self.tfySY_TabBar.delegate = self;
-    // 8.添加覆盖到上边
-    [self.tabBar addSubview:self.tfySY_TabBar];
-    
     [self click_itemWithIndex:0];
 }
-// 9.实现代理，如下：
-- (void)TfySY_TabBar:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index{
-    // 通知 切换视图控制器
-    [self setSelectedIndex:index];
-    // 自定义的AE_TabBar回调点击事件给TabBarVC，TabBarVC用父类的TabBarController函数完成切换
-    [self click_itemWithIndex:index];
-}
+
 - (void)click_itemWithIndex:(NSInteger )index{
     /******************************************************************************/
     [self.tfySY_TabBar.tabBarItems enumerateObjectsUsingBlock:^(TfySY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -104,9 +76,6 @@
             item.backgroundImageView.image = nil;
         }
     }];
-    /******************************************************************************/
-    
 }
-
 
 @end
