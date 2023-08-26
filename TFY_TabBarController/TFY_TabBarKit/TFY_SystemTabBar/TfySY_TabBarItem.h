@@ -105,6 +105,8 @@ typedef void(^CustomInteractionEffectBlock) (TfySY_TabBarItem * _Nonnull item);
 @property(nonatomic, assign)CGSize itemSize;
 /**角标内容*/
 @property(nonatomic, strong)NSString * _Nonnull badge;
+/**自定义角标位置*/
+@property(nonatomic , assign)CGPoint badgePoint;
 /**角标方位*/
 @property(nonatomic, assign)TfySY_TabBarItemBadgeStyle itemBadgeStyle;
 /**为零是否自动隐藏 默认不隐藏*/
