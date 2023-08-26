@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TfySY_TabBarBadge : UILabel
 /**文字或者数字*/
 @property (nonatomic, strong) NSString *badgeText;
-/**为零是否自动隐藏 默认不隐藏*/
+/**为零是否自动隐藏 默认yes*/
 @property(nonatomic, assign)BOOL automaticHidden;
 /**气泡高度，默认15*/
 @property(nonatomic, assign)CGFloat badgeHeight;

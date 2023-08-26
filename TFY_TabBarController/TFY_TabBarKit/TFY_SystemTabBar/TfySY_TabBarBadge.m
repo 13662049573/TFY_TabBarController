@@ -46,23 +46,29 @@
     self.textAlignment = NSTextAlignmentCenter;
     self.adjustsFontSizeToFitWidth = YES;
     self.clipsToBounds = YES;
-    self.automaticHidden = NO;
+    self.automaticHidden = YES;
     self.badgeHeight = 15;
 }
+
 - (void)setBadgeText:(NSString *)badgeText{
     _badgeText = badgeText;
     self.text = _badgeText;
     CGFloat widths = _badgeText.length*9<20?20:_badgeText.length*9;
-    if (self.badgeWidth) {
-        widths = self.badgeWidth;
-    }
-    if (_badgeText.integerValue) { // 是数字 或者不为0
-        self.hidden = NO;
-    } else{ //
-        if (!_badgeText.length) { // 长度为0的空串
-            widths = 10;
-            self.badgeHeight = 10;
-            self.hidden = self.automaticHidden;
+    if ([badgeText isEqualToString:@"0"]) {
+        self.hidden = self.automaticHidden;
+    } else {
+        self.text = _badgeText;
+        if (self.badgeWidth) {
+            widths = self.badgeWidth;
+        }
+        if (_badgeText.integerValue) { // 是数字 或者不为0
+            self.hidden = NO;
+        } else{ //
+            if (!_badgeText.length) { // 长度为0的空串
+                widths = 10;
+                self.badgeHeight = 10;
+                self.hidden = self.automaticHidden;
+            }
         }
     }
     CGRect frame = self.frame;
