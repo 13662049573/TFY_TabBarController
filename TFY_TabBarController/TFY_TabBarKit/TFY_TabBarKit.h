@@ -18,11 +18,9 @@ FOUNDATION_EXPORT const unsigned char TFY_TabBarKitVersionString[];
 #if TFY_TabBarKitRelease
 
 #import <TFY_SystemTabBar/TfySY_TabBarController.h>
-#import <TFY_SystemTabBar/TfySY_TestTabBar.h>
 
 #else
 
 #import "TfySY_TabBarController.h"
-#import "TfySY_TestTabBar.h"
 
 #endif

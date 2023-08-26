@@ -7,6 +7,7 @@
 //
 
 #import "TfySY_TabBarController.h"
+#import "TfySY_TestTabBar.h"
 
 @interface TfySY_TabBarController ()<TfySY_TabBarDelegate>
 
