@@ -307,6 +307,7 @@
         self.bulgeHeight = 20.0;
         self.pictureWordsMargin = 5.0;
         self.componentMargin = UIEdgeInsetsMake(5, 5, 5, 5);
+        self.medianReduction = 60;
     }
     return self;
 }
