@@ -217,6 +217,9 @@
     self.titleLabel = _itemModel.titleLabel;
     self.icomImgView = _itemModel.icomImgView;
     self.badgePoint = _itemModel.badgePoint;
+    if (itemModel.medianReduction > 0) {
+        self.medianReduction = _itemModel.medianReduction;
+    }
     CGRect itemFrame = self.frame;
     itemFrame.size = _itemModel.itemSize;
     self.badgeLabel.automaticHidden = _itemModel.automaticHidden;

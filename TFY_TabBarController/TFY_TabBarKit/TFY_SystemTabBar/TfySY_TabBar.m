@@ -135,12 +135,21 @@ static TfySY_TabBarItem *lastItem;
         }
         BOOL isNoSettingItemSize = !item.itemModel.itemSize.width || !item.itemModel.itemSize.height;
         if (isNoSettingItemSize) { // 没设置则为默认填充模式
-            itemFrame.origin.x = idx * screenAverageWidth;
-            itemFrame.size = CGSizeMake(screenAverageWidth , itemHeight);
+            if (item.itemModel.alignmentStyle == TfySY_TabBarConfigAlignmentStyleMedianReduction) {
+                itemFrame.origin.x =  item.medianReduction + idx * (screenAverageWidth-item.medianReduction/2);
+                itemFrame.size = CGSizeMake((screenAverageWidth-item.medianReduction/2) , itemHeight);
+            } else {
+                itemFrame.origin.x = idx * screenAverageWidth;
+                itemFrame.size = CGSizeMake(screenAverageWidth , itemHeight);
+            }
         }else{ // 如果设置了大小
             itemFrame.size = item.itemModel.itemSize;
             // 进行动态布局
             switch (item.itemModel.alignmentStyle) { // item对齐模式
+                case TfySY_TabBarConfigAlignmentStyleMedianReduction:{
+                    itemFrame.origin.x =  item.medianReduction + idx * (screenAverageWidth-item.medianReduction/2) + ((screenAverageWidth-item.medianReduction/2) - item.itemModel.itemSize.width)/2;
+                    itemFrame.origin.y = (itemHeight - item.itemModel.itemSize.height)/2;
+                }break;
                 case TfySY_TabBarConfigAlignmentStyleCenter:{               // 居中 默认
                     itemFrame.origin.x = idx * screenAverageWidth + (screenAverageWidth - item.itemModel.itemSize.width)/2;
                     itemFrame.origin.y = (itemHeight - item.itemModel.itemSize.height)/2;
