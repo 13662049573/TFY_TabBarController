@@ -3,7 +3,7 @@
 Pod::Spec.new do |spec|
   spec.name         = "TFY_TabBarKit"
 
-  spec.version      = "1.2.6"
+  spec.version      = "1.2.7"
 
   spec.summary      = "底部tabbar工具/分两类一个自定义UIViewController一个系统自带的，把写好的加在系统上处理."
 
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   
   spec.license      = "MIT"
 
-  spec.platform     = :ios, "12.0"
+  spec.platform     = :ios, "13.0"
   
   spec.author       = { "tfyzxc13662049573" => "420144542@qq.com" }
   
