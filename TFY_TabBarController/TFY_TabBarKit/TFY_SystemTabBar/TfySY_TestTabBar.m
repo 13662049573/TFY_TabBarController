@@ -45,4 +45,18 @@
     }
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self hiddenUITabBarButton];
+}
+
+// 文字重叠，隐藏系统的tabbaritem
+- (void)hiddenUITabBarButton {
+    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:NSClassFromString(@"_UIBarBackground").class]) {
+            obj.hidden = YES;
+        }
+    }];
+}
+
 @end
