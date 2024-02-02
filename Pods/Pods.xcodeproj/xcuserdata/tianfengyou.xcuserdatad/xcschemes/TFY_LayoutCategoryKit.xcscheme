@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EB38751CB9B6AE62A4CBCBDA7BDC7A8A"
-               BuildableName = "TFY_LayoutCategoryKit.framework"
+               BuildableName = "libTFY_LayoutCategoryKit.a"
                BlueprintName = "TFY_LayoutCategoryKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

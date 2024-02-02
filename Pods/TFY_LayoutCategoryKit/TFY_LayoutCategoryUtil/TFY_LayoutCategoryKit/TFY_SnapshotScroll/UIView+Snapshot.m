@@ -39,7 +39,7 @@
     // 对于透明的画布，使用白色作为底色
     if (opaqueCanvas == NO) backgroundColor = UIColor.whiteColor;
     
-    CGSize contentSize = CGSizeMake(floor(croppingRect.size.width), floor(croppingRect.size.height));
+    CGSize contentSize = CGSizeMake(ceil(croppingRect.size.width), ceil(croppingRect.size.height));
     UIGraphicsBeginImageContextWithOptions(contentSize, opaqueCanvas, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     if (context == nil) return nil;

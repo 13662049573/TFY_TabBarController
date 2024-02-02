@@ -1149,7 +1149,7 @@ CGRect TFY_CGRectFitWithContentMode(CGRect rect, CGSize size, UIViewContentMode 
     UIImage               *lauchImage      = nil;
     NSString              *viewOrientation = nil;
     CGSize                 viewSize        = [UIScreen mainScreen].bounds.size;
-    UIInterfaceOrientation orientation     = [[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation orientation     = [[UIApplication sharedApplication].windows.firstObject.windowScene interfaceOrientation];
     
     if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
         
@@ -1939,18 +1939,22 @@ void TFY_ProviderReleaseData(void * info, const void * data, size_t size) {
 
 //布局颜色设置
 -(UIImage *)tfy_imageWithColor:(UIColor *)color{
-    
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
+    // 获取画布
+     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+     CGContextRef context = UIGraphicsGetCurrentContext();
+     //移动图片
+     CGContextTranslateCTM(context, 0, self.size.height);
+     CGContextScaleCTM(context, 1.0, -1.0);
+     //模式配置
+     CGContextSetBlendMode(context, kCGBlendModeNormal);
+     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+     CGContextClipToMask(context, rect, self.CGImage);
+     [color setFill];
+     CGContextFillRect(context, rect);
+     //创建获取图片
+     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+     UIGraphicsEndImageContext();
+     return newImage;
 }
 
 // 可以把NSString 的参数 改成NSArray 数组存放参数 (就是可以修改多个)

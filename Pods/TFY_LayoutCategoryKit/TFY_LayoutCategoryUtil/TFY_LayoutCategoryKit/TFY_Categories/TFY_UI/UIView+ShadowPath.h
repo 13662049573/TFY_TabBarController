@@ -113,6 +113,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 阴影
 @property(nonatomic , strong)UIColor *conrnersShowColor;
 
+/// 直接设置阴影
+@property(nonatomic , assign)CGFloat cornerRadiusAll;
+
 @end
 
 NS_ASSUME_NONNULL_END

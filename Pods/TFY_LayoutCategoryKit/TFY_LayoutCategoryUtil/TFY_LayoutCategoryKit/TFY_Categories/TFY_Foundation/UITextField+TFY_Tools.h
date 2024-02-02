@@ -50,6 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
         blankLocations:(NSArray <NSNumber *>*)blankLocation
             limitCount:(NSInteger )limitCount;
 
+/// 中文 和 数字，英文限制
+- (void)tfy_textFieldTextDidChange:(UITextField *)textField;
+
 /**
  已输入字符串
  */

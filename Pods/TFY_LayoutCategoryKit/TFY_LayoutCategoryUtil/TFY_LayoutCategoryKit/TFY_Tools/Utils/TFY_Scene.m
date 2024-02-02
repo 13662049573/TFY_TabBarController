@@ -143,32 +143,21 @@ typedef enum : NSUInteger {
 }
 
 - (UIWindow *)appKeyWindow {
-    UIWindow *keywindow = UIApplication.sharedApplication.keyWindow;
-    if (keywindow == nil) {
-        if (@available(iOS 13.0, *)) {
-            for (UIWindowScene *scene in UIApplication.sharedApplication.connectedScenes) {
-                if (scene.activationState == UISceneActivationStateForegroundActive) {
-                    UIWindow *tmpWindow = nil;
-                    if (@available(iOS 15.0, *)) {
-                        tmpWindow = scene.keyWindow;
-                    }
-                    if (tmpWindow == nil) {
-                        for (UIWindow *window in scene.windows) {
-                            if (window.windowLevel == UIWindowLevelNormal && window.hidden == NO && CGRectEqualToRect(window.bounds, UIScreen.mainScreen.bounds)) {
-                                tmpWindow = window;
-                                break;
-                            }
+    UIWindow *keywindow = nil;
+    if (@available(iOS 13.0, *)) {
+        for (UIWindowScene *scene in UIApplication.sharedApplication.connectedScenes) {
+            if (scene.activationState == UISceneActivationStateForegroundActive) {
+                if (@available(iOS 15.0, *)) {
+                    keywindow = scene.keyWindow;
+                }
+                if (keywindow == nil) {
+                    for (UIWindow *window in scene.windows) {
+                        if (window.windowLevel == UIWindowLevelNormal && window.hidden == NO && CGRectEqualToRect(window.bounds, UIScreen.mainScreen.bounds)) {
+                            keywindow = window;
+                            break;
                         }
                     }
                 }
-            }
-        }
-    }
-    if (keywindow == nil) {
-        for (UIWindow *window in UIApplication.sharedApplication.windows) {
-            if (window.windowLevel == UIWindowLevelNormal && window.hidden == NO && CGRectEqualToRect(window.bounds, UIScreen.mainScreen.bounds)) {
-                keywindow = window;
-                break;
             }
         }
     }
@@ -222,7 +211,7 @@ typedef enum : NSUInteger {
         [value getValue:&rect];
         return rect;
     }else{
-        return [UIApplication sharedApplication].statusBarFrame;
+        return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame;
     }
 }
 
@@ -233,12 +222,8 @@ typedef enum : NSUInteger {
         id statusBarManager = ((id (*)(id, SEL))objc_msgSend)(windowScene,sel_registerName("statusBarManager"));
         return ((BOOL (*)(id, SEL))objc_msgSend)(statusBarManager,_cmd);
     }else{
-        return [UIApplication sharedApplication].statusBarHidden;
+        return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarHidden;
     }
-}
-
-- (void)setStatusBarHidden:(BOOL)statusBarHidden{
-    [UIApplication sharedApplication].statusBarHidden = statusBarHidden;
 }
 
 - (UIStatusBarStyle)statusBarStyle{
@@ -247,11 +232,8 @@ typedef enum : NSUInteger {
         id statusBarManager = ((id (*)(id, SEL))objc_msgSend)(windowScene,sel_registerName("statusBarManager"));
         return ((UIStatusBarStyle (*)(id, SEL))objc_msgSend)(statusBarManager,_cmd);
     }else{
-        return [UIApplication sharedApplication].statusBarStyle;
+        return [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarStyle;
     }
-}
-- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle{
-    [UIApplication sharedApplication].statusBarStyle = statusBarStyle;
 }
 
 - (UIInterfaceOrientation)statusBarOrientation{
@@ -259,22 +241,9 @@ typedef enum : NSUInteger {
         id windowScene = ((id (*)(id, SEL))objc_msgSend)(self.window,sel_registerName("windowScene"));
         return ((UIInterfaceOrientation (*)(id, SEL))objc_msgSend)(windowScene,sel_registerName("interfaceOrientation"));
     }else{
-        return [UIApplication sharedApplication].statusBarOrientation;
+        return [UIApplication sharedApplication].windows.firstObject.windowScene.interfaceOrientation;
     }
 }
-
-- (void)setStatusBarOrientation:(UIInterfaceOrientation)statusBarOrientation{
-    [UIApplication sharedApplication].statusBarOrientation = statusBarOrientation;
-}
-
-- (BOOL)networkActivityIndicatorVisible{
-    return [UIApplication sharedApplication].networkActivityIndicatorVisible;
-}
-
-- (void)setNetworkActivityIndicatorVisible:(BOOL)networkActivityIndicatorVisible{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = networkActivityIndicatorVisible;
-}
-
 
 #pragma mark - 异步 -
 
@@ -498,7 +467,7 @@ typedef enum : NSUInteger {
 }
 @end
 
-__attribute__((constructor)) static void ScenePackageExcImp(){
+__attribute__((constructor)) static void ScenePackageExcImp(void){
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [[TFY_Scene defaultPackage] methodSwizzledScene];

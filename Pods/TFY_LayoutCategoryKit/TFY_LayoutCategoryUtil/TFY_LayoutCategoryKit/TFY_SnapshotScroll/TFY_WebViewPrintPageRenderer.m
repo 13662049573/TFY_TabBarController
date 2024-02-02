@@ -64,7 +64,7 @@
 - (UIImage *)covertPDFPageToImage:(CGPDFPageRef)pdfPage {
     
     CGRect pageRect = CGPDFPageGetBoxRect(pdfPage, kCGPDFTrimBox);
-    CGSize contentSize = CGSizeMake(floor(pageRect.size.width), floor(pageRect.size.height));
+    CGSize contentSize = CGSizeMake(ceil(pageRect.size.width), ceil(pageRect.size.height));
     
     // usually you want UIGraphicsBeginImageContextWithOptions last parameter to be 0.0 as this will us the device's scale
     UIGraphicsBeginImageContextWithOptions(contentSize, YES, 2.0);

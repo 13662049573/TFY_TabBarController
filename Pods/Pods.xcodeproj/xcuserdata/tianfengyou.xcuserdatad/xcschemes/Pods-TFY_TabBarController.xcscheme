@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9E356B651DBEE92D54294EB0C126D83"
-               BuildableName = "Pods_TFY_TabBarController.framework"
+               BuildableName = "libPods-TFY_TabBarController.a"
                BlueprintName = "Pods-TFY_TabBarController"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

@@ -472,6 +472,9 @@ typedef NS_ENUM(NSUInteger, Temperature) {
 /***  清楚缓存数据*/
 +(void)clearFile;
 
+/**生产随机不重复的数字**/
++ (u_int32_t)randomInRangeLo:(u_int32_t)loBound toHi:(u_int32_t)hiBound;
+
 /***  截取控制器所生产图片*/
 + (void)screenSnapshot:(UIView *)snapshotView finishBlock:(void(^)(UIImage *snapShotImage))finishBloc;
 

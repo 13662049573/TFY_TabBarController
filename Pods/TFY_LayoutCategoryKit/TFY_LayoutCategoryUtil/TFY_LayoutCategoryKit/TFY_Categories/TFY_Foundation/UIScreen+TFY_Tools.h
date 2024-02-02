@@ -54,7 +54,7 @@ CG_INLINE void TFY_MakeKeyWindow(void) {
 
 /** 是否是竖屏*/
 CG_INLINE BOOL TFY_isPortrait(void) {
-    return  ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait ||  [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown ) ?YES:NO;
+    return  ([UIApplication sharedApplication].windows.firstObject.windowScene.interfaceOrientation == UIInterfaceOrientationPortrait ||  [UIApplication sharedApplication].windows.firstObject.windowScene.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown ) ?YES:NO;
 }
 
 /**屏幕高*/

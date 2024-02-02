@@ -389,9 +389,10 @@
     if (!CGSizeEqualToSize(contentSize, _scrollView.contentSize)) {
         _scrollView.contentSize = contentSize;
         _containerView.frame = (CGRect){CGPointZero, contentSize};
-        
-        if ([self.delegate respondsToSelector:@selector(tagCollectionView:updateContentSize:)]) {
-            [self.delegate tagCollectionView:self updateContentSize:contentSize];
+        if (contentSize.width > 0 && contentSize.height > 0) {
+            if ([self.delegate respondsToSelector:@selector(tagCollectionView:updateContentSize:)]) {
+                [self.delegate tagCollectionView:self updateContentSize:contentSize];
+            }
         }
     }
 }

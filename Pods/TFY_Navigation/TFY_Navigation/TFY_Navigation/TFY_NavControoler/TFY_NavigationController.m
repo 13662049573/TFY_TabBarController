@@ -618,6 +618,9 @@ __attribute((overloadable)) static inline UIViewController *TFYSafeWrapViewContr
                                                                                                    action:@selector(onBack:)];
         } else {
             UIImage *image = [[UIImage imageNamed:@"TFY_NavigationImage.bundle/btn_back_black"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            if (image == nil) {
+                image = [self navigationBarBackIconImage];
+            }
             viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:image
                                                                                                style:UIBarButtonItemStylePlain
                                                                                               target:self

@@ -263,7 +263,7 @@ static TFY_OSMessage *message;
 {
     CGSize imageSize = CGSizeZero;
     
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].windows.firstObject.windowScene.interfaceOrientation;
     if (UIInterfaceOrientationIsPortrait(orientation)) {
         imageSize = [UIScreen mainScreen].bounds.size;
     } else {
@@ -370,14 +370,36 @@ static TFY_OSMessage *message;
     
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     indicator.center = CGPointMake(CGRectGetMidX(webView.bounds), CGRectGetMidY(webView.bounds)+30);
-    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleMedium;
     [webView.scrollView addSubview:indicator];
     [indicator startAnimating];
     
-    [[UIApplication sharedApplication].keyWindow addSubview:webView];
+    [self.appKeyWindow addSubview:webView];
     [UIView animateWithDuration:0.32 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         webView.frame = CGRectMake(0, 20, webView.frame.size.width, webView.frame.size.height);
     } completion:nil];
+}
+
+- (UIWindow *)appKeyWindow {
+    UIWindow *keywindow = nil;
+    if (@available(iOS 13.0, *)) {
+        for (UIWindowScene *scene in UIApplication.sharedApplication.connectedScenes) {
+            if (scene.activationState == UISceneActivationStateForegroundActive) {
+                if (@available(iOS 15.0, *)) {
+                    keywindow = scene.keyWindow;
+                }
+                if (keywindow == nil) {
+                    for (UIWindow *window in scene.windows) {
+                        if (window.windowLevel == UIWindowLevelNormal && window.hidden == NO && CGRectEqualToRect(window.bounds, UIScreen.mainScreen.bounds)) {
+                            keywindow = window;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return keywindow;
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {

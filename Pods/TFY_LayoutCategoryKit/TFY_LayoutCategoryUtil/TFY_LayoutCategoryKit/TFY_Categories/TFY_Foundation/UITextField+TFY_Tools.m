@@ -340,6 +340,24 @@ const void *kField_contentInsets;
     UITextPosition *newPostion = [textField positionFromPosition:textField.beginningOfDocument offset:offset] ;
     textField.selectedTextRange = [textField textRangeFromPosition:newPostion toPosition:newPostion];
 }
-
+/// 中文 和 数字，英文限制
+- (void)tfy_textFieldTextDidChange:(UITextField *)textField {
+    NSString *language = [[[UITextInputMode activeInputModes] firstObject] primaryLanguage];
+    NSString *name = textField.text;
+    if ([language isEqualToString:@"zh-Hans"]) {
+        UITextRange *range = [textField markedTextRange];
+        UITextPosition *start = range.start;
+        UITextPosition *end = range.end;
+        NSInteger selLength = [textField offsetFromPosition:start toPosition:end];
+        NSInteger contentLength = textField.text.length - selLength;
+        if (contentLength > 10) {
+            textField.text = [textField.text substringToIndex:10];
+        }
+    } else {
+        if (name.length > 10) {
+            textField.text = [textField.text substringToIndex:10];
+        }
+    }
+}
 
 @end

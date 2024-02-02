@@ -63,7 +63,7 @@ typedef enum : NSUInteger {
 typedef void (^shareSuccess)(TFY_OSMessage * message);
 typedef void (^shareFail)(TFY_OSMessage * message,NSError *error);
 typedef void (^authSuccess)(NSDictionary * message);
-typedef void (^authFail)(NSDictionary * message,NSError *error);
+typedef void (^authFail)(NSDictionary * __nullable message,NSError * __nullable error);
 typedef void (^paySuccess)(NSDictionary * message);
 typedef void (^payFail)(NSDictionary * message,NSError *error);
 /**
@@ -80,8 +80,8 @@ typedef enum : NSUInteger {
 
 + (TFY_OpenShare *)shared;
 
-@property (nonatomic, copy) authSuccess authSuccess;
-@property (nonatomic, copy) authFail authFail;
+@property (nonatomic, copy,nullable) authSuccess authSuccess;
+@property (nonatomic, copy,nullable) authFail authFail;
 
 - (void)addWebViewByURL:(NSURL *)URL;
 

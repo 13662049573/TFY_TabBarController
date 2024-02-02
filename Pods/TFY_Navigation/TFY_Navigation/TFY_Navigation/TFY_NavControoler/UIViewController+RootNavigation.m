@@ -10,11 +10,11 @@
 #import "TFY_NavigationController.h"
 #import <objc/runtime.h>
 
-CG_INLINE BOOL Nav_iPhoneX() {
+CG_INLINE BOOL Nav_iPhoneX(void) {
     return ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? ((NSInteger)(([[UIScreen mainScreen] currentMode].size.height/[[UIScreen mainScreen] currentMode].size.width)*100) == 216) : NO);
 }
 /**导航栏高度*/
-CG_INLINE CGFloat Nav_kNavBarHeight() {
+CG_INLINE CGFloat Nav_kNavBarHeight(void) {
     return (Nav_iPhoneX() ? 88.0 : 64.0);
 }
 
@@ -22,6 +22,10 @@ CG_INLINE CGFloat Nav_kNavBarHeight() {
 + (UIColor *)colorWithHexString:(NSString *)color;
 //从十六进制字符串获取颜色，
 + (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
+@end
+
+@interface UIImage (navColor)
+-(UIImage *)imageNavWithColor:(UIColor *)color;
 @end
 
 @implementation UIViewController (RootNavigation)
@@ -81,17 +85,20 @@ CG_INLINE CGFloat Nav_kNavBarHeight() {
     NSNumber *number = objc_getAssociatedObject(self, @selector(tfy_alphaFloat));
     return number.floatValue;
 }
-
 - (void)contentOffset:(CGFloat)offectY {
+    
     CGFloat alphaIndex = (CGFloat)(offectY/Nav_kNavBarHeight());
     NSString *colorStr = self.tfy_alphaColor.length > 0?self.tfy_alphaColor:@"ffffff";
-    [self.navigationController.navigationBar setBackgroundImage:[self tfy_imageWithColor:[UIColor colorWithHexString:colorStr alpha:alphaIndex]]
+    
+    UIImage *image = [[[UIImage imageNamed:@"TFY_NavigationImage.bundle/nav_line"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] imageNavWithColor:[UIColor colorWithHexString:colorStr alpha:alphaIndex]];
+    
+    [self.navigationController.navigationBar setBackgroundImage:image
     forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)setTfy_navBackgroundColor:(UIColor *)tfy_navBackgroundColor {
     objc_setAssociatedObject(self, @selector(tfy_navBackgroundColor), tfy_navBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    self.view.backgroundColor = tfy_navBackgroundColor;
+    self.navigationController.view.backgroundColor = tfy_navBackgroundColor;
 }
 
 - (UIColor *)tfy_navBackgroundColor {
@@ -100,6 +107,7 @@ CG_INLINE CGFloat Nav_kNavBarHeight() {
 
 - (void)setTfy_alphaColor:(NSString *)tfy_alphaColor {
     objc_setAssociatedObject(self, @selector(tfy_alphaColor), tfy_alphaColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self contentOffset:Nav_kNavBarHeight()];
 }
 
 - (NSString *)tfy_alphaColor {
@@ -124,6 +132,29 @@ CG_INLINE CGFloat Nav_kNavBarHeight() {
     UIGraphicsEndImageContext();
     
     return image;
+}
+
+@end
+
+@implementation UIImage (navColor)
+
+-(UIImage *)imageNavWithColor:(UIColor *)color {
+    // 获取画布
+     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+     CGContextRef context = UIGraphicsGetCurrentContext();
+     //移动图片
+     CGContextTranslateCTM(context, 0, self.size.height);
+     CGContextScaleCTM(context, 1.0, -1.0);
+     //模式配置
+     CGContextSetBlendMode(context, kCGBlendModeNormal);
+     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+     CGContextClipToMask(context, rect, self.CGImage);
+     [color setFill];
+     CGContextFillRect(context, rect);
+     //创建获取图片
+     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+     UIGraphicsEndImageContext();
+     return newImage;
 }
 
 @end

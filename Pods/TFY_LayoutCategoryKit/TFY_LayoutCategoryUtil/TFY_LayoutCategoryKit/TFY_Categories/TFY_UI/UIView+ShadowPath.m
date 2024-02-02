@@ -6,6 +6,7 @@
 //
 
 #import "UIView+ShadowPath.h"
+#import "UIColor+TFY_Tools.h"
 #import <objc/runtime.h>
 
 #define kConrnerCorner  "UIView.privateConrnerCorner"
@@ -520,6 +521,26 @@
 
 - (CGFloat)cornersBottomLeft {
     NSNumber *number = objc_getAssociatedObject(self, @selector(cornersBottomLeft));
+    return number.floatValue;
+}
+
+- (void)setCornerRadiusAll:(CGFloat)cornerRadiusAll {
+    objc_setAssociatedObject(self, @selector(cornerRadiusAll), [NSNumber numberWithFloat:cornerRadiusAll], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    // 边框
+    self.layer.borderWidth = 0.2;
+    self.layer.borderColor = TFY_ColorHexString(@"#E5E5E5").CGColor;
+    self.layer.cornerRadius = cornerRadiusAll;
+    self.layer.masksToBounds = YES;
+   // 阴影
+    self.layer.shadowColor = TFY_ColorRGBAlpha(0, 0, 0, 0.15).CGColor;
+    self.layer.shadowOpacity = 1;
+    self.layer.shadowOffset = CGSizeMake(0, 0);
+    self.layer.shadowRadius = 2;
+    self.clipsToBounds = NO;
+}
+
+- (CGFloat)cornerRadiusAll {
+    NSNumber *number = objc_getAssociatedObject(self, @selector(cornerRadiusAll));
     return number.floatValue;
 }
 

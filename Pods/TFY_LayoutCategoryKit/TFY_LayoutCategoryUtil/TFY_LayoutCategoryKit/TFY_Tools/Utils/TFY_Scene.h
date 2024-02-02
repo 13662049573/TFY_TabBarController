@@ -39,15 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) UIWindow *keyWindow;
 
-@property (nonatomic, assign) UIStatusBarStyle statusBarStyle;
-
-@property (nonatomic, assign) BOOL statusBarHidden;
-
 @property (nonatomic, assign, readonly) CGRect statusBarFrame;
-
-@property (nonatomic, assign) UIInterfaceOrientation statusBarOrientation;
-
-@property (nonatomic, assign) BOOL networkActivityIndicatorVisible;
 
 /**
  * 在window第一次加载后进行事件处理，可以保证block执行时必定加载过window

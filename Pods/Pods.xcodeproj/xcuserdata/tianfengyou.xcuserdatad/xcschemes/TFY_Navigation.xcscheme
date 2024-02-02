@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "73D30B1D2C014DD258F76266C8676DB5"
-               BuildableName = "TFY_Navigation.framework"
+               BuildableName = "libTFY_Navigation.a"
                BlueprintName = "TFY_Navigation"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
