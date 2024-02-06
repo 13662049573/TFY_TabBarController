@@ -59,8 +59,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TfySY_TabBar (Theme)
-- (void)tfy_backgroundImageNamed:(NSString *)name;
-@end
-
 NS_ASSUME_NONNULL_END

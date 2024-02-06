@@ -8,12 +8,6 @@
 
 #import "TfySY_TabBar.h"
 
-#if __has_include(<TFYThemeKit.h>)
-#import <TFYThemeKit.h>
-#elif __has_include("TFYThemeKit.h")
-#import "TFYThemeKit.h"
-#endif
-
 #define Item_TAG_initial_Value 100
 
 @interface TfySY_TabBar ()
@@ -301,17 +295,5 @@ static TfySY_TabBarItem *lastItem;
     return _items;
 }
 
-
 @end
 
-@implementation TfySY_TabBar (Theme)
-#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
-- (void)tfy_backgroundImageNamed:(NSString *)name {
-    [self tfy_setThemePicker:self selector:@"setThemeImage:" picker:[TFYThemePicker initWithImageName:name]];
-}
-#else
-- (void)tfy_backgroundImageNamed:(NSString *)name {
-    self.themeImage = [UIImage imageNamed:name];
-}
-#endif
-@end

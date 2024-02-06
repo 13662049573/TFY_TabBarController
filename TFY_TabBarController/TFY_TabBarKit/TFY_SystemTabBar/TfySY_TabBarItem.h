@@ -196,22 +196,5 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TfySY_TabBarConfigModel (Theme)
-
-- (void)tfy_imageInsets:(NSString *)type;
-- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
-- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
-- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType;
-- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType;
-
-@end
-
-@interface TfySY_TabBarItem (Theme)
-- (void)tfy_imageInsets:(NSString *)type;
-- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
-- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
-- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType;
-- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType;
-@end
 
 NS_ASSUME_NONNULL_END
