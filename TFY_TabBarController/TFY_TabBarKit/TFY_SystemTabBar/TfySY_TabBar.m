@@ -298,7 +298,7 @@ static TfySY_TabBarItem *lastItem;
 
 @end
 
-#if HasTFYThemeKit
+#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
 @implementation TfySY_TabBar (Theme)
 
 - (void)tfy_backgroundImageNamed:(NSString *)name {

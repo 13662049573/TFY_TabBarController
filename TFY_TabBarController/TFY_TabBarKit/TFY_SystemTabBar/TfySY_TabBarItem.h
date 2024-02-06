@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TfySY_TabBarBadge.h"
 
-#define HasTFYThemeKit (__has_include(<TFYThemeKit/TFYThemeKit.h>))
-
-#if HasTFYThemeKit
-#import <TFYThemeKit/TFYThemeKit.h>
+#if __has_include(<TFYThemeKit.h>)
+#import <TFYThemeKit.h>
+#elif __has_include("TFYThemeKit.h")
+#import "TFYThemeKit.h"
 #endif
 
 /**凸出后的形状*/
@@ -203,7 +203,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-#if HasTFYThemeKit
+#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
 
 @interface TfySY_TabBarConfigModel (Theme)
 

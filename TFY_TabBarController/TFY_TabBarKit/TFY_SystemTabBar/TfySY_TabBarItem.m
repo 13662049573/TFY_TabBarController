@@ -340,7 +340,8 @@
 
 @end
 
-#if HasTFYThemeKit
+#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
+
 @implementation TfySY_TabBarConfigModel (Theme)
 
 - (void)tfy_imageInsets:(NSString *)type {
