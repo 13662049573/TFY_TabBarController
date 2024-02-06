@@ -9,12 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TfySY_TabBarBadge.h"
 
-#if __has_include(<TFYThemeKit.h>)
-#import <TFYThemeKit.h>
-#elif __has_include("TFYThemeKit.h")
-#import "TFYThemeKit.h"
-#endif
-
 /**凸出后的形状*/
 typedef NS_ENUM(NSInteger, TfySY_TabBarConfigBulgeStyle) {
     TfySY_TabBarConfigBulgeStyleNormal = 0,         /** 无 默认*/
@@ -202,9 +196,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
-
 @interface TfySY_TabBarConfigModel (Theme)
 
 - (void)tfy_imageInsets:(NSString *)type;
@@ -222,7 +213,5 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType;
 - (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType;
 @end
-
-#endif
 
 NS_ASSUME_NONNULL_END

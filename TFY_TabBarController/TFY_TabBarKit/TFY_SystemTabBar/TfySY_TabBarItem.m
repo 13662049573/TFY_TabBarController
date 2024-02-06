@@ -8,6 +8,12 @@
 
 #import "TfySY_TabBarItem.h"
 
+#if __has_include(<TFYThemeKit.h>)
+#import <TFYThemeKit.h>
+#elif __has_include("TFYThemeKit.h")
+#import "TFYThemeKit.h"
+#endif
+
 @implementation TfySY_TabBarItem
 
 #pragma mark - 构造
@@ -340,10 +346,8 @@
 
 @end
 
-#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
-
 @implementation TfySY_TabBarConfigModel (Theme)
-
+#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
 - (void)tfy_imageInsets:(NSString *)type {
     [self tfy_setThemePicker:self selector:@"setComponentMargin:"
                   picker:[TFYThemePicker initWithImageInsets:type]];
@@ -368,11 +372,27 @@
     [self tfy_setThemePicker:self selector:@"setSelectColor:"
                   picker:[TFYThemePicker initWithColorType:fontType]];
 }
-
+#else
+- (void)tfy_imageInsets:(NSString *)type{
+    self.componentMargin = UIEdgeInsetsMake(5, 5, 5, 5);
+}
+- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode{
+    self.normalImage = [UIImage imageNamed:name];
+}
+- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode{
+    self.selectImage = [UIImage imageNamed:name];
+}
+- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType{
+    self.normalColor = [UIColor grayColor];
+}
+- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType{
+    self.selectColor = TfySY_TabBarItemSlectBlue;
+}
+#endif
 @end
 
 @implementation TfySY_TabBarItem (Theme)
-
+#if __has_include(<TFYThemeKit.h>) || __has_include("TFYThemeKit.h")
 - (void)tfy_imageInsets:(NSString *)type {
     [self tfy_setThemePicker:self selector:@"setComponentMargin:"
                   picker:[TFYThemePicker initWithImageInsets:type]];
@@ -397,6 +417,21 @@
     [self tfy_setThemePicker:self selector:@"setSelectColor:"
                   picker:[TFYThemePicker initWithColorType:fontType]];
 }
-
-@end
+#else
+- (void)tfy_imageInsets:(NSString *)type{
+    self.componentMargin = UIEdgeInsetsMake(5, 5, 5, 5);
+}
+- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode{
+    self.normalImage = [UIImage imageNamed:name];
+}
+- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode{
+    self.selectImage = [UIImage imageNamed:name];
+}
+- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType{
+    self.normalColor = [UIColor grayColor];
+}
+- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType{
+    self.selectColor = TfySY_TabBarItemSlectBlue;
+}
 #endif
+@end
