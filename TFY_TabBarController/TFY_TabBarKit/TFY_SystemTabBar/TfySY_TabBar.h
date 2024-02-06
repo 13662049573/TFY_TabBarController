@@ -10,6 +10,12 @@
 #import "TfySY_TabBarBadge.h"
 #import "TfySY_TabBarItem.h"
 
+#define HasTFYThemeKit (__has_include(<TFYThemeKit/TFYThemeKit.h>))
+
+#if HasTFYThemeKit
+#import <TFYThemeKit/TFYThemeKit.h>
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class TfySY_TabBar;
@@ -34,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)viewDidLayoutItems;
 /**TabBar背景图*/
 @property(nonatomic, strong)UIImageView *backgroundImageView;
+@property(nonatomic, strong)UIImage *themeImage;
 /**当前选中的 TabBar*/
 @property (nonatomic, strong) TfySY_TabBarItem *currentSelectItem;
 /**设置角标*/
@@ -57,5 +64,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id <TfySY_TabBarDelegate>delegate;
 
 @end
+
+#if HasTFYThemeKit
+@interface TfySY_TabBar (Theme)
+- (void)tfy_backgroundImageNamed:(NSString *)name;
+@end
+#endif
 
 NS_ASSUME_NONNULL_END

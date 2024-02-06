@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TfySY_TabBarBadge.h"
 
+#define HasTFYThemeKit (__has_include(<TFYThemeKit/TFYThemeKit.h>))
+
+#if HasTFYThemeKit
+#import <TFYThemeKit/TFYThemeKit.h>
+#endif
+
 /**凸出后的形状*/
 typedef NS_ENUM(NSInteger, TfySY_TabBarConfigBulgeStyle) {
     TfySY_TabBarConfigBulgeStyleNormal = 0,         /** 无 默认*/
@@ -173,6 +179,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign)NSInteger itemIndex;
 /**整体向中间缩减距离 默认 60*/
 @property(nonatomic, assign)CGFloat medianReduction;
+/**所有组件距离item边距 默认 UIEdgeInsetsMake(5, 5, 10, 5)*/
+@property(nonatomic, assign)UIEdgeInsets componentMargin;
+/**图片文字的间距 默认 2*/
+@property(nonatomic, assign)CGFloat pictureWordsMargin;
 /**选中状态*/
 @property (nonatomic, assign) BOOL isSelect;
 
@@ -191,5 +201,28 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)startStrringConfigAnimation;
 
 @end
+
+
+#if HasTFYThemeKit
+
+@interface TfySY_TabBarConfigModel (Theme)
+
+- (void)tfy_imageInsets:(NSString *)type;
+- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
+- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
+- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType;
+- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType;
+
+@end
+
+@interface TfySY_TabBarItem (Theme)
+- (void)tfy_imageInsets:(NSString *)type;
+- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
+- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode;
+- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType;
+- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType;
+@end
+
+#endif
 
 NS_ASSUME_NONNULL_END

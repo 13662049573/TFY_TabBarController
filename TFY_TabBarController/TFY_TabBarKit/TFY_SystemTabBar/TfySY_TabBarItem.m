@@ -79,79 +79,79 @@
     BOOL isIcomImgViewSize = self.itemModel.icomImgViewSize.width || self.itemModel.icomImgViewSize.height;
     BOOL isTitleLabelSize = self.itemModel.titleLabelSize.width || self.itemModel.titleLabelSize.height;
     // 除去边距后的最大宽度
-    CGFloat marginWidth = self.frame.size.width - self.itemModel.componentMargin.left - self.itemModel.componentMargin.right;
+    CGFloat marginWidth = self.frame.size.width - self.componentMargin.left - self.componentMargin.right;
     // 进行决策设置大小
     if (isIcomImgViewSize){
         iconImgFrame.size = self.itemModel.icomImgViewSize;
     }else{
-        iconImgFrame.size = CGSizeMake(marginWidth, self.frame.size.height * iconImgView_Proportion - self.itemModel.componentMargin.top - 5);
+        iconImgFrame.size = CGSizeMake(marginWidth, self.frame.size.height * iconImgView_Proportion - self.componentMargin.top - 5);
     }
     if (isTitleLabelSize){
         titleFrame.size = self.itemModel.titleLabelSize;
     }else{
-        titleFrame.size = CGSizeMake(marginWidth, self.frame.size.height - iconImgFrame.size.height - self.itemModel.componentMargin.bottom);
+        titleFrame.size = CGSizeMake(marginWidth, self.frame.size.height - iconImgFrame.size.height - self.componentMargin.bottom);
     }
     // 至此大小已计算完毕，开始布局
     self.titleLabel.hidden = NO;
     self.icomImgView.hidden = NO;
     switch (self.itemModel.itemLayoutStyle) {
         case TfySY_TabBarItemLayoutStyleTopPictureBottomTitle:{         // 上图片下文字 使用图3 文1比
-            iconImgFrame.origin.y = self.itemModel.componentMargin.top;
+            iconImgFrame.origin.y = self.componentMargin.top;
             iconImgFrame.origin.x = (self.frame.size.width - iconImgFrame.size.width)/2;
             // 图上文下 文label的高度要减去间距
-            titleFrame.size.height -= self.itemModel.pictureWordsMargin;
-            titleFrame.origin.y = iconImgFrame.origin.y + iconImgFrame.size.height + self.itemModel.pictureWordsMargin;
+            titleFrame.size.height -= self.pictureWordsMargin;
+            titleFrame.origin.y = iconImgFrame.origin.y + iconImgFrame.size.height + self.pictureWordsMargin;
             titleFrame.origin.x = (self.frame.size.width - titleFrame.size.width)/2;
         }break;
         case TfySY_TabBarItemLayoutStyleBottomPictureTopTitle:{         // 下图片上文字
-            titleFrame.origin.y = self.itemModel.componentMargin.top;
+            titleFrame.origin.y = self.componentMargin.top;
             titleFrame.origin.x = (self.frame.size.width - iconImgFrame.size.width)/2;
-            titleFrame.size.height = self.frame.size.height * iconImgView_Proportion - self.itemModel.componentMargin.top - self.itemModel.pictureWordsMargin - 5;
+            titleFrame.size.height = self.frame.size.height * iconImgView_Proportion - self.componentMargin.top - self.pictureWordsMargin - 5;
             // 下图片上文字 图的高度要减去间距
-            iconImgFrame.origin.y = titleFrame.origin.y + titleFrame.size.height + self.itemModel.pictureWordsMargin;
-            iconImgFrame.origin.x = self.itemModel.componentMargin.left;
+            iconImgFrame.origin.y = titleFrame.origin.y + titleFrame.size.height + self.pictureWordsMargin;
+            iconImgFrame.origin.x = self.componentMargin.left;
             iconImgFrame.size = CGSizeMake(marginWidth, self.frame.size.height -
-                                           titleFrame.size.height - titleFrame.origin.y - self.itemModel.componentMargin.bottom - self.itemModel.pictureWordsMargin);
+                                           titleFrame.size.height - titleFrame.origin.y - self.componentMargin.bottom - self.pictureWordsMargin);
         }break;
         case TfySY_TabBarItemLayoutStyleLeftPictureRightTitle:{         // 左图片右文字
             // 左右布局要重新计算图片宽度和文本高度 比例要按照相反的1：3计算
             iconImgFrame.size.width = self.frame.size.width * titleLabel_Proportion ;
-            titleFrame.size.height = self.frame.size.height - self.itemModel.componentMargin.top - self.itemModel.componentMargin.bottom;
+            titleFrame.size.height = self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom;
             titleFrame.size.width = self.frame.size.width - // 图片的右下终点坐标 + 边距 + 组件右边距极限
-            (iconImgFrame.size.width + iconImgFrame.origin.x + self.itemModel.pictureWordsMargin + self.itemModel.componentMargin.right);
+            (iconImgFrame.size.width + iconImgFrame.origin.x + self.pictureWordsMargin + self.componentMargin.right);
             
             iconImgFrame.origin.y = (self.frame.size.height - iconImgFrame.size.height)/2;
-            iconImgFrame.origin.x = self.itemModel.componentMargin.left;
+            iconImgFrame.origin.x = self.componentMargin.left;
             // 左图片右文字 文label的宽度要减去间距
-            titleFrame.size.width -= self.itemModel.pictureWordsMargin;
-            titleFrame.origin.y = self.itemModel.componentMargin.top;
-            titleFrame.origin.x = iconImgFrame.size.width + iconImgFrame.origin.x + self.itemModel.pictureWordsMargin;
+            titleFrame.size.width -= self.pictureWordsMargin;
+            titleFrame.origin.y = self.componentMargin.top;
+            titleFrame.origin.x = iconImgFrame.size.width + iconImgFrame.origin.x + self.pictureWordsMargin;
         }break;
         case TfySY_TabBarItemLayoutStyleRightPictureLeftTitle:{         // 右图片左文字
             // 左右布局要重新计算图片宽度和文本高度 比例要按照相反的1：3计算
             iconImgFrame.size.width = self.frame.size.width * titleLabel_Proportion ;
-            titleFrame.size.height = self.frame.size.height - self.itemModel.componentMargin.top - self.itemModel.componentMargin.bottom;
+            titleFrame.size.height = self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom;
             titleFrame.size.width = self.frame.size.width - // 图片的右下终点坐标 + 边距 + 组件右边距极限
-            (iconImgFrame.size.width  + self.itemModel.pictureWordsMargin + self.itemModel.componentMargin.right);
+            (iconImgFrame.size.width  + self.pictureWordsMargin + self.componentMargin.right);
             
-            titleFrame.origin.x = self.itemModel.componentMargin.left;
+            titleFrame.origin.x = self.componentMargin.left;
             // 左图片右文字 文label的宽度要减去间距
-            titleFrame.size.width -= self.itemModel.pictureWordsMargin;
-            titleFrame.origin.y = self.itemModel.componentMargin.top;
+            titleFrame.size.width -= self.pictureWordsMargin;
+            titleFrame.origin.y = self.componentMargin.top;
             
             iconImgFrame.origin.y = (self.frame.size.height - iconImgFrame.size.height)/2;
-            iconImgFrame.origin.x = titleFrame.size.width + titleFrame.origin.x + self.itemModel.pictureWordsMargin;
+            iconImgFrame.origin.x = titleFrame.size.width + titleFrame.origin.x + self.pictureWordsMargin;
         }break;
         case TfySY_TabBarItemLayoutStylePicture:{                       // 单图片占满全部
-            iconImgFrame.size = CGSizeMake(self.frame.size.width - self.itemModel.componentMargin.left - self.itemModel.componentMargin.right,
-                                           self.frame.size.height - self.itemModel.componentMargin.top - self.itemModel.componentMargin.bottom);
-            iconImgFrame.origin = CGPointMake(self.itemModel.componentMargin.right, self.itemModel.componentMargin.top);
+            iconImgFrame.size = CGSizeMake(self.frame.size.width - self.componentMargin.left - self.componentMargin.right,
+                                           self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom);
+            iconImgFrame.origin = CGPointMake(self.componentMargin.right, self.componentMargin.top);
             self.titleLabel.hidden = YES;
         }break;
         case TfySY_TabBarItemLayoutStyleTitle:{                         // 单标题占满全部
-            titleFrame.size = CGSizeMake(self.frame.size.width - self.itemModel.componentMargin.left - self.itemModel.componentMargin.right,
-                                           self.frame.size.height - self.itemModel.componentMargin.top - self.itemModel.componentMargin.bottom);
-            titleFrame.origin = CGPointMake(self.itemModel.componentMargin.right, self.itemModel.componentMargin.top);
+            titleFrame.size = CGSizeMake(self.frame.size.width - self.componentMargin.left - self.componentMargin.right,
+                                           self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom);
+            titleFrame.origin = CGPointMake(self.componentMargin.right, self.componentMargin.top);
             self.icomImgView.hidden = YES;
         }break;
         default:  break;
@@ -205,26 +205,28 @@
         self.normalImage = itemModel.normalImage;
         self.selectImage = itemModel.selectImage;
     } else {
-        self.normalImage = [UIImage imageNamed:_itemModel.normalImageName];
-        self.selectImage = [UIImage imageNamed:_itemModel.selectImageName];
+        self.normalImage = [UIImage imageNamed:itemModel.normalImageName];
+        self.selectImage = [UIImage imageNamed:itemModel.selectImageName];
     }
-    self.normalColor = _itemModel.normalColor;
-    self.selectColor = _itemModel.selectColor;
-    self.normalTintColor = _itemModel.normalTintColor;
-    self.selectTintColor = _itemModel.selectTintColor;
-    self.normalBackgroundColor = _itemModel.normalBackgroundColor;
-    self.selectBackgroundColor = _itemModel.selectBackgroundColor;
-    self.titleLabel = _itemModel.titleLabel;
-    self.icomImgView = _itemModel.icomImgView;
-    self.badgePoint = _itemModel.badgePoint;
+    self.normalColor = itemModel.normalColor;
+    self.selectColor = itemModel.selectColor;
+    self.normalTintColor = itemModel.normalTintColor;
+    self.selectTintColor = itemModel.selectTintColor;
+    self.normalBackgroundColor = itemModel.normalBackgroundColor;
+    self.selectBackgroundColor = itemModel.selectBackgroundColor;
+    self.titleLabel = itemModel.titleLabel;
+    self.icomImgView = itemModel.icomImgView;
+    self.badgePoint = itemModel.badgePoint;
+    self.componentMargin = itemModel.componentMargin;
+    self.pictureWordsMargin = itemModel.pictureWordsMargin;
     if (itemModel.medianReduction > 0) {
-        self.medianReduction = _itemModel.medianReduction;
+        self.medianReduction = itemModel.medianReduction;
     }
     CGRect itemFrame = self.frame;
-    itemFrame.size = _itemModel.itemSize;
-    self.badgeLabel.automaticHidden = _itemModel.automaticHidden;
+    itemFrame.size = itemModel.itemSize;
+    self.badgeLabel.automaticHidden = itemModel.automaticHidden;
     self.frame = itemFrame;
-    self.badge = _itemModel.badge;
+    self.badge = itemModel.badge;
 }
 - (void)setIsSelect:(BOOL)isSelect{
     _isSelect = isSelect;
@@ -337,3 +339,63 @@
 }
 
 @end
+
+#if HasTFYThemeKit
+@implementation TfySY_TabBarConfigModel (Theme)
+
+- (void)tfy_imageInsets:(NSString *)type {
+    [self tfy_setThemePicker:self selector:@"setComponentMargin:"
+                  picker:[TFYThemePicker initWithImageInsets:type]];
+}
+
+- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode {
+    [self tfy_setThemePicker:self selector:@"setNormalImage:"
+                  picker:[TFYThemePicker initWithImageName:name renderingMode:mode]];
+}
+
+- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode {
+    [self tfy_setThemePicker:self selector:@"setSelectImage:"
+                  picker:[TFYThemePicker initWithImageName:name renderingMode:mode]];
+}
+
+- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType {
+    [self tfy_setThemePicker:self selector:@"setNormalColor:"
+                  picker:[TFYThemePicker initWithColorType:fontType]];
+}
+
+- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType {
+    [self tfy_setThemePicker:self selector:@"setSelectColor:"
+                  picker:[TFYThemePicker initWithColorType:fontType]];
+}
+
+@end
+
+@implementation TfySY_TabBarItem (Theme)
+
+- (void)tfy_imageInsets:(NSString *)type {
+    [self tfy_setThemePicker:self selector:@"setComponentMargin:"
+                  picker:[TFYThemePicker initWithImageInsets:type]];
+}
+
+- (void)tfy_imageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode {
+    [self tfy_setThemePicker:self selector:@"setNormalImage:"
+                  picker:[TFYThemePicker initWithImageName:name renderingMode:mode]];
+}
+
+- (void)tfy_selectedImageNamed:(NSString *)name renderingMode:(UIImageRenderingMode)mode {
+    [self tfy_setThemePicker:self selector:@"setSelectImage:"
+                  picker:[TFYThemePicker initWithImageName:name renderingMode:mode]];
+}
+
+- (void)tfy_titleTextColorType:(NSString *)colorType font:(NSString *)fontType {
+    [self tfy_setThemePicker:self selector:@"setNormalColor:"
+                  picker:[TFYThemePicker initWithColorType:fontType]];
+}
+
+- (void)tfy_selectedtitleTextColorType:(NSString *)colorType font:(NSString *)fontType {
+    [self tfy_setThemePicker:self selector:@"setSelectColor:"
+                  picker:[TFYThemePicker initWithColorType:fontType]];
+}
+
+@end
+#endif

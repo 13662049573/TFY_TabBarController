@@ -261,6 +261,10 @@ static TfySY_TabBarItem *lastItem;
     self.effectView.hidden = !_translucent;
 }
 
+- (void)setThemeImage:(UIImage *)themeImage {
+    _themeImage = themeImage;
+    self.backgroundImageView.image = themeImage;
+}
 
 #pragma mark - 懒加载
 - (UIBlurEffect *)effect{
@@ -293,3 +297,13 @@ static TfySY_TabBarItem *lastItem;
 
 
 @end
+
+#if HasTFYThemeKit
+@implementation TfySY_TabBar (Theme)
+
+- (void)tfy_backgroundImageNamed:(NSString *)name {
+    [self tfy_setThemePicker:self selector:@"setThemeImage:" picker:[TFYThemePicker initWithImageName:name]];
+}
+
+@end
+#endif

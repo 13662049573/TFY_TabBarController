@@ -48,16 +48,22 @@
 - (void)TfySY_TabBar:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index {
     [self setSelectedIndex:index];
     if (self.vc_delegate && [self.vc_delegate respondsToSelector:@selector(TfySY_TabBar:newsVc:selectIndex:)]) {
-        UIViewController *vc = self.viewControllers[index];
-        [self.vc_delegate TfySY_TabBar:tabbar newsVc:vc selectIndex:index];
+        NSArray *VcsArr = self.viewControllers;
+        if (index < VcsArr.count) {
+            UIViewController *vc = self.viewControllers[index];
+            [self.vc_delegate TfySY_TabBar:tabbar newsVc:vc selectIndex:index];
+        }
     }
 }
 
 //双击事件
 - (void)TfySY_TabBarDoubleClick:(TfySY_TabBar *)tabbar selectIndex:(NSInteger)index {
     if (self.vc_delegate && [self.vc_delegate respondsToSelector:@selector(TfySY_TabBarDoubleClick:newsVc:selectIndex:)]) {
-        UIViewController *vc = self.viewControllers[index];
-        [self.vc_delegate TfySY_TabBarDoubleClick:tabbar newsVc:vc selectIndex:index];
+        NSArray *VcsArr = self.viewControllers;
+        if (index < VcsArr.count) {
+            UIViewController *vc = self.viewControllers[index];
+            [self.vc_delegate TfySY_TabBarDoubleClick:tabbar newsVc:vc selectIndex:index];
+        }
     }
 }
 
