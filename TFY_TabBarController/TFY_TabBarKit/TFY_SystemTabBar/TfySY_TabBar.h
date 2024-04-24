@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**TabBar背景图*/
 @property(nonatomic, strong)UIImageView *backgroundImageView;
 @property(nonatomic, strong)UIImage *themeImage;
+/**底部移动图片**/
+@property(nonatomic, strong)UIImageView *backgroundSelectImageView;
 /**当前选中的 TabBar*/
 @property (nonatomic, strong) TfySY_TabBarItem *currentSelectItem;
 /**设置角标*/

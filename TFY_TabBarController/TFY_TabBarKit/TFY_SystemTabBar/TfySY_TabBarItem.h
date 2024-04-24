@@ -63,6 +63,16 @@ typedef NS_ENUM(NSInteger, TfySY_TabBarInteractionEffectStyle) {
 /**当交互效果选选择自定义时，会回调以下Block*/
 typedef void(^CustomInteractionEffectBlock) (TfySY_TabBarItem * _Nonnull item);
 
+@interface UIView (tabbar)
+@property (nonatomic, assign) CGPoint tabbar_origin;
+@property (nonatomic, assign) CGFloat tabbar_x;
+@property (nonatomic, assign) CGFloat tabbar_y;
+@property (nonatomic, assign) CGSize  tabbar_size;
+@property (nonatomic, assign) CGFloat tabbar_width;
+@property (nonatomic, assign) CGFloat tabbar_height;
+@property (nonatomic, assign) CGFloat tabbar_centerX;
+@property (nonatomic, assign) CGFloat tabbar_centerY;
+@end
 
 @interface TfySY_TabBarConfigModel : NSObject
 

@@ -62,13 +62,13 @@
     } else {
         switch (self.itemModel.itemBadgeStyle) {
             case TfySY_TabBarItemBadgeStyleTopRight:{ // 右上方 默认
-                self.badgeLabel.center = CGPointMake(self.icomImgView.frame.size.width - (self.badgeLabel.frame.size.width/2),self.badgeLabel.frame.size.height/2);
+                self.badgeLabel.center = CGPointMake(self.icomImgView.tabbar_width - (self.badgeLabel.tabbar_width/2),self.badgeLabel.tabbar_height/2);
             }break;
             case TfySY_TabBarItemBadgeStyleTopCenter:{ // 上中间
-                self.badgeLabel.center = CGPointMake(self.frame.size.width/2,self.badgeLabel.frame.size.height/2);
+                self.badgeLabel.center = CGPointMake(self.tabbar_width/2,self.badgeLabel.tabbar_height/2);
             }break;
             case TfySY_TabBarItemBadgeStyleTopLeft:{ // 左上方
-                self.badgeLabel.center = CGPointMake(self.icomImgView.frame.size.width/2-(self.badgeLabel.frame.size.width/2),self.badgeLabel.frame.size.height/2);
+                self.badgeLabel.center = CGPointMake(self.icomImgView.tabbar_width/2-(self.badgeLabel.tabbar_width/2),self.badgeLabel.tabbar_height/2);
             }break;
             default:
                 break;
@@ -86,17 +86,17 @@
     BOOL isIcomImgViewSize = self.itemModel.icomImgViewSize.width || self.itemModel.icomImgViewSize.height;
     BOOL isTitleLabelSize = self.itemModel.titleLabelSize.width || self.itemModel.titleLabelSize.height;
     // 除去边距后的最大宽度
-    CGFloat marginWidth = self.frame.size.width - self.componentMargin.left - self.componentMargin.right;
+    CGFloat marginWidth = self.tabbar_width - self.componentMargin.left - self.componentMargin.right;
     // 进行决策设置大小
     if (isIcomImgViewSize){
         iconImgFrame.size = self.itemModel.icomImgViewSize;
     }else{
-        iconImgFrame.size = CGSizeMake(marginWidth, self.frame.size.height * iconImgView_Proportion - self.componentMargin.top - 5);
+        iconImgFrame.size = CGSizeMake(marginWidth, self.tabbar_height * iconImgView_Proportion - self.componentMargin.top - 5);
     }
     if (isTitleLabelSize){
         titleFrame.size = self.itemModel.titleLabelSize;
     }else{
-        titleFrame.size = CGSizeMake(marginWidth, self.frame.size.height - iconImgFrame.size.height - self.componentMargin.bottom);
+        titleFrame.size = CGSizeMake(marginWidth, self.tabbar_height - iconImgFrame.size.height - self.componentMargin.bottom);
     }
     // 至此大小已计算完毕，开始布局
     self.titleLabel.hidden = NO;
@@ -104,30 +104,30 @@
     switch (self.itemModel.itemLayoutStyle) {
         case TfySY_TabBarItemLayoutStyleTopPictureBottomTitle:{         // 上图片下文字 使用图3 文1比
             iconImgFrame.origin.y = self.componentMargin.top;
-            iconImgFrame.origin.x = (self.frame.size.width - iconImgFrame.size.width)/2;
+            iconImgFrame.origin.x = (self.tabbar_width - iconImgFrame.size.width)/2;
             // 图上文下 文label的高度要减去间距
             titleFrame.size.height -= self.pictureWordsMargin;
             titleFrame.origin.y = iconImgFrame.origin.y + iconImgFrame.size.height + self.pictureWordsMargin;
-            titleFrame.origin.x = (self.frame.size.width - titleFrame.size.width)/2;
+            titleFrame.origin.x = (self.tabbar_width - titleFrame.size.width)/2;
         }break;
         case TfySY_TabBarItemLayoutStyleBottomPictureTopTitle:{         // 下图片上文字
             titleFrame.origin.y = self.componentMargin.top;
-            titleFrame.origin.x = (self.frame.size.width - iconImgFrame.size.width)/2;
-            titleFrame.size.height = self.frame.size.height * iconImgView_Proportion - self.componentMargin.top - self.pictureWordsMargin - 5;
+            titleFrame.origin.x = (self.tabbar_width - iconImgFrame.size.width)/2;
+            titleFrame.size.height = self.tabbar_height * iconImgView_Proportion - self.componentMargin.top - self.pictureWordsMargin - 5;
             // 下图片上文字 图的高度要减去间距
             iconImgFrame.origin.y = titleFrame.origin.y + titleFrame.size.height + self.pictureWordsMargin;
             iconImgFrame.origin.x = self.componentMargin.left;
-            iconImgFrame.size = CGSizeMake(marginWidth, self.frame.size.height -
+            iconImgFrame.size = CGSizeMake(marginWidth, self.tabbar_height -
                                            titleFrame.size.height - titleFrame.origin.y - self.componentMargin.bottom - self.pictureWordsMargin);
         }break;
         case TfySY_TabBarItemLayoutStyleLeftPictureRightTitle:{         // 左图片右文字
             // 左右布局要重新计算图片宽度和文本高度 比例要按照相反的1：3计算
-            iconImgFrame.size.width = self.frame.size.width * titleLabel_Proportion ;
-            titleFrame.size.height = self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom;
-            titleFrame.size.width = self.frame.size.width - // 图片的右下终点坐标 + 边距 + 组件右边距极限
+            iconImgFrame.size.width = self.tabbar_width * titleLabel_Proportion ;
+            titleFrame.size.height = self.tabbar_height - self.componentMargin.top - self.componentMargin.bottom;
+            titleFrame.size.width = self.tabbar_width - // 图片的右下终点坐标 + 边距 + 组件右边距极限
             (iconImgFrame.size.width + iconImgFrame.origin.x + self.pictureWordsMargin + self.componentMargin.right);
             
-            iconImgFrame.origin.y = (self.frame.size.height - iconImgFrame.size.height)/2;
+            iconImgFrame.origin.y = (self.tabbar_height - iconImgFrame.size.height)/2;
             iconImgFrame.origin.x = self.componentMargin.left;
             // 左图片右文字 文label的宽度要减去间距
             titleFrame.size.width -= self.pictureWordsMargin;
@@ -136,9 +136,9 @@
         }break;
         case TfySY_TabBarItemLayoutStyleRightPictureLeftTitle:{         // 右图片左文字
             // 左右布局要重新计算图片宽度和文本高度 比例要按照相反的1：3计算
-            iconImgFrame.size.width = self.frame.size.width * titleLabel_Proportion ;
-            titleFrame.size.height = self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom;
-            titleFrame.size.width = self.frame.size.width - // 图片的右下终点坐标 + 边距 + 组件右边距极限
+            iconImgFrame.size.width = self.tabbar_width * titleLabel_Proportion ;
+            titleFrame.size.height = self.tabbar_height - self.componentMargin.top - self.componentMargin.bottom;
+            titleFrame.size.width = self.tabbar_width - // 图片的右下终点坐标 + 边距 + 组件右边距极限
             (iconImgFrame.size.width  + self.pictureWordsMargin + self.componentMargin.right);
             
             titleFrame.origin.x = self.componentMargin.left;
@@ -146,18 +146,18 @@
             titleFrame.size.width -= self.pictureWordsMargin;
             titleFrame.origin.y = self.componentMargin.top;
             
-            iconImgFrame.origin.y = (self.frame.size.height - iconImgFrame.size.height)/2;
+            iconImgFrame.origin.y = (self.tabbar_height - iconImgFrame.size.height)/2;
             iconImgFrame.origin.x = titleFrame.size.width + titleFrame.origin.x + self.pictureWordsMargin;
         }break;
         case TfySY_TabBarItemLayoutStylePicture:{                       // 单图片占满全部
-            iconImgFrame.size = CGSizeMake(self.frame.size.width - self.componentMargin.left - self.componentMargin.right,
-                                           self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom);
+            iconImgFrame.size = CGSizeMake(self.tabbar_width - self.componentMargin.left - self.componentMargin.right,
+                                           self.tabbar_height - self.componentMargin.top - self.componentMargin.bottom);
             iconImgFrame.origin = CGPointMake(self.componentMargin.right, self.componentMargin.top);
             self.titleLabel.hidden = YES;
         }break;
         case TfySY_TabBarItemLayoutStyleTitle:{                         // 单标题占满全部
-            titleFrame.size = CGSizeMake(self.frame.size.width - self.componentMargin.left - self.componentMargin.right,
-                                           self.frame.size.height - self.componentMargin.top - self.componentMargin.bottom);
+            titleFrame.size = CGSizeMake(self.tabbar_width - self.componentMargin.left - self.componentMargin.right,
+                                           self.tabbar_height - self.componentMargin.top - self.componentMargin.bottom);
             titleFrame.origin = CGPointMake(self.componentMargin.right, self.componentMargin.top);
             self.icomImgView.hidden = YES;
         }break;
@@ -328,6 +328,86 @@
         _backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _backgroundImageView;
+}
+
+@end
+
+@implementation UIView (tabbar)
+
+- (void)setTabbar_origin:(CGPoint)tabbar_origin {
+    CGRect frame = self.frame;
+    frame.origin = tabbar_origin;
+    self.frame = frame;
+}
+
+- (CGPoint)tabbar_origin {
+    return self.frame.origin;
+}
+
+- (void)setTabbar_x:(CGFloat)tabbar_x {
+    CGRect frame = self.frame;
+    frame.origin.x = tabbar_x;
+    self.frame = frame;
+}
+
+- (CGFloat)tabbar_x {
+    return self.frame.origin.x;
+}
+
+- (void)setTabbar_y:(CGFloat)tabbar_y {
+    CGRect frame = self.frame;
+    frame.origin.y = tabbar_y;
+    self.frame = frame;
+}
+
+- (CGFloat)tabbar_y {
+    return self.frame.origin.y;
+}
+
+- (void)setTabbar_size:(CGSize)tabbar_size {
+    CGRect frame = self.frame;
+    frame.size = tabbar_size;
+    self.frame = frame;
+}
+
+- (CGSize)tabbar_size {
+    return self.frame.size;
+}
+
+- (void)setTabbar_width:(CGFloat)tabbar_width {
+    CGRect frame = self.frame;
+    frame.size.width = tabbar_width;
+    self.frame = frame;
+}
+
+- (CGFloat)tabbar_width {
+    return self.frame.size.width;
+}
+
+- (void)setTabbar_height:(CGFloat)tabbar_height {
+    CGRect frame = self.frame;
+    frame.size.height = tabbar_height;
+    self.frame = frame;
+}
+
+- (CGFloat)tabbar_height {
+    return self.frame.size.height;
+}
+
+- (void)setTabbar_centerX:(CGFloat)tabbar_centerX {
+    self.center = CGPointMake(tabbar_centerX, self.center.y);
+}
+
+- (CGFloat)tabbar_centerX {
+    return self.center.x;
+}
+
+- (void)setTabbar_centerY:(CGFloat)tabbar_centerY {
+    self.center = CGPointMake(self.center.x, tabbar_centerY);
+}
+
+- (CGFloat)tabbar_centerY {
+    return self.center.y;
 }
 
 @end

@@ -59,6 +59,7 @@
     [self hiddenUITabBarButton]; // 8.4补丁
     [self addSubview:self.backgroundImageView]; // 添加背景图
     [self.backgroundImageView addSubview:self.effectView];
+    [self.backgroundImageView addSubview:self.backgroundSelectImageView];
 }
 #pragma mark - 常规配置
 // 设置items
@@ -89,6 +90,10 @@ static TfySY_TabBarItem *lastItem;
     // 1.切换tabbar的状态
     [self.items enumerateObjectsUsingBlock:^(TfySY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         item.isSelect = index == idx; // 当前点击的调整选中，其他否定
+    }];
+    CGFloat screenAverageWidth = self.tabbar_width/self.items.count;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.backgroundSelectImageView.tabbar_x = index * screenAverageWidth;
     }];
     // 动画逻辑
     WeakSelf; // 2.通过回调点击事件让代理去执行切换选项卡的任务
@@ -126,10 +131,11 @@ static TfySY_TabBarItem *lastItem;
 
 // 进行item布局
 - (void)viewDidLayoutItems{
-    CGFloat screenAverageWidth = self.frame.size.width/self.items.count;
+    CGFloat screenAverageWidth = self.tabbar_width/self.items.count;
+    self.backgroundSelectImageView.frame = CGRectMake(0, 0, screenAverageWidth, self.tabbar_height);
     [self.items enumerateObjectsUsingBlock:^(TfySY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         CGRect itemFrame = item.frame;
-        CGFloat itemHeight = self.frame.size.height;
+        CGFloat itemHeight = self.tabbar_height;
         if (TfySY_IsiPhoneX) {
             itemHeight = itemHeight-24;
         }
@@ -211,7 +217,8 @@ static TfySY_TabBarItem *lastItem;
 }
 // 适配凸出
 - (void)itemDidLayoutBulge{
-    CGFloat screenAverageWidth = self.frame.size.width/self.items.count;
+    CGFloat screenAverageWidth = self.tabbar_width/self.items.count;
+    self.backgroundSelectImageView.frame = CGRectMake(0, 0, screenAverageWidth, self.tabbar_height);
     [self.items enumerateObjectsUsingBlock:^(TfySY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         CGRect itemFrame = item.frame;
         CGFloat sideLength = MAX(itemFrame.size.width, itemFrame.size.height);
@@ -288,6 +295,14 @@ static TfySY_TabBarItem *lastItem;
         _backgroundImageView = [UIImageView new];
     }
     return _backgroundImageView;
+}
+
+
+- (UIImageView *)backgroundSelectImageView {
+    if (!_backgroundSelectImageView) {
+        _backgroundSelectImageView = UIImageView.new;
+    }
+    return _backgroundSelectImageView;
 }
 
 - (NSMutableArray<TfySY_TabBarItem *> *)items{
