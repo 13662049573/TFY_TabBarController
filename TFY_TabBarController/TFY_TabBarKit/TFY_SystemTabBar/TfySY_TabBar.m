@@ -130,8 +130,8 @@ static TfySY_TabBarItem *lastItem;
     [self.items enumerateObjectsUsingBlock:^(TfySY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         CGRect itemFrame = item.frame;
         CGFloat itemHeight = self.frame.size.height;
-        if (TfySY_IsiPhoneX || itemHeight > 50) {
-            itemHeight = 49; // iphoneX高度要小
+        if (TfySY_IsiPhoneX) {
+            itemHeight = itemHeight-24;
         }
         BOOL isNoSettingItemSize = !item.itemModel.itemSize.width || !item.itemModel.itemSize.height;
         if (isNoSettingItemSize) { // 没设置则为默认填充模式
@@ -269,10 +269,11 @@ static TfySY_TabBarItem *lastItem;
 #pragma mark - 懒加载
 - (UIBlurEffect *)effect{
     if (!_effect) {
-        _effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        _effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     }
     return _effect;
 }
+
 - (UIVisualEffectView *)effectView{
     if (!_effectView) {
         _effectView = [[UIVisualEffectView alloc] initWithEffect:self.effect];
@@ -288,6 +289,7 @@ static TfySY_TabBarItem *lastItem;
     }
     return _backgroundImageView;
 }
+
 - (NSMutableArray<TfySY_TabBarItem *> *)items{
     if (!_items) {
         _items = @[].mutableCopy;

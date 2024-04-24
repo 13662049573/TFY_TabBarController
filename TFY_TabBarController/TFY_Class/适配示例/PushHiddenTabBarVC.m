@@ -56,8 +56,13 @@
         model.selectColor = [UIColor orangeColor];
         model.normalColor = [UIColor whiteColor];
         model.normalTintColor = [UIColor whiteColor];
-        model.selectBackgroundColor = [UIColor colorWithWhite:1 alpha:0.7];
+        model.itemSize = CGSizeMake(TFY_Width_W()/4-10, TFY_kBottomBarHeight());
+        
+        model.normalBackgroundImage = [UIImage imageNamed:@"item_1"];
+        model.selectBackgroundImage = [UIImage imageNamed:@"item_2"];
+        
         model.interactionEffectStyle = TfySY_TabBarInteractionEffectStyleShake;
+        model.alignmentStyle = TfySY_TabBarConfigAlignmentStyleCenterBottom;
         // 示例中为了方便就在这写了
         UIViewController *vc = [obj objectForKey:@"vc"];
         TFY_NavigationController *nav = [[TFY_NavigationController alloc] initWithRootViewController:vc];
@@ -68,9 +73,10 @@
     }];
 
     [self controllerArr:tabBarVCs TabBarConfigModelArr:tabBarConfs];
-   
-    self.tfySY_TabBar.backgroundImageView.image = [UIImage imageNamed:@"backImg"];
+   //
+    self.tfySY_TabBar.themeImage = [UIImage imageNamed:@"backImg"];
     self.tfySY_TabBar.translucent = YES;
+//    self.tfySY_TabBar.effectView.alpha = 0.7;
 }
 
 // 点击事件

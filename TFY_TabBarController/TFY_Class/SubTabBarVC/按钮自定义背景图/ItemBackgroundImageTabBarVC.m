@@ -46,8 +46,8 @@
         
         // 设置背景图
         /******************************************************************************/
-        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"item_%luu",idx + 1]];
-        model.backgroundImageView.image = img;
+        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"item_%ld",idx + 1]];
+        model.backgroundImage = img;
         /******************************************************************************/
         
         // 备注 如果一步设置的VC的背景颜色，VC就会提前绘制驻留，优化这方面的话最好不要这么写

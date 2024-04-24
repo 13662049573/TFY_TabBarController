@@ -110,7 +110,7 @@
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
-        
+        _tableView.contentInset = UIEdgeInsetsMake(0, 0, TFY_kBottomBarHeight(), 0);
         [self.view addSubview:_tableView];
     }
     return _tableView;

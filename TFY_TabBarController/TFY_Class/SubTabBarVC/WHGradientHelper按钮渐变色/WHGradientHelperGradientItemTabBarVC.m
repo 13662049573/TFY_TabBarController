@@ -62,20 +62,7 @@
     self.tfySY_TabBar.backgroundImageView.image = [WHGradientHelper getLinearGradientImage:[UIColor orangeColor]
                                                                                     and:[UIColor whiteColor]
                                                                           directionType:WHLinearGradientDirectionVertical];
-    [self click_itemWithIndex:0];
-}
 
-- (void)click_itemWithIndex:(NSInteger )index{
-    /******************************************************************************/
-    [self.tfySY_TabBar.tabBarItems enumerateObjectsUsingBlock:^(TfySY_TabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (index == idx) { // 当前触发的
-            item.backgroundImageView.image = [WHGradientHelper getLinearGradientImage:[UIColor whiteColor]
-                                                                                  and:[UIColor orangeColor]
-                                                                        directionType:WHLinearGradientDirectionVertical];
-        }else{
-            item.backgroundImageView.image = nil;
-        }
-    }];
 }
 
 @end

@@ -57,7 +57,7 @@
             model.selectImageName = @"post_normal";
             model.normalImageName = @"post_normal";
             model.selectBackgroundColor = model.normalBackgroundColor = [UIColor clearColor];
-            model.backgroundImageView.hidden = YES;
+            
             // 设置图片大小c上下左右全边距
             model.componentMargin = UIEdgeInsetsMake(0, 0, 0, 0 );
             // 设置图片的高度为40

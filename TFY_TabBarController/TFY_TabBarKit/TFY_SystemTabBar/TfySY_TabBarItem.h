@@ -89,11 +89,14 @@ typedef void(^CustomInteractionEffectBlock) (TfySY_TabBarItem * _Nonnull item);
 #pragma mark - item背景控制类
 /**默认的 按钮背景Color 默认无*/
 @property(nonatomic, strong)UIColor * _Nonnull normalBackgroundColor;
+/*默认 按钮背景图片*/
+@property(nonatomic, strong)UIImage * _Nonnull normalBackgroundImage;
 /**选中的 按钮背景Color 默认无*/
 @property(nonatomic, strong)UIColor * _Nonnull selectBackgroundColor;
+/**选中的 按钮背景图片 默认无*/
+@property(nonatomic, strong)UIImage * _Nonnull selectBackgroundImage;
 /**单个item的背景图*/
-@property(nonatomic, strong)UIImageView * _Nonnull backgroundImageView;
-
+@property(nonatomic, strong)UIImage * _Nonnull backgroundImage;
 #pragma mark - item附加控制类
 /**凸出形变类型*/
 @property(nonatomic, assign)TfySY_TabBarConfigBulgeStyle bulgeStyle;
@@ -163,10 +166,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong)UIColor *selectTintColor;
 /**默认的 按钮背景Color 默认无*/
 @property(nonatomic, strong)UIColor *normalBackgroundColor;
+/*默认 按钮背景图片*/
+@property(nonatomic, strong)UIImage *normalBackgroundImage;
 /**选中的 按钮背景Color 默认无*/
 @property(nonatomic, strong)UIColor *selectBackgroundColor;
+/**选中的 按钮背景图片 默认无*/
+@property(nonatomic, strong)UIImage *selectBackgroundImage;
 /**单个item的背景图*/
-@property(nonatomic, strong)UIImageView *backgroundImageView;
+@property(nonatomic, strong)UIImage *backgroundImage;
 /**角标内容*/
 @property(nonatomic, strong)NSString *badge;
 /**item的所在索引*/

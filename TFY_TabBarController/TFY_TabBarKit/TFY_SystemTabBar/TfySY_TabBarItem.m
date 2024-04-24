@@ -8,6 +8,10 @@
 
 #import "TfySY_TabBarItem.h"
 
+@interface TfySY_TabBarItem ()
+@property(nonatomic , strong)UIImageView *backgroundImageView;
+@end
+
 @implementation TfySY_TabBarItem
 
 #pragma mark - 构造
@@ -47,7 +51,10 @@
 }
 ////////
 #pragma mark - 配置实例
-- (void)configuration{}
+- (void)configuration{
+    self.backgroundImageView = UIImageView.new;
+    [self addSubview:self.backgroundImageView];
+}
 
 - (void)itemDidLayoutBadgeLabel{
     if (self.badgePoint.x > 0 || self.badgePoint.y > 0) {
@@ -199,7 +206,7 @@
 #pragma mark - SET/GET
 - (void)setItemModel:(TfySY_TabBarConfigModel *)itemModel{
     _itemModel = itemModel;
-    self.backgroundImageView = itemModel.backgroundImageView; // 先添加背景
+//    self.backgroundImageView = itemModel.backgroundImageView; // 先添加背景
     self.title = _itemModel.itemTitle;
     if (itemModel.normalImage != nil && itemModel.selectImage != nil) {
         self.normalImage = itemModel.normalImage;
@@ -214,6 +221,16 @@
     self.selectTintColor = itemModel.selectTintColor;
     self.normalBackgroundColor = itemModel.normalBackgroundColor;
     self.selectBackgroundColor = itemModel.selectBackgroundColor;
+    if (itemModel.backgroundImage != nil) {
+        self.backgroundImage = itemModel.backgroundImage;
+    } else {
+        if (itemModel.normalBackgroundImage != nil) {
+            self.normalBackgroundImage = itemModel.normalBackgroundImage;
+        }
+        if (itemModel.selectBackgroundImage != nil) {
+            self.selectBackgroundImage = itemModel.selectBackgroundImage;
+        }
+    }
     self.titleLabel = itemModel.titleLabel;
     self.icomImgView = itemModel.icomImgView;
     self.badgePoint = itemModel.badgePoint;
@@ -228,15 +245,20 @@
     self.frame = itemFrame;
     self.badge = itemModel.badge;
 }
+
 - (void)setIsSelect:(BOOL)isSelect{
     _isSelect = isSelect;
     if (_isSelect) { // 是选中
         self.icomImgView.image = self.selectImage;
         self.titleLabel.textColor = self.selectColor;
+        if (self.backgroundImage == nil) {
+            self.backgroundImageView.image = self.selectBackgroundImage;
+        }
         // 如果有设置tintColor，那么就选中图片后将图片渲染成TintColor
         if (self.selectTintColor) {
             self.icomImgView.image = [self.icomImgView.image imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
             [self.icomImgView setTintColor:self.selectTintColor];
+            
         }
         [UIView animateWithDuration:0.3 animations:^{
             if (self.selectBackgroundColor) {
@@ -248,6 +270,9 @@
     }else{
         self.icomImgView.image = self.normalImage;
         self.titleLabel.textColor = self.normalColor;
+        if (self.backgroundImage == nil) {
+            self.backgroundImageView.image = self.normalBackgroundImage;
+        }
         // 如果有设置tintColor，那么未选中将图片渲染成TintColor
         if (self.normalTintColor) {
             self.icomImgView.image = [self.icomImgView.image imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
@@ -263,19 +288,23 @@
     }
     self.titleLabel.text = self.title;
 }
+
 - (void)setIcomImgView:(UIImageView *)icomImgView{
     _icomImgView = icomImgView;
     [self addSubview:_icomImgView];
     self.isSelect = self.isSelect;
 }
+
 - (void)setTitleLabel:(UILabel *)titleLabel{
     _titleLabel = titleLabel;
     [self addSubview:_titleLabel];
 }
-- (void)setBackgroundImageView:(UIImageView *)backgroundImageView{
-    _backgroundImageView = backgroundImageView;
-    [self addSubview:_backgroundImageView];
+
+- (void)setBackgroundImage:(UIImage *)backgroundImage {
+    _backgroundImage = backgroundImage;
+    self.backgroundImageView.image = backgroundImage;
 }
+
 - (void)setBadge:(NSString *)badge{
     _badge = badge;
     if (_badge) {
@@ -293,6 +322,13 @@
     return _badgeLabel;
 }
 
+- (UIImageView *)backgroundImageView {
+    if (!_backgroundImageView) {
+        _backgroundImageView = UIImageView.new;
+        _backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _backgroundImageView;
+}
 
 @end
 
@@ -324,18 +360,13 @@
     }
     return _titleLabel;
 }
+
 - (UIImageView *)icomImgView{
     if (!_icomImgView) {
         _icomImgView = [UIImageView new];
         _icomImgView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _icomImgView;
-}
-- (UIImageView *)backgroundImageView{
-    if (!_backgroundImageView) {
-        _backgroundImageView = [UIImageView new];
-    }
-    return _backgroundImageView;
 }
 
 @end
